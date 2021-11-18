@@ -1,0 +1,23 @@
+﻿<Window x:Class="KantoorInrichtingWPF.NieuwePlattegrond"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KantoorInrichtingWPF"
+        mc:Ignorable="d"
+        Title="NieuwePlattegrond" Height="450" Width="800">
+    <Grid>
+        <Label Content="Tag" HorizontalAlignment="Left" Margin="95,74,0,0" VerticalAlignment="Top"/>
+        <Label Content="Naam" HorizontalAlignment="Left" Margin="89,131,0,0" VerticalAlignment="Top"/>
+        <Label Content="Lengte" HorizontalAlignment="Left" Margin="89,191,0,0" VerticalAlignment="Top"/>
+        <Label Content="Breedte" HorizontalAlignment="Left" Margin="84,273,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TBTag" HorizontalAlignment="Left" Margin="84,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBNaam" HorizontalAlignment="Left" Margin="84,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBLengte" HorizontalAlignment="Left" Margin="84,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBBreedte" HorizontalAlignment="Left" Margin="84,324,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Nieuwe plattegrond" HorizontalAlignment="Center" Margin="0,41,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonAanmaken" Content="Aanmaken" HorizontalAlignment="Left" Margin="382,324,0,0" VerticalAlignment="Top" Click="Button_Aanmaken_Click"/>
+        <Button x:Name="ButtonAnnuleren" Content="Annuleren" HorizontalAlignment="Left" Margin="532,323,0,0" VerticalAlignment="Top" Click="Button_Annuleren_Click"/>
+
+    </Grid>
+</Window>

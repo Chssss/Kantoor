@@ -8,13 +8,39 @@
         Title="Plattegrond editor" Height="650" Width="1000" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="187*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="591*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="261*"/>
+            <ColumnDefinition Width="739*"/>
         </Grid.ColumnDefinitions>
+        <ListBox x:Name="MeubelList" Margin="0,5,0,0" Grid.Row="1"/>
+        <Button x:Name="ButtonTotaalPrijs" Content="Totaalprijs" Grid.Column="1" HorizontalAlignment="Left" Margin="571,0,0,0" VerticalAlignment="Center" Height="43" Width="60"/>
+        <DockPanel LastChildFill="False">
+            <Menu Width="100" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <MenuItem Header="Open">
+                    <MenuItem Header="Nieuwe plattegrond" Click="MenuItem_nieuwePlattegrond_Click"/>
+                    <MenuItem Header="Open plattegrond" Click="MenuItem_openPlattegrond_Click"/>
+                </MenuItem>
+            </Menu>
+            <Menu Width="100" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <MenuItem Header="Opslaan">
+                    <MenuItem Header="Opslaan" Click="MenuItem_opslaan_Click"/>
+                    <MenuItem Header="Export" Click="MenuItem_export_Click"/>
+                    <MenuItem Header="Opslaan als" Click="MenuItem_opslaanAls_Click" />
+                </MenuItem>
+            </Menu>
+            <Menu Width="100" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <MenuItem Header="Meubels">
+                    <MenuItem Header="Toevoegen" Click="MenuItem_toevoegen_Click" />
+                    <MenuItem Header="Wijzigen" Click="MenuItem_wijzigen_Click"/>
+                    <MenuItem Header="Lijst" Click="MenuItem_lijst_Click"  />
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <Canvas Grid.Column="1" Grid.Row="1"/>
+
 
     </Grid>
 </Window>

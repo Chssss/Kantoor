@@ -24,5 +24,51 @@ namespace KantoorInrichtingWPF
         {
             InitializeComponent();
         }
+
+        private void MenuItem(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_nieuwePlattegrond_Click(object sender, RoutedEventArgs e)
+        {
+            NieuwePlattegrond nieuwePlattegrond = new NieuwePlattegrond();
+            nieuwePlattegrond.Show();
+        }
+
+        private void MenuItem_openPlattegrond_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_opslaan_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_opslaanAls_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_export_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_toevoegen_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_wijzigen_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_lijst_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
