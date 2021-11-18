@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KantoorInrichting", "KantoorInrichting\KantoorInrichting.csproj", "{C044C779-CD4F-4280-8B53-1967E93CEF75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KantoorInrichtingWPF", "KantoorInrichtingWPF\KantoorInrichtingWPF.csproj", "{3CA4835A-A356-4C4F-9C0D-A9CFDA9A2284}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C044C779-CD4F-4280-8B53-1967E93CEF75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C044C779-CD4F-4280-8B53-1967E93CEF75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C044C779-CD4F-4280-8B53-1967E93CEF75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CA4835A-A356-4C4F-9C0D-A9CFDA9A2284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CA4835A-A356-4C4F-9C0D-A9CFDA9A2284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CA4835A-A356-4C4F-9C0D-A9CFDA9A2284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CA4835A-A356-4C4F-9C0D-A9CFDA9A2284}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
