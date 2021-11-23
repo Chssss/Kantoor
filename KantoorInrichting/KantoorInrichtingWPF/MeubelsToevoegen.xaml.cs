@@ -29,7 +29,6 @@ namespace KantoorInrichtingWPF
 
         private void OnButton_Toevoegen_Click(object sender, RoutedEventArgs e)
         {
-
             this.Close();
         }
     }

@@ -34,8 +34,7 @@ namespace KantoorInrichtingWPF
         {
             NieuwePlattegrond nieuwePlattegrond = new NieuwePlattegrond();
             nieuwePlattegrond.Show();
-            nieuwePlattegrond.ButtonAanmaken.Click += OnButtonAanmaken_Click;
-            
+            nieuwePlattegrond.ButtonAanmaken.Click += OnButtonAanmaken_Click;  
         }
 
         private void OnButtonAanmaken_Click(object sender, RoutedEventArgs e)
