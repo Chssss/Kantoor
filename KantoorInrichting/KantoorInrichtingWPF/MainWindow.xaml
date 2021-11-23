@@ -16,26 +16,26 @@
             <ColumnDefinition Width="739*"/>
         </Grid.ColumnDefinitions>
         <ListBox x:Name="MeubelList" Margin="0,5,0,0" Grid.Row="1"/>
-        <Button x:Name="ButtonTotaalPrijs" Content="Totaalprijs" Grid.Column="1" HorizontalAlignment="Left" Margin="571,0,0,0" VerticalAlignment="Center" Height="43" Width="60"/>
+        <Button x:Name="ButtonTotaalPrijs" Content="Totaalprijs" Grid.Column="1" HorizontalAlignment="Left" Margin="571,0,0,0" VerticalAlignment="Center" Height="43" Width="60" Click="OnButton_Totaalprijs_Click"/>
         <DockPanel LastChildFill="False">
             <Menu Width="100" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <MenuItem Header="Open">
-                    <MenuItem Header="Nieuwe plattegrond" Click="MenuItem_nieuwePlattegrond_Click"/>
-                    <MenuItem Header="Open plattegrond" Click="MenuItem_openPlattegrond_Click"/>
+                    <MenuItem Header="Nieuwe plattegrond" Click="OnMenuItem_nieuwePlattegrond_Click"/>
+                    <MenuItem Header="Open plattegrond" Click="OnMenuItem_openPlattegrond_Click"/>
                 </MenuItem>
             </Menu>
             <Menu Width="100" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <MenuItem Header="Opslaan">
-                    <MenuItem Header="Opslaan" Click="MenuItem_opslaan_Click"/>
-                    <MenuItem Header="Export" Click="MenuItem_export_Click"/>
-                    <MenuItem Header="Opslaan als" Click="MenuItem_opslaanAls_Click" />
+                    <MenuItem Header="Opslaan" Click="OnMenuItem_opslaan_Click"/>
+                    <MenuItem Header="Export" Click="OnMenuItem_export_Click"/>
+                    <MenuItem Header="Opslaan als" Click="OnMenuItem_opslaanAls_Click" />
                 </MenuItem>
             </Menu>
             <Menu Width="100" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <MenuItem Header="Meubels">
-                    <MenuItem Header="Toevoegen" Click="MenuItem_toevoegen_Click" />
-                    <MenuItem Header="Wijzigen" Click="MenuItem_wijzigen_Click"/>
-                    <MenuItem Header="Lijst" Click="MenuItem_lijst_Click"  />
+                    <MenuItem Header="Toevoegen" Click="OnMenuItem_toevoegen_Click" />
+                    <MenuItem Header="Wijzigen" Click="OnMenuItem_wijzigen_Click"/>
+                    <MenuItem Header="Lijst" Click="OnMenuItem_lijst_Click"  />
                 </MenuItem>
             </Menu>
         </DockPanel>

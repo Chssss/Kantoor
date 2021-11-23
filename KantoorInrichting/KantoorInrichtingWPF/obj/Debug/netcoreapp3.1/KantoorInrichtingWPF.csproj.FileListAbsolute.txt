@@ -20,3 +20,7 @@ C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.genruntimeconfig.cache
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\NieuwePlattegrond.g.cs
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\NieuwePlattegrond.baml
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\MeubelsToevoegen.g.cs
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\MeubelsToevoegen.baml
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\MeubelsLijst.g.cs
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\MeubelsLijst.baml

@@ -13,25 +13,29 @@ using System.Windows.Shapes;
 namespace KantoorInrichtingWPF
 {
     /// <summary>
-    /// Interaction logic for NieuwePlattegrond.xaml
+    /// Interaction logic for MeubelsLijst.xaml
     /// </summary>
-    public partial class NieuwePlattegrond : Window
+    public partial class MeubelsLijst : Window
     {
-        public NieuwePlattegrond()
+        public MeubelsLijst()
         {
             InitializeComponent();
         }
 
-        private void OnButton_Aanmaken_Click(object sender, RoutedEventArgs e)
+        private void OnButton_Zoeken_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow plattegrondEditor = new MainWindow();
-            plattegrondEditor.Show();
+
+        }
+
+        private void OnButton_Terug_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
 
-        private void OnButton_Annuleren_Click(object sender, RoutedEventArgs e)
+        private void OnButton_MeubelToevoegen_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            MeubelsToevoegen meubelsToevoegen = new MeubelsToevoegen();
+            meubelsToevoegen.Show();
         }
     }
 }

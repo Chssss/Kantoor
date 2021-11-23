@@ -14,10 +14,10 @@
         <TextBox x:Name="TBTag" HorizontalAlignment="Left" Margin="84,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="TBNaam" HorizontalAlignment="Left" Margin="84,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="TBLengte" HorizontalAlignment="Left" Margin="84,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TBBreedte" HorizontalAlignment="Left" Margin="84,324,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBBreedte" HorizontalAlignment="Left" Margin="84,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Nieuwe plattegrond" HorizontalAlignment="Center" Margin="0,41,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="ButtonAanmaken" Content="Aanmaken" HorizontalAlignment="Left" Margin="382,324,0,0" VerticalAlignment="Top" Click="Button_Aanmaken_Click"/>
-        <Button x:Name="ButtonAnnuleren" Content="Annuleren" HorizontalAlignment="Left" Margin="532,323,0,0" VerticalAlignment="Top" Click="Button_Annuleren_Click"/>
+        <Button x:Name="ButtonAanmaken" Content="Aanmaken" HorizontalAlignment="Left" Margin="382,324,0,0" VerticalAlignment="Top" Click="OnButton_Aanmaken_Click"/>
+        <Button x:Name="ButtonAnnuleren" Content="Annuleren" HorizontalAlignment="Left" Margin="532,323,0,0" VerticalAlignment="Top" Click="OnButton_Annuleren_Click"/>
 
     </Grid>
 </Window>
