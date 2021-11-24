@@ -39,6 +39,7 @@
             </Menu>
         </DockPanel>
         <Canvas Grid.Column="1" Grid.Row="1"/>
+        <DataGrid x:Name="DGMeubels" Grid.Row="1"/>
 
 
     </Grid>

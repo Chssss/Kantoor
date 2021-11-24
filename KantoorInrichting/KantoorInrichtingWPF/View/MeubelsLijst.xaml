@@ -16,6 +16,7 @@
         <Button Content="Zoeken" HorizontalAlignment="Left" Margin="33,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.464,0.663" Click="OnButton_Zoeken_Click" Height="20" Width="43"/>
         <Button Content="Terug" Grid.Column="1" HorizontalAlignment="Left" Margin="344,61,0,0" VerticalAlignment="Top" Click="OnButton_Terug_Click" Height="20" Width="33"/>
         <Button Content="Meubel Toevoegen" Grid.Column="1" HorizontalAlignment="Left" Margin="223,61,0,0" VerticalAlignment="Top" Click="OnButton_MeubelToevoegen_Click" Height="20" Width="105"/>
+        <DataGrid x:Name="DGMeubels" Margin="0,97,0,0" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

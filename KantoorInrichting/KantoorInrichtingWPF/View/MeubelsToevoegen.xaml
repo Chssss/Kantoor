@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MeubelsToevoegen" Height="450" Width="800">
     <Grid>
-        <Label Content="Tag" HorizontalAlignment="Left" Margin="100,81,0,0" VerticalAlignment="Top"/>
+        <Label Content="Categorie" HorizontalAlignment="Left" Margin="100,81,0,0" VerticalAlignment="Top"/>
         <Label Content="Naam" HorizontalAlignment="Left" Margin="100,131,0,0" VerticalAlignment="Top"/>
         <Label Content="Prijs" HorizontalAlignment="Left" Margin="100,191,0,0" VerticalAlignment="Top"/>
         <Label Content="Lengte" HorizontalAlignment="Left" Margin="100,259,0,0" VerticalAlignment="Top"/>
@@ -20,7 +20,16 @@
         <Label Content="Meubel tevoegen" HorizontalAlignment="Center" Margin="0,46,0,0" VerticalAlignment="Top"/>
         <Button x:Name="ButtonToevoegen" Content="Toevoegen" HorizontalAlignment="Left" Height="31" Margin="382,338,0,0" VerticalAlignment="Top" Width="69" Click="OnButton_Toevoegen_Click"/>
         <Button x:Name="ButtonAnnuleren" Content="Annuleren" HorizontalAlignment="Left" Margin="509,338,0,0" VerticalAlignment="Top" Height="31" Width="63" Click="OnButton_Annuleren_Click"/>
-        <Image HorizontalAlignment="Left" Height="149" Margin="400,131,0,0" VerticalAlignment="Top" Width="166"/>
+        <RadioButton x:Name="RBStoel" Content="Stoel" HorizontalAlignment="Left" Margin="416,157,0,0" VerticalAlignment="Top" Checked="OnRButton_Stoel_Checked"/>
+        <RadioButton x:Name="RBTafel" Content="Tafel" HorizontalAlignment="Left" Margin="416,179,0,0" VerticalAlignment="Top" Checked="OnRButton_Tafel_Checked"/>
+        <Label x:Name="LabelTafelStoel" Content="" HorizontalAlignment="Left" Margin="631,54,0,0" VerticalAlignment="Top" Width="124"/>
+        <RadioButton x:Name="RBLamp" Content="Lamp" HorizontalAlignment="Left" Margin="416,205,0,0" VerticalAlignment="Top" Checked="OnRButton_Lamp_Checked"/>
+        <RadioButton x:Name="RBPlant" Content="Plant" HorizontalAlignment="Left" Margin="416,231,0,0" VerticalAlignment="Top" Checked="OnRButton_Plant_Checked"/>
+        <RadioButton x:Name="RBKast" Content="Kast" HorizontalAlignment="Left" Margin="416,257,0,0" VerticalAlignment="Top" Checked="OnRButton_Kast_Checked"/>
+        <RadioButton x:Name="RBApparaat" Content="Apparaat" HorizontalAlignment="Left" Margin="499,159,0,0" VerticalAlignment="Top" Checked="OnRButton_Apparaat_Checked"/>
+        <RadioButton x:Name="RBDeur" Content="Deur" HorizontalAlignment="Left" Margin="499,182,0,0" VerticalAlignment="Top" Checked="OnRButton_Deur_Checked"/>
+        <RadioButton x:Name="RBRaam" Content="Raam" HorizontalAlignment="Left" Margin="499,205,0,0" VerticalAlignment="Top" Checked="OnRButton_Raam_Checked"/>
+        <RadioButton x:Name="RBTapijt" Content="Tapijt" HorizontalAlignment="Left" Margin="501,231,0,0" VerticalAlignment="Top" Checked="OnRButton_Tapijt_Checked"/>
 
     </Grid>
 </Window>

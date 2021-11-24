@@ -9,12 +9,12 @@ KantoorInrichtingWPF
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\App.xaml
+4-322685307
 
-5372518830
-
-6-118016504
+6900294696
 192-1533232326
-View\App.xaml;View\MainWindow.xaml;View\MeubelsLijst.xaml;View\MeubelsToevoegen.xaml;View\NieuwePlattegrond.xaml;
+MainWindow.xaml;View\MeubelsLijst.xaml;View\MeubelsToevoegen.xaml;View\NieuwePlattegrond.xaml;
 
-True
+False
 

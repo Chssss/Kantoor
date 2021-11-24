@@ -1,0 +1,14 @@
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichting\bin\Debug\netcoreapp3.1\KantoorInrichting.exe
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichting\bin\Debug\netcoreapp3.1\KantoorInrichting.deps.json
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichting\bin\Debug\netcoreapp3.1\KantoorInrichting.runtimeconfig.json
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichting\bin\Debug\netcoreapp3.1\KantoorInrichting.runtimeconfig.dev.json
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichting\bin\Debug\netcoreapp3.1\KantoorInrichting.dll
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichting\bin\Debug\netcoreapp3.1\KantoorInrichting.pdb
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichting\obj\Debug\netcoreapp3.1\KantoorInrichting.csproj.AssemblyReference.cache
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichting\obj\Debug\netcoreapp3.1\KantoorInrichting.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichting\obj\Debug\netcoreapp3.1\KantoorInrichting.AssemblyInfoInputs.cache
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichting\obj\Debug\netcoreapp3.1\KantoorInrichting.AssemblyInfo.cs
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichting\obj\Debug\netcoreapp3.1\KantoorInrichting.csproj.CoreCompileInputs.cache
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichting\obj\Debug\netcoreapp3.1\KantoorInrichting.dll
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichting\obj\Debug\netcoreapp3.1\KantoorInrichting.pdb
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichting\obj\Debug\netcoreapp3.1\KantoorInrichting.genruntimeconfig.cache

@@ -9,7 +9,6 @@ C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF_MarkupCompile.cache
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF_MarkupCompile.lref
-C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\MainWindow.baml
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.g.resources
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.AssemblyInfoInputs.cache
@@ -18,9 +17,10 @@ C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.dll
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.pdb
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.genruntimeconfig.cache
-C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\NieuwePlattegrond.g.cs
-C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\NieuwePlattegrond.baml
-C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\MeubelsToevoegen.g.cs
-C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\MeubelsToevoegen.baml
-C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\MeubelsLijst.g.cs
-C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\MeubelsLijst.baml
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\MeubelsLijst.g.cs
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\MeubelsToevoegen.g.cs
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\NieuwePlattegrond.g.cs
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\MeubelsLijst.baml
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\MeubelsToevoegen.baml
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\NieuwePlattegrond.baml
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\MainWindow.baml
