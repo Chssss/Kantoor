@@ -15,7 +15,6 @@
             <ColumnDefinition Width="261*"/>
             <ColumnDefinition Width="739*"/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="MeubelList" Margin="0,5,0,0" Grid.Row="1"/>
         <Button x:Name="ButtonTotaalPrijs" Content="Totaalprijs" Grid.Column="1" HorizontalAlignment="Left" Margin="571,0,0,0" VerticalAlignment="Center" Height="43" Width="60" Click="OnButton_Totaalprijs_Click"/>
         <DockPanel LastChildFill="False">
             <Menu Width="100" HorizontalAlignment="Left" VerticalAlignment="Top">
