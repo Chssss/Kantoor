@@ -4,7 +4,6 @@ C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\KantoorInrichtingWPF.runtimeconfig.dev.json
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\KantoorInrichtingWPF.dll
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\KantoorInrichtingWPF.pdb
-C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.csproj.AssemblyReference.cache
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF_MarkupCompile.cache
@@ -24,3 +23,12 @@ C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\MeubelsToevoegen.baml
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\NieuwePlattegrond.baml
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\MainWindow.baml
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF_Content.g.cs
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.csproj.CopyComplete
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\afbeeldingen\stoel.jpg
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.csproj.AssemblyReference.cache

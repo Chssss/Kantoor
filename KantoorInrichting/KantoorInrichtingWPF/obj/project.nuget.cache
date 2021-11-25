@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "w6zMtUBTwdvrm9hh0S2dgFSjUX8RCAiDz5JSVFDCDeG0vKcqOCqxO1t4Ck1BO6LTz7TC0qNwxnH+OO0jC3wG/A==",
+  "dgSpecHash": "RjgcEdwJ8IFwLm2ASXXWXazZqz2Mv5cCKG9b+6vdA9ZSTmoaR2IryIQe4yFvEjyDPg8685UzBnIEwhHaUFK+Gw==",
   "success": true,
   "projectFilePath": "C:\\Users\\stoff\\Documents\\School\\jaar 2\\semester 1\\kbs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\stoff\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\stoff\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
