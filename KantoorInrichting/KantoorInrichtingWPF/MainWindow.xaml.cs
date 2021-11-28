@@ -332,6 +332,9 @@ namespace KantoorInrichtingWPF
             DGMeubels.ItemsSource = listMeubels;
         }
 
-        
+        private void OnButton_RefreshMeubel_Click(object sender, RoutedEventArgs e)
+        {
+            AddDataToColumns();
+        }
     }
 }
