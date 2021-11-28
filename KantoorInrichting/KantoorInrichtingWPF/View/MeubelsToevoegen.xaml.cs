@@ -26,6 +26,14 @@ namespace KantoorInrichtingWPF
         private bool _deur;
         private bool _raam;
         private bool _tapijt;
+
+        private string _naam;
+        private string _prijs;
+        private string _lengte;
+        private string _breedte;
+        private string _categorie;
+        private string _tag;
+        private string _image;
         public MeubelsToevoegen()
         {
             _tafel = false;
@@ -48,10 +56,100 @@ namespace KantoorInrichtingWPF
 
         private void OnButton_Toevoegen_Click(object sender, RoutedEventArgs e)
         {
+            _naam = TBNaam.Text;
+            _prijs = TBPrijs.Text;
+            _lengte = TBLengte.Text;
+            _breedte = TBBreedte.Text;
+            _categorie = TBCategorie.Text;
+            _tag = GetTag();
+            _image = GetImage();
             //roep funcitie voor toevoegen meubel aan
+           
             this.Close();
         }
-
+       
+        private string GetImage() 
+        {
+            string image = "";
+            if (_tag.Equals("stoel"))
+            {
+                image = "🦽";
+            }
+            if (_tag.Equals("tafel"))
+            {
+                image = "|¯¯|";
+            }
+            if (_tag.Equals("lamp"))
+            {
+                image = "💡";
+            }
+            if (_tag.Equals("kast"))
+            {
+                image = "🗄";
+            }
+            if (_tag.Equals("plant"))
+            {
+                image = "🌲";
+            }
+            if (_tag.Equals("apparaten"))
+            {
+                image = "🖥";
+            }
+            if (_tag.Equals("deur"))
+            {
+                image = "🚪";
+            }
+            if (_tag.Equals("raam"))
+            {
+                image = "⬜";
+            }
+            if (_tag.Equals("tapijt"))
+            {
+                image = "🔴";
+            }
+            return image;
+        }
+        private string GetTag() 
+        {
+            string tag="";
+            if (_stoel==true)
+            {
+                tag= "stoel";
+            }
+            if (_tafel == true)
+            {
+                tag = "tafel";
+            }
+            if (_kast == true)
+            {
+                tag = "kast";
+            }
+            if (_plant == true)
+            {
+                tag = "plant";
+            }
+            if (_deur== true)
+            {
+                tag = "deur";
+            }
+            if (_raam == true)
+            {
+                tag = "raam";
+            }
+            if (_tapijt == true)
+            {
+                tag = "tapijt";
+            }
+            if (_lamp == true)
+            {
+                tag = "lamp";
+            }
+            if (_apparaten == true)
+            {
+                tag = "apparaten";
+            }
+            return tag;
+        }
         private void OnRButton_Tafel_Checked(object sender, RoutedEventArgs e)
         {
             MakeFalse();
