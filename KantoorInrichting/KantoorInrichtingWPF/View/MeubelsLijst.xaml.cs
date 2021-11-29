@@ -22,6 +22,10 @@ namespace KantoorInrichtingWPF
             InitializeComponent();
             AddDataToColumns();
         }
+        private void OnButton_RefreshMeubel_Click(object sender, RoutedEventArgs e)
+        {
+            AddDataToColumns();
+        }
         private void AddDataToColumns()
         {
             #region nepdatabase

@@ -27,7 +27,7 @@ namespace KantoorInrichtingWPF
         {
             InitializeComponent();
            
-            AddDataToColumns();
+           // AddDataToColumns();
             
            
         }

@@ -46,8 +46,11 @@
         <TextBox x:Name="TBMeubels" HorizontalAlignment="Left" Margin="0,25,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
         <Button x:Name="ButtonZoekenMeubel" Content="Zoeken" HorizontalAlignment="Center" Margin="0,23,0,0" VerticalAlignment="Top" Click="OnButton_ZoekenMeubel_Click" Height="20" Width="44"/>
         <Label x:Name="LabelTest" Content="" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Center" Width="526" Height="42" Grid.Column="1"/>
-        <DataGrid x:Name="DGMeubels" Grid.Row="1" IsReadOnly="True"/>
-        <Button x:Name="ButtonRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="210,23,0,0" VerticalAlignment="Top" Click="OnButton_RefreshMeubel_Click" Height="20" Width="44"/>
+        <DataGrid x:Name="DGMeubels" Grid.Row="1" IsReadOnly="True">
+            
+        </DataGrid>
+
+        <Button x:Name="ButtonRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="232,23,0,0" VerticalAlignment="Top" Click="OnButton_RefreshMeubel_Click" Height="20" Width="44"/>
 
 
     </Grid>
