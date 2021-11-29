@@ -19,6 +19,7 @@ namespace KantoorInrichtingWPF
     public partial class MeubelsLijst : Window
     {
         private string _zoekbalk;
+        private string _Verwijderbalk;
         public MeubelsLijst()
         {
             InitializeComponent();
@@ -55,7 +56,7 @@ namespace KantoorInrichtingWPF
             _zoekbalk = TBZoekbar.Text;
             //funcitie uit data die Dictionary<int,list<string>> meubels terug geeft die overeen komen met de text in de zoek balk
 
-            Dictionary<int, List<string>> outputQuerry = Database.ZoekenDatabse(_zoekbalk);
+            Dictionary<int, List<string>> outputQuerry = Database.ZoekenDatabase(_zoekbalk);
 
             List<Meubel> listMeubels = new List<Meubel>();
             foreach (var item in outputQuerry)
@@ -113,6 +114,13 @@ namespace KantoorInrichtingWPF
 
             }
             DGMeubels.ItemsSource = listMeubels;
+        }
+
+        private void OnButton_VerwijderMeubel_Click(object sender, RoutedEventArgs e)
+        {
+            _Verwijderbalk = TBVerwijderMeubel.Text;
+            Database.DeleteFromDatabase(_Verwijderbalk);
+            MessageBox.Show("Item is verwijdert, druk op refresh om de lijst te updaten");
         }
     }
 }

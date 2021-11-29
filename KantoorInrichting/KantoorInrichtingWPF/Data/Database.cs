@@ -114,10 +114,25 @@ namespace KantoorInrichtingWPF.Data
         {
             return nepDatabase;
         }
+        public static void DeleteFromDatabase(string naam) 
+        {
+            foreach (var item in nepDatabase)
+            {
+
+                bool contains = LikeOperator.LikeString(item.Value[1], $"{naam}", Microsoft.VisualBasic.CompareMethod.Binary);
+                if (contains == true)
+                {
+                    nepDatabase.Remove(item.Key);
+                }
+
+
+
+            }
+        }
        public static void ToevoegenAanDatabase(string naam, string prijs,string lengte, string breedte,string categorie, string tag, string image) 
         {
             
-            List<string> list = new List<string>();
+            List<string> list= new List<string>();
             list.Add(image);
             list.Add(naam);//1
             list.Add(prijs);//2
@@ -129,13 +144,17 @@ namespace KantoorInrichtingWPF.Data
             {
                 nepDatabase.Add(nepDatabase.Count, list);
             }
+            if (!nepDatabase.ContainsKey(nepDatabase.Count))
+            {
+                nepDatabase.Add(nepDatabase.Count, list);
+            }
             else
             {
                 nepDatabase.Add(nepDatabase.Count + 1, list);
             }
             
         }
-        public static Dictionary<int, List<string>> ZoekenDatabse(string zoekbalk) 
+        public static Dictionary<int, List<string>> ZoekenDatabase(string zoekbalk) 
         {
             Dictionary<int, List<string>> outputQurrey = new Dictionary<int, List<string>>();
             int count = 0;

@@ -120,7 +120,7 @@ namespace KantoorInrichtingWPF
             _zoekbalk = TBMeubels.Text;
             //funcitie uit data die Dictionary<int,list<string>> meubels terug geeft die overeen komen met de text in de zoek balk
 
-            Dictionary<int, List<string>> outputQuerry = Database.ZoekenDatabse(_zoekbalk); 
+            Dictionary<int, List<string>> outputQuerry = Database.ZoekenDatabase(_zoekbalk); 
             
             List<Meubel> listMeubels = new List<Meubel>();
             foreach (var item in outputQuerry)
