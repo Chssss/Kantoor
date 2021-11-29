@@ -115,7 +115,7 @@ namespace KantoorInrichtingWPF
 
         }
 
-        private void OnButton_ZoekenMeubel_Click(object sender, RoutedEventArgs e)
+        private void OnButton_ZoekenMeubelNaam_Click(object sender, RoutedEventArgs e)
         {
             _zoekbalk = TBMeubels.Text;
             //funcitie uit data die Dictionary<int,list<string>> meubels terug geeft die overeen komen met de text in de zoek balk
@@ -145,6 +145,33 @@ namespace KantoorInrichtingWPF
         private void OnButton_RefreshMeubel_Click(object sender, RoutedEventArgs e)
         {
             AddDataToColumns();
+        }
+
+        private void OnButton_ZoekenMeubelCategorie_Click(object sender, RoutedEventArgs e)
+        {
+            _zoekbalk = TBMeubels.Text;
+            //funcitie uit data die Dictionary<int,list<string>> meubels terug geeft die overeen komen met de text in de zoek balk
+
+            Dictionary<int, List<string>> outputQuerry = Database.ZoekenDatabseCategorie(_zoekbalk);
+
+            List<Meubel> listMeubels = new List<Meubel>();
+            foreach (var item in outputQuerry)
+            {
+
+                var afbeelding = item.Value[0];
+                var naam = item.Value[1];
+                var prijs = System.Convert.ToDecimal(item.Value[2]);
+                var lengte = System.Convert.ToDecimal(item.Value[3]);
+                var breedte = System.Convert.ToDecimal(item.Value[4]);
+                var tag = item.Value[5];
+                var categorie = item.Value[6];
+                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie);
+
+                listMeubels.Add(meubel);
+
+
+            }
+            DGMeubels.ItemsSource = listMeubels;
         }
     }
 }

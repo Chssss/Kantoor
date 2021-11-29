@@ -124,7 +124,7 @@ namespace KantoorInrichtingWPF.Data
             list.Add(lengte);//3
             list.Add(breedte);//4
             list.Add(tag);//5
-            list.Add(categorie);//6
+            list.Add(" "+categorie);//6
             if (nepDatabase.Count==0)
             {
                 nepDatabase.Add(nepDatabase.Count, list);
@@ -141,19 +141,43 @@ namespace KantoorInrichtingWPF.Data
             int count = 0;
             foreach (var item in nepDatabase)
             {
+              
+                    bool contains = LikeOperator.LikeString(item.Value[1], $"*{zoekbalk}*", Microsoft.VisualBasic.CompareMethod.Binary);
+                    if (contains == true)
+                    {
+                        outputQurrey.Add(count, item.Value);
+                        count++;
+                    }
                 
-                bool contains = LikeOperator.LikeString(item.Value[1], $"*{zoekbalk}*", Microsoft.VisualBasic.CompareMethod.Binary);
-                if (contains==true)
-                {
-                    outputQurrey.Add(count, item.Value);
-                    count++;
-                }
+               
 
             }
             
             
             return outputQurrey;
 
+        }
+
+        internal static Dictionary<int, List<string>> ZoekenDatabseCategorie(string zoekbalk)
+        {
+            Dictionary<int, List<string>> outputQurrey = new Dictionary<int, List<string>>();
+            int count = 0;
+            foreach (var item in nepDatabase)
+            {
+
+                bool contains = LikeOperator.LikeString(item.Value[6], $"*{zoekbalk}*", Microsoft.VisualBasic.CompareMethod.Binary);
+                if (contains == true)
+                {
+                    outputQurrey.Add(count, item.Value);
+                    count++;
+                }
+
+
+
+            }
+
+
+            return outputQurrey;
         }
     }
 }
