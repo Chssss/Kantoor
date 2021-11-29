@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KantoorInrichtingWPF.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -64,7 +65,7 @@ namespace KantoorInrichtingWPF
             _tag = GetTag();
             _image = GetImage();
             //roep funcitie voor toevoegen meubel aan
-           
+            Database.ToevoegenAanDatabase(_naam, _prijs, _lengte, _breedte, _categorie, _tag, _image);
             this.Close();
         }
        
