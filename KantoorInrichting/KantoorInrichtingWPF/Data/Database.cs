@@ -177,7 +177,7 @@ namespace KantoorInrichtingWPF.Data
 
         }
 
-        internal static Dictionary<int, List<string>> ZoekenDatabseCategorie(string zoekbalk)
+        public static Dictionary<int, List<string>> ZoekenDatabseCategorie(string zoekbalk)
         {
             Dictionary<int, List<string>> outputQurrey = new Dictionary<int, List<string>>();
             int count = 0;
