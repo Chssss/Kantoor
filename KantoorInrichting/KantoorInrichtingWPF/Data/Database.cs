@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.CompilerServices;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -133,6 +134,26 @@ namespace KantoorInrichtingWPF.Data
                 nepDatabase.Add(nepDatabase.Count + 1, list);
             }
             
+        }
+        public static Dictionary<int, List<string>> ZoekenDatabse(string zoekbalk) 
+        {
+            Dictionary<int, List<string>> outputQurrey = new Dictionary<int, List<string>>();
+            int count = 0;
+            foreach (var item in nepDatabase)
+            {
+                
+                bool contains = LikeOperator.LikeString(item.Value[1], $"*{zoekbalk}*", Microsoft.VisualBasic.CompareMethod.Binary);
+                if (contains==true)
+                {
+                    outputQurrey.Add(count, item.Value);
+                    count++;
+                }
+
+            }
+            
+            
+            return outputQurrey;
+
         }
     }
 }
