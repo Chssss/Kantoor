@@ -74,7 +74,7 @@ namespace KantoorInrichtingWPF
             string image = "";
             if (_tag.Equals("stoel"))
             {
-                image = "🦽";
+                image = "🦼";
             }
             if (_tag.Equals("tafel"))
             {

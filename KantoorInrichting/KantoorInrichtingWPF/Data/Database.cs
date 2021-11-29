@@ -37,7 +37,7 @@ namespace KantoorInrichtingWPF.Data
            8 raam ⬜
            9 tapijt 🔴
             */
-            list1.Add("🦽");
+            list1.Add("🦼");
             list1.Add("naam");//1
             list1.Add("5,8");//2
             list1.Add("10,6");//3
