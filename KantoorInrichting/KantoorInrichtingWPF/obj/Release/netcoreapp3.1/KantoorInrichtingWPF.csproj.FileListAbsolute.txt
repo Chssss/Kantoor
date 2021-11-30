@@ -1,5 +1,4 @@
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Release\netcoreapp3.1\KantoorInrichtingWPF.exe
-C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Release\netcoreapp3.1\afbeeldingen\stoel.jpg
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Release\netcoreapp3.1\KantoorInrichtingWPF.deps.json
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Release\netcoreapp3.1\KantoorInrichtingWPF.runtimeconfig.json
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Release\netcoreapp3.1\KantoorInrichtingWPF.runtimeconfig.dev.json
@@ -16,7 +15,6 @@ C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Release\netcoreapp3.1\View\MeubelsToevoegen.g.cs
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Release\netcoreapp3.1\View\NieuwePlattegrond.g.cs
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Release\netcoreapp3.1\App.g.cs
-C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Release\netcoreapp3.1\KantoorInrichtingWPF_Content.g.cs
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Release\netcoreapp3.1\KantoorInrichtingWPF_MarkupCompile.cache
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Release\netcoreapp3.1\KantoorInrichtingWPF_MarkupCompile.lref
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Release\netcoreapp3.1\MainWindow.baml

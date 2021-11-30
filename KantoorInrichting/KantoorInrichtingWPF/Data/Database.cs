@@ -9,6 +9,8 @@ namespace KantoorInrichtingWPF.Data
     {
        private static Dictionary<int, List<string>> nepDatabase = new Dictionary<int, List<string>>();
 
+        public static bool isGevuld = false;
+
         public Database() 
         {
            
@@ -16,6 +18,7 @@ namespace KantoorInrichtingWPF.Data
 
         public static void FillDatabase()
         {
+            isGevuld = true;
             List<string> list1 = new List<string>();
             List<string> list2 = new List<string>();
             List<string> list3 = new List<string>();

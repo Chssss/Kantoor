@@ -27,7 +27,11 @@ namespace KantoorInrichtingWPF
         public MainWindow()
         {
             InitializeComponent();
-            Database.FillDatabase();
+            if (Database.isGevuld==false)
+            {
+                Database.FillDatabase();
+            }
+           
            AddDataToColumns();
             
            
