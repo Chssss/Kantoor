@@ -47,6 +47,7 @@ namespace KantoorInrichtingWPF.Data
             list1.Add("8,9");//4
             list1.Add("stoel");//5
             list1.Add("categorie");//6
+            list1.Add("2,5");
             nepDatabase.Add(0, list1);
             list2.Add("|¯¯|");
             list2.Add("naam");//1
@@ -55,6 +56,7 @@ namespace KantoorInrichtingWPF.Data
             list2.Add("8,9");//4
             list2.Add("tafel");//5
             list2.Add("categorie");//6
+            list2.Add("2,5");
             nepDatabase.Add(1, list2);
             list3.Add("💡");
             list3.Add("naam");//1
@@ -63,6 +65,7 @@ namespace KantoorInrichtingWPF.Data
             list3.Add("8,9");//4
             list3.Add("lamp");//5
             list3.Add("categorie");//6
+            list3.Add("2,5");
             nepDatabase.Add(2, list3);
             list4.Add("🗄");
             list4.Add("naam");//1
@@ -71,6 +74,7 @@ namespace KantoorInrichtingWPF.Data
             list4.Add("8,9");//4
             list4.Add("kast");//5
             list4.Add("categorie");//6
+            list4.Add("2,5");
             nepDatabase.Add(3, list4);
             list5.Add("🌲");
             list5.Add("naam");//1
@@ -79,6 +83,7 @@ namespace KantoorInrichtingWPF.Data
             list5.Add("8,9");//4
             list5.Add("plant");//5
             list5.Add("categorie");//6
+            list5.Add("2,5");
             nepDatabase.Add(4, list5);
             list6.Add("🖥");
             list6.Add("naam");//1
@@ -87,6 +92,7 @@ namespace KantoorInrichtingWPF.Data
             list6.Add("8,9");//4
             list6.Add("apparaten");//5
             list6.Add("categorie");//6
+            list6.Add("2,5");
             nepDatabase.Add(5, list6);
             list7.Add("🚪");
             list7.Add("naam");//1
@@ -95,6 +101,7 @@ namespace KantoorInrichtingWPF.Data
             list7.Add("8,9");//4
             list7.Add("deur");//5
             list7.Add("categorie");//6
+            list7.Add("2,5");
             nepDatabase.Add(6, list7);
             list8.Add("⬜");
             list8.Add("naam");//1
@@ -103,6 +110,7 @@ namespace KantoorInrichtingWPF.Data
             list8.Add("8,9");//4
             list8.Add("raam");//5
             list8.Add("categorie");//6
+            list8.Add("2,5");
             nepDatabase.Add(7, list8);
             list9.Add("🔴");
             list9.Add("naam");//1
@@ -111,6 +119,7 @@ namespace KantoorInrichtingWPF.Data
             list9.Add("8,9");//4
             list9.Add("tapijt");//5
             list9.Add("categorie");//6
+            list9.Add("2,5");
             nepDatabase.Add(8, list9);
         }
         public static Dictionary<int,List<string>> GetDatabase() 
@@ -132,7 +141,7 @@ namespace KantoorInrichtingWPF.Data
 
             }
         }
-       public static void ToevoegenAanDatabase(string naam, string prijs,string lengte, string breedte,string categorie, string tag, string image) 
+       public static void ToevoegenAanDatabase(string naam, string prijs,string lengte, string breedte,string categorie, string tag, string image, string hoogte) 
         {
             
             List<string> list= new List<string>();
@@ -143,6 +152,7 @@ namespace KantoorInrichtingWPF.Data
             list.Add(breedte);//4
             list.Add(tag);//5
             list.Add(" "+categorie);//6
+            list.Add(hoogte);
             if (nepDatabase.Count==0)
             {
                 nepDatabase.Add(nepDatabase.Count, list);

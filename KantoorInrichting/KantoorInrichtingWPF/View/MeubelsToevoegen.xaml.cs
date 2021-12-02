@@ -35,6 +35,7 @@ namespace KantoorInrichtingWPF
         private string _categorie;
         private string _tag;
         private string _image;
+        private string _hoogte;
         public MeubelsToevoegen()
         {
             _tafel = false;
@@ -62,10 +63,11 @@ namespace KantoorInrichtingWPF
             _lengte = TBLengte.Text;
             _breedte = TBBreedte.Text;
             _categorie = TBCategorie.Text;
+            _hoogte = TBHoogte.Text;
             _tag = GetTag();
             _image = GetImage();
             //roep funcitie voor toevoegen meubel aan
-            Database.ToevoegenAanDatabase(_naam, _prijs, _lengte, _breedte, _categorie, _tag, _image);
+            Database.ToevoegenAanDatabase(_naam, _prijs, _lengte, _breedte, _categorie, _tag, _image,_hoogte);
             this.Close();
         }
        

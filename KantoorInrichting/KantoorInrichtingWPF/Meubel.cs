@@ -16,10 +16,12 @@ namespace KantoorInrichtingWPF
         public decimal prijs { get; set; }
         public decimal lengte { get; set; }
         public decimal breedte { get; set; }
+        public decimal hoogte { get; set; }
+
         public string tag { get; set; }
         public string categorie { get; set; }
        
-        public Meubel(string afbeelding, string naam, decimal prijs, decimal lengte, decimal breedte, string tag, string categorie)
+        public Meubel(string afbeelding, string naam, decimal prijs, decimal lengte, decimal breedte, string tag, string categorie, decimal hoogte)
         {
             //this.afbeelding = CreateBitmapSourceFromGdiBitmap(new Bitmap(afbeelding));
            img= afbeelding;
@@ -27,6 +29,7 @@ namespace KantoorInrichtingWPF
             this.prijs = prijs;
             this.lengte = lengte;
             this.breedte = breedte;
+            this.hoogte = hoogte;
             this.tag = tag;
             this.categorie = categorie;
         }

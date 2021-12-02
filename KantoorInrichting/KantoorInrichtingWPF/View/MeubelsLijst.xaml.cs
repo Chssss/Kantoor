@@ -41,9 +41,10 @@ namespace KantoorInrichtingWPF
                 var prijs = System.Convert.ToDecimal(item.Value[2]);
                 var lengte = System.Convert.ToDecimal(item.Value[3]);
                 var breedte = System.Convert.ToDecimal(item.Value[4]);
+                var hoogte = System.Convert.ToDecimal(item.Value[7]);
                 var tag = item.Value[5];
                 var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie);
+                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie,hoogte);
 
                 listMeubels.Add(meubel);
 
@@ -67,9 +68,10 @@ namespace KantoorInrichtingWPF
                 var prijs = System.Convert.ToDecimal(item.Value[2]);
                 var lengte = System.Convert.ToDecimal(item.Value[3]);
                 var breedte = System.Convert.ToDecimal(item.Value[4]);
+                var hoogte = System.Convert.ToDecimal(item.Value[7]);
                 var tag = item.Value[5];
                 var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie);
+                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie,hoogte);
 
                 listMeubels.Add(meubel);
 
@@ -105,9 +107,10 @@ namespace KantoorInrichtingWPF
                 var prijs = System.Convert.ToDecimal(item.Value[2]);
                 var lengte = System.Convert.ToDecimal(item.Value[3]);
                 var breedte = System.Convert.ToDecimal(item.Value[4]);
+                var hoogte = System.Convert.ToDecimal(item.Value[7]);
                 var tag = item.Value[5];
                 var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie);
+                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie,hoogte);
 
                 listMeubels.Add(meubel);
 
