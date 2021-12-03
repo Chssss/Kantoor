@@ -165,34 +165,27 @@ namespace KantoorInrichtingWPF.Data
             Dictionary<int, List<string>> output = new Dictionary<int, List<string>>();
             int count = 0;
             #region test sql
-            /*try
+            try
             {
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "localhost";
+                builder.DataSource = "127.0.0.1, 1433";
                 builder.UserID = "sa";
                 builder.Password = "Kantoorinrichting!";
-                builder.InitialCatalog = "<your_database>";
+                builder.InitialCatalog = "Inventaris";
 
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
                     Console.WriteLine("\nQuery data example:");
                     Console.WriteLine("=========================================\n");
 
-                    String sql = "SELECT name, collation_name FROM sys.databases";
+                    String sql = "SELECT * FROM Inventaris ";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         connection.Open();
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
-                           *//* var afbeelding = item.Value[0];
-                            var naam = item.Value[1];
-                            var prijs = System.Convert.ToDecimal(item.Value[2]);
-                            var lengte = System.Convert.ToDecimal(item.Value[3]);
-                            var breedte = System.Convert.ToDecimal(item.Value[4]);
-                            var hoogte = System.Convert.ToDecimal(item.Value[7]);
-                            var tag = item.Value[5];
-                            var categorie = item.Value[6];*//*
+
                             while (reader.Read())
                             {
                                 List<string> listVaule = new List<string>();
@@ -215,10 +208,10 @@ namespace KantoorInrichtingWPF.Data
             {
                 Console.WriteLine(e.ToString());
             }
-            Console.ReadLine();*/
+            Console.ReadLine();
             #endregion
-            //return output;
-           return nepDatabase;
+            return output;
+            //return nepDatabase;
         }
         public static void DeleteFromDatabase(string naam) 
         {
