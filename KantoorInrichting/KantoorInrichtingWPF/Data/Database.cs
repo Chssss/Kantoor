@@ -210,8 +210,53 @@ namespace KantoorInrichtingWPF.Data
             }
             Console.ReadLine();
             #endregion
+            foreach (var item in output)
+            {
+                item.Value[0] = GetImage(item.Value[5]);
+            }
             return output;
             //return nepDatabase;
+        }
+        private static string GetImage(string tag)
+        {
+            string image = "";
+            if (tag.Equals("stoel"))
+            {
+                image = "🦼";
+            }
+            if (tag.Equals("tafel"))
+            {
+                image = "|¯¯|";
+            }
+            if (tag.Equals("lamp"))
+            {
+                image = "💡";
+            }
+            if (tag.Equals("kast"))
+            {
+                image = "🗄";
+            }
+            if (tag.Equals("plant"))
+            {
+                image = "🌲";
+            }
+            if (tag.Equals("apparaten"))
+            {
+                image = "🖥";
+            }
+            if (tag.Equals("deur"))
+            {
+                image = "🚪";
+            }
+            if (tag.Equals("raam"))
+            {
+                image = "⬜";
+            }
+            if (tag.Equals("tapijt"))
+            {
+                image = "🔴";
+            }
+            return image;
         }
         public static void DeleteFromDatabase(string naam) 
         {
@@ -266,7 +311,7 @@ namespace KantoorInrichtingWPF.Data
        public static void ToevoegenAanDatabase(string naam, string prijs,string lengte, string breedte,string categorie, string tag, string image, string hoogte) 
         {
             
-            List<string> list= new List<string>();
+            /*List<string> list= new List<string>();
             list.Add(image);
             list.Add(naam);//1
             list.Add(prijs);//2
@@ -274,43 +319,68 @@ namespace KantoorInrichtingWPF.Data
             list.Add(breedte);//4
             list.Add(tag);//5
             list.Add(" "+categorie);//6
-            list.Add(hoogte);
+            list.Add(hoogte);*/
             #region test sql
-            /*try
+            try
             {
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "<your_server>.database.windows.net";
-                builder.UserID = "<your_username>";
-                builder.Password = "<your_password>";
-                builder.InitialCatalog = "<your_database>";
-
+                builder.DataSource = "127.0.0.1, 1433";
+                builder.UserID = "sa";
+                builder.Password = "Kantoorinrichting!";
+                builder.InitialCatalog = "Inventaris";
+                
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(null, connection);
                     Console.WriteLine("\nQuery data example:");
                     Console.WriteLine("=========================================\n");
 
-                    String sql = "SELECT name, collation_name FROM sys.databases";
+                    //String sql = $"INSERT INTO Inventaris VALUES (@img, @name, @prijs, @lengte, @breedte, @tag, @categorie, @hoogte) ";//INSERT INTO Inventaris VALUES ('🌲', 'test2', '1,1', '1,1', '1,1', 'stoel', 'testcategorie', '1,1')    
 
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
-                            }
-                        }
-                    }
+                    //SqlCommand command = new SqlCommand(sql, connection);    
+                    //{image}, {naam}, {prijs}, {lengte}, {breedte}, {tag}, {categorie}, {hoogte}
+                    command.CommandText = $"INSERT INTO Inventaris VALUES (@img, @name, @prijs, @lengte, @breedte, @tag, @categorie, @hoogte) ";
+
+                    SqlParameter imgParam = new SqlParameter("@img", System.Data.SqlDbType.Text,100);
+                    SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
+                    SqlParameter prijsParam = new SqlParameter("@prijs", System.Data.SqlDbType.Text, 100);
+                    SqlParameter lengteParam = new SqlParameter("@lengte", System.Data.SqlDbType.Text, 100);
+                    SqlParameter breedteParam = new SqlParameter("@breedte", System.Data.SqlDbType.Text, 100);
+                    SqlParameter tagParam = new SqlParameter("@tag", System.Data.SqlDbType.Text, 100);
+                    SqlParameter categorieParam = new SqlParameter("@categorie", System.Data.SqlDbType.Text, 100);
+                    SqlParameter hoogteParam = new SqlParameter("@hoogte", System.Data.SqlDbType.Text, 100);
+
+                    imgParam.Value = image;
+                    nameParam.Value = naam;
+                    prijsParam.Value = prijs;
+                    lengteParam.Value = lengte;
+                    breedteParam.Value = breedte;
+                    tagParam.Value = tag;
+                    categorieParam.Value = categorie;
+                    hoogteParam.Value = hoogte;
+
+                    command.Parameters.Add(imgParam);
+                    command.Parameters.Add(nameParam);
+                    command.Parameters.Add(prijsParam);
+                    command.Parameters.Add(lengteParam);
+                    command.Parameters.Add(breedteParam);
+                    command.Parameters.Add(tagParam);
+                    command.Parameters.Add(categorieParam);
+                    command.Parameters.Add(hoogteParam);
+
+                    command.Prepare();
+                    command.ExecuteNonQuery();
+                   
                 }
             }
             catch (SqlException e)
             {
                 Console.WriteLine(e.ToString());
             }
-            Console.ReadLine();*/
+            Console.ReadLine();
             #endregion
-            if (nepDatabase.Count==0)
+            /*if (nepDatabase.Count==0)
             {
                 nepDatabase.Add(nepDatabase.Count, list);
             }
@@ -321,8 +391,8 @@ namespace KantoorInrichtingWPF.Data
             else
             {
                 nepDatabase.Add(nepDatabase.Count + 1, list);
-            }
-            
+            }*/
+
         }
         public static Dictionary<int, List<string>> ZoekenDatabase(string zoekbalk) 
         {
