@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic.CompilerServices;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text;
 
 namespace KantoorInrichtingWPF.Data
@@ -18,6 +19,7 @@ namespace KantoorInrichtingWPF.Data
 
         public static void FillDatabase()
         {
+
             isGevuld = true;
             List<string> list1 = new List<string>();
             List<string> list2 = new List<string>();
@@ -122,12 +124,139 @@ namespace KantoorInrichtingWPF.Data
             list9.Add("2,5");
             nepDatabase.Add(8, list9);
         }
+        public static void TestSql() 
+        {
+            try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "<your_server>.database.windows.net";
+                builder.UserID = "<your_username>";
+                builder.Password = "<your_password>";
+                builder.InitialCatalog = "<your_database>";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    Console.WriteLine("\nQuery data example:");
+                    Console.WriteLine("=========================================\n");
+
+                    String sql = "SELECT name, collation_name FROM sys.databases";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Console.ReadLine(); 
+        }
         public static Dictionary<int,List<string>> GetDatabase() 
         {
-            return nepDatabase;
+            Dictionary<int, List<string>> output = new Dictionary<int, List<string>>();
+            int count = 0;
+            #region test sql
+            /*try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "localhost";
+                builder.UserID = "sa";
+                builder.Password = "Kantoorinrichting!";
+                builder.InitialCatalog = "<your_database>";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    Console.WriteLine("\nQuery data example:");
+                    Console.WriteLine("=========================================\n");
+
+                    String sql = "SELECT name, collation_name FROM sys.databases";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                           *//* var afbeelding = item.Value[0];
+                            var naam = item.Value[1];
+                            var prijs = System.Convert.ToDecimal(item.Value[2]);
+                            var lengte = System.Convert.ToDecimal(item.Value[3]);
+                            var breedte = System.Convert.ToDecimal(item.Value[4]);
+                            var hoogte = System.Convert.ToDecimal(item.Value[7]);
+                            var tag = item.Value[5];
+                            var categorie = item.Value[6];*//*
+                            while (reader.Read())
+                            {
+                                List<string> listVaule = new List<string>();
+                                listVaule.Add(reader.GetString(0));
+                                listVaule.Add(reader.GetString(1));
+                                listVaule.Add(reader.GetString(2));
+                                listVaule.Add(reader.GetString(3));
+                                listVaule.Add(reader.GetString(4));
+                                listVaule.Add(reader.GetString(5));
+                                listVaule.Add(reader.GetString(6));
+                                listVaule.Add(reader.GetString(7));
+                                output.Add(count, listVaule);
+                                count++;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Console.ReadLine();*/
+            #endregion
+            //return output;
+           return nepDatabase;
         }
         public static void DeleteFromDatabase(string naam) 
         {
+            #region test sql
+            /*try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "<your_server>.database.windows.net";
+                builder.UserID = "<your_username>";
+                builder.Password = "<your_password>";
+                builder.InitialCatalog = "<your_database>";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    Console.WriteLine("\nQuery data example:");
+                    Console.WriteLine("=========================================\n");
+
+                    String sql = "SELECT name, collation_name FROM sys.databases";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Console.ReadLine();*/
+            #endregion
             foreach (var item in nepDatabase)
             {
 
@@ -153,6 +282,41 @@ namespace KantoorInrichtingWPF.Data
             list.Add(tag);//5
             list.Add(" "+categorie);//6
             list.Add(hoogte);
+            #region test sql
+            /*try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "<your_server>.database.windows.net";
+                builder.UserID = "<your_username>";
+                builder.Password = "<your_password>";
+                builder.InitialCatalog = "<your_database>";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    Console.WriteLine("\nQuery data example:");
+                    Console.WriteLine("=========================================\n");
+
+                    String sql = "SELECT name, collation_name FROM sys.databases";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Console.ReadLine();*/
+            #endregion
             if (nepDatabase.Count==0)
             {
                 nepDatabase.Add(nepDatabase.Count, list);
@@ -169,8 +333,44 @@ namespace KantoorInrichtingWPF.Data
         }
         public static Dictionary<int, List<string>> ZoekenDatabase(string zoekbalk) 
         {
+
             Dictionary<int, List<string>> outputQurrey = new Dictionary<int, List<string>>();
             int count = 0;
+            #region test sql
+            /*try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "<your_server>.database.windows.net";
+                builder.UserID = "<your_username>";
+                builder.Password = "<your_password>";
+                builder.InitialCatalog = "<your_database>";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    Console.WriteLine("\nQuery data example:");
+                    Console.WriteLine("=========================================\n");
+
+                    String sql = "SELECT name, collation_name FROM sys.databases";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Console.ReadLine();*/
+            #endregion
             foreach (var item in nepDatabase)
             {
               
@@ -194,6 +394,41 @@ namespace KantoorInrichtingWPF.Data
         {
             Dictionary<int, List<string>> outputQurrey = new Dictionary<int, List<string>>();
             int count = 0;
+            #region test sql
+            /*try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "<your_server>.database.windows.net";
+                builder.UserID = "<your_username>";
+                builder.Password = "<your_password>";
+                builder.InitialCatalog = "<your_database>";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    Console.WriteLine("\nQuery data example:");
+                    Console.WriteLine("=========================================\n");
+
+                    String sql = "SELECT name, collation_name FROM sys.databases";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Console.ReadLine();*/
+            #endregion
             foreach (var item in nepDatabase)
             {
 
