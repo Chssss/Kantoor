@@ -124,9 +124,9 @@ namespace KantoorInrichtingWPF.Data
             list9.Add("2,5");
             nepDatabase.Add(8, list9);
         }
-        public static void TestSql() 
-        {
-            try
+       #region TestSql 
+        
+           /* try
             {
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
                 builder.DataSource = "<your_server>.database.windows.net";
@@ -158,9 +158,9 @@ namespace KantoorInrichtingWPF.Data
             {
                 Console.WriteLine(e.ToString());
             }
-            Console.ReadLine(); 
-        }
-        public static Dictionary<int,List<string>> GetDatabase() 
+            Console.ReadLine();*/
+#endregion
+public static Dictionary<int,List<string>> GetDatabase() 
         {
             Dictionary<int, List<string>> output = new Dictionary<int, List<string>>();
             int count = 0;
