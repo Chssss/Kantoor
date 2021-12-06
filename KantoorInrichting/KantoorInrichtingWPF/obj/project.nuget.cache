@@ -1,11 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "RjgcEdwJ8IFwLm2ASXXWXazZqz2Mv5cCKG9b+6vdA9ZSTmoaR2IryIQe4yFvEjyDPg8685UzBnIEwhHaUFK+Gw==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\stoff\\Documents\\School\\jaar 2\\semester 1\\kbs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\stoff\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
-    "C:\\Users\\stoff\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512"
-  ],
-  "logs": []
+  "dgSpecHash": "BS6oYNpW5hMeBGuaUZ/txIhDGJZgRtWJRs56hxeJawm1rFnAyDOpqR6R+ex3mJlYchREjvWpLszJSxYSf294bw==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\benja\\Documents\\GitHub\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package System.Drawing.Common. No packages exist with this id in source(s): Microsoft Visual Studio Offline Packages",
+      "libraryId": "System.Drawing.Common",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }
