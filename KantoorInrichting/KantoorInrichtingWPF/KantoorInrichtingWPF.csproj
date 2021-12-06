@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< Updated upstream
     <None Remove="afbeeldingen\stoel.jpg" />
   </ItemGroup>
 
@@ -18,8 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-=======
->>>>>>> Stashed changes
     <Folder Include="View\" />
   </ItemGroup>
 
