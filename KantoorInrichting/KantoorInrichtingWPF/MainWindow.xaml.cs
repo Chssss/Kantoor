@@ -27,7 +27,11 @@ namespace KantoorInrichtingWPF
         public MainWindow()
         {
             InitializeComponent();
-            Database.FillDatabase();
+            if (Database.isGevuld==false)
+            {
+                Database.FillDatabase();
+            }
+           
            AddDataToColumns();
             
            
@@ -45,9 +49,10 @@ namespace KantoorInrichtingWPF
                 var prijs = System.Convert.ToDecimal(item.Value[2]);
                 var lengte = System.Convert.ToDecimal(item.Value[3]);
                 var breedte = System.Convert.ToDecimal(item.Value[4]);
+                var hoogte = System.Convert.ToDecimal(item.Value[7]);
                 var tag = item.Value[5];
                 var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie);
+                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie,hoogte);
 
                 listMeubels.Add(meubel);
                 
@@ -115,12 +120,12 @@ namespace KantoorInrichtingWPF
 
         }
 
-        private void OnButton_ZoekenMeubel_Click(object sender, RoutedEventArgs e)
+        private void OnButton_ZoekenMeubelNaam_Click(object sender, RoutedEventArgs e)
         {
             _zoekbalk = TBMeubels.Text;
             //funcitie uit data die Dictionary<int,list<string>> meubels terug geeft die overeen komen met de text in de zoek balk
 
-            Dictionary<int, List<string>> outputQuerry = Database.ZoekenDatabse(_zoekbalk); 
+            Dictionary<int, List<string>> outputQuerry = Database.ZoekenDatabase(_zoekbalk); 
             
             List<Meubel> listMeubels = new List<Meubel>();
             foreach (var item in outputQuerry)
@@ -131,9 +136,10 @@ namespace KantoorInrichtingWPF
                 var prijs = System.Convert.ToDecimal(item.Value[2]);
                 var lengte = System.Convert.ToDecimal(item.Value[3]);
                 var breedte = System.Convert.ToDecimal(item.Value[4]);
+                var hoogte = System.Convert.ToDecimal(item.Value[7]);
                 var tag = item.Value[5];
                 var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie);
+                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie,hoogte);
 
                 listMeubels.Add(meubel);
 
@@ -166,46 +172,13 @@ namespace KantoorInrichtingWPF
                 var hoogte = System.Convert.ToDecimal(item.Value[7]);
                 var tag = item.Value[5];
                 var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte);
+                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie,hoogte);
 
                 listMeubels.Add(meubel);
 
 
             }
             DGMeubels.ItemsSource = listMeubels;
-        }
-
-        protected bool isDragging;
-        private Point clickPosition;
-        private TranslateTransform originTT;
-
-        private void Canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var draggableControl = sender as Image;
-            originTT = draggableControl.RenderTransform as TranslateTransform ?? new TranslateTransform();
-            isDragging = true;
-            clickPosition = e.GetPosition(this);
-            draggableControl.CaptureMouse();
-        }
-
-        private void Canvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            isDragging = false;
-            var draggable = sender as Image;
-            draggable.ReleaseMouseCapture();
-        }
-
-        private void Canvas_MouseMove(object sender, MouseEventArgs e)
-        {
-            var draggableControl = sender as Image;
-            if (isDragging && draggableControl != null)
-            {
-                Point currentPosition = e.GetPosition(this);
-                var transform = draggableControl.RenderTransform as TranslateTransform ?? new TranslateTransform();
-                transform.X = originTT.X + (currentPosition.X - clickPosition.X);
-                transform.Y = originTT.Y + (currentPosition.Y - clickPosition.Y);
-                draggableControl.RenderTransform = new TranslateTransform(transform.X, transform.Y);
-            }
         }
     }
 }

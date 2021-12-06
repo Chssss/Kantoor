@@ -13,11 +13,14 @@
         </Grid.ColumnDefinitions>
         <Label Content="Meubels" HorizontalAlignment="Left" Margin="360,35,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.002,-0.679" Grid.ColumnSpan="2" Height="26" Width="55"/>
         <TextBox x:Name="TBZoekbar" HorizontalAlignment="Left" Margin="33,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
-        <Button Content="Zoeken" HorizontalAlignment="Left" Margin="33,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.464,0.663" Click="OnButton_Zoeken_Click" Height="20" Width="43"/>
+        <Button Content="Zoeken naam" HorizontalAlignment="Left" Margin="33,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.464,0.663" Click="OnButton_Zoeken_Click" Height="20" Width="87"/>
         <Button Content="Terug" Grid.Column="1" HorizontalAlignment="Left" Margin="344,61,0,0" VerticalAlignment="Top" Click="OnButton_Terug_Click" Height="20" Width="33"/>
         <Button Content="Meubel Toevoegen" Grid.Column="1" HorizontalAlignment="Left" Margin="223,61,0,0" VerticalAlignment="Top" Click="OnButton_MeubelToevoegen_Click" Height="20" Width="105"/>
         <DataGrid x:Name="DGMeubels" Margin="0,97,0,0" Grid.ColumnSpan="2"/>
         <Button x:Name="ButtonRefresh" Content="Refresh" HorizontalAlignment="Center" Margin="0,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.283,-0.608" Click="OnButton_RefreshMeubel_Click"/>
+        <Button Content="Zoeken categorie" HorizontalAlignment="Left" Margin="136,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.464,0.663" Click="OnButton_ZoekenCategorie_Click" Height="20" Width="110"/>
+        <TextBox x:Name="TBVerwijderMeubel" Grid.Column="1" HorizontalAlignment="Left" Margin="23,60,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Verwijder" Grid.Column="1" HorizontalAlignment="Left" Margin="151,60,0,0" VerticalAlignment="Top" Click="OnButton_VerwijderMeubel_Click"/>
 
     </Grid>
 </Window>
