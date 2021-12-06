@@ -146,8 +146,6 @@ namespace KantoorInrichtingWPF
         {
             AddDataToColumns();
         }
-<<<<<<< Updated upstream
-=======
 
         private void OnButton_ZoekenMeubelCategorie_Click(object sender, RoutedEventArgs e)
         {
@@ -168,7 +166,7 @@ namespace KantoorInrichtingWPF
                 var hoogte = System.Convert.ToDecimal(item.Value[7]);
                 var tag = item.Value[5];
                 var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie,hoogte);
+                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte);
 
                 listMeubels.Add(meubel);
 
@@ -209,6 +207,5 @@ namespace KantoorInrichtingWPF
                 draggableControl.RenderTransform = new TranslateTransform(transform.X, transform.Y);
             }
         }
->>>>>>> Stashed changes
     }
 }
