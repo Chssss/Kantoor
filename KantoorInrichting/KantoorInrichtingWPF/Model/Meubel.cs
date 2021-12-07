@@ -24,7 +24,7 @@ namespace KantoorInrichtingWPF
         public Meubel(string afbeelding, string naam, decimal prijs, decimal lengte, decimal breedte, string tag, string categorie, decimal hoogte)
         {
             //this.afbeelding = CreateBitmapSourceFromGdiBitmap(new Bitmap(afbeelding));
-           img= afbeelding;
+            img= afbeelding;
             this.naam = naam;
             this.prijs = prijs;
             this.lengte = lengte;

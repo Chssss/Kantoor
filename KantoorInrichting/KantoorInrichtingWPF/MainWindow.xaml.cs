@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-
+using KantoorInrichtingWPF.ViewModel;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -23,44 +23,19 @@ namespace KantoorInrichtingWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string _zoekbalk;
+       
         public MainWindow()
         {
             InitializeComponent();
-            if (Database.isGevuld==false)
-            {
-                Database.FillDatabase();
-            }
-           
-           AddDataToColumns();
-            
-           
+         
+
+
+
+
         }
 
-        private void AddDataToColumns()
-        {
-            var outputQuerry = Database.GetDatabase();
-            List<Meubel> listMeubels = new List<Meubel>();
-            foreach (var item in outputQuerry)
-            {
-                
-                var afbeelding = item.Value[0];
-                var naam = item.Value[1];
-                var prijs = System.Convert.ToDecimal(item.Value[2]);
-                var lengte = System.Convert.ToDecimal(item.Value[3]);
-                var breedte = System.Convert.ToDecimal(item.Value[4]);
-                var hoogte = System.Convert.ToDecimal(item.Value[7]);
-                var tag = item.Value[5];
-                var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie,hoogte);
+        
 
-                listMeubels.Add(meubel);
-                
-
-            }
-            DGMeubels.ItemsSource = listMeubels;
-        }
-       
         private void MenuItem(object sender, RoutedEventArgs e)
         {
 
@@ -122,63 +97,23 @@ namespace KantoorInrichtingWPF
 
         private void OnButton_ZoekenMeubelNaam_Click(object sender, RoutedEventArgs e)
         {
-            _zoekbalk = TBMeubels.Text;
-            //funcitie uit data die Dictionary<int,list<string>> meubels terug geeft die overeen komen met de text in de zoek balk
-
-            Dictionary<int, List<string>> outputQuerry = Database.ZoekenDatabase(_zoekbalk); 
             
-            List<Meubel> listMeubels = new List<Meubel>();
-            foreach (var item in outputQuerry)
-            {
-
-                var afbeelding = item.Value[0];
-                var naam = item.Value[1];
-                var prijs = System.Convert.ToDecimal(item.Value[2]);
-                var lengte = System.Convert.ToDecimal(item.Value[3]);
-                var breedte = System.Convert.ToDecimal(item.Value[4]);
-                var hoogte = System.Convert.ToDecimal(item.Value[7]);
-                var tag = item.Value[5];
-                var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie,hoogte);
-
-                listMeubels.Add(meubel);
-
-
-            }
-            DGMeubels.ItemsSource = listMeubels;
+            
+            
+            
         }
 
         private void OnButton_RefreshMeubel_Click(object sender, RoutedEventArgs e)
         {
-            AddDataToColumns();
+            
         }
 
         private void OnButton_ZoekenMeubelCategorie_Click(object sender, RoutedEventArgs e)
         {
-            _zoekbalk = TBMeubels.Text;
-            //funcitie uit data die Dictionary<int,list<string>> meubels terug geeft die overeen komen met de text in de zoek balk
+            
 
-            Dictionary<int, List<string>> outputQuerry = Database.ZoekenDatabseCategorie(_zoekbalk);
+            
 
-            List<Meubel> listMeubels = new List<Meubel>();
-            foreach (var item in outputQuerry)
-            {
-
-                var afbeelding = item.Value[0];
-                var naam = item.Value[1];
-                var prijs = System.Convert.ToDecimal(item.Value[2]);
-                var lengte = System.Convert.ToDecimal(item.Value[3]);
-                var breedte = System.Convert.ToDecimal(item.Value[4]);
-                var hoogte = System.Convert.ToDecimal(item.Value[7]);
-                var tag = item.Value[5];
-                var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie,hoogte);
-
-                listMeubels.Add(meubel);
-
-
-            }
-            DGMeubels.ItemsSource = listMeubels;
         }
     }
 }

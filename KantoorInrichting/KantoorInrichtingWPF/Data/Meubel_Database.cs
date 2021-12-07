@@ -6,18 +6,19 @@ using System.Text;
 
 namespace KantoorInrichtingWPF.Data
 {
-  public  class Database
+  public  class Meubel_Database
     {
        private static Dictionary<int, List<string>> nepDatabase = new Dictionary<int, List<string>>();
 
         public static bool isGevuld = false;
 
-        public Database() 
+        public Meubel_Database() 
         {
            
         }
+        #region nepDatabase
 
-        public static void FillDatabase()
+      /*  public static void FillDatabase()
         {
 
             isGevuld = true;
@@ -31,7 +32,7 @@ namespace KantoorInrichtingWPF.Data
             List<string> list8 = new List<string>();
             List<string> list9 = new List<string>();
             //list.Add(@"afbeeldingen\stoel.jpg");//0
-            /*
+            *//*
            1 tafel |¯¯|
            2 stoel 🦽 
            3 lamp 💡
@@ -41,7 +42,7 @@ namespace KantoorInrichtingWPF.Data
            7 deur 🚪
            8 raam ⬜
            9 tapijt 🔴
-            */
+            *//*
             list1.Add("🦼");
             list1.Add("naam");//1
             list1.Add("5,8");//2
@@ -123,44 +124,45 @@ namespace KantoorInrichtingWPF.Data
             list9.Add("categorie");//6
             list9.Add("2,5");
             nepDatabase.Add(8, list9);
-        }
-       #region TestSql 
-        
-           /* try
-            {
-                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "<your_server>.database.windows.net";
-                builder.UserID = "<your_username>";
-                builder.Password = "<your_password>";
-                builder.InitialCatalog = "<your_database>";
+        }*/
+        #endregion
+        #region TestSql 
 
-                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
-                {
-                    Console.WriteLine("\nQuery data example:");
-                    Console.WriteLine("=========================================\n");
+        /* try
+         {
+             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+             builder.DataSource = "<your_server>.database.windows.net";
+             builder.UserID = "<your_username>";
+             builder.Password = "<your_password>";
+             builder.InitialCatalog = "<your_database>";
 
-                    String sql = "SELECT name, collation_name FROM sys.databases";
+             using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+             {
+                 Console.WriteLine("\nQuery data example:");
+                 Console.WriteLine("=========================================\n");
 
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
-                            }
-                        }
-                    }
-                }
-            }
-            catch (SqlException e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-            Console.ReadLine();*/
-#endregion
-public static Dictionary<int,List<string>> GetDatabase() 
+                 String sql = "SELECT name, collation_name FROM sys.databases";
+
+                 using (SqlCommand command = new SqlCommand(sql, connection))
+                 {
+                     connection.Open();
+                     using (SqlDataReader reader = command.ExecuteReader())
+                     {
+                         while (reader.Read())
+                         {
+                             Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
+                         }
+                     }
+                 }
+             }
+         }
+         catch (SqlException e)
+         {
+             Console.WriteLine(e.ToString());
+         }
+         Console.ReadLine();*/
+        #endregion
+        public static Dictionary<int,List<string>> GetDatabase() 
         {
             Dictionary<int, List<string>> output = new Dictionary<int, List<string>>();
             int count = 0;
@@ -261,65 +263,43 @@ public static Dictionary<int,List<string>> GetDatabase()
         public static void DeleteFromDatabase(string naam) 
         {
             #region test sql
-            /*try
+            try
             {
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "<your_server>.database.windows.net";
-                builder.UserID = "<your_username>";
-                builder.Password = "<your_password>";
-                builder.InitialCatalog = "<your_database>";
+                builder.DataSource = "127.0.0.1, 1433";
+                builder.UserID = "sa";
+                builder.Password = "Kantoorinrichting!";
+                builder.InitialCatalog = "Inventaris";
 
+                String sql = $"DELETE FROM Inventaris WHERE naam =" + $"'{naam}'";
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sql, connection);
                     Console.WriteLine("\nQuery data example:");
                     Console.WriteLine("=========================================\n");
 
-                    String sql = "SELECT name, collation_name FROM sys.databases";
-
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
-                            }
-                        }
-                    }
+                   
+                     //command.CommandText = $"DELETE FROM Inventaris WHERE naam ="+ $"'{naam}'";
+                    //SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
+                    //nameParam.Value = naam;
+                    //command.Parameters.Add(nameParam);
+                    //command.Prepare();
+                    command.ExecuteNonQuery();
                 }
             }
             catch (SqlException e)
             {
                 Console.WriteLine(e.ToString());
             }
-            Console.ReadLine();*/
+            Console.ReadLine();
             #endregion
-            foreach (var item in nepDatabase)
-            {
-
-                bool contains = LikeOperator.LikeString(item.Value[1], $"{naam}", Microsoft.VisualBasic.CompareMethod.Binary);
-                if (contains == true)
-                {
-                    nepDatabase.Remove(item.Key);
-                }
-
-
-
-            }
+          
         }
        public static void ToevoegenAanDatabase(string naam, string prijs,string lengte, string breedte,string categorie, string tag, string image, string hoogte) 
         {
             
-            /*List<string> list= new List<string>();
-            list.Add(image);
-            list.Add(naam);//1
-            list.Add(prijs);//2
-            list.Add(lengte);//3
-            list.Add(breedte);//4
-            list.Add(tag);//5
-            list.Add(" "+categorie);//6
-            list.Add(hoogte);*/
+           
             #region test sql
             try
             {
@@ -380,18 +360,7 @@ public static Dictionary<int,List<string>> GetDatabase()
             }
             Console.ReadLine();
             #endregion
-            /*if (nepDatabase.Count==0)
-            {
-                nepDatabase.Add(nepDatabase.Count, list);
-            }
-            if (!nepDatabase.ContainsKey(nepDatabase.Count))
-            {
-                nepDatabase.Add(nepDatabase.Count, list);
-            }
-            else
-            {
-                nepDatabase.Add(nepDatabase.Count + 1, list);
-            }*/
+           
 
         }
         public static Dictionary<int, List<string>> ZoekenDatabase(string zoekbalk) 
@@ -399,57 +368,76 @@ public static Dictionary<int,List<string>> GetDatabase()
 
             Dictionary<int, List<string>> outputQurrey = new Dictionary<int, List<string>>();
             int count = 0;
+        
+           
             #region test sql
-            /*try
+            try
             {
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "<your_server>.database.windows.net";
-                builder.UserID = "<your_username>";
-                builder.Password = "<your_password>";
-                builder.InitialCatalog = "<your_database>";
+                builder.DataSource = "127.0.0.1, 1433";
+                builder.UserID = "sa";
+                builder.Password = "Kantoorinrichting!";
+                builder.InitialCatalog = "Inventaris";
 
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
                     Console.WriteLine("\nQuery data example:");
                     Console.WriteLine("=========================================\n");
 
-                    String sql = "SELECT name, collation_name FROM sys.databases";
-
+                    String sql = "SELECT * FROM Inventaris WHERE naam LIKE " + $"'%{zoekbalk}%'";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         connection.Open();
+                        /*command.CommandText="SELECT * FROM Inventaris WHERE naam LIKE '*@name*' ";
+                        SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
+                        nameParam.Value = zoekbalk;
+                        command.Parameters.Add(nameParam);
+                        command.Prepare();*/
+                        //command.ExecuteNonQuery();
+
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
+
                             while (reader.Read())
                             {
-                                Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
+                                List<string> listVaule = new List<string>();
+                                listVaule.Add(reader.GetString(0));
+                                listVaule.Add(reader.GetString(1));
+                                listVaule.Add(reader.GetString(2));
+                                listVaule.Add(reader.GetString(3));
+                                listVaule.Add(reader.GetString(4));
+                                listVaule.Add(reader.GetString(5));
+                                listVaule.Add(reader.GetString(6));
+                                listVaule.Add(reader.GetString(7));
+                                outputQurrey.Add(count, listVaule);
+                                count++;
                             }
                         }
                     }
+                    //String sql = "SELECT * FROM Inventaris WHERE naam LIKE '*@name*' ";
+                  /*  connection.Open();
+                  SqlCommand command = new SqlCommand(null, connection);
+                  command.CommandText = "SELECT * FROM Inventaris WHERE naam LIKE '*@name*' ";
+                    SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
+                    nameParam.Value = zoekbalk;
+                    command.Parameters.Add(nameParam);
+                    command.Prepare();
+                    command.ExecuteNonQuery();*/
                 }
             }
             catch (SqlException e)
             {
                 Console.WriteLine(e.ToString());
             }
-            Console.ReadLine();*/
+            Console.ReadLine();
             #endregion
-            foreach (var item in nepDatabase)
+            foreach (var item in outputQurrey)
             {
-              
-                    bool contains = LikeOperator.LikeString(item.Value[1], $"*{zoekbalk}*", Microsoft.VisualBasic.CompareMethod.Binary);
-                    if (contains == true)
-                    {
-                        outputQurrey.Add(count, item.Value);
-                        count++;
-                    }
-                
-               
-
+                item.Value[0] = GetImage(item.Value[5]);
             }
-            
-            
             return outputQurrey;
+           
+
 
         }
 
@@ -458,52 +446,56 @@ public static Dictionary<int,List<string>> GetDatabase()
             Dictionary<int, List<string>> outputQurrey = new Dictionary<int, List<string>>();
             int count = 0;
             #region test sql
-            /*try
+            try
             {
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "<your_server>.database.windows.net";
-                builder.UserID = "<your_username>";
-                builder.Password = "<your_password>";
-                builder.InitialCatalog = "<your_database>";
+                builder.DataSource = "127.0.0.1, 1433";
+                builder.UserID = "sa";
+                builder.Password = "Kantoorinrichting!";
+                builder.InitialCatalog = "Inventaris";
 
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
                     Console.WriteLine("\nQuery data example:");
                     Console.WriteLine("=========================================\n");
 
-                    String sql = "SELECT name, collation_name FROM sys.databases";
-
+                    String sql = "SELECT * FROM Inventaris WHERE categorie LIKE " + $"'%{zoekbalk}%'";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         connection.Open();
+                        
+
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
+
                             while (reader.Read())
                             {
-                                Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
+                                List<string> listVaule = new List<string>();
+                                listVaule.Add(reader.GetString(0));
+                                listVaule.Add(reader.GetString(1));
+                                listVaule.Add(reader.GetString(2));
+                                listVaule.Add(reader.GetString(3));
+                                listVaule.Add(reader.GetString(4));
+                                listVaule.Add(reader.GetString(5));
+                                listVaule.Add(reader.GetString(6));
+                                listVaule.Add(reader.GetString(7));
+                                outputQurrey.Add(count, listVaule);
+                                count++;
                             }
                         }
                     }
+                    
                 }
             }
             catch (SqlException e)
             {
                 Console.WriteLine(e.ToString());
             }
-            Console.ReadLine();*/
+            Console.ReadLine();
             #endregion
-            foreach (var item in nepDatabase)
+            foreach (var item in outputQurrey)
             {
-
-                bool contains = LikeOperator.LikeString(item.Value[6], $"*{zoekbalk}*", Microsoft.VisualBasic.CompareMethod.Binary);
-                if (contains == true)
-                {
-                    outputQurrey.Add(count, item.Value);
-                    count++;
-                }
-
-
-
+                item.Value[0] = GetImage(item.Value[5]);
             }
 
 

@@ -18,66 +18,20 @@ namespace KantoorInrichtingWPF
     /// </summary>
     public partial class MeubelsLijst : Window
     {
-        private string _zoekbalk;
-        private string _Verwijderbalk;
+       
         public MeubelsLijst()
         {
             InitializeComponent();
-            AddDataToColumns();
+            
         }
         private void OnButton_RefreshMeubel_Click(object sender, RoutedEventArgs e)
         {
-            AddDataToColumns();
+            
         }
-        private void AddDataToColumns()
-        {
-            var outputQuerry = Database.GetDatabase();
-            List<Meubel> listMeubels = new List<Meubel>();
-            foreach (var item in outputQuerry)
-            {
-                
-                var afbeelding = item.Value[0];
-                var naam = item.Value[1];
-                var prijs = System.Convert.ToDecimal(item.Value[2]);
-                var lengte = System.Convert.ToDecimal(item.Value[3]);
-                var breedte = System.Convert.ToDecimal(item.Value[4]);
-                var hoogte = System.Convert.ToDecimal(item.Value[7]);
-                var tag = item.Value[5];
-                var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie,hoogte);
-
-                listMeubels.Add(meubel);
-
-
-            }
-            DGMeubels.ItemsSource = listMeubels;
-        }
+       
         private void OnButton_Zoeken_Click(object sender, RoutedEventArgs e)
         {
-            _zoekbalk = TBZoekbar.Text;
-            //funcitie uit data die Dictionary<int,list<string>> meubels terug geeft die overeen komen met de text in de zoek balk
-
-            Dictionary<int, List<string>> outputQuerry = Database.ZoekenDatabase(_zoekbalk);
-
-            List<Meubel> listMeubels = new List<Meubel>();
-            foreach (var item in outputQuerry)
-            {
-
-                var afbeelding = item.Value[0];
-                var naam = item.Value[1];
-                var prijs = System.Convert.ToDecimal(item.Value[2]);
-                var lengte = System.Convert.ToDecimal(item.Value[3]);
-                var breedte = System.Convert.ToDecimal(item.Value[4]);
-                var hoogte = System.Convert.ToDecimal(item.Value[7]);
-                var tag = item.Value[5];
-                var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie,hoogte);
-
-                listMeubels.Add(meubel);
-
-
-            }
-            DGMeubels.ItemsSource = listMeubels;
+           
         }
 
         private void OnButton_Terug_Click(object sender, RoutedEventArgs e)
@@ -93,37 +47,13 @@ namespace KantoorInrichtingWPF
 
         private void OnButton_ZoekenCategorie_Click(object sender, RoutedEventArgs e)
         {
-            _zoekbalk = TBZoekbar.Text;
-            //funcitie uit data die Dictionary<int,list<string>> meubels terug geeft die overeen komen met de text in de zoek balk
-
-            Dictionary<int, List<string>> outputQuerry = Database.ZoekenDatabseCategorie(_zoekbalk);
-
-            List<Meubel> listMeubels = new List<Meubel>();
-            foreach (var item in outputQuerry)
-            {
-
-                var afbeelding = item.Value[0];
-                var naam = item.Value[1];
-                var prijs = System.Convert.ToDecimal(item.Value[2]);
-                var lengte = System.Convert.ToDecimal(item.Value[3]);
-                var breedte = System.Convert.ToDecimal(item.Value[4]);
-                var hoogte = System.Convert.ToDecimal(item.Value[7]);
-                var tag = item.Value[5];
-                var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie,hoogte);
-
-                listMeubels.Add(meubel);
-
-
-            }
-            DGMeubels.ItemsSource = listMeubels;
+            
+           
         }
 
         private void OnButton_VerwijderMeubel_Click(object sender, RoutedEventArgs e)
         {
-            _Verwijderbalk = TBVerwijderMeubel.Text;
-            Database.DeleteFromDatabase(_Verwijderbalk);
-            MessageBox.Show("Item is verwijdert, druk op refresh om de lijst te updaten");
+            
         }
     }
 }
