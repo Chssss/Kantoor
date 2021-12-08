@@ -14,6 +14,30 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Afbeelding\apparaat.png" />
+    <None Remove="Afbeelding\deur.png" />
+    <None Remove="Afbeelding\kast.png" />
+    <None Remove="Afbeelding\lamp.png" />
+    <None Remove="Afbeelding\Plant.png" />
+    <None Remove="Afbeelding\raam.png" />
+    <None Remove="Afbeelding\stoel.png" />
+    <None Remove="Afbeelding\tafel.png" />
+    <None Remove="Afbeelding\tapijt.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Afbeelding\apparaat.png" />
+    <Content Include="Afbeelding\deur.png" />
+    <Content Include="Afbeelding\kast.png" />
+    <Content Include="Afbeelding\lamp.png" />
+    <Content Include="Afbeelding\Plant.png" />
+    <Content Include="Afbeelding\raam.png" />
+    <Content Include="Afbeelding\stoel.png" />
+    <Content Include="Afbeelding\tafel.png" />
+    <Content Include="Afbeelding\tapijt.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="View\" />
   </ItemGroup>
 
