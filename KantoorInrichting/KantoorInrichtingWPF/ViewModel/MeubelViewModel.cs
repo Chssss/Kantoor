@@ -175,14 +175,160 @@ namespace KantoorInrichtingWPF.ViewModel
         }
         #endregion
 
+        private string GetTag()
+        {
+            string tag = "";
+            if (_stoel == true)
+            {
+                tag = "stoel";
+            }
+            if (_tafel == true)
+            {
+                tag = "tafel";
+            }
+            if (_kast == true)
+            {
+                tag = "kast";
+            }
+            if (_plant == true)
+            {
+                tag = "plant";
+            }
+            if (_deur == true)
+            {
+                tag = "deur";
+            }
+            if (_raam == true)
+            {
+                tag = "raam";
+            }
+            if (_tapijt == true)
+            {
+                tag = "tapijt";
+            }
+            if (_lamp == true)
+            {
+                tag = "lamp";
+            }
+            if (_apparaten == true)
+            {
+                tag = "apparaten";
+            }
+            return tag;
+        }
+        private string GetImage()
+        {
+            string image = "";
+            if (_tag.Equals("stoel"))
+            {
+                image = "🦼";
+            }
+            if (_tag.Equals("tafel"))
+            {
+                image = "|¯¯|";
+            }
+            if (_tag.Equals("lamp"))
+            {
+                image = "💡";
+            }
+            if (_tag.Equals("kast"))
+            {
+                image = "🗄";
+            }
+            if (_tag.Equals("plant"))
+            {
+                image = "🌲";
+            }
+            if (_tag.Equals("apparaten"))
+            {
+                image = "🖥";
+            }
+            if (_tag.Equals("deur"))
+            {
+                image = "🚪";
+            }
+            if (_tag.Equals("raam"))
+            {
+                image = "⬜";
+            }
+            if (_tag.Equals("tapijt"))
+            {
+                image = "🔴";
+            }
+            return image;
+        }
+        private void MakeFalse()
+        {
+            _tafel = false;
+            _stoel = false;
+            _lamp = false;
+            _kast = false;
+            _plant = false;
+            _apparaten = false;
+            _deur = false;
+            _raam = false;
+            _tapijt = false;
+        }
+        #region radiobuttons code
+        void TafelExecute() 
+        {
+            MakeFalse();
+            _tafel = true;
+        }
+        void StoelExecute() 
+        {
+            MakeFalse();
+            _stoel = true;
+        }
+        void LampExecute() 
+        {
+            MakeFalse();
+            _lamp = true;
+        }
+        void PlantExecute() 
+        {
+            MakeFalse();
+            _plant = true;
+
+        }
+        void KastExecute() 
+        {
+            MakeFalse();
+            _kast = true;
+        }
+        void ApparaatExecute() 
+        {
+            MakeFalse();
+            _apparaten = true;
+        }
+        void DeurExecute() 
+        {
+            MakeFalse();
+            _deur = true;
+        }
+        void RaamExecute() 
+        {
+            MakeFalse();
+            _raam = true;
+        }
+        void TapijtExecute() 
+        {
+            MakeFalse();
+            _tapijt = true;
+        }
+        #endregion
         private void OnPropertyChangedEvent(string propertyName) 
         {
+            
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
            
         }
         void ToevoegenMeubelExecute() 
         {
+            Tag = GetTag();
+            Image = GetImage();
             Meubel_Database.ToevoegenAanDatabase(Naam, Prijs, Lengte, Breedte, Categorie, Tag, Image, Hoogte);
+            MessageBox.Show("Item is toegevoegd, druk op refresh om de lijst te updaten");
         }
         void UpdateCatalogusExecute() 
         {
@@ -268,5 +414,15 @@ namespace KantoorInrichtingWPF.ViewModel
         public ICommand ZoekNaamInCatalogus { get { return new RelayCommand(ZoekenNaamInCatalogusExecute, CanUpdateCatalogusExecute); } }
         public ICommand ZoekCategorieInCatalogus { get { return new RelayCommand(ZoekenCategorieInCatalogusExecute, CanUpdateCatalogusExecute); } }
         public ICommand ToevoegenMeubel { get { return new RelayCommand(ToevoegenMeubelExecute, CanUpdateCatalogusExecute); } }
+
+        public ICommand TafelCommand { get { return new RelayCommand(TafelExecute, CanUpdateCatalogusExecute); } }
+        public ICommand StoelCommand{ get { return new RelayCommand(StoelExecute, CanUpdateCatalogusExecute); } }
+        public ICommand KastCommand { get { return new RelayCommand(KastExecute, CanUpdateCatalogusExecute); } }
+        public ICommand LampCommand { get { return new RelayCommand(LampExecute, CanUpdateCatalogusExecute); } }
+        public ICommand PlantCommand { get { return new RelayCommand(PlantExecute, CanUpdateCatalogusExecute); } }
+        public ICommand ApparaatCommand { get { return new RelayCommand(ApparaatExecute, CanUpdateCatalogusExecute); } }
+        public ICommand DeurCommand { get { return new RelayCommand(DeurExecute, CanUpdateCatalogusExecute); } }
+        public ICommand RaamCommand { get { return new RelayCommand(RaamExecute, CanUpdateCatalogusExecute); } }
+        public ICommand TapijtCommand { get { return new RelayCommand(TapijtExecute, CanUpdateCatalogusExecute); } }
     }
 }
