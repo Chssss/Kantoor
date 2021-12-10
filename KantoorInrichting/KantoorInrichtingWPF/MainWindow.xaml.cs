@@ -35,8 +35,145 @@ namespace KantoorInrichtingWPF
 
 
         }
+        #region testMovingCode
 
-        
+        #endregion
+        private void OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            //LabelTest.Content = "test";
+            var dataGrid = sender as DataGrid;
+            if (dataGrid != null)
+            {
+                var index = dataGrid.SelectedIndex;
+                //LabelTest.Content = index;
+                MeubelViewModel meubelView = new MeubelViewModel();
+                //LabelTest.Content= meubelView.Catalogus[index].tag;
+                AddImage(meubelView.Catalogus[index].tag);
+
+            }
+        }
+        public void AddImage(string typeImage)
+        {
+
+            if (typeImage.Equals("tafel"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/tafel.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Source = bi;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, 10.0);
+                Canvas.SetLeft(image, 100.00);
+            }
+            if (typeImage.Equals("stoel"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/stoel.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Source = bi;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, 10.0);
+                Canvas.SetLeft(image, 100.00);
+            }
+            if (typeImage.Equals("tapijt"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/tapijt.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Source = bi;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, 10.0);
+                Canvas.SetLeft(image, 100.00);
+            }
+            if (typeImage.Equals("raam"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/raam.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Source = bi;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, 10.0);
+                Canvas.SetLeft(image, 100.00);
+            }
+            if (typeImage.Equals("plant"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/plant.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Source = bi;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, 10.0);
+                Canvas.SetLeft(image, 100.00);
+            }
+            if (typeImage.Equals("lamp"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/lamp.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Source = bi;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, 10.0);
+                Canvas.SetLeft(image, 100.00);
+            }
+            if (typeImage.Equals("kast"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/kast.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Source = bi;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, 10.0);
+                Canvas.SetLeft(image, 100.00);
+            }
+            if (typeImage.Equals("deur"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/deur.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Source = bi;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, 10.0);
+                Canvas.SetLeft(image, 100.00);
+            }
+            if (typeImage.Equals("apparaten"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/apparaat.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Source = bi;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, 10.0);
+                Canvas.SetLeft(image, 100.00);
+            }
+
+        }
 
         private void MenuItem(object sender, RoutedEventArgs e)
         {
@@ -118,141 +255,6 @@ namespace KantoorInrichtingWPF
 
         }
 
-        private void OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            //LabelTest.Content = "test";
-            var dataGrid = sender as DataGrid;
-            if (dataGrid != null)
-            {
-                var index = dataGrid.SelectedIndex;
-                //LabelTest.Content = index;
-                MeubelViewModel meubelView = new MeubelViewModel();
-               //LabelTest.Content= meubelView.Catalogus[index].tag;
-                AddImage(meubelView.Catalogus[index].tag);
-
-            }
-        }
-          public void AddImage(string typeImage) 
-        {
-
-            if (typeImage.Equals("tafel"))
-            {
-                Image image = new Image();
-                BitmapImage bi = new BitmapImage();
-                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
-                bi.BeginInit();
-                bi.UriSource = new Uri(@"/Afbeelding/tafel.png", UriKind.RelativeOrAbsolute);
-                bi.EndInit();
-                image.Source = bi;
-                Canvas.Children.Add(image);
-                Canvas.SetTop(image, 10.0);
-                Canvas.SetLeft(image, 100.00);
-            }
-            if (typeImage.Equals("stoel"))
-            {
-                Image image = new Image();
-                BitmapImage bi = new BitmapImage();
-                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
-                bi.BeginInit();
-                bi.UriSource = new Uri(@"/Afbeelding/stoel.png", UriKind.RelativeOrAbsolute);
-                bi.EndInit();
-                image.Source = bi;
-                Canvas.Children.Add(image);
-                Canvas.SetTop(image, 10.0);
-                Canvas.SetLeft(image, 100.00);
-            }
-            if (typeImage.Equals("tapijt"))
-            {
-                Image image = new Image();
-                BitmapImage bi = new BitmapImage();
-                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
-                bi.BeginInit();
-                bi.UriSource = new Uri(@"/Afbeelding/tapijt.png", UriKind.RelativeOrAbsolute);
-                bi.EndInit();
-                image.Source = bi;
-                Canvas.Children.Add(image);
-                Canvas.SetTop(image, 10.0);
-                Canvas.SetLeft(image, 100.00);
-            }
-            if (typeImage.Equals("raam"))
-            {
-                Image image = new Image();
-                BitmapImage bi = new BitmapImage();
-                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
-                bi.BeginInit();
-                bi.UriSource = new Uri(@"/Afbeelding/raam.png", UriKind.RelativeOrAbsolute);
-                bi.EndInit();
-                image.Source = bi;
-                Canvas.Children.Add(image);
-                Canvas.SetTop(image, 10.0);
-                Canvas.SetLeft(image, 100.00);
-            }
-            if (typeImage.Equals("plant"))
-            {
-                Image image = new Image();
-                BitmapImage bi = new BitmapImage();
-                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
-                bi.BeginInit();
-                bi.UriSource = new Uri(@"/Afbeelding/plant.png", UriKind.RelativeOrAbsolute);
-                bi.EndInit();
-                image.Source = bi;
-                Canvas.Children.Add(image);
-                Canvas.SetTop(image, 10.0);
-                Canvas.SetLeft(image, 100.00);
-            }
-            if (typeImage.Equals("lamp"))
-            {
-                Image image = new Image();
-                BitmapImage bi = new BitmapImage();
-                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
-                bi.BeginInit();
-                bi.UriSource = new Uri(@"/Afbeelding/lamp.png", UriKind.RelativeOrAbsolute);
-                bi.EndInit();
-                image.Source = bi;
-                Canvas.Children.Add(image);
-                Canvas.SetTop(image, 10.0);
-                Canvas.SetLeft(image, 100.00);
-            }
-            if (typeImage.Equals("kast"))
-            {
-                Image image = new Image();
-                BitmapImage bi = new BitmapImage();
-                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
-                bi.BeginInit();
-                bi.UriSource = new Uri(@"/Afbeelding/kast.png", UriKind.RelativeOrAbsolute);
-                bi.EndInit();
-                image.Source = bi;
-                Canvas.Children.Add(image);
-                Canvas.SetTop(image, 10.0);
-                Canvas.SetLeft(image, 100.00);
-            }
-            if (typeImage.Equals("deur"))
-            {
-                Image image = new Image();
-                BitmapImage bi = new BitmapImage();
-                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
-                bi.BeginInit();
-                bi.UriSource = new Uri(@"/Afbeelding/deur.png", UriKind.RelativeOrAbsolute);
-                bi.EndInit();
-                image.Source = bi;
-                Canvas.Children.Add(image);
-                Canvas.SetTop(image, 10.0);
-                Canvas.SetLeft(image, 100.00);
-            }
-            if (typeImage.Equals("apparaten"))
-            {
-                Image image = new Image();
-                BitmapImage bi = new BitmapImage();
-                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
-                bi.BeginInit();
-                bi.UriSource = new Uri(@"/Afbeelding/apparaat.png", UriKind.RelativeOrAbsolute);
-                bi.EndInit();
-                image.Source = bi;
-                Canvas.Children.Add(image);
-                Canvas.SetTop(image, 10.0);
-                Canvas.SetLeft(image, 100.00);
-            }
-
-        }  
+       
     }
 }

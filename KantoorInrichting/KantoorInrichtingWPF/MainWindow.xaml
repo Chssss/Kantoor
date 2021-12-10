@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KantoorInrichtingWPF"
         xmlns:ViewModel="clr-namespace:KantoorInrichtingWPF.ViewModel"
+        xmlns:Controls="clr-namespace:WPF.JoshSmith.Controls"
         x:Class="KantoorInrichtingWPF.MainWindow"
         mc:Ignorable="d"
         Title="Plattegrond editor" Height="650" Width="1000" WindowStartupLocation="CenterScreen">
@@ -53,7 +54,7 @@
         <Button x:Name="ButtonRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="27,0,0,0" VerticalAlignment="Center" Click="OnButton_RefreshMeubel_Click" Height="20" Width="44" Grid.Column="1" Command="{Binding UpdateCatalogus, Mode=OneWay}"/>
         <Button x:Name="ButtonZoekenMeubelCategorie" Content="Zoeken categorie" HorizontalAlignment="Left" Margin="239,22,0,0" VerticalAlignment="Top" Click="OnButton_ZoekenMeubelCategorie_Click" Height="20" Width="103" Command="{Binding ZoekCategorieInCatalogus, Mode=OneWay}"/>
         <Border BorderThickness="1" BorderBrush="Black" Grid.Column="1" Margin="0,43,0,0" Grid.RowSpan="2">
-            <Canvas x:Name="Canvas" Margin="-1,-1,-1,-1"/>
+            <Controls:DragCanvas x:Name="DragCavasPlattegrond"/>
         </Border>
 
 
