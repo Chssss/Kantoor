@@ -32,6 +32,8 @@ namespace KantoorInrichtingWPF.ViewModel
         private string _tag;
         private string _image;
         private string _hoogte;
+        private string _testString;
+
         public MeubelViewModel() 
         {
             //_meubel = new Meubel("🚧",  "test", 1.0M,  1.0M,  1.0M, "TestTag",  "Testcategorie", 1.0M);//img = "🚧", naam = "test", prijs = 1.2M, lengte = 2.5M, breedte = 3.5M, tag = "TestTag", categorie = "Testcategorie", hoogte = 2.8M
@@ -171,6 +173,18 @@ namespace KantoorInrichtingWPF.ViewModel
             {
                 _catalogus = value;
                 OnPropertyChangedEvent("catalogus");
+            }
+        }
+        public string TestString
+        {
+            get
+            {
+                return _testString;
+            }
+            set
+            {
+                _testString = value;
+                OnPropertyChangedEvent("testString");
             }
         }
         #endregion
@@ -323,6 +337,7 @@ namespace KantoorInrichtingWPF.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
            
         }
+        
         void ToevoegenMeubelExecute() 
         {
             Tag = GetTag();
@@ -352,6 +367,7 @@ namespace KantoorInrichtingWPF.ViewModel
 
             }
             Catalogus = listMeubels;
+            
          }
         void VerwijderenMeubelExecute() 
         {

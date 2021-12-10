@@ -26,15 +26,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Afbeelding\apparaat.png" />
-    <Content Include="Afbeelding\deur.png" />
-    <Content Include="Afbeelding\kast.png" />
-    <Content Include="Afbeelding\lamp.png" />
-    <Content Include="Afbeelding\Plant.png" />
-    <Content Include="Afbeelding\raam.png" />
-    <Content Include="Afbeelding\stoel.png" />
-    <Content Include="Afbeelding\tafel.png" />
-    <Content Include="Afbeelding\tapijt.png" />
+    <Resource Include="Afbeelding\apparaat.png" />
+    <Resource Include="Afbeelding\deur.png" />
+    <Resource Include="Afbeelding\kast.png" />
+    <Resource Include="Afbeelding\lamp.png" />
+    <Resource Include="Afbeelding\plant.png" />
+    <Resource Include="Afbeelding\raam.png" />
+    <Resource Include="Afbeelding\stoel.png" />
+    <Resource Include="Afbeelding\tafel.png" />
+    <Resource Include="Afbeelding\tapijt.png" />
   </ItemGroup>
 
   <ItemGroup>

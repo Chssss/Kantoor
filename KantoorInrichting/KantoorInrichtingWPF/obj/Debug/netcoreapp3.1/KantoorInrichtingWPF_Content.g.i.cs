@@ -8,14 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("afbeelding/apparaat.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("afbeelding/deur.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("afbeelding/kast.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("afbeelding/lamp.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("afbeelding/plant.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("afbeelding/raam.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("afbeelding/stoel.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("afbeelding/tafel.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("afbeelding/tapijt.png")]
 
 
