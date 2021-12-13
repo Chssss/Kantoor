@@ -27,12 +27,13 @@ namespace KantoorInrichtingWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private decimal _totalprijst=(decimal)0.0;
         MeubelViewModel meubelView = new MeubelViewModel();
-
+    
         public MainWindow()
         {
             InitializeComponent();
-            
+            LabelTotalPrijs.Content = $"{_totalprijst}€";
             
 
 
@@ -46,14 +47,40 @@ namespace KantoorInrichtingWPF
             {
                 var index = dataGrid.SelectedIndex;
                 //LabelTest.Content = index;
-                
+               
                 //LabelTest.Content= meubelView.Catalogus[index].tag;
-
-                AddImage(meubelView.Catalogus[index].tag);
+                _totalprijst = _totalprijst + meubelView.Catalogus[index].prijs;
+                LabelTotalPrijs.Content = $"{_totalprijst}€";
+                
+                AddImage(meubelView.Catalogus[index].tag,index);
 
             }
         }
-        public void AddImage(string typeImage)
+        private void OnMouseRightButtonPressed(object sender, MouseButtonEventArgs e)
+        {
+            var dragCanvas = sender as DragCanvas;
+            var image = e.OriginalSource;
+            
+            if (dragCanvas != null)
+            {
+                MessageBoxResult dialogResult = MessageBox.Show("Weet je zeker dat je dit meubel wilt verwijderen?", "Meubel verwijderen", MessageBoxButton.YesNo);
+                if (dialogResult == MessageBoxResult.Yes)
+                {
+                 var index  = dragCanvas.Children.IndexOf((UIElement)image);
+                    var imageOutCanvas = dragCanvas.Children[index] as Image;
+                   
+                    _totalprijst = _totalprijst - (decimal)imageOutCanvas.Tag;
+                    LabelTotalPrijs.Content = $"{_totalprijst}€";
+                    dragCanvas.Children.Remove((UIElement)image);
+                }
+                else if (dialogResult == MessageBoxResult.No)
+                {
+
+                }
+            }
+
+        }
+        public void AddImage(string typeImage,int index)
         {
 
             if (typeImage.Equals("tafel"))
@@ -65,7 +92,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/tafel.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
-                image.Tag = "testTag";
+                image.Tag = meubelView.Catalogus[index].prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -80,6 +107,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/stoel.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
+                image.Tag = meubelView.Catalogus[index].prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 
                 Canvas.SetTop(image, 10.0);
@@ -94,6 +122,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/tapijt.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
+                image.Tag = meubelView.Catalogus[index].prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -107,6 +136,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/raam.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
+                image.Tag = meubelView.Catalogus[index].prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -120,6 +150,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/plant.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
+                image.Tag = meubelView.Catalogus[index].prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -133,6 +164,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/lamp.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
+                image.Tag = meubelView.Catalogus[index].prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -146,6 +178,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/kast.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
+                image.Tag = meubelView.Catalogus[index].prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -159,6 +192,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/deur.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
+                image.Tag = meubelView.Catalogus[index].prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -172,6 +206,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/apparaat.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
+                image.Tag = meubelView.Catalogus[index].prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -259,25 +294,7 @@ namespace KantoorInrichtingWPF
 
         }
 
-        private void OnMouseRightButtonPressed(object sender, MouseButtonEventArgs e)
-        {
-            var dragCanvas = sender as DragCanvas;
-            var image = e.OriginalSource;
-            if (dragCanvas != null)
-            {
-                MessageBoxResult dialogResult = MessageBox.Show("Weet je zeker dat je dit meubel wilt verwijderen?", "Meubel verwijderen", MessageBoxButton.YesNo);
-                if (dialogResult == MessageBoxResult.Yes)
-                {
-                    
-                    dragCanvas.Children.Remove((UIElement)image);
-                }
-                else if (dialogResult == MessageBoxResult.No)
-                {
-                    
-                }
-            }
-            
-        }
+        
 
        
     }
