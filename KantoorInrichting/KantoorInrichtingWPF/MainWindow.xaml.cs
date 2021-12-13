@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 
 using Image = System.Windows.Controls.Image;
 using System.Drawing;
+using WPF.JoshSmith.Controls;
 
 namespace KantoorInrichtingWPF
 {
@@ -26,18 +27,17 @@ namespace KantoorInrichtingWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        MeubelViewModel meubelView = new MeubelViewModel();
+
         public MainWindow()
         {
             InitializeComponent();
             
-
+            
 
 
         }
-        #region testMovingCode
-
-        #endregion
+       
         private void OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             //LabelTest.Content = "test";
@@ -46,8 +46,9 @@ namespace KantoorInrichtingWPF
             {
                 var index = dataGrid.SelectedIndex;
                 //LabelTest.Content = index;
-                MeubelViewModel meubelView = new MeubelViewModel();
+                
                 //LabelTest.Content= meubelView.Catalogus[index].tag;
+
                 AddImage(meubelView.Catalogus[index].tag);
 
             }
@@ -64,9 +65,11 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/tafel.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
+                image.Tag = "testTag";
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
+                
             }
             if (typeImage.Equals("stoel"))
             {
@@ -78,6 +81,7 @@ namespace KantoorInrichtingWPF
                 bi.EndInit();
                 image.Source = bi;
                 DragCavasPlattegrond.Children.Add(image);
+                
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
             }
@@ -253,6 +257,26 @@ namespace KantoorInrichtingWPF
 
             
 
+        }
+
+        private void OnMouseRightButtonPressed(object sender, MouseButtonEventArgs e)
+        {
+            var dragCanvas = sender as DragCanvas;
+            var image = e.OriginalSource;
+            if (dragCanvas != null)
+            {
+                MessageBoxResult dialogResult = MessageBox.Show("Weet je zeker dat je dit meubel wilt verwijderen?", "Meubel verwijderen", MessageBoxButton.YesNo);
+                if (dialogResult == MessageBoxResult.Yes)
+                {
+                    
+                    dragCanvas.Children.Remove((UIElement)image);
+                }
+                else if (dialogResult == MessageBoxResult.No)
+                {
+                    
+                }
+            }
+            
         }
 
        

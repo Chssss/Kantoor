@@ -32,7 +32,9 @@ namespace KantoorInrichtingWPF.ViewModel
         private string _tag;
         private string _image;
         private string _hoogte;
-        private string _testString;
+       
+
+        private  decimal _totalPrijs = 0;
 
         public MeubelViewModel() 
         {
@@ -175,16 +177,17 @@ namespace KantoorInrichtingWPF.ViewModel
                 OnPropertyChangedEvent("catalogus");
             }
         }
-        public string TestString
+        
+        public  decimal TotalPrijs
         {
             get
             {
-                return _testString;
+                return _totalPrijs;
             }
             set
             {
-                _testString = value;
-                OnPropertyChangedEvent("testString");
+                _totalPrijs = value;
+                OnPropertyChangedEvent("Totalprijs");
             }
         }
         #endregion
@@ -425,6 +428,7 @@ namespace KantoorInrichtingWPF.ViewModel
         {
             return true;
         }
+       
         public ICommand UpdateCatalogus { get { return new RelayCommand(UpdateCatalogusExecute, CanUpdateCatalogusExecute); } }
         public ICommand VerwijderMeubel { get { return new RelayCommand(VerwijderenMeubelExecute, CanUpdateCatalogusExecute); } }
         public ICommand ZoekNaamInCatalogus { get { return new RelayCommand(ZoekenNaamInCatalogusExecute, CanUpdateCatalogusExecute); } }
