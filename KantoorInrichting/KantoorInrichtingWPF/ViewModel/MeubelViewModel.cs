@@ -32,6 +32,7 @@ namespace KantoorInrichtingWPF.ViewModel
         private string _tag;
         private string _image;
         private string _hoogte;
+        private string _leverancier;
        
 
         private  decimal _totalPrijs = 0;
@@ -131,6 +132,19 @@ namespace KantoorInrichtingWPF.ViewModel
               _naam   = value;
             }
         }
+
+        public string Leverancier
+        {
+            get
+            {
+                return _leverancier;
+            }
+            set
+            {
+                _leverancier = value;
+            }
+        }
+
         public string Zoekbalk
         {
             get
@@ -233,6 +247,7 @@ namespace KantoorInrichtingWPF.ViewModel
             }
             return tag;
         }
+   
         private string GetImage()
         {
             string image = "";
