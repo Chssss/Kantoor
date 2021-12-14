@@ -54,6 +54,7 @@ namespace KantoorInrichtingWPF
                 
                 AddImage(meubelView.Catalogus[index].tag,index);
 
+
             }
         }
         private void OnMouseRightButtonPressed(object sender, MouseButtonEventArgs e)

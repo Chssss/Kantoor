@@ -37,13 +37,40 @@ namespace KantoorInrichtingWPF.ViewModel
 
         private  decimal _totalPrijs = 0;
 
+        private List<string> _categorieen = new List<string>();
+        private string _testString;
+
         public MeubelViewModel() 
         {
             //_meubel = new Meubel("🚧",  "test", 1.0M,  1.0M,  1.0M, "TestTag",  "Testcategorie", 1.0M);//img = "🚧", naam = "test", prijs = 1.2M, lengte = 2.5M, breedte = 3.5M, tag = "TestTag", categorie = "Testcategorie", hoogte = 2.8M
             UpdateCatalogusExecute();
-               
+            _categorieen.Add("Kantoor");
+            _categorieen.Add("Lokaal");
         }
         #region prop
+        public string TestString
+        {
+            get
+            {
+                return _testString;
+            }
+            set
+            {
+                _testString = value;
+                OnPropertyChangedEvent("Test");
+            }
+        }
+        public List<string> Categorieen
+        {
+            get
+            {
+                return _categorieen;
+            }
+            set
+            {
+                _categorieen= value;
+            }
+        }
         public string Hoogte
         {
             get
@@ -439,11 +466,14 @@ namespace KantoorInrichtingWPF.ViewModel
             }
             Catalogus = listMeubels;
         }
+       
         bool CanUpdateCatalogusExecute() 
         {
             return true;
         }
-       
+        
+
+
         public ICommand UpdateCatalogus { get { return new RelayCommand(UpdateCatalogusExecute, CanUpdateCatalogusExecute); } }
         public ICommand VerwijderMeubel { get { return new RelayCommand(VerwijderenMeubelExecute, CanUpdateCatalogusExecute); } }
         public ICommand ZoekNaamInCatalogus { get { return new RelayCommand(ZoekenNaamInCatalogusExecute, CanUpdateCatalogusExecute); } }
