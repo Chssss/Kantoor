@@ -49,10 +49,10 @@ namespace KantoorInrichtingWPF
                 //LabelTest.Content = index;
                
                 //LabelTest.Content= meubelView.Catalogus[index].tag;
-                _totalprijst = _totalprijst + meubelView.Catalogus[index].prijs;
+                _totalprijst = _totalprijst + meubelView.Catalogus[index].Prijs;
                 LabelTotalPrijs.Content = $"{_totalprijst}€";
                 
-                AddImage(meubelView.Catalogus[index].tag,index);
+                AddImage(meubelView.Catalogus[index].Tag,index);
 
 
             }
@@ -93,7 +93,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/tafel.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].prijs;
+                image.Tag = meubelView.Catalogus[index].Prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -108,7 +108,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/stoel.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].prijs;
+                image.Tag = meubelView.Catalogus[index].Prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 
                 Canvas.SetTop(image, 10.0);
@@ -123,7 +123,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/tapijt.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].prijs;
+                image.Tag = meubelView.Catalogus[index].Prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -137,7 +137,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/raam.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].prijs;
+                image.Tag = meubelView.Catalogus[index].Prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -151,7 +151,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/plant.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].prijs;
+                image.Tag = meubelView.Catalogus[index].Prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -165,7 +165,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/lamp.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].prijs;
+                image.Tag = meubelView.Catalogus[index].Prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -179,7 +179,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/kast.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].prijs;
+                image.Tag = meubelView.Catalogus[index].Prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -193,7 +193,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/deur.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].prijs;
+                image.Tag = meubelView.Catalogus[index].Prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -207,7 +207,7 @@ namespace KantoorInrichtingWPF
                 bi.UriSource = new Uri(@"/Afbeelding/apparaat.png", UriKind.RelativeOrAbsolute);
                 bi.EndInit();
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].prijs;
+                image.Tag = meubelView.Catalogus[index].Prijs;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);

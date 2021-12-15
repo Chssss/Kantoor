@@ -32,13 +32,14 @@ namespace KantoorInrichtingWPF.ViewModel
         private string _tag;
         private string _image;
         private string _hoogte;
+        private List<string> _leverancieren = new List<string>();
         private string _leverancier;
-       
 
         private  decimal _totalPrijs = 0;
 
         private List<string> _categorieen = new List<string>();
         private string _testString;
+        private string _productcode;
 
         public MeubelViewModel() 
         {
@@ -46,6 +47,8 @@ namespace KantoorInrichtingWPF.ViewModel
             UpdateCatalogusExecute();
             _categorieen.Add("Kantoor");
             _categorieen.Add("Lokaal");
+            _leverancieren.Add("MeubelBV");
+            _leverancieren.Add("Ikea");
         }
         #region prop
         public string TestString
@@ -69,6 +72,28 @@ namespace KantoorInrichtingWPF.ViewModel
             set
             {
                 _categorieen= value;
+            }
+        }
+        public List<string> Leverancieren
+        {
+            get
+            {
+                return _leverancieren;
+            }
+            set
+            {
+                _leverancieren = value;
+            }
+        }
+        public string Leverancier
+        {
+            get
+            {
+                return _leverancier;
+            }
+            set
+            {
+                _leverancier = value;
             }
         }
         public string Hoogte
@@ -160,18 +185,18 @@ namespace KantoorInrichtingWPF.ViewModel
             }
         }
 
-        public string Leverancier
+        
+        public string Productcode
         {
             get
             {
-                return _leverancier;
+                return _productcode;
             }
             set
             {
-                _leverancier = value;
+                _productcode = value;
             }
         }
-
         public string Zoekbalk
         {
             get
@@ -387,7 +412,9 @@ namespace KantoorInrichtingWPF.ViewModel
         {
             Tag = GetTag();
             Image = GetImage();
-            Meubel_Database.ToevoegenAanDatabase(Naam, Prijs, Lengte, Breedte, Categorie, Tag, Image, Hoogte);
+
+            Productcode = $"{Leverancier[0]}{Leverancier[1]}{Catalogus.Count}";
+            Meubel_Database.ToevoegenAanDatabase(Naam, Prijs, Lengte, Breedte, Categorie, Tag, Image, Hoogte,Leverancier,Productcode);
             MessageBox.Show("Item is toegevoegd, druk op refresh om de lijst te updaten");
         }
         void UpdateCatalogusExecute() 
@@ -396,16 +423,17 @@ namespace KantoorInrichtingWPF.ViewModel
             List<Meubel> listMeubels = new List<Meubel>();
             foreach (var item in outputQuerry)
             {
-
-                var afbeelding = item.Value[0];
-                var naam = item.Value[1];
-                var prijs = System.Convert.ToDecimal(item.Value[2]);
-                var lengte = System.Convert.ToDecimal(item.Value[3]);
-                var breedte = System.Convert.ToDecimal(item.Value[4]);
-                var hoogte = System.Convert.ToDecimal(item.Value[7]);
-                var tag = item.Value[5];
-                var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte);
+                var productcode = item.Value[0];
+                var leverancier = item.Value[1];
+                var afbeelding = item.Value[2];
+                var naam = item.Value[3];
+                var prijs = System.Convert.ToDecimal(item.Value[4]);
+                var lengte = System.Convert.ToDecimal(item.Value[5]);
+                var breedte = System.Convert.ToDecimal(item.Value[6]);
+                var hoogte = System.Convert.ToDecimal(item.Value[9]);
+                var tag = item.Value[7];
+                var categorie = item.Value[8];
+                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte,leverancier,productcode);
 
                 listMeubels.Add(meubel);
 
@@ -427,15 +455,17 @@ namespace KantoorInrichtingWPF.ViewModel
             foreach (var item in outputQuerry)
             {
 
-                var afbeelding = item.Value[0];
-                var naam = item.Value[1];
-                var prijs = System.Convert.ToDecimal(item.Value[2]);
-                var lengte = System.Convert.ToDecimal(item.Value[3]);
-                var breedte = System.Convert.ToDecimal(item.Value[4]);
-                var hoogte = System.Convert.ToDecimal(item.Value[7]);
-                var tag = item.Value[5];
-                var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte);
+                var productcode = item.Value[0];
+                var leverancier = item.Value[1];
+                var afbeelding = item.Value[2];
+                var naam = item.Value[3];
+                var prijs = System.Convert.ToDecimal(item.Value[4]);
+                var lengte = System.Convert.ToDecimal(item.Value[5]);
+                var breedte = System.Convert.ToDecimal(item.Value[6]);
+                var hoogte = System.Convert.ToDecimal(item.Value[9]);
+                var tag = item.Value[7];
+                var categorie = item.Value[8];
+                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte,leverancier,productcode);
 
                 listMeubels.Add(meubel);
 
@@ -450,15 +480,17 @@ namespace KantoorInrichtingWPF.ViewModel
             foreach (var item in outputQuerry)
             {
 
-                var afbeelding = item.Value[0];
-                var naam = item.Value[1];
-                var prijs = System.Convert.ToDecimal(item.Value[2]);
-                var lengte = System.Convert.ToDecimal(item.Value[3]);
-                var breedte = System.Convert.ToDecimal(item.Value[4]);
-                var hoogte = System.Convert.ToDecimal(item.Value[7]);
-                var tag = item.Value[5];
-                var categorie = item.Value[6];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte);
+                var productcode = item.Value[0];
+                var leverancier = item.Value[1];
+                var afbeelding = item.Value[2];
+                var naam = item.Value[3];
+                var prijs = System.Convert.ToDecimal(item.Value[4]);
+                var lengte = System.Convert.ToDecimal(item.Value[5]);
+                var breedte = System.Convert.ToDecimal(item.Value[6]);
+                var hoogte = System.Convert.ToDecimal(item.Value[9]);
+                var tag = item.Value[7];
+                var categorie = item.Value[8];
+                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte,leverancier,productcode);
 
                 listMeubels.Add(meubel);
 

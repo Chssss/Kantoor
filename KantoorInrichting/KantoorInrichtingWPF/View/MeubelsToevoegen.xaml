@@ -11,15 +11,15 @@
         <ViewModel:MeubelViewModel/>
     </Window.DataContext>
     <Grid>
-        <Label Content="Categorie" HorizontalAlignment="Left" Margin="100,81,0,0" VerticalAlignment="Top"/>
-        <Label Content="Naam" HorizontalAlignment="Left" Margin="100,131,0,0" VerticalAlignment="Top"/>
-        <Label Content="Prijs" HorizontalAlignment="Left" Margin="100,180,0,0" VerticalAlignment="Top"/>
-        <Label Content="Lengte" HorizontalAlignment="Left" Margin="100,259,0,0" VerticalAlignment="Top"/>
-        <Label Content="Breedte" HorizontalAlignment="Left" Margin="100,312,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TBNaam" HorizontalAlignment="Left" Margin="100,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Naam}"/>
-        <TextBox x:Name="TBPrijs" HorizontalAlignment="Left" Margin="100,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Prijs}"/>
-        <TextBox x:Name="TBLengte" HorizontalAlignment="Left" Margin="100,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Lengte}"/>
-        <TextBox x:Name="TBBreedte" HorizontalAlignment="Left" Margin="100,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Breedte}"/>
+        <Label Content="Categorie" HorizontalAlignment="Left" Margin="109,54,0,0" VerticalAlignment="Top"/>
+        <Label Content="Naam" HorizontalAlignment="Left" Margin="105,107,0,0" VerticalAlignment="Top"/>
+        <Label Content="Prijs" HorizontalAlignment="Left" Margin="108,156,0,0" VerticalAlignment="Top"/>
+        <Label Content="Lengte" HorizontalAlignment="Left" Margin="100,257,0,0" VerticalAlignment="Top"/>
+        <Label Content="Breedte" HorizontalAlignment="Left" Margin="105,307,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TBNaam" HorizontalAlignment="Left" Margin="102,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Naam}" RenderTransformOrigin="0.493,-1.479"/>
+        <TextBox x:Name="TBPrijs" HorizontalAlignment="Left" Margin="100,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Prijs}" RenderTransformOrigin="0.482,-0.768"/>
+        <TextBox x:Name="TBLengte" HorizontalAlignment="Left" Margin="100,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Lengte}"/>
+        <TextBox x:Name="TBBreedte" HorizontalAlignment="Left" Margin="100,333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Breedte}"/>
         <Label Content="Meubel tevoegen" HorizontalAlignment="Center" Margin="0,46,0,0" VerticalAlignment="Top"/>
         <Button x:Name="ButtonToevoegen" Content="Toevoegen" HorizontalAlignment="Left" Height="31" Margin="382,338,0,0" VerticalAlignment="Top" Width="69" Click="OnButton_Toevoegen_Click" Command="{Binding ToevoegenMeubel, Mode=OneWay}"/>
         <Button x:Name="ButtonAnnuleren" Content="Annuleren" HorizontalAlignment="Left" Margin="509,338,0,0" VerticalAlignment="Top" Height="31" Width="63" Click="OnButton_Annuleren_Click"/>
@@ -32,9 +32,11 @@
         <RadioButton x:Name="RBDeur" Content="Deur" HorizontalAlignment="Left" Margin="499,182,0,0" VerticalAlignment="Top" Checked="OnRButton_Deur_Checked" Command="{Binding DeurCommand, Mode=OneWay}"/>
         <RadioButton x:Name="RBRaam" Content="Raam" HorizontalAlignment="Left" Margin="499,205,0,0" VerticalAlignment="Top" Checked="OnRButton_Raam_Checked" Command="{Binding RaamCommand, Mode=OneWay}"/>
         <RadioButton x:Name="RBTapijt" Content="Tapijt" HorizontalAlignment="Left" Margin="501,231,0,0" VerticalAlignment="Top" Checked="OnRButton_Tapijt_Checked" Command="{Binding TapijtCommand, Mode=OneWay}"/>
-        <Label Content="Hoogte" HorizontalAlignment="Left" Margin="102,226,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TBHoogte" HorizontalAlignment="Left" Margin="100,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Hoogte}"/>
-        <ComboBox x:Name="CBCategorie" HorizontalAlignment="Left" Margin="102,107,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Categorieen}" SelectedValue="{Binding Categorie}"/>
+        <Label Content="Hoogte" HorizontalAlignment="Left" Margin="102,212,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.547,0.508"/>
+        <TextBox x:Name="TBHoogte" HorizontalAlignment="Left" Margin="100,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Hoogte}"/>
+        <ComboBox x:Name="CBCategorie" HorizontalAlignment="Left" Margin="102,85,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Categorieen}" SelectedValue="{Binding Categorie}"/>
+        <Label Content="Leverancier" HorizontalAlignment="Left" Margin="247,49,0,0" VerticalAlignment="Top" Height="26" Width="76"/>
+        <ComboBox x:Name="CBLeverancier" HorizontalAlignment="Left" Margin="247,85,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Leverancieren, ValidatesOnNotifyDataErrors=True}" SelectedValue="{Binding Leverancier}"/>
 
     </Grid>
 </Window>
