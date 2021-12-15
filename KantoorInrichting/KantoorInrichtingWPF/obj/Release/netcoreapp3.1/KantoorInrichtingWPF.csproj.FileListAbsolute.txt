@@ -30,3 +30,10 @@ C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Release\netcoreapp3.1\KantoorInrichtingWPF.dll
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Release\netcoreapp3.1\KantoorInrichtingWPF.pdb
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Release\netcoreapp3.1\KantoorInrichtingWPF.genruntimeconfig.cache
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Release\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Release\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Release\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Release\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Release\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Release\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
