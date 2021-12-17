@@ -44,3 +44,4 @@ KantoorInrichting/KantoorInrichtingWPF/obj/KantoorInrichtingWPF.csproj.nuget.dgs
 KantoorInrichting/KantoorInrichtingWPF/obj/KantoorInrichtingWPF.csproj.nuget.g.props
 KantoorInrichting/KantoorInrichtingWPF/obj/project.assets.json
 KantoorInrichting/KantoorInrichtingWPF/obj/project.nuget.cache
+*.cache
