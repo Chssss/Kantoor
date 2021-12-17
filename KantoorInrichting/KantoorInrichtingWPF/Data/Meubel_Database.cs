@@ -8,9 +8,7 @@ namespace KantoorInrichtingWPF.Data
 {
   public  class Meubel_Database
     {
-       private static Dictionary<int, List<string>> nepDatabase = new Dictionary<int, List<string>>();
-
-        public static bool isGevuld = false;
+       
 
         public Meubel_Database() 
         {
@@ -464,7 +462,8 @@ namespace KantoorInrichtingWPF.Data
                     Console.WriteLine("\nQuery data example:");
                     Console.WriteLine("=========================================\n");
 
-                    String sql = "SELECT * FROM Inventaris WHERE categorie LIKE " + $"'%{zoekbalk}%'";//+ $"'%{zoekbalk}%'"
+                     String sql = "SELECT * FROM Inventaris WHERE categorie LIKE " + $"'%{zoekbalk}%'";
+                    //String sql = "SELECT * FROM Inventaris WHERE Categorie LIKE "+ $" '%{zoekbalk}%' ";//+ $"'%{zoekbalk}%'"
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         connection.Open();

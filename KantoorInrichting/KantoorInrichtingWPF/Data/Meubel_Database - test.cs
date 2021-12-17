@@ -1,130 +1,130 @@
+﻿
 ﻿using Microsoft.VisualBasic.CompilerServices;
 using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 
 namespace KantoorInrichtingWPF.Data
 {
-  public  class Meubel_Database
+    
+    class Meubel_Database___test
     {
-       private static Dictionary<int, List<string>> nepDatabase = new Dictionary<int, List<string>>();
+        private static Dictionary<int, List<string>> nepDatabase = new Dictionary<int, List<string>>();
 
         public static bool isGevuld = false;
 
-        public Meubel_Database() 
-        {
-           
-        }
+       
         #region nepDatabase
 
-      /*  public static void FillDatabase()
-        {
+        /*  public static void FillDatabase()
+          {
 
-            isGevuld = true;
-            List<string> list1 = new List<string>();
-            List<string> list2 = new List<string>();
-            List<string> list3 = new List<string>();
-            List<string> list4 = new List<string>();
-            List<string> list5 = new List<string>();
-            List<string> list6 = new List<string>();
-            List<string> list7 = new List<string>();
-            List<string> list8 = new List<string>();
-            List<string> list9 = new List<string>();
-            //list.Add(@"afbeeldingen\stoel.jpg");//0
-            *//*
-           1 tafel |¯¯|
-           2 stoel 🦽 
-           3 lamp 💡
-           4 kast 🗄
-           5 plant 🌲
-           6 apparaten 🖥
-           7 deur 🚪
-           8 raam ⬜
-           9 tapijt 🔴
-            *//*
-            list1.Add("🦼");
-            list1.Add("naam");//1
-            list1.Add("5,8");//2
-            list1.Add("10,6");//3
-            list1.Add("8,9");//4
-            list1.Add("stoel");//5
-            list1.Add("categorie");//6
-            list1.Add("2,5");
-            nepDatabase.Add(0, list1);
-            list2.Add("|¯¯|");
-            list2.Add("naam");//1
-            list2.Add("5,8");//2
-            list2.Add("10,6");//3
-            list2.Add("8,9");//4
-            list2.Add("tafel");//5
-            list2.Add("categorie");//6
-            list2.Add("2,5");
-            nepDatabase.Add(1, list2);
-            list3.Add("💡");
-            list3.Add("naam");//1
-            list3.Add("5,8");//2
-            list3.Add("10,6");//3
-            list3.Add("8,9");//4
-            list3.Add("lamp");//5
-            list3.Add("categorie");//6
-            list3.Add("2,5");
-            nepDatabase.Add(2, list3);
-            list4.Add("🗄");
-            list4.Add("naam");//1
-            list4.Add("5,8");//2
-            list4.Add("10,6");//3
-            list4.Add("8,9");//4
-            list4.Add("kast");//5
-            list4.Add("categorie");//6
-            list4.Add("2,5");
-            nepDatabase.Add(3, list4);
-            list5.Add("🌲");
-            list5.Add("naam");//1
-            list5.Add("5,8");//2
-            list5.Add("10,6");//3
-            list5.Add("8,9");//4
-            list5.Add("plant");//5
-            list5.Add("categorie");//6
-            list5.Add("2,5");
-            nepDatabase.Add(4, list5);
-            list6.Add("🖥");
-            list6.Add("naam");//1
-            list6.Add("5,8");//2
-            list6.Add("10,6");//3
-            list6.Add("8,9");//4
-            list6.Add("apparaten");//5
-            list6.Add("categorie");//6
-            list6.Add("2,5");
-            nepDatabase.Add(5, list6);
-            list7.Add("🚪");
-            list7.Add("naam");//1
-            list7.Add("5,8");//2
-            list7.Add("10,6");//3
-            list7.Add("8,9");//4
-            list7.Add("deur");//5
-            list7.Add("categorie");//6
-            list7.Add("2,5");
-            nepDatabase.Add(6, list7);
-            list8.Add("⬜");
-            list8.Add("naam");//1
-            list8.Add("5,8");//2
-            list8.Add("10,6");//3
-            list8.Add("8,9");//4
-            list8.Add("raam");//5
-            list8.Add("categorie");//6
-            list8.Add("2,5");
-            nepDatabase.Add(7, list8);
-            list9.Add("🔴");
-            list9.Add("naam");//1
-            list9.Add("5,8");//2
-            list9.Add("10,6");//3
-            list9.Add("8,9");//4
-            list9.Add("tapijt");//5
-            list9.Add("categorie");//6
-            list9.Add("2,5");
-            nepDatabase.Add(8, list9);
-        }*/
+              isGevuld = true;
+              List<string> list1 = new List<string>();
+              List<string> list2 = new List<string>();
+              List<string> list3 = new List<string>();
+              List<string> list4 = new List<string>();
+              List<string> list5 = new List<string>();
+              List<string> list6 = new List<string>();
+              List<string> list7 = new List<string>();
+              List<string> list8 = new List<string>();
+              List<string> list9 = new List<string>();
+              //list.Add(@"afbeeldingen\stoel.jpg");//0
+              *//*
+             1 tafel |¯¯|
+             2 stoel 🦽 
+             3 lamp 💡
+             4 kast 🗄
+             5 plant 🌲
+             6 apparaten 🖥
+             7 deur 🚪
+             8 raam ⬜
+             9 tapijt 🔴
+              *//*
+              list1.Add("🦼");
+              list1.Add("naam");//1
+              list1.Add("5,8");//2
+              list1.Add("10,6");//3
+              list1.Add("8,9");//4
+              list1.Add("stoel");//5
+              list1.Add("categorie");//6
+              list1.Add("2,5");
+              nepDatabase.Add(0, list1);
+              list2.Add("|¯¯|");
+              list2.Add("naam");//1
+              list2.Add("5,8");//2
+              list2.Add("10,6");//3
+              list2.Add("8,9");//4
+              list2.Add("tafel");//5
+              list2.Add("categorie");//6
+              list2.Add("2,5");
+              nepDatabase.Add(1, list2);
+              list3.Add("💡");
+              list3.Add("naam");//1
+              list3.Add("5,8");//2
+              list3.Add("10,6");//3
+              list3.Add("8,9");//4
+              list3.Add("lamp");//5
+              list3.Add("categorie");//6
+              list3.Add("2,5");
+              nepDatabase.Add(2, list3);
+              list4.Add("🗄");
+              list4.Add("naam");//1
+              list4.Add("5,8");//2
+              list4.Add("10,6");//3
+              list4.Add("8,9");//4
+              list4.Add("kast");//5
+              list4.Add("categorie");//6
+              list4.Add("2,5");
+              nepDatabase.Add(3, list4);
+              list5.Add("🌲");
+              list5.Add("naam");//1
+              list5.Add("5,8");//2
+              list5.Add("10,6");//3
+              list5.Add("8,9");//4
+              list5.Add("plant");//5
+              list5.Add("categorie");//6
+              list5.Add("2,5");
+              nepDatabase.Add(4, list5);
+              list6.Add("🖥");
+              list6.Add("naam");//1
+              list6.Add("5,8");//2
+              list6.Add("10,6");//3
+              list6.Add("8,9");//4
+              list6.Add("apparaten");//5
+              list6.Add("categorie");//6
+              list6.Add("2,5");
+              nepDatabase.Add(5, list6);
+              list7.Add("🚪");
+              list7.Add("naam");//1
+              list7.Add("5,8");//2
+              list7.Add("10,6");//3
+              list7.Add("8,9");//4
+              list7.Add("deur");//5
+              list7.Add("categorie");//6
+              list7.Add("2,5");
+              nepDatabase.Add(6, list7);
+              list8.Add("⬜");
+              list8.Add("naam");//1
+              list8.Add("5,8");//2
+              list8.Add("10,6");//3
+              list8.Add("8,9");//4
+              list8.Add("raam");//5
+              list8.Add("categorie");//6
+              list8.Add("2,5");
+              nepDatabase.Add(7, list8);
+              list9.Add("🔴");
+              list9.Add("naam");//1
+              list9.Add("5,8");//2
+              list9.Add("10,6");//3
+              list9.Add("8,9");//4
+              list9.Add("tapijt");//5
+              list9.Add("categorie");//6
+              list9.Add("2,5");
+              nepDatabase.Add(8, list9);
+          }*/
         #endregion
         #region TestSql 
 
@@ -162,7 +162,7 @@ namespace KantoorInrichtingWPF.Data
          }
          Console.ReadLine();*/
         #endregion
-        public static Dictionary<int,List<string>> GetDatabase() 
+        public static Dictionary<int, List<string>> GetDatabase()
         {
             Dictionary<int, List<string>> output = new Dictionary<int, List<string>>();
             int count = 0;
@@ -260,7 +260,7 @@ namespace KantoorInrichtingWPF.Data
             }
             return image;
         }
-        public static void DeleteFromDatabase(string naam) 
+        public static void DeleteFromDatabase(string naam)
         {
             #region test sql
             try
@@ -279,8 +279,8 @@ namespace KantoorInrichtingWPF.Data
                     Console.WriteLine("\nQuery data example:");
                     Console.WriteLine("=========================================\n");
 
-                   
-                     //command.CommandText = $"DELETE FROM Inventaris WHERE naam ="+ $"'{naam}'";
+
+                    //command.CommandText = $"DELETE FROM Inventaris WHERE naam ="+ $"'{naam}'";
                     //SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
                     //nameParam.Value = naam;
                     //command.Parameters.Add(nameParam);
@@ -294,12 +294,12 @@ namespace KantoorInrichtingWPF.Data
             }
             Console.ReadLine();
             #endregion
-          
+
         }
-       public static void ToevoegenAanDatabase(string naam, string prijs,string lengte, string breedte,string categorie, string tag, string image, string hoogte) 
+        public static void ToevoegenAanDatabase(string naam, string prijs, string lengte, string breedte, string categorie, string tag, string image, string hoogte)
         {
-            
-           
+
+
             #region test sql
             try
             {
@@ -308,7 +308,7 @@ namespace KantoorInrichtingWPF.Data
                 builder.UserID = "sa";
                 builder.Password = "Kantoorinrichting!";
                 builder.InitialCatalog = "Inventaris";
-                
+
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
                     connection.Open();
@@ -322,7 +322,7 @@ namespace KantoorInrichtingWPF.Data
                     //{image}, {naam}, {prijs}, {lengte}, {breedte}, {tag}, {categorie}, {hoogte}
                     command.CommandText = $"INSERT INTO Inventaris VALUES (@img, @name, @prijs, @lengte, @breedte, @tag, @categorie, @hoogte) ";
 
-                    SqlParameter imgParam = new SqlParameter("@img", System.Data.SqlDbType.Text,100);
+                    SqlParameter imgParam = new SqlParameter("@img", System.Data.SqlDbType.Text, 100);
                     SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
                     SqlParameter prijsParam = new SqlParameter("@prijs", System.Data.SqlDbType.Text, 100);
                     SqlParameter lengteParam = new SqlParameter("@lengte", System.Data.SqlDbType.Text, 100);
@@ -351,7 +351,7 @@ namespace KantoorInrichtingWPF.Data
 
                     command.Prepare();
                     command.ExecuteNonQuery();
-                   
+
                 }
             }
             catch (SqlException e)
@@ -360,16 +360,16 @@ namespace KantoorInrichtingWPF.Data
             }
             Console.ReadLine();
             #endregion
-           
+
 
         }
-        public static Dictionary<int, List<string>> ZoekenDatabase(string zoekbalk) 
+        public static Dictionary<int, List<string>> ZoekenDatabase(string zoekbalk)
         {
 
             Dictionary<int, List<string>> outputQurrey = new Dictionary<int, List<string>>();
             int count = 0;
-        
-           
+
+
             #region test sql
             try
             {
@@ -415,14 +415,14 @@ namespace KantoorInrichtingWPF.Data
                         }
                     }
                     //String sql = "SELECT * FROM Inventaris WHERE naam LIKE '*@name*' ";
-                  /*  connection.Open();
-                  SqlCommand command = new SqlCommand(null, connection);
-                  command.CommandText = "SELECT * FROM Inventaris WHERE naam LIKE '*@name*' ";
-                    SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
-                    nameParam.Value = zoekbalk;
-                    command.Parameters.Add(nameParam);
-                    command.Prepare();
-                    command.ExecuteNonQuery();*/
+                    /*  connection.Open();
+                    SqlCommand command = new SqlCommand(null, connection);
+                    command.CommandText = "SELECT * FROM Inventaris WHERE naam LIKE '*@name*' ";
+                      SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
+                      nameParam.Value = zoekbalk;
+                      command.Parameters.Add(nameParam);
+                      command.Prepare();
+                      command.ExecuteNonQuery();*/
                 }
             }
             catch (SqlException e)
@@ -436,7 +436,7 @@ namespace KantoorInrichtingWPF.Data
                 item.Value[0] = GetImage(item.Value[5]);
             }
             return outputQurrey;
-           
+
 
 
         }
@@ -463,7 +463,7 @@ namespace KantoorInrichtingWPF.Data
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         connection.Open();
-                        
+
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -484,7 +484,7 @@ namespace KantoorInrichtingWPF.Data
                             }
                         }
                     }
-                    
+
                 }
             }
             catch (SqlException e)

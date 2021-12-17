@@ -76,3 +76,5 @@ C:\Users\muiss\OneDrive\Documenten\GitHub\Kantoor\KantoorInrichting\KantoorInric
 C:\Users\muiss\OneDrive\Documenten\GitHub\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.dll
 C:\Users\muiss\OneDrive\Documenten\GitHub\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.pdb
 C:\Users\muiss\OneDrive\Documenten\GitHub\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.genruntimeconfig.cache
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\LadenPlattegrond.g.cs
+C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\LadenPlattegrond.baml
