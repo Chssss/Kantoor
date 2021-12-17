@@ -199,6 +199,8 @@ namespace KantoorInrichtingWPF.Data
                                 listVaule.Add(reader.GetString(5));
                                 listVaule.Add(reader.GetString(6));
                                 listVaule.Add(reader.GetString(7));
+                                listVaule.Add(reader.GetString(8));
+                                listVaule.Add(reader.GetString(9));
                                 output.Add(count, listVaule);
                                 count++;
                             }
@@ -214,7 +216,7 @@ namespace KantoorInrichtingWPF.Data
             #endregion
             foreach (var item in output)
             {
-                item.Value[0] = GetImage(item.Value[5]);
+                item.Value[2] = GetImage(item.Value[7]);
             }
             return output;
             //return nepDatabase;
@@ -271,7 +273,7 @@ namespace KantoorInrichtingWPF.Data
                 builder.Password = "Kantoorinrichting!";
                 builder.InitialCatalog = "Inventaris";
 
-                String sql = $"DELETE FROM Inventaris WHERE naam =" + $"'{naam}'";
+                String sql = $"DELETE FROM Inventaris WHERE productcode ="+ $"'{naam}'";
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
                     connection.Open();
@@ -280,8 +282,8 @@ namespace KantoorInrichtingWPF.Data
                     Console.WriteLine("=========================================\n");
 
                    
-                     //command.CommandText = $"DELETE FROM Inventaris WHERE naam ="+ $"'{naam}'";
-                    //SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
+                     //command.CommandText = $"DELETE FROM Inventaris WHERE productcode =@productcode";
+                    //SqlParameter nameParam = new SqlParameter("@productcode", System.Data.SqlDbType.Text, 100);
                     //nameParam.Value = naam;
                     //command.Parameters.Add(nameParam);
                     //command.Prepare();
@@ -296,10 +298,10 @@ namespace KantoorInrichtingWPF.Data
             #endregion
           
         }
-       public static void ToevoegenAanDatabase(string naam, string prijs,string lengte, string breedte,string categorie, string tag, string image, string hoogte) 
+       public static void ToevoegenAanDatabase(string naam, string prijs,string lengte, string breedte,string categorie, string tag, string image, string hoogte, string leverancier, string productCode)
         {
             
-           
+       
             #region test sql
             try
             {
@@ -320,8 +322,10 @@ namespace KantoorInrichtingWPF.Data
 
                     //SqlCommand command = new SqlCommand(sql, connection);    
                     //{image}, {naam}, {prijs}, {lengte}, {breedte}, {tag}, {categorie}, {hoogte}
-                    command.CommandText = $"INSERT INTO Inventaris VALUES (@img, @name, @prijs, @lengte, @breedte, @tag, @categorie, @hoogte) ";
+                    command.CommandText = $"INSERT INTO Inventaris VALUES (@productcode, @leverancier, @img, @name, @prijs, @lengte, @breedte, @tag, @categorie, @hoogte) ";
 
+                    SqlParameter productcodeParam = new SqlParameter("@productcode", System.Data.SqlDbType.Text, 100);
+                    SqlParameter leverancierParam = new SqlParameter("@leverancier", System.Data.SqlDbType.Text, 100);
                     SqlParameter imgParam = new SqlParameter("@img", System.Data.SqlDbType.Text,100);
                     SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
                     SqlParameter prijsParam = new SqlParameter("@prijs", System.Data.SqlDbType.Text, 100);
@@ -331,6 +335,8 @@ namespace KantoorInrichtingWPF.Data
                     SqlParameter categorieParam = new SqlParameter("@categorie", System.Data.SqlDbType.Text, 100);
                     SqlParameter hoogteParam = new SqlParameter("@hoogte", System.Data.SqlDbType.Text, 100);
 
+                    productcodeParam.Value = productCode;
+                    leverancierParam.Value = leverancier;
                     imgParam.Value = image;
                     nameParam.Value = naam;
                     prijsParam.Value = prijs;
@@ -340,6 +346,8 @@ namespace KantoorInrichtingWPF.Data
                     categorieParam.Value = categorie;
                     hoogteParam.Value = hoogte;
 
+                    command.Parameters.Add(productcodeParam);
+                    command.Parameters.Add(leverancierParam);
                     command.Parameters.Add(imgParam);
                     command.Parameters.Add(nameParam);
                     command.Parameters.Add(prijsParam);
@@ -388,12 +396,7 @@ namespace KantoorInrichtingWPF.Data
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         connection.Open();
-                        /*command.CommandText="SELECT * FROM Inventaris WHERE naam LIKE '*@name*' ";
-                        SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
-                        nameParam.Value = zoekbalk;
-                        command.Parameters.Add(nameParam);
-                        command.Prepare();*/
-                        //command.ExecuteNonQuery();
+                       
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -409,6 +412,8 @@ namespace KantoorInrichtingWPF.Data
                                 listVaule.Add(reader.GetString(5));
                                 listVaule.Add(reader.GetString(6));
                                 listVaule.Add(reader.GetString(7));
+                                listVaule.Add(reader.GetString(8));
+                                listVaule.Add(reader.GetString(9));
                                 outputQurrey.Add(count, listVaule);
                                 count++;
                             }
@@ -433,7 +438,7 @@ namespace KantoorInrichtingWPF.Data
             #endregion
             foreach (var item in outputQurrey)
             {
-                item.Value[0] = GetImage(item.Value[5]);
+                item.Value[2] = GetImage(item.Value[7]);
             }
             return outputQurrey;
            
@@ -459,7 +464,7 @@ namespace KantoorInrichtingWPF.Data
                     Console.WriteLine("\nQuery data example:");
                     Console.WriteLine("=========================================\n");
 
-                    String sql = "SELECT * FROM Inventaris WHERE categorie LIKE " + $"'%{zoekbalk}%'";
+                    String sql = "SELECT * FROM Inventaris WHERE categorie LIKE " + $"'%{zoekbalk}%'";//+ $"'%{zoekbalk}%'"
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         connection.Open();
@@ -479,6 +484,8 @@ namespace KantoorInrichtingWPF.Data
                                 listVaule.Add(reader.GetString(5));
                                 listVaule.Add(reader.GetString(6));
                                 listVaule.Add(reader.GetString(7));
+                                listVaule.Add(reader.GetString(8));
+                                listVaule.Add(reader.GetString(9));
                                 outputQurrey.Add(count, listVaule);
                                 count++;
                             }
@@ -495,7 +502,7 @@ namespace KantoorInrichtingWPF.Data
             #endregion
             foreach (var item in outputQurrey)
             {
-                item.Value[0] = GetImage(item.Value[5]);
+                item.Value[2] = GetImage(item.Value[7]);
             }
 
 
