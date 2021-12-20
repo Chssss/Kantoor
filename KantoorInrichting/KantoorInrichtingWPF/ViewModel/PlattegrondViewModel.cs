@@ -98,7 +98,7 @@ namespace KantoorInrichtingWPF.ViewModel
 
             }
         }
-        public string Platterondcode
+        public string Plattegrondcode
         {
             get
             {
@@ -154,7 +154,7 @@ namespace KantoorInrichtingWPF.ViewModel
             
            MessageBox.Show("Plattegrond is toegevoegd");
         }
-        void VerwijderenMeubelExecute()
+        void VerwijderenPlattegrondExecute()
         {
             MessageBox.Show("Item is verwijdert, druk op refresh om de lijst te updaten");
         }
@@ -168,14 +168,14 @@ namespace KantoorInrichtingWPF.ViewModel
 
 
         }
-        bool CanUpdateCatalogusExecute()
+        bool CanUpdatePlattegrondenLijstExecute()
         {
             return true;
         }
-        public ICommand UpdatePlattegrondenLijst { get { return new RelayCommand(UpdatePlattegrondenLijstExecute, CanUpdateCatalogusExecute); } }
+        public ICommand UpdatePlattegrondenLijst { get { return new RelayCommand(UpdatePlattegrondenLijstExecute, CanUpdatePlattegrondenLijstExecute); } }
 
-        public ICommand ZoekenProjectNaam { get { return new RelayCommand(ZoekenProjectNaamExecute, CanUpdateCatalogusExecute); } }
-        public ICommand ZoekenPlattegrondNaam { get { return new RelayCommand(ZoekenPlattegrondNaamExecute, CanUpdateCatalogusExecute); } }
-        public ICommand ToevoegenPlattegrond { get { return new RelayCommand(ToevoegenPlattegrondExecute, CanUpdateCatalogusExecute); } }
+        public ICommand ZoekenProjectNaam { get { return new RelayCommand(ZoekenProjectNaamExecute, CanUpdatePlattegrondenLijstExecute); } }
+        public ICommand ZoekenPlattegrondNaam { get { return new RelayCommand(ZoekenPlattegrondNaamExecute, CanUpdatePlattegrondenLijstExecute); } }
+        public ICommand ToevoegenPlattegrond { get { return new RelayCommand(ToevoegenPlattegrondExecute, CanUpdatePlattegrondenLijstExecute); } }
     }
 }

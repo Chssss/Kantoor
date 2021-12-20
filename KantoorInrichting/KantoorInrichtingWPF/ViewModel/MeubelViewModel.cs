@@ -75,7 +75,7 @@ namespace KantoorInrichtingWPF.ViewModel
                 _categorieen= value;
             }
         }
-        public List<string> Leverancieren
+        public List<string> Leveranciers
         {
             get
             {

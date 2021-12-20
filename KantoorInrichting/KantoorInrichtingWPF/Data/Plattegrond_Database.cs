@@ -116,7 +116,7 @@ namespace KantoorInrichtingWPF.Data
             return output;
             //return nepDatabase;
         }
-        public static void DeleteFromDatabase(string naam)
+        public static void DeleteFromDatabase(string plattegrondcode)
         {
             #region test sql
             try
@@ -127,7 +127,7 @@ namespace KantoorInrichtingWPF.Data
                 builder.Password = "Kantoorinrichting!";
                 builder.InitialCatalog = "";
 
-                String sql = $"DELETE FROM  WHERE plattegrondcode =" + $"'{naam}'";
+                String sql = $"DELETE FROM  WHERE plattegrondcode =" + $"'{plattegrondcode}'";
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
                     connection.Open();

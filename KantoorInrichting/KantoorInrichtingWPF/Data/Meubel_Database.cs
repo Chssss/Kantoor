@@ -10,10 +10,7 @@ namespace KantoorInrichtingWPF.Data
     {
        
 
-        public Meubel_Database() 
-        {
-           
-        }
+       
         #region nepDatabase
 
       /*  public static void FillDatabase()
@@ -260,7 +257,7 @@ namespace KantoorInrichtingWPF.Data
             }
             return image;
         }
-        public static void DeleteFromDatabase(string naam) 
+        public static void DeleteFromDatabase(string productcode) 
         {
             #region test sql
             try
@@ -271,7 +268,7 @@ namespace KantoorInrichtingWPF.Data
                 builder.Password = "Kantoorinrichting!";
                 builder.InitialCatalog = "Inventaris";
 
-                String sql = $"DELETE FROM Inventaris WHERE productcode ="+ $"'{naam}'";
+                String sql = $"DELETE FROM Inventaris WHERE productcode ="+ $"'{productcode}'";
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
                     connection.Open();
