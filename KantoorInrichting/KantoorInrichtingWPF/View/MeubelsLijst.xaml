@@ -25,6 +25,7 @@
         <Button Content="Zoeken categorie" HorizontalAlignment="Left" Margin="136,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.464,0.663" Click="OnButton_ZoekenCategorie_Click" Height="20" Width="110" Command="{Binding ZoekCategorieInCatalogus, Mode=OneWay}"/>
         <TextBox x:Name="TBVerwijderMeubel" Grid.Column="1" HorizontalAlignment="Left" Margin="23,60,0,0" Text="{Binding Verwijderbalk}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button Content="Verwijder" Grid.Column="1" HorizontalAlignment="Left" Margin="151,60,0,0" VerticalAlignment="Top" Click="OnButton_VerwijderMeubel_Click" Command="{Binding VerwijderMeubel, Mode=OneWay}"/>
+        <Label Content="Type productcode in" HorizontalAlignment="Left" Margin="291,56,0,0" VerticalAlignment="Top" Width="119" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

@@ -221,6 +221,7 @@ namespace KantoorInrichtingWPF
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
+                
             }
 
         }
@@ -255,7 +256,14 @@ namespace KantoorInrichtingWPF
 
         private void OnMenuItem_opslaanAls_Click(object sender, RoutedEventArgs e)
         {
+            OpslaanPlattegrond opslaanPlattegrond = new OpslaanPlattegrond();
+            opslaanPlattegrond.Show();
+            opslaanPlattegrond.ButtonOpslaan.Click += OnButtonOpslaan_Click;
+        }
 
+        private void OnButtonOpslaan_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
 
         private void OnMenuItem_export_Click(object sender, RoutedEventArgs e)

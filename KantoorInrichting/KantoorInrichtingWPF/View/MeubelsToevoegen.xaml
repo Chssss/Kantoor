@@ -36,7 +36,7 @@
         <TextBox x:Name="TBHoogte" HorizontalAlignment="Left" Margin="100,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Hoogte}"/>
         <ComboBox x:Name="CBCategorie" HorizontalAlignment="Left" Margin="102,85,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Categorieen}" SelectedValue="{Binding Categorie}"/>
         <Label Content="Leverancier" HorizontalAlignment="Left" Margin="247,49,0,0" VerticalAlignment="Top" Height="26" Width="76"/>
-        <ComboBox x:Name="CBLeverancier" HorizontalAlignment="Left" Margin="247,85,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Leverancieren, ValidatesOnNotifyDataErrors=True}" SelectedValue="{Binding Leverancier}"/>
+        <ComboBox x:Name="CBLeverancier" HorizontalAlignment="Left" Margin="247,85,0,0" VerticalAlignment="Top" Width="120" SelectedValue="{Binding Leverancier}" ItemsSource="{Binding Leveranciers}"/>
 
     </Grid>
 </Window>
