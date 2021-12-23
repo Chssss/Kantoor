@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<meubels>
+	<meubel>
+		<productcode>I12346</productcode>
+		<leverancier>Ikea</leverancier>
+		<img>plaatje</img>
+		<naam>RodeStoel</naam>
+		<prijs>150</prijs>
+		<lengte>0,5</lengte>
+		<breedte>0,5</breedte>
+		<tag>Stoel</tag>
+		<categorie>Keuken</categorie>
+		<hoogte>1,2</hoogte>
+	</meubel>
+	<meubel>
+		<productcode>I12348</productcode>
+		<leverancier>Ikea</leverancier>
+		<img>plaatje</img>
+		<naam>GroeneStoel</naam>
+		<prijs>140</prijs>
+		<lengte>0,7</lengte>
+		<breedte>0,5</breedte>
+		<tag>Stoel</tag>
+		<categorie>Woonkamer</categorie>
+		<hoogte>1,5</hoogte>
+	</meubel>
+
+</meubels>
