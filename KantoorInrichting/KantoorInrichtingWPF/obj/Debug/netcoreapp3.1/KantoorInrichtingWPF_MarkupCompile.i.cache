@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Jelle\Documents\GitHub\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\
 KantoorInrichtingWPF
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\Jelle\Documents\GitHub\Kantoor\KantoorInrichting\KantoorInrichtingWPF\App.xaml
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\App.xaml
 5-1407604892
 
 161544925462
-194-1703168632
+192-1533232326
 MainWindow.xaml;View\MeubelsLijst.xaml;View\MeubelsToevoegen.xaml;View\NieuwePlattegrond.xaml;View\XmlImporteren.xaml;
 
-True
+False
 
