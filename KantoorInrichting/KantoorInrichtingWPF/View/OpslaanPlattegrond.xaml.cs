@@ -17,6 +17,7 @@ namespace KantoorInrichtingWPF.View
     /// </summary>
     public partial class OpslaanPlattegrond : Window
     {
+        
         public OpslaanPlattegrond()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace KantoorInrichtingWPF.View
 
         private void OnOpslaanButton_Click(object sender, RoutedEventArgs e)
         {
+           
             this.Close();
         }
     }

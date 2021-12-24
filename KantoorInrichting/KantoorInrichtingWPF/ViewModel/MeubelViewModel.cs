@@ -418,6 +418,7 @@ namespace KantoorInrichtingWPF.ViewModel
             Meubel_Database.ToevoegenAanDatabase(Naam, Prijs, Lengte, Breedte, Categorie, Tag, Image, Hoogte,Leverancier,Productcode);
             MessageBox.Show("Item is toegevoegd, druk op refresh om de lijst te updaten");
         }
+       
         void UpdateCatalogusExecute() 
         {
             var outputQuerry = Meubel_Database.GetDatabase();

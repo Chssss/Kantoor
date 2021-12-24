@@ -25,6 +25,8 @@ namespace KantoorInrichtingWPF.ViewModel
         private string _canvasImageTag;
         private string _XCoord;
         private string _YCoord;
+        private string _testString;
+        private int _canvasItemCount;
 
         public event PropertyChangedEventHandler PropertyChanged;
         
@@ -33,6 +35,18 @@ namespace KantoorInrichtingWPF.ViewModel
             UpdatePlattegrondenLijstExecute();
         }
         #region prop
+        public string TestString
+        {
+            get
+            {
+                return _testString;
+            }
+            set
+            {
+                _testString = value;
+                OnPropertyChangedEvent("Test");
+            }
+        }
         public List<Plattegrond> PlattegrondLijst
         {
             get
@@ -117,18 +131,7 @@ namespace KantoorInrichtingWPF.ViewModel
 
             }
         }
-        public string CanvasItemcode
-        {
-            get
-            {
-                return _CanvasItemcode;
-            }
-            set
-            {
-                _CanvasItemcode = value;
-
-            }
-        }
+        
         public string Datum
         {
             get
@@ -138,6 +141,19 @@ namespace KantoorInrichtingWPF.ViewModel
             set
             {
                 _datum = value;
+
+            }
+        }
+        #region canvas item
+        public string CanvasItemcode
+        {
+            get
+            {
+                return _CanvasItemcode;
+            }
+            set
+            {
+                _CanvasItemcode = value;
 
             }
         }
@@ -177,6 +193,18 @@ namespace KantoorInrichtingWPF.ViewModel
 
             }
         }
+        public int CanvasItemCount
+        {
+            get
+            {
+                return _canvasItemCount;
+            }
+            set
+            {
+                _canvasItemCount = value;
+
+            }
+        }
         public string XCoord
         {
             get
@@ -202,6 +230,7 @@ namespace KantoorInrichtingWPF.ViewModel
             }
         }
         #endregion
+        #endregion
         private void OnPropertyChangedEvent(string propertyName)
         {
 
@@ -210,9 +239,9 @@ namespace KantoorInrichtingWPF.ViewModel
         }
         void UpdatePlattegrondenLijstExecute()
         {
-            //Dictionary<int, List<string>> outputQuerry= Plattegrond_Database.GetPlattegrondDataDatabase();
+            Dictionary<int, List<string>> outputQuerry= Plattegrond_Database.GetPlattegrondDataDatabase();
 
-            Dictionary<int, List<string>> outputQuerry = new Dictionary<int, List<string>>();
+            /*Dictionary<int, List<string>> outputQuerry = new Dictionary<int, List<string>>();
             List<string> testList = new List<string>();
             testList.Add("testprojectnaam");
             testList.Add("testplattegrondnaam");
@@ -221,7 +250,7 @@ namespace KantoorInrichtingWPF.ViewModel
             testList.Add("testlengte");
             testList.Add("testbreedte");
             testList.Add("testhoogte");
-            outputQuerry.Add(0,testList);
+            outputQuerry.Add(0, testList);*/
 
             List<Plattegrond> ListPlattegrond = new List<Plattegrond>();
             foreach (var item in outputQuerry)
@@ -233,7 +262,27 @@ namespace KantoorInrichtingWPF.ViewModel
                 var lengte = item.Value[4];
                 var breedte = item.Value[5];
                 var hoogte= item.Value[6];
-                var MeubelsOpCanvas = Plattegrond_Database.GetPlattegrondCanvasDataDatabase(Plattegrondcode);
+                var MeubelsOpCanvas = Plattegrond_Database.GetPlattegrondCanvasDataDatabase(plattegrondcode);
+
+               /* var MeubelsOpCanvas = new Dictionary<int, List<string>>();
+                List<string> list1 = new List<string>();
+                list1.Add("code");//canvasItemcode
+                list1.Add(plattegrondcode);//plattegrondcode
+                list1.Add("tafel");//image type(type image)
+                list1.Add("tafel");//image name(naam meubel)
+                list1.Add("2,6");//image tag(prijs)
+                list1.Add("200,0");//x coord
+                list1.Add("20,0");//y coord
+                List<string> list2 = new List<string>();
+                list2.Add("code");//canvasItemcode
+                list2.Add(plattegrondcode);//plattegrondcode
+                list2.Add("stoel");//image type(type image)
+                list2.Add("stoel");//image name(naam meubel)
+                list2.Add("1,7");//image tag(prijs)
+                list2.Add("200,0");//x coord
+                list2.Add("50,0");//y coord
+                MeubelsOpCanvas.Add(0, list1);
+                MeubelsOpCanvas.Add(1, list2);*/
                 Plattegrond plattegrond = new Plattegrond(projectnaam, plattegrondnaam, datum, plattegrondcode, lengte, breedte, hoogte, MeubelsOpCanvas);
 
                 ListPlattegrond.Add(plattegrond);
@@ -252,11 +301,17 @@ namespace KantoorInrichtingWPF.ViewModel
             Datum = $"{DateTime.Now}";
             Plattegrondcode = $"{PlattegrondNaam[0]}{PlattegrondNaam[1]}{PlattegrondLijst.Count}";
             Plattegrond_Database.ToevoegenAanDatabase(ProjectNaam,PlattegrondNaam,Datum,Plattegrondcode,Lengte,Breedte,Hoogte);//CanvasItemcode,CanvasImageType,CanvasImageName,CanvasImageTag,XCoord,YCoord
+            
             MessageBox.Show("Plattegrond is toegevoegd");
         }
-        void VerwijderenPlattegrondExecute()
+        public void ToevoegenCanvasItems()
         {
-            Plattegrond_Database.DeleteFromDatabase(Plattegrondcode);
+            
+            Plattegrond_Database.ToevoegenCanvasDataAanDatabase(Plattegrondcode, CanvasItemcode, CanvasImageType, CanvasImageName, CanvasImageTag, XCoord, YCoord);
+        }
+       public void VerwijderenPlattegrond(string plattegrondcode)
+        {
+            Plattegrond_Database.DeletePlategrondFromDatabase(plattegrondcode);
             MessageBox.Show("Item is verwijdert, druk op refresh om de lijst te updaten");
         }
         void ZoekenProjectNaamExecute()

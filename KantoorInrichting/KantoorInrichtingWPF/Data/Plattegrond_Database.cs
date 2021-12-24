@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
+using System.Windows;
 
 namespace KantoorInrichtingWPF.Data
 {
@@ -19,14 +20,14 @@ namespace KantoorInrichtingWPF.Data
                 builder.DataSource = "127.0.0.1, 1433";
                 builder.UserID = "sa";
                 builder.Password = "Kantoorinrichting!";
-                builder.InitialCatalog = "";
+                builder.InitialCatalog = "Inventaris";
 
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
                     Console.WriteLine("\nQuery data example:");
                     Console.WriteLine("=========================================\n");
 
-                    String sql = "SELECT * FROM  ";
+                    String sql = "SELECT * FROM plattegrond ";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
@@ -80,14 +81,14 @@ namespace KantoorInrichtingWPF.Data
                 builder.DataSource = "127.0.0.1, 1433";
                 builder.UserID = "sa";
                 builder.Password = "Kantoorinrichting!";
-                builder.InitialCatalog = "";
+                builder.InitialCatalog = "Inventaris";
 
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
                     Console.WriteLine("\nQuery data example:");
                     Console.WriteLine("=========================================\n");
 
-                    String sql = "SELECT * FROM  WHERE plattegrondcode =" + $"'{plattegrondcode}'";
+                    String sql = "SELECT * FROM canvasItem WHERE plattegrondcode =" + $"'{plattegrondcode}'";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
@@ -122,7 +123,7 @@ namespace KantoorInrichtingWPF.Data
             return outputCanvasSQL;
             //return nepDatabase;
         }
-        public static void DeleteFromDatabase(string plattegrondcode)
+        public static void DeletePlategrondFromDatabase(string plattegrondcode)
         {
             #region delete plattegrondData sql
             try
@@ -131,9 +132,9 @@ namespace KantoorInrichtingWPF.Data
                 builder.DataSource = "127.0.0.1, 1433";
                 builder.UserID = "sa";
                 builder.Password = "Kantoorinrichting!";
-                builder.InitialCatalog = "";
+                builder.InitialCatalog = "Inventaris";
 
-                String sql = $"DELETE FROM  WHERE plattegrondcode =" + $"'{plattegrondcode}'";
+                String sql = $"DELETE FROM plattegrond WHERE plattegrondcode = " + $"'{plattegrondcode}'";
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
                     connection.Open();
@@ -159,9 +160,9 @@ namespace KantoorInrichtingWPF.Data
                 builder.DataSource = "127.0.0.1, 1433";
                 builder.UserID = "sa";
                 builder.Password = "Kantoorinrichting!";
-                builder.InitialCatalog = "";
+                builder.InitialCatalog = "Inventaris";
 
-                String sql = $"DELETE FROM  WHERE plattegrondcode =" + $"'{plattegrondcode}'";
+                String sql = $"DELETE FROM canvasItem WHERE plattegrondcode = " + $"'{plattegrondcode}'";
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
                     connection.Open();
@@ -183,7 +184,35 @@ namespace KantoorInrichtingWPF.Data
         }
         public static void ToevoegenAanDatabase(string projectNaam, string plattegrondNaam,string datum, string plattegrondcode,string lengte,string breedte, string hoogte)
         {
-          
+            #region toevoegen plattegrond
+            /*try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "127.0.0.1, 1433";
+                builder.UserID = "sa";
+                builder.Password = "Kantoorinrichting!";
+                builder.InitialCatalog = "Inventaris";
+
+                String sql = $"INSERT INTO plattegrond VALUES ({projectNaam}, {plattegrondNaam}, {datum}, {plattegrondcode}, {lengte}, {breedte}, {hoogte} )";
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    Console.WriteLine("\nQuery data example:");
+                    Console.WriteLine("=========================================\n");
+
+
+
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Console.ReadLine();*/
+            #endregion
+
             #region toevoegen plattegrondData sql
             try
             {
@@ -191,7 +220,7 @@ namespace KantoorInrichtingWPF.Data
                 builder.DataSource = "127.0.0.1, 1433";
                 builder.UserID = "sa";
                 builder.Password = "Kantoorinrichting!";
-                builder.InitialCatalog = "";
+                builder.InitialCatalog = "Inventaris";
 
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
@@ -200,42 +229,36 @@ namespace KantoorInrichtingWPF.Data
                     Console.WriteLine("\nQuery data example:");
                     Console.WriteLine("=========================================\n");
 
-                   
-                    command.CommandText = $"INSERT INTO  VALUES () ";
-/*
-                    SqlParameter productcodeParam = new SqlParameter("@productcode", System.Data.SqlDbType.Text, 100);
-                    SqlParameter leverancierParam = new SqlParameter("@leverancier", System.Data.SqlDbType.Text, 100);
-                    SqlParameter imgParam = new SqlParameter("@img", System.Data.SqlDbType.Text, 100);
-                    SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
-                    SqlParameter prijsParam = new SqlParameter("@prijs", System.Data.SqlDbType.Text, 100);
+
+                    command.CommandText = $"INSERT INTO plattegrond VALUES (@projectnaam, @plattegrondnaam, @datum, @plattegrondcode, @lengte, @breedte, @hoogte ) ";
+
+                    SqlParameter projectNaamParam = new SqlParameter("@projectnaam", System.Data.SqlDbType.Text, 100);
+                    SqlParameter plattegrondNaamParam = new SqlParameter("@plattegrondnaam", System.Data.SqlDbType.Text, 100);
+                    SqlParameter datumParam = new SqlParameter("@datum", System.Data.SqlDbType.Text, 100);
+                    SqlParameter plattegrondcodeParam = new SqlParameter("@plattegrondcode", System.Data.SqlDbType.Text, 100);
+
                     SqlParameter lengteParam = new SqlParameter("@lengte", System.Data.SqlDbType.Text, 100);
                     SqlParameter breedteParam = new SqlParameter("@breedte", System.Data.SqlDbType.Text, 100);
-                    SqlParameter tagParam = new SqlParameter("@tag", System.Data.SqlDbType.Text, 100);
-                    SqlParameter categorieParam = new SqlParameter("@categorie", System.Data.SqlDbType.Text, 100);
                     SqlParameter hoogteParam = new SqlParameter("@hoogte", System.Data.SqlDbType.Text, 100);
 
-                    productcodeParam.Value = productCode;
-                    leverancierParam.Value = leverancier;
-                    imgParam.Value = image;
-                    nameParam.Value = naam;
-                    prijsParam.Value = prijs;
+                    projectNaamParam.Value = projectNaam;
+                    plattegrondNaamParam.Value = plattegrondNaam;
+                    datumParam.Value = datum;
+                    plattegrondcodeParam.Value = plattegrondcode;
                     lengteParam.Value = lengte;
                     breedteParam.Value = breedte;
-                    tagParam.Value = tag;
-                    categorieParam.Value = categorie;
                     hoogteParam.Value = hoogte;
 
-                    command.Parameters.Add(productcodeParam);
-                    command.Parameters.Add(leverancierParam);
-                    command.Parameters.Add(imgParam);
-                    command.Parameters.Add(nameParam);
-                    command.Parameters.Add(prijsParam);
+                    command.Parameters.Add(projectNaamParam);
+                    command.Parameters.Add(plattegrondNaamParam);
+                    command.Parameters.Add(datumParam);
+                    command.Parameters.Add(plattegrondcodeParam);
+
                     command.Parameters.Add(lengteParam);
                     command.Parameters.Add(breedteParam);
-                    command.Parameters.Add(tagParam);
-                    command.Parameters.Add(categorieParam);
+
                     command.Parameters.Add(hoogteParam);
-*/
+
                     command.Prepare();
                     command.ExecuteNonQuery();
 
@@ -243,14 +266,43 @@ namespace KantoorInrichtingWPF.Data
             }
             catch (SqlException e)
             {
+                MessageBox.Show("ToevoegenAanDatabase " + e.ToString());
                 Console.WriteLine(e.ToString());
             }
             Console.ReadLine();
             #endregion
-          
+
         }
-        public static void ToevoegenCanvasDataAanDatabase(string plattegrondcode, string canvasItemcode, string image_type_typeImage, string image_name_naamMeubel, string image_tag_prijs, string x_coord, string y_coord)
+        public static void ToevoegenCanvasDataAanDatabase(string plattegrondcode, string canvasItemcode, string image_name_typeImage, string image_tag_naamMeubel, string image_tag_prijs, string x_coord, string y_coord)
         {
+            #region toevoegen canvasData
+            /* try
+             {
+                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                 builder.DataSource = "127.0.0.1, 1433";
+                 builder.UserID = "sa";
+                 builder.Password = "Kantoorinrichting!";
+                 builder.InitialCatalog = "Inventaris";
+
+                 String sql = $"INSERT INTO canvasItem VALUES ({plattegrondcode}, {canvasItemcode}, {image_name_typeImage}, {image_tag_naamMeubel}, {image_tag_prijs}, {x_coord}, {y_coord}) ";
+                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                 {
+                     connection.Open();
+                     SqlCommand command = new SqlCommand(sql, connection);
+                     Console.WriteLine("\nQuery data example:");
+                     Console.WriteLine("=========================================\n");
+
+
+
+                     command.ExecuteNonQuery();
+                 }
+             }
+             catch (SqlException e)
+             {
+                 Console.WriteLine(e.ToString());
+             }
+             Console.ReadLine();*/
+            #endregion
             #region toevoegen canvasData sql
             try
             {
@@ -258,7 +310,7 @@ namespace KantoorInrichtingWPF.Data
                 builder.DataSource = "127.0.0.1, 1433";
                 builder.UserID = "sa";
                 builder.Password = "Kantoorinrichting!";
-                builder.InitialCatalog = "";
+                builder.InitialCatalog = "Inventaris";
 
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
@@ -268,41 +320,36 @@ namespace KantoorInrichtingWPF.Data
                     Console.WriteLine("=========================================\n");
 
 
-                    command.CommandText = $"INSERT INTO  VALUES () ";
-                    /*
-                                        SqlParameter productcodeParam = new SqlParameter("@productcode", System.Data.SqlDbType.Text, 100);
-                                        SqlParameter leverancierParam = new SqlParameter("@leverancier", System.Data.SqlDbType.Text, 100);
-                                        SqlParameter imgParam = new SqlParameter("@img", System.Data.SqlDbType.Text, 100);
-                                        SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
-                                        SqlParameter prijsParam = new SqlParameter("@prijs", System.Data.SqlDbType.Text, 100);
-                                        SqlParameter lengteParam = new SqlParameter("@lengte", System.Data.SqlDbType.Text, 100);
-                                        SqlParameter breedteParam = new SqlParameter("@breedte", System.Data.SqlDbType.Text, 100);
-                                        SqlParameter tagParam = new SqlParameter("@tag", System.Data.SqlDbType.Text, 100);
-                                        SqlParameter categorieParam = new SqlParameter("@categorie", System.Data.SqlDbType.Text, 100);
-                                        SqlParameter hoogteParam = new SqlParameter("@hoogte", System.Data.SqlDbType.Text, 100);
+                    command.CommandText = $"INSERT INTO canvasItem VALUES (@plattegrondcode, @canvasItemcode, @imageNameTypeImage, @imageTagNaamMeubel, @imageTagPrijs, @xcoord, @ycoord) ";
 
-                                        productcodeParam.Value = productCode;
-                                        leverancierParam.Value = leverancier;
-                                        imgParam.Value = image;
-                                        nameParam.Value = naam;
-                                        prijsParam.Value = prijs;
-                                        lengteParam.Value = lengte;
-                                        breedteParam.Value = breedte;
-                                        tagParam.Value = tag;
-                                        categorieParam.Value = categorie;
-                                        hoogteParam.Value = hoogte;
+                    //SqlParameter test = new SqlParameter("", System.Data.SqlDbType.Text, 100);
+                    //test.Value = ;
+                    //command.Parameters.Add(test);
 
-                                        command.Parameters.Add(productcodeParam);
-                                        command.Parameters.Add(leverancierParam);
-                                        command.Parameters.Add(imgParam);
-                                        command.Parameters.Add(nameParam);
-                                        command.Parameters.Add(prijsParam);
-                                        command.Parameters.Add(lengteParam);
-                                        command.Parameters.Add(breedteParam);
-                                        command.Parameters.Add(tagParam);
-                                        command.Parameters.Add(categorieParam);
-                                        command.Parameters.Add(hoogteParam);
-                    */
+                    SqlParameter plattegrondcodeParam = new SqlParameter("@plattegrondcode", System.Data.SqlDbType.Text, 100);
+                    SqlParameter canvasItemcodeParam = new SqlParameter("@canvasItemcode", System.Data.SqlDbType.Text, 100);
+                    SqlParameter imageNameTypeImage = new SqlParameter("@imageNameTypeImage", System.Data.SqlDbType.Text, 100);
+                    SqlParameter imageTagNaamMeubel = new SqlParameter("@imageTagNaamMeubel", System.Data.SqlDbType.Text, 100);
+                    SqlParameter imageTagPrijs = new SqlParameter("@imageTagPrijs", System.Data.SqlDbType.Text, 100);
+                    SqlParameter xcoord = new SqlParameter("@xcoord", System.Data.SqlDbType.Text, 100);
+                    SqlParameter ycoord = new SqlParameter("@ycoord", System.Data.SqlDbType.Text, 100);
+
+                    plattegrondcodeParam.Value = plattegrondcode;
+                    canvasItemcodeParam.Value = canvasItemcode;
+                    imageNameTypeImage.Value = image_name_typeImage;
+                    imageTagNaamMeubel.Value = image_tag_naamMeubel;
+                    imageTagPrijs.Value = image_tag_prijs;
+                    xcoord.Value = x_coord;
+                    ycoord.Value = y_coord;
+
+                    command.Parameters.Add(plattegrondcodeParam);
+                    command.Parameters.Add(canvasItemcodeParam);
+                    command.Parameters.Add(imageNameTypeImage);
+                    command.Parameters.Add(imageTagNaamMeubel);
+                    command.Parameters.Add(imageTagPrijs);
+                    command.Parameters.Add(xcoord);
+                    command.Parameters.Add(ycoord);
+
                     command.Prepare();
                     command.ExecuteNonQuery();
 
@@ -310,6 +357,7 @@ namespace KantoorInrichtingWPF.Data
             }
             catch (SqlException e)
             {
+                MessageBox.Show("ToevoegenCanvasDataAanDatabase " + e.ToString());
                 Console.WriteLine(e.ToString());
             }
             Console.ReadLine();

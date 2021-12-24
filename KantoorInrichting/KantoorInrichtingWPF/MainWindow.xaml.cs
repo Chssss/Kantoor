@@ -30,7 +30,16 @@ namespace KantoorInrichtingWPF
     {
         private decimal _totalprijst=(decimal)0.0;
         MeubelViewModel meubelView = new MeubelViewModel();
-    
+        PlattegrondViewModel plattegrondview = new PlattegrondViewModel();
+        OpslaanPlattegrond opslaanPlattegrond = new OpslaanPlattegrond();
+
+        public string ProjectNaam;
+        public string PlattegrondNaam;
+        public string Lengte;
+        public string Breedte;
+        public string Hoogte;
+        public string Plattegrondcode;
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -39,7 +48,188 @@ namespace KantoorInrichtingWPF
 
 
         }
-       
+       public void LadenMap( Dictionary<int, List<string>> canvasitems) 
+        {
+            foreach (var item in canvasitems)
+            {
+                double xcoord = Convert.ToDouble(item.Value[5]);
+                double ycoord = Convert.ToDouble(item.Value[6]);
+                _totalprijst = _totalprijst +Convert.ToDecimal( item.Value[4]);
+                LabelTotalPrijs.Content = $"{_totalprijst}€";
+                AddImageToGeladenMap(item.Value[2], item.Value[3], item.Value[4], xcoord, ycoord);
+            }
+        }
+        public void AddImageToGeladenMap(string typeImage, string naamMeubel, string prijs,double xcoord,double ycoord)
+        {
+
+            if (typeImage.Equals("tafel"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/tafel.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Name = "tafel";
+                image.Source = bi;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add(prijs);
+                image.Tag = list;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, ycoord);
+                Canvas.SetLeft(image, xcoord);
+
+            }
+            if (typeImage.Equals("stoel"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/stoel.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Name = "stoel";
+                image.Source = bi;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add(prijs);
+                image.Tag = list;
+                DragCavasPlattegrond.Children.Add(image);
+
+                Canvas.SetTop(image, ycoord);
+                Canvas.SetLeft(image, xcoord);
+            }
+            if (typeImage.Equals("tapijt"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/tapijt.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Name = "tapijt";
+                image.Source = bi;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add(prijs);
+                image.Tag = list;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, ycoord);
+                Canvas.SetLeft(image, xcoord);
+            }
+            if (typeImage.Equals("raam"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/raam.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Name = "raam";
+                image.Source = bi;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add(prijs);
+                image.Tag = list;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, ycoord);
+                Canvas.SetLeft(image, xcoord);
+            }
+            if (typeImage.Equals("plant"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/plant.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Name = "plant";
+                image.Source = bi;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add(prijs);
+                image.Tag = list;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, ycoord);
+                Canvas.SetLeft(image, xcoord);
+            }
+            if (typeImage.Equals("lamp"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/lamp.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Name = "lamp";
+                image.Source = bi;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add(prijs);
+                image.Tag = list;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, ycoord);
+                Canvas.SetLeft(image, xcoord);
+            }
+            if (typeImage.Equals("kast"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/kast.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Name = "kast";
+                image.Source = bi;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add(prijs);
+                image.Tag = list;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, ycoord);
+                Canvas.SetLeft(image, xcoord);
+            }
+            if (typeImage.Equals("deur"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/deur.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Name = "deur";
+                image.Source = bi;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add(prijs);
+                image.Tag = list;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, ycoord);
+                Canvas.SetLeft(image, xcoord);
+            }
+            if (typeImage.Equals("apparaten"))
+            {
+                Image image = new Image();
+                BitmapImage bi = new BitmapImage();
+                // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+                bi.BeginInit();
+                bi.UriSource = new Uri(@"/Afbeelding/apparaat.png", UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+                image.Name = "apparaten";
+                image.Source = bi;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add(prijs);
+                image.Tag = list;
+                DragCavasPlattegrond.Children.Add(image);
+                Canvas.SetTop(image, ycoord);
+                Canvas.SetLeft(image, xcoord);
+
+            }
+
+        }
+
         private void OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             //LabelTest.Content = "test";
@@ -53,7 +243,7 @@ namespace KantoorInrichtingWPF
                 _totalprijst = _totalprijst + meubelView.Catalogus[index].Prijs;
                 LabelTotalPrijs.Content = $"{_totalprijst}€";
                 
-                AddImage(meubelView.Catalogus[index].Tag,index);
+                AddImage(meubelView.Catalogus[index].Tag,index, meubelView.Catalogus[index].Naam);
 
 
             }
@@ -82,7 +272,7 @@ namespace KantoorInrichtingWPF
             }
 
         }
-        public void AddImage(string typeImage,int index)
+        public void AddImage(string typeImage,int index, string naamMeubel)
         {
 
             if (typeImage.Equals("tafel"))
@@ -95,7 +285,10 @@ namespace KantoorInrichtingWPF
                 bi.EndInit();
                 image.Name = "tafel";
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].Prijs;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add($"{meubelView.Catalogus[index].Prijs}");
+                image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -111,7 +304,10 @@ namespace KantoorInrichtingWPF
                 bi.EndInit();
                 image.Name = "stoel";
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].Prijs;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add($"{meubelView.Catalogus[index].Prijs}");
+                image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 
                 Canvas.SetTop(image, 10.0);
@@ -127,7 +323,10 @@ namespace KantoorInrichtingWPF
                 bi.EndInit();
                 image.Name = "tapijt";
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].Prijs;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add($"{meubelView.Catalogus[index].Prijs}");
+                image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -142,7 +341,10 @@ namespace KantoorInrichtingWPF
                 bi.EndInit();
                 image.Name = "raam";
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].Prijs;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add($"{meubelView.Catalogus[index].Prijs}");
+                image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -157,7 +359,10 @@ namespace KantoorInrichtingWPF
                 bi.EndInit();
                 image.Name = "plant";
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].Prijs;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add($"{meubelView.Catalogus[index].Prijs}");
+                image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -172,7 +377,10 @@ namespace KantoorInrichtingWPF
                 bi.EndInit();
                 image.Name = "lamp";
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].Prijs;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add($"{meubelView.Catalogus[index].Prijs}");
+                image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -187,7 +395,10 @@ namespace KantoorInrichtingWPF
                 bi.EndInit();
                 image.Name = "kast";
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].Prijs;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add($"{meubelView.Catalogus[index].Prijs}");
+                image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -202,7 +413,10 @@ namespace KantoorInrichtingWPF
                 bi.EndInit();
                 image.Name = "deur";
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].Prijs;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add($"{meubelView.Catalogus[index].Prijs}");
+                image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -217,7 +431,10 @@ namespace KantoorInrichtingWPF
                 bi.EndInit();
                 image.Name = "apparaten";
                 image.Source = bi;
-                image.Tag = meubelView.Catalogus[index].Prijs;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add($"{meubelView.Catalogus[index].Prijs}");
+                image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
                 Canvas.SetLeft(image, 100.00);
@@ -247,6 +464,12 @@ namespace KantoorInrichtingWPF
         {
             LadenPlategrond ladenPlategrond = new LadenPlategrond();
             ladenPlategrond.Show();
+            ladenPlategrond.MouseDoubleClick += LadenPlategrond_MouseDoubleClick;
+        }
+
+        private void LadenPlategrond_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
         }
 
         private void OnMenuItem_opslaan_Click(object sender, RoutedEventArgs e)
@@ -256,14 +479,34 @@ namespace KantoorInrichtingWPF
 
         private void OnMenuItem_opslaanAls_Click(object sender, RoutedEventArgs e)
         {
-            OpslaanPlattegrond opslaanPlattegrond = new OpslaanPlattegrond();
+            
             opslaanPlattegrond.Show();
             opslaanPlattegrond.ButtonOpslaan.Click += OnButtonOpslaan_Click;
+            
         }
 
         private void OnButtonOpslaan_Click(object sender, RoutedEventArgs e)
         {
-            
+            //PlattegrondNaam, CanvasItemcode, CanvasImageType, CanvasImageName, CanvasImageTag, XCoord, YCoord
+            plattegrondview.PlattegrondNaam = opslaanPlattegrond.TBPlattegrondNaam.Text;
+            foreach (Image item in DragCavasPlattegrond.Children)
+            {
+                double x = Canvas.GetLeft(item);
+                double y = Canvas.GetTop(item);
+                
+                
+                plattegrondview.Plattegrondcode = $"{plattegrondview.PlattegrondNaam[0]}{plattegrondview.PlattegrondNaam[1]}{plattegrondview.PlattegrondLijst.Count}";
+                plattegrondview.CanvasImageType = $"{item.Name}";
+                List<string> list = (List<string>)item.Tag;
+                plattegrondview.CanvasImageName = $"{list[0]}";
+                plattegrondview.CanvasImageTag = $"{list[1]}";
+                plattegrondview.XCoord = $"{x}";
+                plattegrondview.YCoord = $"{y}";
+                plattegrondview.CanvasItemcode = $"{plattegrondview.Plattegrondcode}{plattegrondview.CanvasImageType[0]}{plattegrondview.CanvasItemCount}";
+                plattegrondview.CanvasItemCount++;
+                plattegrondview.ToevoegenCanvasItems();
+            }
+           
         }
 
         private void OnMenuItem_export_Click(object sender, RoutedEventArgs e)

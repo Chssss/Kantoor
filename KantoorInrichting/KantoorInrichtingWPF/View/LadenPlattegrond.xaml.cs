@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KantoorInrichtingWPF.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,6 +18,7 @@ namespace KantoorInrichtingWPF.View
     /// </summary>
     public partial class LadenPlategrond : Window
     {
+        PlattegrondViewModel plattegrondViewModel = new PlattegrondViewModel();
         public LadenPlategrond()
         {
             InitializeComponent();
@@ -35,6 +37,47 @@ namespace KantoorInrichtingWPF.View
         private void ButtonZoekenProjectNaam_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var dataGrid = sender as DataGrid;
+            if (dataGrid != null)
+            {
+                /*
+                ProjectNaam;
+                PlattegrondNaam;
+                Lengte;
+                Breedte;
+                Hoogte;
+                Plattegrondcode;
+                */
+                var index = dataGrid.SelectedIndex;
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.ProjectNaam = plattegrondViewModel.PlattegrondLijst[index].ProjectNaam;
+                mainWindow.PlattegrondNaam = plattegrondViewModel.PlattegrondLijst[index].PlattegrondNaam;
+                mainWindow.Plattegrondcode = plattegrondViewModel.PlattegrondLijst[index].Plattegrondcode;
+                mainWindow.Lengte = plattegrondViewModel.PlattegrondLijst[index].Lengte;
+                mainWindow.Breedte = plattegrondViewModel.PlattegrondLijst[index].Breedte;
+                mainWindow.Hoogte = plattegrondViewModel.PlattegrondLijst[index].Hoogte;
+                mainWindow.Show();
+                mainWindow.LadenMap( plattegrondViewModel.PlattegrondLijst[index].Canvas);
+
+
+            }
+        }
+
+        private void OnMouseRightButtonPressed(object sender, MouseButtonEventArgs e)
+        {
+            var dataGrid = sender as DataGrid;
+            if (dataGrid != null)
+            {
+                var index = dataGrid.SelectedIndex;
+                
+                plattegrondViewModel.VerwijderenPlattegrond(plattegrondViewModel.PlattegrondLijst[index].Plattegrondcode);
+
+
+            }
         }
     }
 }
