@@ -79,7 +79,7 @@ namespace KantoorInrichtingWPF
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
                 Canvas.SetLeft(image, xcoord);
-
+                
             }
             if (typeImage.Equals("stoel"))
             {
@@ -474,7 +474,11 @@ namespace KantoorInrichtingWPF
 
         private void OnMenuItem_opslaan_Click(object sender, RoutedEventArgs e)
         {
+           bool test= plattegrondview.CheckPlattegrondcode(Plattegrondcode);
+            if (test  == false)
+            {
 
+            }
         }
 
         private void OnMenuItem_opslaanAls_Click(object sender, RoutedEventArgs e)

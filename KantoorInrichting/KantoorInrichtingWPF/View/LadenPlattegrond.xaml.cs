@@ -62,7 +62,7 @@ namespace KantoorInrichtingWPF.View
                 mainWindow.Hoogte = plattegrondViewModel.PlattegrondLijst[index].Hoogte;
                 mainWindow.Show();
                 mainWindow.LadenMap( plattegrondViewModel.PlattegrondLijst[index].Canvas);
-
+                this.Close();
 
             }
         }
@@ -74,8 +74,16 @@ namespace KantoorInrichtingWPF.View
             {
                 var index = dataGrid.SelectedIndex;
                 
-                plattegrondViewModel.VerwijderenPlattegrond(plattegrondViewModel.PlattegrondLijst[index].Plattegrondcode);
+               MessageBoxResult dialogResult = MessageBox.Show($"Weet je zeker dat je deze plattegrond({plattegrondViewModel.PlattegrondLijst[index].PlattegrondNaam}) wilt verwijderen?", "Plattegrond verwijderen", MessageBoxButton.YesNo);
+                if (dialogResult == MessageBoxResult.Yes)
+                {
+                    plattegrondViewModel.VerwijderenPlattegrond(plattegrondViewModel.PlattegrondLijst[index].Plattegrondcode);
 
+                }
+                else if (dialogResult == MessageBoxResult.No)
+                {
+
+                }
 
             }
         }

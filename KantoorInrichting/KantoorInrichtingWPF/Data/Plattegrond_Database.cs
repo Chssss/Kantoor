@@ -363,6 +363,173 @@ namespace KantoorInrichtingWPF.Data
             Console.ReadLine();
             #endregion
         }
+        public static Dictionary<int, List<string>> ZoekenNaamPlattegrondDatabase(string zoekbalk) 
+        {
+            Dictionary<int, List<string>> outputPlategrondSQL = new Dictionary<int, List<string>>();
+            int count1 = 0;
+
+            #region plattegrond sql
+            try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "127.0.0.1, 1433";
+                builder.UserID = "sa";
+                builder.Password = "Kantoorinrichting!";
+                builder.InitialCatalog = "Inventaris";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    Console.WriteLine("\nQuery data example:");
+                    Console.WriteLine("=========================================\n");
+
+                    String sql = "SELECT * FROM plattegrond WHERE plattegrondnaam LIKE " + $"'%{zoekbalk}%'";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            while (reader.Read())
+                            {
+                                List<string> listVaule = new List<string>();
+                                listVaule.Add(reader.GetString(0));//project naam
+                                listVaule.Add(reader.GetString(1));//plattegrond naam
+                                listVaule.Add(reader.GetString(2));//datum
+                                listVaule.Add(reader.GetString(3));//plattegrondcode
+                                listVaule.Add(reader.GetString(4));//lengte
+                                listVaule.Add(reader.GetString(5));//breedte
+                                listVaule.Add(reader.GetString(6));//hoogte
+                                /*
+                                listVaule.Add(reader.GetString(7));//image type(type image)
+                                listVaule.Add(reader.GetString(8));//image name(naam meubel)
+                                listVaule.Add(reader.GetString(9));//image tag(prijs)
+                                listVaule.Add(reader.GetString(10));//x coord
+                                listVaule.Add(reader.GetString(11));//y coord
+                                */
+                                outputPlategrondSQL.Add(count1, listVaule);
+                                count1++;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Console.ReadLine();
+            #endregion
+
+            return outputPlategrondSQL;
+        }
+        public static Dictionary<int, List<string>> ZoekenNaamProjectDatabase(string zoekbalk)
+        {
+            Dictionary<int, List<string>> outputPlategrondSQL = new Dictionary<int, List<string>>();
+            int count1 = 0;
+
+            #region plattegrond sql
+            try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "127.0.0.1, 1433";
+                builder.UserID = "sa";
+                builder.Password = "Kantoorinrichting!";
+                builder.InitialCatalog = "Inventaris";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    Console.WriteLine("\nQuery data example:");
+                    Console.WriteLine("=========================================\n");
+
+                    String sql = "SELECT * FROM plattegrond WHERE projectnaam LIKE " + $"'%{zoekbalk}%'";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            while (reader.Read())
+                            {
+                                List<string> listVaule = new List<string>();
+                                listVaule.Add(reader.GetString(0));//project naam
+                                listVaule.Add(reader.GetString(1));//plattegrond naam
+                                listVaule.Add(reader.GetString(2));//datum
+                                listVaule.Add(reader.GetString(3));//plattegrondcode
+                                listVaule.Add(reader.GetString(4));//lengte
+                                listVaule.Add(reader.GetString(5));//breedte
+                                listVaule.Add(reader.GetString(6));//hoogte
+                                /*
+                                listVaule.Add(reader.GetString(7));//image type(type image)
+                                listVaule.Add(reader.GetString(8));//image name(naam meubel)
+                                listVaule.Add(reader.GetString(9));//image tag(prijs)
+                                listVaule.Add(reader.GetString(10));//x coord
+                                listVaule.Add(reader.GetString(11));//y coord
+                                */
+                                outputPlategrondSQL.Add(count1, listVaule);
+                                count1++;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Console.ReadLine();
+            #endregion
+
+            return outputPlategrondSQL;
+        }
+        public static string GetPlattegrondcodeDataDatabase(string plattegrondcode)
+        {
+
+            string output="";
+            #region plattegrond sql
+            try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "127.0.0.1, 1433";
+                builder.UserID = "sa";
+                builder.Password = "Kantoorinrichting!";
+                builder.InitialCatalog = "Inventaris";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    Console.WriteLine("\nQuery data example:");
+                    Console.WriteLine("=========================================\n");
+
+                    String sql = "SELECT plattegrondcode FROM plattegrond WHERE plattegrondcode = " + $"'{plattegrondcode}'";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            while (reader.Read())
+                            {
+                                
+                                 output =reader.GetString(0);
+                               
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Console.ReadLine();
+            #endregion
+
+            return output;
+            //return nepDatabase;
+        }
+
     }
 
 }

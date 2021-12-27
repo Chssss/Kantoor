@@ -27,6 +27,7 @@ namespace KantoorInrichtingWPF.ViewModel
         private string _YCoord;
         private string _testString;
         private int _canvasItemCount;
+        private string _zoekbalk;
 
         public event PropertyChangedEventHandler PropertyChanged;
         
@@ -35,7 +36,7 @@ namespace KantoorInrichtingWPF.ViewModel
             UpdatePlattegrondenLijstExecute();
         }
         #region prop
-        public string TestString
+       /* public string TestString
         {
             get
             {
@@ -46,7 +47,7 @@ namespace KantoorInrichtingWPF.ViewModel
                 _testString = value;
                 OnPropertyChangedEvent("Test");
             }
-        }
+        }*/
         public List<Plattegrond> PlattegrondLijst
         {
             get
@@ -141,6 +142,18 @@ namespace KantoorInrichtingWPF.ViewModel
             set
             {
                 _datum = value;
+
+            }
+        }
+        public string Zoekbalk
+        {
+            get
+            {
+                return _zoekbalk;
+            }
+            set
+            {
+                _zoekbalk = value;
 
             }
         }
@@ -304,6 +317,12 @@ namespace KantoorInrichtingWPF.ViewModel
             
             MessageBox.Show("Plattegrond is toegevoegd");
         }
+        public bool CheckPlattegrondcode(string plattegrondcode)
+        {
+         string output = Plattegrond_Database.GetPlattegrondcodeDataDatabase(plattegrondcode);
+            return true;
+
+        }
         public void ToevoegenCanvasItems()
         {
             
@@ -316,7 +335,7 @@ namespace KantoorInrichtingWPF.ViewModel
         }
         void ZoekenProjectNaamExecute()
         {
-           /* Dictionary<int, List<string>> outputQuerry= Plattegrond_Database;
+            Dictionary<int, List<string>> outputQuerry = Plattegrond_Database.ZoekenNaamProjectDatabase(Zoekbalk);
             List<Plattegrond> ListPlattegrond = new List<Plattegrond>();
             foreach (var item in outputQuerry)
             {
@@ -327,7 +346,7 @@ namespace KantoorInrichtingWPF.ViewModel
                 var lengte = item.Value[4];
                 var breedte = item.Value[5];
                 var hoogte = item.Value[6];
-                var MeubelsOpCanvas = Plattegrond_Database.GetPlattegrondCanvasDataDatabase(Plattegrondcode);
+                var MeubelsOpCanvas = Plattegrond_Database.GetPlattegrondCanvasDataDatabase(plattegrondcode);
                 Plattegrond plattegrond = new Plattegrond(projectnaam, plattegrondnaam, datum, plattegrondcode, lengte, breedte, hoogte, MeubelsOpCanvas);
 
                 ListPlattegrond.Add(plattegrond);
@@ -338,12 +357,12 @@ namespace KantoorInrichtingWPF.ViewModel
 
 
 
-            PlattegrondLijst = ListPlattegrond;*/
+            PlattegrondLijst = ListPlattegrond;
 
         }
         void ZoekenPlattegrondNaamExecute()
         {
-            /*Dictionary<int, List<string>> outputQuerry= Plattegrond_Database.;
+            Dictionary<int, List<string>> outputQuerry = Plattegrond_Database.ZoekenNaamPlattegrondDatabase(Zoekbalk);
             List<Plattegrond> ListPlattegrond = new List<Plattegrond>();
             foreach (var item in outputQuerry)
             {
@@ -354,7 +373,7 @@ namespace KantoorInrichtingWPF.ViewModel
                 var lengte = item.Value[4];
                 var breedte = item.Value[5];
                 var hoogte = item.Value[6];
-                var MeubelsOpCanvas = Plattegrond_Database.GetPlattegrondCanvasDataDatabase(Plattegrondcode);
+                var MeubelsOpCanvas = Plattegrond_Database.GetPlattegrondCanvasDataDatabase(plattegrondcode);
                 Plattegrond plattegrond = new Plattegrond(projectnaam, plattegrondnaam, datum, plattegrondcode, lengte, breedte, hoogte, MeubelsOpCanvas);
 
                 ListPlattegrond.Add(plattegrond);
@@ -365,7 +384,7 @@ namespace KantoorInrichtingWPF.ViewModel
 
 
 
-            PlattegrondLijst = ListPlattegrond;*/
+            PlattegrondLijst = ListPlattegrond;
         }
         bool CanUpdatePlattegrondenLijstExecute()
         {

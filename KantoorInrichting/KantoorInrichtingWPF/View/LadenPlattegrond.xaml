@@ -16,11 +16,11 @@
             <RowDefinition Height="177*"/>
         </Grid.RowDefinitions>
         <DataGrid x:Name="DGLadenPlategronden" Margin="0,80,0,0" Grid.RowSpan="2" ItemsSource="{Binding PlattegrondLijst}" MouseDoubleClick="OnMouseDoubleClick" MouseRightButtonDown="OnMouseRightButtonPressed" IsReadOnly="True"/>
-        <TextBox x:Name="TBzoekbalk" HorizontalAlignment="Left" Margin="83,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
-        <Button x:Name="ButtonZoekenPlattegrondNaam" Content="Zoeken Plattegrond Naam" HorizontalAlignment="Left" Margin="220,50,0,0" VerticalAlignment="Top" Height="19" Width="154" Click="ButtonZoekenPlattegrondNaam_Click"/>
+        <TextBox x:Name="TBzoekbalk" HorizontalAlignment="Left" Margin="83,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" Text="{Binding Zoekbalk}"/>
+        <Button x:Name="ButtonZoekenPlattegrondNaam" Content="Zoeken Plattegrond Naam" HorizontalAlignment="Left" Margin="220,50,0,0" VerticalAlignment="Top" Height="19" Width="154" Click="ButtonZoekenPlattegrondNaam_Click" Command="{Binding ZoekenPlattegrondNaam, Mode=OneWay}"/>
         <Label Content="Opgeslagen Plattegronden" HorizontalAlignment="Center" Margin="0,14,0,0" VerticalAlignment="Top"/>
         <Button x:Name="ButtonTerug" Content="Terug" HorizontalAlignment="Left" Margin="26,20,0,0" VerticalAlignment="Top" Click="ButtonTerug_Click"/>
-        <Button x:Name="ButtonZoekenProjectNaam" Content="Zoeken Project Naam" HorizontalAlignment="Left" Margin="396,50,0,0" VerticalAlignment="Top" Height="19" Width="153" Click="ButtonZoekenProjectNaam_Click"/>
+        <Button x:Name="ButtonZoekenProjectNaam" Content="Zoeken Project Naam" HorizontalAlignment="Left" Margin="396,50,0,0" VerticalAlignment="Top" Height="19" Width="153" Click="ButtonZoekenProjectNaam_Click" Command="{Binding ZoekenProjectNaam, Mode=OneWay}"/>
         <Button x:Name="ButoonRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="575,50,0,0" VerticalAlignment="Top" Command="{Binding UpdatePlattegrondenLijst, Mode=OneWay}"/>
 
     </Grid>
