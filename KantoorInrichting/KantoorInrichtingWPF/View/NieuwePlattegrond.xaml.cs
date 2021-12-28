@@ -25,6 +25,12 @@ namespace KantoorInrichtingWPF
         private void OnButton_Aanmaken_Click(object sender, RoutedEventArgs e)
         {
             MainWindow plattegrondEditor = new MainWindow();
+            plattegrondEditor.ProjectNaam = TBProject.Text;
+            plattegrondEditor.PlattegrondNaam = TBNaam.Text;
+            
+            plattegrondEditor.Lengte = TBLengte.Text;
+            plattegrondEditor.Breedte =TBBreedte.Text;
+            plattegrondEditor.Hoogte = TBHoogte.Text;
             plattegrondEditor.Show();
             this.Close();
         }

@@ -19,11 +19,12 @@
         <Label Content="Lengte" HorizontalAlignment="Left" Margin="56,163,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TBLengte" HorizontalAlignment="Left" Margin="56,194,0,0" Text="{Binding Lengte}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Breedte" HorizontalAlignment="Left" Margin="56,217,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="56,248,0,0" Text="{Binding Breedte}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBBreedte" HorizontalAlignment="Left" Margin="56,248,0,0" Text="{Binding Breedte}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Hoogte" HorizontalAlignment="Left" Margin="56,271,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="56,302,0,0" Text="{Binding Hoogte}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBHoogte" HorizontalAlignment="Left" Margin="56,302,0,0" Text="{Binding Hoogte}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="ButtonAnnuleren" Content="Annuleren" HorizontalAlignment="Left" Margin="464,341,0,0" VerticalAlignment="Top" Click="OnAnnulerenButton_Click"/>
         <Button x:Name="ButtonOpslaan" Content="Opslaan" HorizontalAlignment="Center" Margin="0,341,0,0" VerticalAlignment="Top" Click="OnOpslaanButton_Click" Command="{Binding ToevoegenPlattegrond, Mode=OneWay}"/>
+        <Label Content="Als de velden al zijn ingevuld, vul dan de laatste karakter opnieuw in voor elk veld." HorizontalAlignment="Left" Margin="25,12,0,0" VerticalAlignment="Top" Width="450"/>
 
     </Grid>
 </Window>

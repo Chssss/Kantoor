@@ -317,11 +317,56 @@ namespace KantoorInrichtingWPF.ViewModel
             
             MessageBox.Show("Plattegrond is toegevoegd");
         }
-        public bool CheckPlattegrondcode(string plattegrondcode)
+        void UpdatePlattegrond(string projectNaam, string plattegrondNaam,  string plattegrondcode, string lengte, string breedte, string hoogte) 
         {
-         string output = Plattegrond_Database.GetPlattegrondcodeDataDatabase(plattegrondcode);
-            return true;
+            string datum = $"{DateTime.Now}";
+            Plattegrond_Database.UpdateDatabase( projectNaam, plattegrondNaam,  datum, plattegrondcode,  lengte,  breedte,  hoogte);
+        }
+        public bool CheckPlattegrondcode(string plattegrondcode, string projectNaam, string plattegrondNaam,   string lengte, string breedte, string hoogte)
+        {
+            bool boolOutput = false;
+            bool check= false;
+            string output = Plattegrond_Database.GetPlattegrondcodeDataDatabase(plattegrondcode);
+            if (output.Equals(plattegrondcode))
+            {
+                check = true;
+                UpdatePlattegrond(projectNaam,  plattegrondNaam,    plattegrondcode, lengte,  breedte,  hoogte);
+            }
+            if (output.Equals("leeg"))
+            {
+                check = false;
+            }
+            if (check==false)
+            {
+                MessageBox.Show("Sla plattegrond eerst op via opslaan als");
+                boolOutput= false;
+            }
+            if (check == true)
+            {
+                MessageBox.Show("Plattegrond is opgeslagen");
+                boolOutput = true;
+                
+            }
+            return boolOutput;
+        }
+        public void UpdateCanvasItems()
+        {
 
+            Plattegrond_Database.UpdateCanvasDataDatabase(Plattegrondcode, CanvasItemcode, CanvasImageType, CanvasImageName, CanvasImageTag, XCoord, YCoord);
+        }
+        public bool CheckCanvasitemcode(string canvasitemcode) 
+        {
+            bool check = false; 
+            string output =Plattegrond_Database.GetCanvasItemcodeDatabase(canvasitemcode);
+            if (output.Equals("leeg"))
+            {
+                check = false;
+            }
+            if (output.Equals(canvasitemcode))
+            {
+                check = true;
+            }
+            return check;
         }
         public void ToevoegenCanvasItems()
         {
@@ -332,6 +377,11 @@ namespace KantoorInrichtingWPF.ViewModel
         {
             Plattegrond_Database.DeletePlategrondFromDatabase(plattegrondcode);
             MessageBox.Show("Item is verwijdert, druk op refresh om de lijst te updaten");
+        }
+        public void VerwijderenCanvasitem(string plattegrondcode)
+        {
+            Plattegrond_Database.DeleteCanvasitemFromDatabase(plattegrondcode);
+            
         }
         void ZoekenProjectNaamExecute()
         {

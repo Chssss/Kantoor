@@ -261,7 +261,8 @@ namespace KantoorInrichtingWPF
                  var index  = dragCanvas.Children.IndexOf((UIElement)image);
                     var imageOutCanvas = dragCanvas.Children[index] as Image;
                    
-                    _totalprijst = _totalprijst - (decimal)imageOutCanvas.Tag;
+                    List<string> prijs = (List<string>)imageOutCanvas.Tag;
+                    _totalprijst = _totalprijst - Convert.ToDecimal( prijs[1]);
                     LabelTotalPrijs.Content = $"{_totalprijst}€";
                     dragCanvas.Children.Remove((UIElement)image);
                 }
@@ -474,16 +475,58 @@ namespace KantoorInrichtingWPF
 
         private void OnMenuItem_opslaan_Click(object sender, RoutedEventArgs e)
         {
-           bool test= plattegrondview.CheckPlattegrondcode(Plattegrondcode);
-            if (test  == false)
+          bool output =plattegrondview.CheckPlattegrondcode(Plattegrondcode,ProjectNaam,PlattegrondNaam,Lengte,Breedte,Hoogte);
+            if (output==true)
             {
+                #region delete en toevoegen
+                plattegrondview.VerwijderenCanvasitem(Plattegrondcode);
+                #endregion
+                plattegrondview.PlattegrondNaam = PlattegrondNaam;
+                foreach (Image item in DragCavasPlattegrond.Children)
+                {
+                        plattegrondview.Plattegrondcode = Plattegrondcode;
+                        double x = Canvas.GetLeft(item);
+                        double y = Canvas.GetTop(item);
 
+
+                        //plattegrondview.Plattegrondcode = Plattegrondcode;
+                        plattegrondview.CanvasImageType = $"{item.Name}";
+                        List<string> list = (List<string>)item.Tag;
+                        plattegrondview.CanvasImageName = $"{list[0]}";
+                        plattegrondview.CanvasImageTag = $"{list[1]}";
+                        plattegrondview.XCoord = $"{x}";
+                        plattegrondview.YCoord = $"{y}";
+                        string canvasitemcode = $"{plattegrondview.Plattegrondcode}{plattegrondview.CanvasImageType[0]}{plattegrondview.CanvasItemCount}";
+                        plattegrondview.CanvasItemcode = canvasitemcode;
+                        plattegrondview.CanvasItemCount++;
+                    #region delete en toevoegen
+                    plattegrondview.ToevoegenCanvasItems();
+                    #endregion
+                    #region update en toevoegen
+                    /* bool check = plattegrondview.CheckCanvasitemcode(canvasitemcode);
+
+                     if (check==true)
+                     {
+
+                         plattegrondview.UpdateCanvasItems();
+                     }
+                     if (check==false)
+                     {
+                         plattegrondview.ToevoegenCanvasItems();//new canvasitem Toevoegen
+                     }*/
+                    #endregion
+                }
             }
+            
         }
 
         private void OnMenuItem_opslaanAls_Click(object sender, RoutedEventArgs e)
         {
-            
+            opslaanPlattegrond.TBLengte.Text = Lengte;
+            opslaanPlattegrond.TBPlattegrondNaam.Text = PlattegrondNaam;
+            opslaanPlattegrond.TBProjectNaam.Text = ProjectNaam;
+            opslaanPlattegrond.TBBreedte.Text = Breedte;
+            opslaanPlattegrond.TBHoogte.Text = Hoogte;
             opslaanPlattegrond.Show();
             opslaanPlattegrond.ButtonOpslaan.Click += OnButtonOpslaan_Click;
             
