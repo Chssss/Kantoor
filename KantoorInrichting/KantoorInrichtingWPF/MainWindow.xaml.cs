@@ -604,8 +604,47 @@ namespace KantoorInrichtingWPF
 
         }
 
-        
+        private void ButtonRaam_Click(object sender, RoutedEventArgs e)
+        {
+            Image image = new Image();
+            BitmapImage bi = new BitmapImage();
+            // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+            bi.BeginInit();
+            bi.UriSource = new Uri(@"/Afbeelding/raam.png", UriKind.RelativeOrAbsolute);
+            bi.EndInit();
+            image.Name = "raam";
+            image.Source = bi;
+            List<string> list = new List<string>();
+            list.Add("raam");
+            list.Add($"0,0");
+            image.Tag = list;
+            DragCavasPlattegrond.Children.Add(image);
+            Canvas.SetTop(image, 10.0);
+            Canvas.SetLeft(image, 100.00);
+        }
 
-       
+        private void ButtonDeur_Click(object sender, RoutedEventArgs e)
+        {
+            Image image = new Image();
+            BitmapImage bi = new BitmapImage();
+            // BitmapImage.UriSource must be in a BeginInit/EndInit block.
+            bi.BeginInit();
+            bi.UriSource = new Uri(@"/Afbeelding/deur2.png", UriKind.RelativeOrAbsolute);
+            bi.EndInit();
+            image.Name = "deur";
+            image.Source = bi;
+            List<string> list = new List<string>();
+            list.Add("deur");
+            list.Add($"0,0");
+            image.Tag = list;
+            DragCavasPlattegrond.Children.Add(image);
+            Canvas.SetTop(image, 10.0);
+            Canvas.SetLeft(image, 100.00);
+        }
+
+        private void ButtonMuur_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

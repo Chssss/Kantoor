@@ -211,7 +211,7 @@ namespace KantoorInrichtingWPF.Data
             #endregion
             foreach (var item in output)
             {
-                item.Value[2] = GetImage(item.Value[7]);
+                item.Value[2] = GetImage(item.Value[7].ToLower());
             }
             return output;
             //return nepDatabase;
@@ -433,7 +433,7 @@ namespace KantoorInrichtingWPF.Data
             #endregion
             foreach (var item in outputQurrey)
             {
-                item.Value[2] = GetImage(item.Value[7]);
+                item.Value[2] = GetImage(item.Value[7].ToLower());
             }
             return outputQurrey;
            
@@ -498,7 +498,7 @@ namespace KantoorInrichtingWPF.Data
             #endregion
             foreach (var item in outputQurrey)
             {
-                item.Value[2] = GetImage(item.Value[7]);
+                item.Value[2] = GetImage(item.Value[7].ToLower());
             }
 
 

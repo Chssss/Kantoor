@@ -16,6 +16,7 @@
   <ItemGroup>
     <None Remove="Afbeelding\apparaat.png" />
     <None Remove="Afbeelding\deur.png" />
+    <None Remove="Afbeelding\deur2.png" />
     <None Remove="Afbeelding\kast.png" />
     <None Remove="Afbeelding\lamp.png" />
     <None Remove="Afbeelding\Plant.png" />
@@ -28,6 +29,7 @@
   <ItemGroup>
     <Resource Include="Afbeelding\apparaat.png" />
     <Resource Include="Afbeelding\deur.png" />
+    <Resource Include="Afbeelding\deur2.png" />
     <Resource Include="Afbeelding\kast.png" />
     <Resource Include="Afbeelding\lamp.png" />
     <Resource Include="Afbeelding\plant.png" />
