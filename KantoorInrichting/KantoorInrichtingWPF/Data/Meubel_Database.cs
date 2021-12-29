@@ -504,5 +504,109 @@ namespace KantoorInrichtingWPF.Data
 
             return outputQurrey;
         }
+        public static int UpdateCheck(string productcode)
+        {
+            #region test sql
+            try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "127.0.0.1, 1433";
+                builder.UserID = "sa";
+                builder.Password = "Kantoorinrichting!";
+                builder.InitialCatalog = "Inventaris";
+                String sql = $"SELECT COUNT(*) FROM Inventaris WHERE productcode =" + $"'{productcode}'";
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    Console.WriteLine("\nQuery data example:");
+                    Console.WriteLine("=========================================\n");
+
+                    int rowsAffected = (int)command.ExecuteScalar();
+                    return rowsAffected;
+                }
+
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return 0;
+            //Console.ReadLine();
+            #endregion
+        }
+        public static void UpdateDatabase(string naam, string prijs, string lengte, string breedte, string categorie, string tag, string image, string hoogte, string leverancier, string productCode)
+        {
+
+
+            #region test sql
+            try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "127.0.0.1, 1433";
+                builder.UserID = "sa";
+                builder.Password = "Kantoorinrichting!";
+                builder.InitialCatalog = "Inventaris";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(null, connection);
+                    Console.WriteLine("\nQuery data example:");
+                    Console.WriteLine("=========================================\n");
+
+                    //String sql = $"INSERT INTO Inventaris VALUES (@img, @name, @prijs, @lengte, @breedte, @tag, @categorie, @hoogte) ";//INSERT INTO Inventaris VALUES ('🌲', 'test2', '1,1', '1,1', '1,1', 'stoel', 'testcategorie', '1,1')    
+
+                    //SqlCommand command = new SqlCommand(sql, connection);    
+                    //{image}, {naam}, {prijs}, {lengte}, {breedte}, {tag}, {categorie}, {hoogte}
+                    command.CommandText = $"UPDATE Inventaris SET productcode = " + $"'{productCode}',leverancier = " + $"'{leverancier}',img = " + $"'{image}',naam = " + $"'{naam}',prijs = " + $"'{prijs}',lengte = " + $"'{lengte}',breedte = " + $"'{breedte}',tag = " + $"'{tag}',categorie = " + $"'{categorie}',hoogte = " + $"'{hoogte}' WHERE productcode =" + $"'{productCode}'";
+
+                    SqlParameter productcodeParam = new SqlParameter("@productcode", System.Data.SqlDbType.Text, 100);
+                    SqlParameter leverancierParam = new SqlParameter("@leverancier", System.Data.SqlDbType.Text, 100);
+                    SqlParameter imgParam = new SqlParameter("@img", System.Data.SqlDbType.Text, 100);
+                    SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
+                    SqlParameter prijsParam = new SqlParameter("@prijs", System.Data.SqlDbType.Text, 100);
+                    SqlParameter lengteParam = new SqlParameter("@lengte", System.Data.SqlDbType.Text, 100);
+                    SqlParameter breedteParam = new SqlParameter("@breedte", System.Data.SqlDbType.Text, 100);
+                    SqlParameter tagParam = new SqlParameter("@tag", System.Data.SqlDbType.Text, 100);
+                    SqlParameter categorieParam = new SqlParameter("@categorie", System.Data.SqlDbType.Text, 100);
+                    SqlParameter hoogteParam = new SqlParameter("@hoogte", System.Data.SqlDbType.Text, 100);
+
+                    productcodeParam.Value = productCode;
+                    leverancierParam.Value = leverancier;
+                    imgParam.Value = image;
+                    nameParam.Value = naam;
+                    prijsParam.Value = prijs;
+                    lengteParam.Value = lengte;
+                    breedteParam.Value = breedte;
+                    tagParam.Value = tag;
+                    categorieParam.Value = categorie;
+                    hoogteParam.Value = hoogte;
+
+                    command.Parameters.Add(productcodeParam);
+                    command.Parameters.Add(leverancierParam);
+                    command.Parameters.Add(imgParam);
+                    command.Parameters.Add(nameParam);
+                    command.Parameters.Add(prijsParam);
+                    command.Parameters.Add(lengteParam);
+                    command.Parameters.Add(breedteParam);
+                    command.Parameters.Add(tagParam);
+                    command.Parameters.Add(categorieParam);
+                    command.Parameters.Add(hoogteParam);
+
+                    command.Prepare();
+                    command.ExecuteNonQuery();
+
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            //Console.ReadLine();
+            #endregion
+
+
+        }
     }
 }
