@@ -45,6 +45,7 @@ namespace KantoorInrichtingWPF
         {
             InitializeComponent();
             LabelTotalPrijs.Content = $"{_totalprijst}€";
+            meubelView.XmlInvoegen();
             
 
 

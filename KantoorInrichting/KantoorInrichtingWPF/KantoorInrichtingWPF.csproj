@@ -24,6 +24,7 @@
     <None Remove="Afbeelding\stoel.png" />
     <None Remove="Afbeelding\tafel.png" />
     <None Remove="Afbeelding\tapijt.png" />
+    <None Remove="Xml\XMLTEST.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +38,7 @@
     <Resource Include="Afbeelding\stoel.png" />
     <Resource Include="Afbeelding\tafel.png" />
     <Resource Include="Afbeelding\tapijt.png" />
+    <Resource Include="Xml\XMLTEST.xml" />
   </ItemGroup>
 
   <ItemGroup>

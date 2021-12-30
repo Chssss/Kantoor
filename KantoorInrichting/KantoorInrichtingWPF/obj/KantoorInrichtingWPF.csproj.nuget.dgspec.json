@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\stoff\\Documents\\School\\jaar 2\\semester 1\\kbs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj": {}
+    "C:\\Users\\Jelle\\Documents\\GitHub\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj": {}
   },
   "projects": {
-    "C:\\Users\\stoff\\Documents\\School\\jaar 2\\semester 1\\kbs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj": {
+    "C:\\Users\\Jelle\\Documents\\GitHub\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\stoff\\Documents\\School\\jaar 2\\semester 1\\kbs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj",
+        "projectUniqueName": "C:\\Users\\Jelle\\Documents\\GitHub\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj",
         "projectName": "KantoorInrichtingWPF",
-        "projectPath": "C:\\Users\\stoff\\Documents\\School\\jaar 2\\semester 1\\kbs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj",
-        "packagesPath": "C:\\Users\\stoff\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\stoff\\Documents\\School\\jaar 2\\semester 1\\kbs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\obj\\",
+        "projectPath": "C:\\Users\\Jelle\\Documents\\GitHub\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj",
+        "packagesPath": "C:\\Users\\Jelle\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jelle\\Documents\\GitHub\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\stoff\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jelle\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
