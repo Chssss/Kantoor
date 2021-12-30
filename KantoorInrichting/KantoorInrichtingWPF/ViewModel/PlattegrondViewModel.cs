@@ -28,12 +28,14 @@ namespace KantoorInrichtingWPF.ViewModel
         private string _testString;
         private int _canvasItemCount;
         private string _zoekbalk;
+        private List<GebruikteMeubels> _gebruikteMeubelsLijst = new List<GebruikteMeubels>();
 
         public event PropertyChangedEventHandler PropertyChanged;
         
         public PlattegrondViewModel() 
         {
             UpdatePlattegrondenLijstExecute();
+            
         }
         #region prop
        /* public string TestString
@@ -48,6 +50,18 @@ namespace KantoorInrichtingWPF.ViewModel
                 OnPropertyChangedEvent("Test");
             }
         }*/
+       public List<GebruikteMeubels> GebruikteMeubelsLijst 
+        {
+            get
+            {
+                return _gebruikteMeubelsLijst;
+            }
+            set
+            {
+                _gebruikteMeubelsLijst = value;
+                OnPropertyChangedEvent("GebruikteMeubelsLijst ");
+            }
+        }
         public List<Plattegrond> PlattegrondLijst
         {
             get
@@ -250,6 +264,7 @@ namespace KantoorInrichtingWPF.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         }
+
         void UpdatePlattegrondenLijstExecute()
         {
             Dictionary<int, List<string>> outputQuerry= Plattegrond_Database.GetPlattegrondDataDatabase();
@@ -308,6 +323,7 @@ namespace KantoorInrichtingWPF.ViewModel
             
             PlattegrondLijst = ListPlattegrond;
         }
+       
         void ToevoegenPlattegrondExecute()
         {
             
@@ -321,6 +337,17 @@ namespace KantoorInrichtingWPF.ViewModel
         {
             string datum = $"{DateTime.Now}";
             Plattegrond_Database.UpdateDatabase( projectNaam, plattegrondNaam,  datum, plattegrondcode,  lengte,  breedte,  hoogte);
+        }
+        public void ToevoegenGebruikteMeubel(string naamMeubel, int aantalMeubels, decimal prijsEnkelMeubel) 
+        {
+            decimal totaalprijs = 0;
+            totaalprijs = prijsEnkelMeubel * aantalMeubels;
+            GebruikteMeubels gebruikte = new GebruikteMeubels(naamMeubel, aantalMeubels, prijsEnkelMeubel, totaalprijs);
+            GebruikteMeubelsLijst.Add(gebruikte);
+        }
+        public void LeegGebruikteMeubelLijst() 
+        {
+            GebruikteMeubelsLijst.Clear();
         }
         public bool CheckPlattegrondcode(string plattegrondcode, string projectNaam, string plattegrondNaam,   string lengte, string breedte, string hoogte)
         {

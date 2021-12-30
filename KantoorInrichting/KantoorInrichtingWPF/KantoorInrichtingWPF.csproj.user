@@ -9,12 +9,18 @@
     <Compile Update="View\OpslaanPlattegrond.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\OverzichtGebruikteMeubels.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\LadenPlattegrond.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\OpslaanPlattegrond.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\OverzichtGebruikteMeubels.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

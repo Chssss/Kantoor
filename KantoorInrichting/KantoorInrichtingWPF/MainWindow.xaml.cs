@@ -20,6 +20,7 @@ using Image = System.Windows.Controls.Image;
 using System.Drawing;
 using WPF.JoshSmith.Controls;
 using KantoorInrichtingWPF.View;
+using KantoorInrichtingWPF.Model;
 
 namespace KantoorInrichtingWPF
 {
@@ -580,7 +581,39 @@ namespace KantoorInrichtingWPF
 
         private void OnButton_Totaalprijs_Click(object sender, RoutedEventArgs e)
         {
+            
+            Dictionary<string, List<string>> Gebruiktemeubels = new Dictionary<string, List<string>>();
+            decimal totaalprijs = 0;
+            plattegrondview.LeegGebruikteMeubelLijst();
+            foreach (Image item in DragCavasPlattegrond.Children)
+            {
+                List<string> list = (List<string>)item.Tag;
+                if (Gebruiktemeubels.ContainsKey(list[0]))
+                {
+                    int count = Convert.ToInt32(Gebruiktemeubels[list[0]][1]);
+                    count++;
+                    Gebruiktemeubels[list[0]][1] = $"{count}";
+                }
+                else
+                {
+                    List<string> listPrijsAantal = new List<string>();
+                    listPrijsAantal.Add(list[1]);
+                    listPrijsAantal.Add("1");
+                    Gebruiktemeubels.Add(list[0], listPrijsAantal);
+                }
+            }
+            foreach (var item in Gebruiktemeubels)
+            {
+                plattegrondview.ToevoegenGebruikteMeubel(item.Key,Convert.ToInt32(item.Value[1]), Convert.ToDecimal(item.Value[0]));
+                totaalprijs = totaalprijs + (Convert.ToInt32(item.Value[1]) * Convert.ToDecimal(item.Value[0]));
+            }
 
+            List<GebruikteMeubels> test = plattegrondview.GebruikteMeubelsLijst;
+
+            OverzichtGebruikteMeubels overzichtGebruikteMeubels = new OverzichtGebruikteMeubels();
+            overzichtGebruikteMeubels.DGGebruikteMeubels.ItemsSource = test;
+            overzichtGebruikteMeubels.LabelTotalprijs.Content = $"{totaalprijs}€";
+            overzichtGebruikteMeubels.Show();
         }
 
         private void OnButton_ZoekenMeubelNaam_Click(object sender, RoutedEventArgs e)

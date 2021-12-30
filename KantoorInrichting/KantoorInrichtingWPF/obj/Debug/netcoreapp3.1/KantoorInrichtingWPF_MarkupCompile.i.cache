@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\App.xaml
-6-1578839547
+7-675888173
 
-19-744064792
+21-1962047358
 194-862261039
-MainWindow.xaml;View\LadenPlattegrond.xaml;View\MeubelsLijst.xaml;View\MeubelsToevoegen.xaml;View\NieuwePlattegrond.xaml;View\OpslaanPlattegrond.xaml;
+MainWindow.xaml;View\LadenPlattegrond.xaml;View\MeubelsLijst.xaml;View\MeubelsToevoegen.xaml;View\NieuwePlattegrond.xaml;View\OpslaanPlattegrond.xaml;View\OverzichtGebruikteMeubels.xaml;
 
-False
+True
 
