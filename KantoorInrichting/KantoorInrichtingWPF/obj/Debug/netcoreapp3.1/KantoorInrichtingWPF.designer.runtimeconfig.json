@@ -7,7 +7,7 @@
     },
     "additionalProbingPaths": [
       "C:\\Users\\stoff\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Jelle\\.nuget\\packages"
+      "C:\\Users\\stoff\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

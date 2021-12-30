@@ -7,6 +7,7 @@ using System.Xml;
 using System.Data.SqlClient;
 using System.IO;
 using System;
+using System.Reflection;
 
 namespace KantoorInrichtingWPF.ViewModel
 {
@@ -518,8 +519,17 @@ namespace KantoorInrichtingWPF.ViewModel
             //hier liever dus een selectiewindow
             //https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-open-files-using-the-openfiledialog-component?view=netframeworkdesktop-4.8
             // xdoc.Load(path);
+            
             XmlDocument xdoc = new XmlDocument();
-            xdoc.Load(@"C:\Users\Jelle\Documents\GitHub\Kantoor\KantoorInrichting\KantoorInrichtingWPF\Xml\XMLTEST.xml");
+
+            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);//bin\\Debug\\netcoreapp3.1
+            var test = outPutDirectory.Replace("bin\\Debug\\netcoreapp3.1", "");
+            var Bestandsnaam = "XMLTEST" + ".xml";
+            var stringBestandNaam = $"Xml\\" +$"{Bestandsnaam}";
+            var xmlPath = Path.Combine(test, stringBestandNaam);//"Xml\\XMLTEST.xml"
+            string xml_path = new Uri(xmlPath).LocalPath;
+            xdoc.Load(xml_path);
+            //xdoc.Load(@"C:\Users\Jelle\Documents\GitHub\Kantoor\KantoorInrichting\KantoorInrichtingWPF\Xml\XMLTEST.xml");
             XmlNodeList nodes = xdoc.SelectNodes("//meubels/meubel");
 
             foreach (XmlNode node in nodes)
