@@ -29,6 +29,8 @@ namespace KantoorInrichtingWPF.ViewModel
         private int _canvasItemCount;
         private string _zoekbalk;
         private List<GebruikteMeubels> _gebruikteMeubelsLijst = new List<GebruikteMeubels>();
+        private string _canvasImageLeverancier;
+        private string _canvasImageProductcode;
 
         public event PropertyChangedEventHandler PropertyChanged;
         
@@ -220,6 +222,30 @@ namespace KantoorInrichtingWPF.ViewModel
 
             }
         }
+        public string CanvasImageLeverancier
+        {
+            get
+            {
+                return _canvasImageLeverancier;
+            }
+            set
+            {
+                _canvasImageLeverancier = value;
+
+            }
+        }
+        public string CanvasImageProductcode
+        {
+            get
+            {
+                return _canvasImageProductcode;
+            }
+            set
+            {
+                _canvasImageProductcode = value;
+
+            }
+        }
         public int CanvasItemCount
         {
             get
@@ -338,11 +364,11 @@ namespace KantoorInrichtingWPF.ViewModel
             string datum = $"{DateTime.Now}";
             Plattegrond_Database.UpdateDatabase( projectNaam, plattegrondNaam,  datum, plattegrondcode,  lengte,  breedte,  hoogte);
         }
-        public void ToevoegenGebruikteMeubel(string naamMeubel, int aantalMeubels, decimal prijsEnkelMeubel) 
+        public void ToevoegenGebruikteMeubel(string naamMeubel, int aantalMeubels, decimal prijsEnkelMeubel, string leverancier,string productcode) 
         {
             decimal totaalprijs = 0;
             totaalprijs = prijsEnkelMeubel * aantalMeubels;
-            GebruikteMeubels gebruikte = new GebruikteMeubels(naamMeubel, aantalMeubels, prijsEnkelMeubel, totaalprijs);
+            GebruikteMeubels gebruikte = new GebruikteMeubels(naamMeubel, aantalMeubels, prijsEnkelMeubel, totaalprijs,leverancier,productcode);
             GebruikteMeubelsLijst.Add(gebruikte);
         }
         public void LeegGebruikteMeubelLijst() 
@@ -379,7 +405,7 @@ namespace KantoorInrichtingWPF.ViewModel
         public void UpdateCanvasItems()
         {
 
-            Plattegrond_Database.UpdateCanvasDataDatabase(Plattegrondcode, CanvasItemcode, CanvasImageType, CanvasImageName, CanvasImageTag, XCoord, YCoord);
+            Plattegrond_Database.UpdateCanvasDataDatabase(Plattegrondcode, CanvasItemcode, CanvasImageType, CanvasImageName, CanvasImageTag, XCoord, YCoord,CanvasImageLeverancier,CanvasImageProductcode);
         }
         public bool CheckCanvasitemcode(string canvasitemcode) 
         {
@@ -398,7 +424,7 @@ namespace KantoorInrichtingWPF.ViewModel
         public void ToevoegenCanvasItems()
         {
             
-            Plattegrond_Database.ToevoegenCanvasDataAanDatabase(Plattegrondcode, CanvasItemcode, CanvasImageType, CanvasImageName, CanvasImageTag, XCoord, YCoord);
+            Plattegrond_Database.ToevoegenCanvasDataAanDatabase(Plattegrondcode, CanvasItemcode, CanvasImageType, CanvasImageName, CanvasImageTag, XCoord, YCoord, CanvasImageLeverancier,CanvasImageProductcode);
         }
        public void VerwijderenPlattegrond(string plattegrondcode)
         {

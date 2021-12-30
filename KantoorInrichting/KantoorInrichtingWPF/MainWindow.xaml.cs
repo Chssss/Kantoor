@@ -58,10 +58,12 @@ namespace KantoorInrichtingWPF
                 double ycoord = Convert.ToDouble(item.Value[6]);
                 _totalprijst = _totalprijst +Convert.ToDecimal( item.Value[4]);
                 LabelTotalPrijs.Content = $"{_totalprijst}€";
-                AddImageToGeladenMap(item.Value[2], item.Value[3], item.Value[4], xcoord, ycoord);
+                var tempLeverancier = item.Value[7];
+                var tempProductcode = item.Value[8];
+                AddImageToGeladenMap(item.Value[2], item.Value[3], item.Value[4], xcoord, ycoord,tempLeverancier,tempProductcode);
             }
         }
-        public void AddImageToGeladenMap(string typeImage, string naamMeubel, string prijs,double xcoord,double ycoord)
+        public void AddImageToGeladenMap(string typeImage, string naamMeubel, string prijs,double xcoord,double ycoord, string leverancier,string productcode)
         {
 
             if (typeImage.Equals("tafel"))
@@ -77,6 +79,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add(prijs);
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
@@ -96,6 +102,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add(prijs);
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
 
@@ -115,6 +125,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add(prijs);
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
@@ -133,6 +147,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add(prijs);
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
@@ -151,6 +169,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add(prijs);
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
@@ -169,6 +191,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add(prijs);
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
@@ -187,6 +213,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add(prijs);
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
@@ -205,6 +235,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add(prijs);
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
@@ -223,6 +257,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add(prijs);
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
@@ -244,8 +282,9 @@ namespace KantoorInrichtingWPF
                 //LabelTest.Content= meubelView.Catalogus[index].tag;
                 _totalprijst = _totalprijst + meubelView.Catalogus[index].Prijs;
                 LabelTotalPrijs.Content = $"{_totalprijst}€";
-                
-                AddImage(meubelView.Catalogus[index].Tag,index, meubelView.Catalogus[index].Naam);
+                var tempLeverancier = meubelView.Catalogus[index].Leverancier;
+                var tempProductcode = meubelView.Catalogus[index].Productcode;
+                AddImage(meubelView.Catalogus[index].Tag,index, meubelView.Catalogus[index].Naam,tempLeverancier,tempProductcode);
 
 
             }
@@ -275,7 +314,7 @@ namespace KantoorInrichtingWPF
             }
 
         }
-        public void AddImage(string typeImage,int index, string naamMeubel)
+        public void AddImage(string typeImage,int index, string naamMeubel,string leverancier,string productcode)
         {
 
             if (typeImage.Equals("tafel"))
@@ -291,6 +330,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add($"{meubelView.Catalogus[index].Prijs}");
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
@@ -310,6 +353,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add($"{meubelView.Catalogus[index].Prijs}");
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 
@@ -329,6 +376,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add($"{meubelView.Catalogus[index].Prijs}");
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
@@ -347,6 +398,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add($"{meubelView.Catalogus[index].Prijs}");
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
@@ -365,6 +420,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add($"{meubelView.Catalogus[index].Prijs}");
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
@@ -383,6 +442,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add($"{meubelView.Catalogus[index].Prijs}");
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
@@ -401,6 +464,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add($"{meubelView.Catalogus[index].Prijs}");
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
@@ -419,6 +486,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add($"{meubelView.Catalogus[index].Prijs}");
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
@@ -437,6 +508,10 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add(naamMeubel);
                 list.Add($"{meubelView.Catalogus[index].Prijs}");
+
+                list.Add(leverancier);
+                list.Add(productcode);
+
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
@@ -496,7 +571,10 @@ namespace KantoorInrichtingWPF
                         List<string> list = (List<string>)item.Tag;
                         plattegrondview.CanvasImageName = $"{list[0]}";
                         plattegrondview.CanvasImageTag = $"{list[1]}";
-                        plattegrondview.XCoord = $"{x}";
+
+                    plattegrondview.CanvasImageLeverancier= $"{list[2]}";
+                    plattegrondview.CanvasImageProductcode = $"{list[3]}";
+                    plattegrondview.XCoord = $"{x}";
                         plattegrondview.YCoord = $"{y}";
                         string canvasitemcode = $"{plattegrondview.Plattegrondcode}{plattegrondview.CanvasImageType[0]}{plattegrondview.CanvasItemCount}";
                         plattegrondview.CanvasItemcode = canvasitemcode;
@@ -549,6 +627,8 @@ namespace KantoorInrichtingWPF
                 List<string> list = (List<string>)item.Tag;
                 plattegrondview.CanvasImageName = $"{list[0]}";
                 plattegrondview.CanvasImageTag = $"{list[1]}";
+                plattegrondview.CanvasImageLeverancier = $"{list[2]}";
+                plattegrondview.CanvasImageProductcode = $"{list[3]}";
                 plattegrondview.XCoord = $"{x}";
                 plattegrondview.YCoord = $"{y}";
                 plattegrondview.CanvasItemcode = $"{plattegrondview.Plattegrondcode}{plattegrondview.CanvasImageType[0]}{plattegrondview.CanvasItemCount}";
@@ -600,12 +680,14 @@ namespace KantoorInrichtingWPF
                     List<string> listPrijsAantal = new List<string>();
                     listPrijsAantal.Add(list[1]);
                     listPrijsAantal.Add("1");
+                    listPrijsAantal.Add(list[2]);
+                    listPrijsAantal.Add(list[3]);
                     Gebruiktemeubels.Add(list[0], listPrijsAantal);
                 }
             }
             foreach (var item in Gebruiktemeubels)
             {
-                plattegrondview.ToevoegenGebruikteMeubel(item.Key,Convert.ToInt32(item.Value[1]), Convert.ToDecimal(item.Value[0]));
+                plattegrondview.ToevoegenGebruikteMeubel(item.Key,Convert.ToInt32(item.Value[1]), Convert.ToDecimal(item.Value[0]),item.Value[2],item.Value[3]);
                 totaalprijs = totaalprijs + (Convert.ToInt32(item.Value[1]) * Convert.ToDecimal(item.Value[0]));
             }
 
@@ -613,7 +695,7 @@ namespace KantoorInrichtingWPF
 
             OverzichtGebruikteMeubels overzichtGebruikteMeubels = new OverzichtGebruikteMeubels();
             overzichtGebruikteMeubels.DGGebruikteMeubels.ItemsSource = test;
-            overzichtGebruikteMeubels.LabelTotalprijs.Content = $"{totaalprijs}€";
+            overzichtGebruikteMeubels.LabelTotalprijs.Content = $"Totaalprijs:{totaalprijs}€";
             overzichtGebruikteMeubels.Show();
         }
 

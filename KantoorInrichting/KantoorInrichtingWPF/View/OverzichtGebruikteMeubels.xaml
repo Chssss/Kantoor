@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:KantoorInrichtingWPF.View"
         xmlns:ViewModel="clr-namespace:KantoorInrichtingWPF.ViewModel" x:Class="KantoorInrichtingWPF.View.OverzichtGebruikteMeubels"
         mc:Ignorable="d"
-        Title="OverzichtGebruikteMeubels" Height="450" Width="252">
+        Title="OverzichtGebruikteMeubels" Height="450" Width="500">
     <Window.DataContext>
         <ViewModel:PlattegrondViewModel/>
     </Window.DataContext>
@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
         <Button x:Name="ButtonTerug" Content="Terug" HorizontalAlignment="Left" Margin="168,0,0,0" VerticalAlignment="Center" Click="ButtonTerug_Click" Height="20" Width="33"/>
         <DataGrid x:Name="DGGebruikteMeubels" Margin="0,38,0,0" Grid.RowSpan="2" IsReadOnly="True" ItemsSource="{Binding GebruikteMeubelsLijst}"/>
-        <Label x:Name="LabelTotalprijs" Content="" HorizontalAlignment="Left" Margin="146,5,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label x:Name="LabelTotalprijs" Content="" HorizontalAlignment="Left" Margin="213,0,0,0" Grid.Row="2" VerticalAlignment="Center"/>
         <Label Content="Overzicht Gebruikte Meubels" HorizontalAlignment="Left" VerticalAlignment="Center"/>
     </Grid>
 </Window>

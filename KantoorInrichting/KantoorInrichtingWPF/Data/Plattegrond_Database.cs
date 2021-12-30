@@ -106,7 +106,8 @@ namespace KantoorInrichtingWPF.Data
                                 listVaule.Add(reader.GetString(4));//image tag(prijs)
                                 listVaule.Add(reader.GetString(5));//x coord
                                 listVaule.Add(reader.GetString(6));//y coord
-
+                                listVaule.Add(reader.GetString(7));//leverancier
+                                listVaule.Add(reader.GetString(8));//productcode
                                 outputCanvasSQL.Add(count2, listVaule);
                                 count2++;
                             }
@@ -305,7 +306,7 @@ namespace KantoorInrichtingWPF.Data
             #endregion
 
         }
-        public static void ToevoegenCanvasDataAanDatabase(string plattegrondcode, string canvasItemcode, string image_name_typeImage, string image_tag_naamMeubel, string image_tag_prijs, string x_coord, string y_coord)
+        public static void ToevoegenCanvasDataAanDatabase(string plattegrondcode, string canvasItemcode, string image_name_typeImage, string image_tag_naamMeubel, string image_tag_prijs, string x_coord, string y_coord, string image_tag_leverancier, string image_tag_productcode)
         {
             #region toevoegen canvasData
             /* try
@@ -352,7 +353,7 @@ namespace KantoorInrichtingWPF.Data
                     Console.WriteLine("=========================================\n");
 
 
-                    command.CommandText = $"INSERT INTO canvasItem VALUES (@plattegrondcode, @canvasItemcode, @imageNameTypeImage, @imageTagNaamMeubel, @imageTagPrijs, @xcoord, @ycoord) ";
+                    command.CommandText = $"INSERT INTO canvasItem VALUES (@plattegrondcode, @canvasItemcode, @imageNameTypeImage, @imageTagNaamMeubel, @imageTagPrijs, @xcoord, @ycoord, @leverancier, @productcode) ";
 
                     //SqlParameter test = new SqlParameter("", System.Data.SqlDbType.Text, 100);
                     //test.Value = ;
@@ -365,6 +366,8 @@ namespace KantoorInrichtingWPF.Data
                     SqlParameter imageTagPrijs = new SqlParameter("@imageTagPrijs", System.Data.SqlDbType.Text, 100);
                     SqlParameter xcoord = new SqlParameter("@xcoord", System.Data.SqlDbType.Text, 100);
                     SqlParameter ycoord = new SqlParameter("@ycoord", System.Data.SqlDbType.Text, 100);
+                    SqlParameter leverancier = new SqlParameter("@leverancier", System.Data.SqlDbType.Text, 100);
+                    SqlParameter productcode = new SqlParameter("@productcode", System.Data.SqlDbType.Text, 100);
 
                     plattegrondcodeParam.Value = plattegrondcode;
                     canvasItemcodeParam.Value = canvasItemcode;
@@ -373,6 +376,8 @@ namespace KantoorInrichtingWPF.Data
                     imageTagPrijs.Value = image_tag_prijs;
                     xcoord.Value = x_coord;
                     ycoord.Value = y_coord;
+                    leverancier.Value = image_tag_leverancier;
+                    productcode.Value = image_tag_productcode;
 
                     command.Parameters.Add(plattegrondcodeParam);
                     command.Parameters.Add(canvasItemcodeParam);
@@ -381,6 +386,8 @@ namespace KantoorInrichtingWPF.Data
                     command.Parameters.Add(imageTagPrijs);
                     command.Parameters.Add(xcoord);
                     command.Parameters.Add(ycoord);
+                    command.Parameters.Add(leverancier);
+                    command.Parameters.Add(productcode);
 
                     command.Prepare();
                     command.ExecuteNonQuery();
@@ -641,7 +648,7 @@ namespace KantoorInrichtingWPF.Data
             #endregion
 
         }
-        public static void UpdateCanvasDataDatabase(string plattegrondcode, string canvasItemcode, string image_name_typeImage, string image_tag_naamMeubel, string image_tag_prijs, string x_coord, string y_coord)
+        public static void UpdateCanvasDataDatabase(string plattegrondcode, string canvasItemcode, string image_name_typeImage, string image_tag_naamMeubel, string image_tag_prijs, string x_coord, string y_coord,string image_tag_leverancier, string image_tag_productcode)
         {
          
             #region update canvasData sql
@@ -654,7 +661,7 @@ namespace KantoorInrichtingWPF.Data
                 builder.InitialCatalog = "Inventaris";
 
 
-                String sql = $"UPDATE canvasItem SET plattegrondcode = '{plattegrondcode}', canvasItemcode = '{canvasItemcode}', imageNameTypeImage = '{image_name_typeImage}', imageTagNaamMeubel = '{image_tag_naamMeubel}', imageTagPrijs  = '{image_tag_prijs}', xcoord= '{x_coord}', ycoord = '{y_coord}' WHERE plattegrondcode LIKE " + $"'{plattegrondcode}'";
+                String sql = $"UPDATE canvasItem SET plattegrondcode = '{plattegrondcode}', canvasItemcode = '{canvasItemcode}', imageNameTypeImage = '{image_name_typeImage}', imageTagNaamMeubel = '{image_tag_naamMeubel}', imageTagPrijs  = '{image_tag_prijs}', xcoord= '{x_coord}', ycoord = '{y_coord}', leverancier = '{image_tag_leverancier}', productcode = '{image_tag_productcode}' WHERE plattegrondcode LIKE " + $"'{plattegrondcode}'";
 
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
