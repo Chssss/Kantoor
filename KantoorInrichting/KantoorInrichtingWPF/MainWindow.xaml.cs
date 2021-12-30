@@ -675,6 +675,10 @@ namespace KantoorInrichtingWPF
                     count++;
                     Gebruiktemeubels[list[0]][1] = $"{count}";
                 }
+                if (list[0].Equals("deur")|| list[0].Equals("raam"))
+                {
+                    
+                }
                 else
                 {
                     List<string> listPrijsAantal = new List<string>();
@@ -684,6 +688,8 @@ namespace KantoorInrichtingWPF
                     listPrijsAantal.Add(list[3]);
                     Gebruiktemeubels.Add(list[0], listPrijsAantal);
                 }
+               
+                
             }
             foreach (var item in Gebruiktemeubels)
             {
@@ -733,6 +739,8 @@ namespace KantoorInrichtingWPF
             List<string> list = new List<string>();
             list.Add("raam");
             list.Add($"0,0");
+            list.Add("n.v.t");
+            list.Add("n.v.t");
             image.Tag = list;
             DragCavasPlattegrond.Children.Add(image);
             Canvas.SetTop(image, 10.0);
@@ -752,6 +760,8 @@ namespace KantoorInrichtingWPF
             List<string> list = new List<string>();
             list.Add("deur");
             list.Add($"0,0");
+            list.Add("n.v.t");
+            list.Add("n.v.t");
             image.Tag = list;
             DragCavasPlattegrond.Children.Add(image);
             Canvas.SetTop(image, 10.0);
