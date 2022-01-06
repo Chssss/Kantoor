@@ -82,3 +82,42 @@ C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\OpslaanPlattegrond.baml
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\OverzichtGebruikteMeubels.g.cs
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\OverzichtGebruikteMeubels.baml
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\KantoorInrichtingWPF.exe
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\System.Drawing.Common.dll
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\System.Drawing.Common.dll
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.csproj.AssemblyReference.cache
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\LadenPlattegrond.g.cs
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\MeubelsLijst.g.cs
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\MeubelsToevoegen.g.cs
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\NieuwePlattegrond.g.cs
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\OpslaanPlattegrond.g.cs
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\OverzichtGebruikteMeubels.g.cs
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\App.g.cs
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF_MarkupCompile.cache
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF_MarkupCompile.lref
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\MainWindow.baml
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\LadenPlattegrond.baml
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\MeubelsLijst.baml
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\MeubelsToevoegen.baml
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\NieuwePlattegrond.baml
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\OpslaanPlattegrond.baml
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\View\OverzichtGebruikteMeubels.baml
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.g.resources
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.GeneratedMSBuildEditorConfig.editorconfig
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.AssemblyInfoInputs.cache
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.AssemblyInfo.cs
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.csproj.CoreCompileInputs.cache
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.csproj.CopyComplete
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.dll
+D:\xampp\htdocs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\KantoorInrichtingWPF.pdb

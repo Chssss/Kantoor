@@ -45,6 +45,7 @@
                     <MenuItem Header="Toevoegen" Click="OnMenuItem_toevoegen_Click" />
 
                     <MenuItem Header="Lijst" Click="OnMenuItem_lijst_Click"  />
+                    <MenuItem Header="Import" Click="OnMenuItem_lijst_Click"  />
                 </MenuItem>
             </Menu>
             <Menu DockPanel.Dock="Top" Height="17" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top">
