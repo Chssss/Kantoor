@@ -34,6 +34,7 @@ namespace KantoorInrichtingWPF.ViewModel
         private string _canvasImageLeverancier;
         private string _canvasImageProductcode;
         private string _projectbalk;
+        private string _canvasImageRotation;
 
         public event PropertyChangedEventHandler PropertyChanged;
         
@@ -297,6 +298,18 @@ namespace KantoorInrichtingWPF.ViewModel
 
             }
         }
+        public string CanvasImageRotation
+        {
+            get
+            {
+                return _canvasImageRotation;
+            }
+            set
+            {
+                _canvasImageRotation = value;
+
+            }
+        }
         #endregion
         #endregion
         private void OnPropertyChangedEvent(string propertyName)
@@ -439,7 +452,7 @@ namespace KantoorInrichtingWPF.ViewModel
         public void ToevoegenCanvasItems()
         {
             
-            Plattegrond_Database.ToevoegenCanvasDataAanDatabase(Plattegrondcode, CanvasItemcode, CanvasImageType, CanvasImageName, CanvasImageTag, XCoord, YCoord, CanvasImageLeverancier,CanvasImageProductcode);
+            Plattegrond_Database.ToevoegenCanvasDataAanDatabase(Plattegrondcode, CanvasItemcode, CanvasImageType, CanvasImageName, CanvasImageTag, XCoord, YCoord, CanvasImageLeverancier,CanvasImageProductcode,CanvasImageRotation);
         }
        public void VerwijderenPlattegrond(string plattegrondcode)
         {

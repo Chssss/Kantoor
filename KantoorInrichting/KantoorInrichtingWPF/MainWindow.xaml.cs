@@ -61,10 +61,11 @@ namespace KantoorInrichtingWPF
                 LabelTotalPrijs.Content = $"{_totalprijst}€";
                 var tempLeverancier = item.Value[7];
                 var tempProductcode = item.Value[8];
-                AddImageToGeladenMap(item.Value[2], item.Value[3], item.Value[4], xcoord, ycoord,tempLeverancier,tempProductcode);
+                var rotatie = item.Value[9];
+                AddImageToGeladenMap(item.Value[2], item.Value[3], item.Value[4], xcoord, ycoord,tempLeverancier,tempProductcode,rotatie);
             }
         }
-        public void AddImageToGeladenMap(string typeImage, string naamMeubel, string prijs,double xcoord,double ycoord, string leverancier,string productcode)
+        public void AddImageToGeladenMap(string typeImage, string naamMeubel, string prijs,double xcoord,double ycoord, string leverancier,string productcode, string rotatie)
         {
 
             if (typeImage.Equals("tafel"))
@@ -83,12 +84,30 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add(rotatie);
                 image.Tag = list;
-                DragCavasPlattegrond.Children.Add(image);
+                
+                 DragCavasPlattegrond.Children.Add(image);
+
                 Canvas.SetTop(image, ycoord);
                 Canvas.SetLeft(image, xcoord);
-                
+
+                int index = DragCavasPlattegrond.Children.IndexOf(image);
+                Image image2 = (Image)DragCavasPlattegrond.Children[index];
+
+                List<string> imageTag = (List<string>)image2.Tag;
+                double rotatie1 = Convert.ToDouble(rotatie);
+                RotateTransform rotateTransform1 = new RotateTransform(rotatie1);
+                var x = image2.ActualWidth / 2;
+                var y = image2.ActualHeight / 2;
+                rotateTransform1.CenterX = x;
+                rotateTransform1.CenterY = y;
+                image2.RenderTransform = rotateTransform1;
+                imageTag[4] = $"{rotatie}";
+                image2.Tag = imageTag;
+
+             
+
             }
             if (typeImage.Equals("stoel"))
             {
@@ -106,12 +125,29 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add(rotatie);
                 image.Tag = list;
+                
                 DragCavasPlattegrond.Children.Add(image);
 
                 Canvas.SetTop(image, ycoord);
                 Canvas.SetLeft(image, xcoord);
+
+               int index= DragCavasPlattegrond.Children.IndexOf(image);
+               Image image2 = (Image)DragCavasPlattegrond.Children[index];
+                
+                List<string> imageTag = (List<string>)image2.Tag;
+                double rotatie1 = Convert.ToDouble(rotatie);
+                RotateTransform rotateTransform1 = new RotateTransform(rotatie1);
+                var x = image2.ActualWidth / 2;
+                var y = image2.ActualHeight / 2;
+                rotateTransform1.CenterX = x;
+                rotateTransform1.CenterY = y;
+                image2.RenderTransform = rotateTransform1;
+                imageTag[4] = $"{rotatie}";
+                image2.Tag = imageTag;
+
+                
             }
             if (typeImage.Equals("tapijt"))
             {
@@ -129,11 +165,25 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add(rotatie);
                 image.Tag = list;
+                
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
                 Canvas.SetLeft(image, xcoord);
+                int index = DragCavasPlattegrond.Children.IndexOf(image);
+                Image image2 = (Image)DragCavasPlattegrond.Children[index];
+
+                List<string> imageTag = (List<string>)image2.Tag;
+                double rotatie1 = Convert.ToDouble(rotatie);
+                RotateTransform rotateTransform1 = new RotateTransform(rotatie1);
+                var x = image2.ActualWidth / 2;
+                var y = image2.ActualHeight / 2;
+                rotateTransform1.CenterX = x;
+                rotateTransform1.CenterY = y;
+                image2.RenderTransform = rotateTransform1;
+                imageTag[4] = $"{rotatie}";
+                image2.Tag = imageTag;
             }
             if (typeImage.Equals("raam"))
             {
@@ -151,11 +201,25 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add(rotatie);
                 image.Tag = list;
+                
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
                 Canvas.SetLeft(image, xcoord);
+                int index = DragCavasPlattegrond.Children.IndexOf(image);
+                Image image2 = (Image)DragCavasPlattegrond.Children[index];
+
+                List<string> imageTag = (List<string>)image2.Tag;
+                double rotatie1 = Convert.ToDouble(rotatie);
+                RotateTransform rotateTransform1 = new RotateTransform(rotatie1);
+                var x = image2.ActualWidth / 2;
+                var y = image2.ActualHeight / 2;
+                rotateTransform1.CenterX = x;
+                rotateTransform1.CenterY = y;
+                image2.RenderTransform = rotateTransform1;
+                imageTag[4] = $"{rotatie}";
+                image2.Tag = imageTag;
             }
             if (typeImage.Equals("plant"))
             {
@@ -173,11 +237,25 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add(rotatie);
                 image.Tag = list;
+                
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
                 Canvas.SetLeft(image, xcoord);
+                int index = DragCavasPlattegrond.Children.IndexOf(image);
+                Image image2 = (Image)DragCavasPlattegrond.Children[index];
+
+                List<string> imageTag = (List<string>)image2.Tag;
+                double rotatie1 = Convert.ToDouble(rotatie);
+                RotateTransform rotateTransform1 = new RotateTransform(rotatie1);
+                var x = image2.ActualWidth / 2;
+                var y = image2.ActualHeight / 2;
+                rotateTransform1.CenterX = x;
+                rotateTransform1.CenterY = y;
+                image2.RenderTransform = rotateTransform1;
+                imageTag[4] = $"{rotatie}";
+                image2.Tag = imageTag;
             }
             if (typeImage.Equals("lamp"))
             {
@@ -195,11 +273,25 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add(rotatie);
                 image.Tag = list;
+                
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
                 Canvas.SetLeft(image, xcoord);
+                int index = DragCavasPlattegrond.Children.IndexOf(image);
+                Image image2 = (Image)DragCavasPlattegrond.Children[index];
+
+                List<string> imageTag = (List<string>)image2.Tag;
+                double rotatie1 = Convert.ToDouble(rotatie);
+                RotateTransform rotateTransform1 = new RotateTransform(rotatie1);
+                var x = image2.ActualWidth / 2;
+                var y = image2.ActualHeight / 2;
+                rotateTransform1.CenterX = x;
+                rotateTransform1.CenterY = y;
+                image2.RenderTransform = rotateTransform1;
+                imageTag[4] = $"{rotatie}";
+                image2.Tag = imageTag;
             }
             if (typeImage.Equals("kast"))
             {
@@ -217,11 +309,25 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add(rotatie);
                 image.Tag = list;
+              
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
                 Canvas.SetLeft(image, xcoord);
+                int index = DragCavasPlattegrond.Children.IndexOf(image);
+                Image image2 = (Image)DragCavasPlattegrond.Children[index];
+
+                List<string> imageTag = (List<string>)image2.Tag;
+                double rotatie1 = Convert.ToDouble(rotatie);
+                RotateTransform rotateTransform1 = new RotateTransform(rotatie1);
+                var x = image2.ActualWidth / 2;
+                var y = image2.ActualHeight / 2;
+                rotateTransform1.CenterX = x;
+                rotateTransform1.CenterY = y;
+                image2.RenderTransform = rotateTransform1;
+                imageTag[4] = $"{rotatie}";
+                image2.Tag = imageTag;
             }
             if (typeImage.Equals("deur"))
             {
@@ -239,11 +345,25 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add(rotatie);
                 image.Tag = list;
+               
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
                 Canvas.SetLeft(image, xcoord);
+                int index = DragCavasPlattegrond.Children.IndexOf(image);
+                Image image2 = (Image)DragCavasPlattegrond.Children[index];
+
+                List<string> imageTag = (List<string>)image2.Tag;
+                double rotatie1 = Convert.ToDouble(rotatie);
+                RotateTransform rotateTransform1 = new RotateTransform(rotatie1);
+                var x = image2.ActualWidth / 2;
+                var y = image2.ActualHeight / 2;
+                rotateTransform1.CenterX = x;
+                rotateTransform1.CenterY = y;
+                image2.RenderTransform = rotateTransform1;
+                imageTag[4] = $"{rotatie}";
+                image2.Tag = imageTag;
             }
             if (typeImage.Equals("apparaten"))
             {
@@ -261,12 +381,25 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add(rotatie);
                 image.Tag = list;
+               
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, ycoord);
                 Canvas.SetLeft(image, xcoord);
+                int index = DragCavasPlattegrond.Children.IndexOf(image);
+                Image image2 = (Image)DragCavasPlattegrond.Children[index];
 
+                List<string> imageTag = (List<string>)image2.Tag;
+                double rotatie1 = Convert.ToDouble(rotatie);
+                RotateTransform rotateTransform1 = new RotateTransform(rotatie1);
+                var x = image2.ActualWidth / 2;
+                var y = image2.ActualHeight / 2;
+                rotateTransform1.CenterX = x;
+                rotateTransform1.CenterY = y;
+                image2.RenderTransform = rotateTransform1;
+                imageTag[4] = $"{rotatie}";
+                image2.Tag = imageTag;
             }
 
         }
@@ -334,6 +467,7 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
+                list.Add("0");
 
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
@@ -357,7 +491,7 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add("0");
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 
@@ -380,7 +514,7 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add("0");
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
@@ -402,7 +536,7 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add("0");
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
@@ -424,7 +558,7 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add("0");
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
@@ -446,7 +580,7 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add("0");
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
@@ -468,7 +602,7 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add("0");
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
@@ -490,7 +624,7 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add("0");
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
@@ -512,7 +646,7 @@ namespace KantoorInrichtingWPF
 
                 list.Add(leverancier);
                 list.Add(productcode);
-
+                list.Add("0");
                 image.Tag = list;
                 DragCavasPlattegrond.Children.Add(image);
                 Canvas.SetTop(image, 10.0);
@@ -575,6 +709,7 @@ namespace KantoorInrichtingWPF
 
                     plattegrondview.CanvasImageLeverancier= $"{list[2]}";
                     plattegrondview.CanvasImageProductcode = $"{list[3]}";
+                    plattegrondview.CanvasImageRotation = $"{list[4]}";
                     plattegrondview.XCoord = $"{x}";
                         plattegrondview.YCoord = $"{y}";
                         string canvasitemcode = $"{plattegrondview.Plattegrondcode}{plattegrondview.CanvasImageType[0]}{plattegrondview.CanvasItemCount}";
@@ -618,6 +753,7 @@ namespace KantoorInrichtingWPF
                 plattegrondview.CanvasImageTag = $"{list[1]}";
                 plattegrondview.CanvasImageLeverancier = $"{list[2]}";
                 plattegrondview.CanvasImageProductcode = $"{list[3]}";
+                plattegrondview.CanvasImageRotation = $"{list[4]}";
                 plattegrondview.XCoord = $"{x}";
                 plattegrondview.YCoord = $"{y}";
                 plattegrondview.CanvasItemcode = $"{plattegrondview.Plattegrondcode}{plattegrondview.CanvasImageType[0]}{plattegrondview.CanvasItemCount}";
@@ -742,6 +878,7 @@ namespace KantoorInrichtingWPF
             list.Add($"0,0");
             list.Add("n.v.t");
             list.Add("n.v.t");
+            list.Add("0");
             image.Tag = list;
             DragCavasPlattegrond.Children.Add(image);
             Canvas.SetTop(image, 10.0);
@@ -763,6 +900,7 @@ namespace KantoorInrichtingWPF
             list.Add($"0,0");
             list.Add("n.v.t");
             list.Add("n.v.t");
+            list.Add("0");
             image.Tag = list;
             DragCavasPlattegrond.Children.Add(image);
             Canvas.SetTop(image, 10.0);
@@ -796,6 +934,35 @@ namespace KantoorInrichtingWPF
 
             }
            
+        }
+
+        private void OnMouseDownPressed(object sender, MouseButtonEventArgs e)
+        {
+            var dragCanvas = sender as DragCanvas;
+            var mouseButton = e;
+            if (dragCanvas != null)
+            {
+                if (mouseButton.ChangedButton.Equals(MouseButton.Middle))
+                {
+                    Image image = (Image)mouseButton.OriginalSource;
+                    List<string> imageTag = (List<string>)image.Tag;
+                    double rotatie = Convert.ToDouble( imageTag[4]);
+                    if (rotatie==360)
+                    {
+                        rotatie = 0;
+                    }
+                    rotatie = rotatie + 45;
+                    RotateTransform rotateTransform1 = new RotateTransform(rotatie);
+                    var x= image.ActualWidth / 2;
+                    var y= image.ActualHeight / 2;
+                    rotateTransform1.CenterX = x;
+                    rotateTransform1.CenterY = y;
+                    image.RenderTransform = rotateTransform1;
+                    imageTag[4] = $"{rotatie}";
+                    image.Tag = imageTag;
+                   
+                }
+            }
         }
     }
 }
