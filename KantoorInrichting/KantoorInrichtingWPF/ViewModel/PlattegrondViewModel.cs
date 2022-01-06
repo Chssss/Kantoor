@@ -3,6 +3,8 @@ using KantoorInrichtingWPF.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
@@ -31,6 +33,7 @@ namespace KantoorInrichtingWPF.ViewModel
         private List<GebruikteMeubels> _gebruikteMeubelsLijst = new List<GebruikteMeubels>();
         private string _canvasImageLeverancier;
         private string _canvasImageProductcode;
+        private string _projectbalk;
 
         public event PropertyChangedEventHandler PropertyChanged;
         
@@ -170,6 +173,18 @@ namespace KantoorInrichtingWPF.ViewModel
             set
             {
                 _zoekbalk = value;
+
+            }
+        }
+        public string Projectbalk
+        {
+            get
+            {
+                return _projectbalk;
+            }
+            set
+            {
+                _projectbalk = value;
 
             }
         }
@@ -436,6 +451,57 @@ namespace KantoorInrichtingWPF.ViewModel
             Plattegrond_Database.DeleteCanvasitemFromDatabase(plattegrondcode);
             
         }
+        public void MakeBestelling(List<GebruikteMeubels> gebruikteMeubels, string plattegrondnaam) 
+        {
+            List<string> Leveranciers = new List<string>();
+            foreach (var item in gebruikteMeubels)
+            {
+                if (!Leveranciers.Contains(item.Leverancier))
+                {
+                    Leveranciers.Add(item.Leverancier);
+                }
+               
+            }
+            foreach (var leverancier in Leveranciers)
+            {
+                var LeverancierData = Leverancier_Database.GetleverancierDataDatabase(leverancier);
+                string datum = DateTime.Now.ToString();
+                string[] bestelling = new string[gebruikteMeubels.Count+6];
+                bestelling[0] = $"Leverancier: {leverancier}";
+                bestelling[1] = $"Email: {LeverancierData[1]}";
+                bestelling[2] = $"Telefoonnummer: {LeverancierData[2]}";
+                bestelling[3] = $"Datum:{datum}";
+                bestelling[5] = $"Lijst met gebruikte meubels:";
+                int count = 6;
+                decimal totaalprijs = 0;
+                foreach (var item in gebruikteMeubels)
+                {
+                    if (item.Leverancier.Equals(leverancier))
+                    {
+                        totaalprijs = totaalprijs + item.Totalprijs;
+                        bestelling[count] = $"Naam:{item.Naam} Aantal:{item.Aantal} Prijs enkele meubel:{item.Prijs} Totaalprijs:{item.Totalprijs} Productcode:{item.productcode}";
+                        count++;
+                    }
+                }
+                bestelling[4] = $"Totaalprijs:{totaalprijs}€";
+               
+                string path= Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string datum2 = datum.Replace(':', '.');
+                string bestelling_path = $"{path}\\bestelling {plattegrondnaam} {leverancier} {datum2}.txt";
+                if (!File.Exists(bestelling_path))
+                {
+                    // Create a file to write to.
+                    using (StreamWriter sw = File.CreateText(bestelling_path))
+                    {
+                        
+                    }
+                }
+                File.WriteAllLines(bestelling_path,bestelling);
+              
+
+            }
+           
+        }
         void ZoekenProjectNaamExecute()
         {
             Dictionary<int, List<string>> outputQuerry = Plattegrond_Database.ZoekenNaamProjectDatabase(Zoekbalk);
@@ -489,10 +555,120 @@ namespace KantoorInrichtingWPF.ViewModel
 
             PlattegrondLijst = ListPlattegrond;
         }
+        void MakeProjectBestellingExecute() 
+        {
+
+            List<string> PlattegrondcodeList = Plattegrond_Database.GetPlattegrondcode(Projectbalk);
+            List<GebruikteMeubels> ListgebruikteMeubels = new List<GebruikteMeubels>();
+            string datum = DateTime.Now.ToString();
+            #region Get Meubels van de plattegrond
+            foreach (var plattegrondcode in PlattegrondcodeList)
+            {
+                Dictionary<int, List<string>> CanvasItems = Plattegrond_Database.GetPlattegrondCanvasDataDatabase(plattegrondcode);
+                Dictionary<string, List<string>> Gebruiktemeubels = new Dictionary<string, List<string>>();
+                foreach (var canvasitem in CanvasItems)
+                {
+                    if (Gebruiktemeubels.ContainsKey(canvasitem.Value[3]))
+                    {
+                        int count = Convert.ToInt32(Gebruiktemeubels[canvasitem.Value[3]][1]);
+                        count++;
+                        Gebruiktemeubels[canvasitem.Value[3]][1] = $"{count}";
+                    }
+
+
+                    if (Gebruiktemeubels.ContainsKey(canvasitem.Value[3]) == false)
+                    {
+                        if (canvasitem.Value[3].Equals("deur") || canvasitem.Value[3].Equals("raam")|| canvasitem.Value[3].Equals("muur"))
+                        {
+
+                        }
+                        else
+                        {
+                            List<string> listPrijsAantal = new List<string>();
+                            listPrijsAantal.Add(canvasitem.Value[4]);
+                            listPrijsAantal.Add("1");
+                            listPrijsAantal.Add(canvasitem.Value[7]);
+                            listPrijsAantal.Add(canvasitem.Value[8]);
+                            Gebruiktemeubels.Add(canvasitem.Value[3], listPrijsAantal);
+                        }
+
+                    }
+                }
+                #endregion
+                #region maak lijst met de gebruikte meubels
+                foreach (var item in Gebruiktemeubels)
+                {
+                    //plattegrondview.ToevoegenGebruikteMeubel(item.Key,Convert.ToInt32(item.Value[1]), Convert.ToDecimal(item.Value[0]),item.Value[2],item.Value[3]);
+                    //string naamMeubel, int aantalMeubels, decimal prijsEnkelMeubel, string leverancier,string productcode
+                    decimal prijsEnkelMeubel = Convert.ToDecimal(item.Value[0]);
+                    int aantalMeubels= Convert.ToInt32(item.Value[1]);
+                    string naamMeubel= item.Key;
+                    string leverancier= item.Value[2];
+                    string productcode= item.Value[3];
+                    decimal totaalprijs = 0;
+                    totaalprijs = prijsEnkelMeubel * aantalMeubels;
+                    GebruikteMeubels gebruikte = new GebruikteMeubels(naamMeubel, aantalMeubels, prijsEnkelMeubel, totaalprijs, leverancier, productcode);
+                    ListgebruikteMeubels.Add(gebruikte);
+                }
+                #endregion
+                #region bestelling schrijven
+                List<string> Leveranciers = new List<string>();
+                foreach (var item in ListgebruikteMeubels)
+                {
+                    if (!Leveranciers.Contains(item.Leverancier))
+                    {
+                        Leveranciers.Add(item.Leverancier);
+                    }
+
+                }
+                foreach (var leverancier in Leveranciers)
+                {
+                    var LeverancierData = Leverancier_Database.GetleverancierDataDatabase(leverancier);
+                    
+                    string[] bestelling = new string[ListgebruikteMeubels.Count + 6];
+                    bestelling[0] = $"Leverancier: {leverancier}";
+                    bestelling[1] = $"Email: {LeverancierData[1]}";
+                    bestelling[2] = $"Telefoonnummer: {LeverancierData[2]}";
+                    bestelling[3] = $"Datum:{datum}";
+                    bestelling[5] = $"Lijst met gebruikte meubels:";
+                    int count = 6;
+                    decimal totaalprijs = 0;
+                    foreach (var item in ListgebruikteMeubels)
+                    {
+                        if (item.Leverancier.Equals(leverancier))
+                        {
+                            totaalprijs = totaalprijs + item.Totalprijs;
+                            bestelling[count] = $"Naam:{item.Naam} Aantal:{item.Aantal} Prijs enkele meubel:{item.Prijs} Totaalprijs:{item.Totalprijs} Productcode:{item.productcode}";
+                            count++;
+                        }
+                    }
+                    bestelling[4] = $"Totaalprijs:{totaalprijs}€";
+
+                    string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    string datum2 = datum.Replace(':', '.');
+                    string bestelling_path = $"{path}\\bestelling {Projectbalk} {leverancier} {datum2}.txt";
+                    if (!File.Exists(bestelling_path))
+                    {
+                        // Create a file to write to.
+                        using (StreamWriter sw = File.CreateText(bestelling_path))
+                        {
+
+                        }
+                    }
+                    File.WriteAllLines(bestelling_path, bestelling);
+                 
+                }
+                #endregion
+            }
+            MessageBox.Show($"Bestelling is gemaakt", "Bestelling Project");
+        }
         bool CanUpdatePlattegrondenLijstExecute()
         {
             return true;
         }
+        public ICommand BestellenProject { get { return new RelayCommand(MakeProjectBestellingExecute, CanUpdatePlattegrondenLijstExecute); } }
+
+
         public ICommand UpdatePlattegrondenLijst { get { return new RelayCommand(UpdatePlattegrondenLijstExecute, CanUpdatePlattegrondenLijstExecute); } }
 
         public ICommand ZoekenProjectNaam { get { return new RelayCommand(ZoekenProjectNaamExecute, CanUpdatePlattegrondenLijstExecute); } }

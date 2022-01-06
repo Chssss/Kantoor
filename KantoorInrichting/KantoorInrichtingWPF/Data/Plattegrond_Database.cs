@@ -8,6 +8,52 @@ namespace KantoorInrichtingWPF.Data
 {
    public class Plattegrond_Database
     {
+        public static List<string> GetPlattegrondcode(string projectnaam) 
+        {
+            List<string> output = new List<string>();
+
+            #region plattegrond sql
+            try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "127.0.0.1, 1433";
+                builder.UserID = "sa";
+                builder.Password = "Kantoorinrichting!";
+                builder.InitialCatalog = "Inventaris";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    Console.WriteLine("\nQuery data example:");
+                    Console.WriteLine("=========================================\n");
+
+                    String sql = "SELECT plattegrondcode FROM plattegrond WHERE projectnaam = " + $"'{projectnaam}'";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            while (reader.Read())
+                            {
+                                
+                                output.Add(reader.GetString(0));//project naam
+                                
+                               
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Console.ReadLine();
+            #endregion
+            return output;
+        }
         public static Dictionary<int, List<string>> GetPlattegrondDataDatabase()
         {
             Dictionary<int, List<string>> outputPlategrondSQL = new Dictionary<int, List<string>>(); 

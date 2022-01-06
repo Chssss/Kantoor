@@ -47,6 +47,7 @@ namespace KantoorInrichtingWPF
             LabelTotalPrijs.Content = $"{_totalprijst}€";
             meubelView.XmlInvoegen();
             
+            
 
 
         }
@@ -582,19 +583,7 @@ namespace KantoorInrichtingWPF
                     #region delete en toevoegen
                     plattegrondview.ToevoegenCanvasItems();
                     #endregion
-                    #region update en toevoegen
-                    /* bool check = plattegrondview.CheckCanvasitemcode(canvasitemcode);
-
-                     if (check==true)
-                     {
-
-                         plattegrondview.UpdateCanvasItems();
-                     }
-                     if (check==false)
-                     {
-                         plattegrondview.ToevoegenCanvasItems();//new canvasitem Toevoegen
-                     }*/
-                    #endregion
+                    
                 }
             }
             
@@ -666,31 +655,7 @@ namespace KantoorInrichtingWPF
             Dictionary<string, List<string>> Gebruiktemeubels = new Dictionary<string, List<string>>();
             decimal totaalprijs = 0;
             plattegrondview.LeegGebruikteMeubelLijst();
-            foreach (Image item in DragCavasPlattegrond.Children)
-            {
-                List<string> list = (List<string>)item.Tag;
-                if (Gebruiktemeubels.ContainsKey(list[0]))
-                {
-                    int count = Convert.ToInt32(Gebruiktemeubels[list[0]][1]);
-                    count++;
-                    Gebruiktemeubels[list[0]][1] = $"{count}";
-                }
-                if (list[0].Equals("deur")|| list[0].Equals("raam"))
-                {
-                    
-                }
-                else
-                {
-                    List<string> listPrijsAantal = new List<string>();
-                    listPrijsAantal.Add(list[1]);
-                    listPrijsAantal.Add("1");
-                    listPrijsAantal.Add(list[2]);
-                    listPrijsAantal.Add(list[3]);
-                    Gebruiktemeubels.Add(list[0], listPrijsAantal);
-                }
-               
-                
-            }
+            Gebruiktemeubels = GetChilderenFromCanvas();
             foreach (var item in Gebruiktemeubels)
             {
                 plattegrondview.ToevoegenGebruikteMeubel(item.Key,Convert.ToInt32(item.Value[1]), Convert.ToDecimal(item.Value[0]),item.Value[2],item.Value[3]);
@@ -702,9 +667,45 @@ namespace KantoorInrichtingWPF
             OverzichtGebruikteMeubels overzichtGebruikteMeubels = new OverzichtGebruikteMeubels();
             overzichtGebruikteMeubels.DGGebruikteMeubels.ItemsSource = test;
             overzichtGebruikteMeubels.LabelTotalprijs.Content = $"Totaalprijs:{totaalprijs}€";
+            overzichtGebruikteMeubels.Plattegrondnaam = PlattegrondNaam;
             overzichtGebruikteMeubels.Show();
         }
+        private Dictionary<string,List<string>> GetChilderenFromCanvas() 
+        {
+            Dictionary<string, List<string>> Gebruiktemeubels = new Dictionary<string, List<string>>();
+            foreach (Image item in DragCavasPlattegrond.Children)
+            {
+                List<string> list = (List<string>)item.Tag;
+                if (Gebruiktemeubels.ContainsKey(list[0]))
+                {
+                    int count = Convert.ToInt32(Gebruiktemeubels[list[0]][1]);
+                    count++;
+                    Gebruiktemeubels[list[0]][1] = $"{count}";
+                }
 
+
+                if (Gebruiktemeubels.ContainsKey(list[0]) == false)
+                {
+                    if (list[0].Equals("deur") || list[0].Equals("raam")|| list[0].Equals("muur"))
+                    {
+
+                    }
+                    else
+                    {
+                        List<string> listPrijsAantal = new List<string>();
+                        listPrijsAantal.Add(list[1]);
+                        listPrijsAantal.Add("1");
+                        listPrijsAantal.Add(list[2]);
+                        listPrijsAantal.Add(list[3]);
+                        Gebruiktemeubels.Add(list[0], listPrijsAantal);
+                    }
+
+                }
+
+
+            }
+            return Gebruiktemeubels;
+        }
         private void OnButton_ZoekenMeubelNaam_Click(object sender, RoutedEventArgs e)
         {
             
@@ -771,6 +772,30 @@ namespace KantoorInrichtingWPF
         private void ButtonMuur_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void OnMenuItem_Bestellen_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult dialogResult = MessageBox.Show("Weet je zeker dat je wilt bestellen?", "Bestellen", MessageBoxButton.YesNo);
+            if (dialogResult == MessageBoxResult.Yes)
+            {
+                Dictionary<string, List<string>> Gebruiktemeubels = new Dictionary<string, List<string>>();
+                plattegrondview.LeegGebruikteMeubelLijst();
+                Gebruiktemeubels = GetChilderenFromCanvas();
+                foreach (var item in Gebruiktemeubels)
+                {
+                    plattegrondview.ToevoegenGebruikteMeubel(item.Key, Convert.ToInt32(item.Value[1]), Convert.ToDecimal(item.Value[0]), item.Value[2], item.Value[3]);
+
+                }
+                var LijstGebruikteMeubels = plattegrondview.GebruikteMeubelsLijst;
+                plattegrondview.MakeBestelling(LijstGebruikteMeubels,PlattegrondNaam);
+                MessageBox.Show("Bestelling is gemaakt", "Bestellen");
+            }
+            else if (dialogResult == MessageBoxResult.No)
+            {
+
+            }
+           
         }
     }
 }
