@@ -591,7 +591,7 @@ namespace KantoorInrichtingWPF.ViewModel
 
                     if (Gebruiktemeubels.ContainsKey(canvasitem.Value[3]) == false)
                     {
-                        if (canvasitem.Value[3].Equals("deur") || canvasitem.Value[3].Equals("raam")|| canvasitem.Value[3].Equals("muur"))
+                        if (canvasitem.Value[3].Equals("deur") || canvasitem.Value[3].Equals("raam")|| canvasitem.Value[3].Equals("muur") || canvasitem.Value[3].Equals("notitie"))
                         {
 
                         }

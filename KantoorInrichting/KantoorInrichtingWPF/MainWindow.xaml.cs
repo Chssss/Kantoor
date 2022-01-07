@@ -21,6 +21,7 @@ using System.Drawing;
 using WPF.JoshSmith.Controls;
 using KantoorInrichtingWPF.View;
 using KantoorInrichtingWPF.Model;
+using Microsoft.SqlServer.Server;
 
 namespace KantoorInrichtingWPF
 {
@@ -69,6 +70,35 @@ namespace KantoorInrichtingWPF
         }
         public void AddImageToGeladenMap(string typeImage, string naamMeubel, string prijs,double xcoord,double ycoord, string leverancier,string productcode, string rotatie)
         {
+            if (typeImage.Equals("notitie"))
+            {
+                TextBlock textblock = new TextBlock();
+                textblock.Text = $"{leverancier}";
+                textblock.Name = "notitie";
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add(prijs);
+                list.Add(leverancier);
+                list.Add(productcode);
+                list.Add(rotatie);
+                textblock.Tag = list;
+                DragCavasPlattegrond.Children.Add(textblock);
+                Canvas.SetTop(textblock, ycoord);
+                Canvas.SetLeft(textblock, xcoord);
+                int index = DragCavasPlattegrond.Children.IndexOf(textblock);
+                TextBlock image2 = (TextBlock)DragCavasPlattegrond.Children[index];
+
+                List<string> imageTag = (List<string>)image2.Tag;
+                double rotatie1 = Convert.ToDouble(rotatie);
+                RotateTransform rotateTransform1 = new RotateTransform(rotatie1);
+                var x = image2.ActualWidth / 2;
+                var y = image2.ActualHeight / 2;
+                rotateTransform1.CenterX = x;
+                rotateTransform1.CenterY = y;
+                image2.RenderTransform = rotateTransform1;
+                imageTag[4] = $"{rotatie}";
+                image2.Tag = imageTag;
+            }
 
             if (typeImage.Equals("tafel"))
             {
@@ -436,12 +466,28 @@ namespace KantoorInrichtingWPF
                 if (dialogResult == MessageBoxResult.Yes)
                 {
                  var index  = dragCanvas.Children.IndexOf((UIElement)image);
-                    var imageOutCanvas = dragCanvas.Children[index] as Image;
-                   
-                    List<string> prijs = (List<string>)imageOutCanvas.Tag;
-                    _totalprijst = _totalprijst - Convert.ToDecimal( prijs[1]);
-                    LabelTotalPrijs.Content = $"{_totalprijst}€";
-                    dragCanvas.Children.Remove((UIElement)image);
+                    if (DragCavasPlattegrond.Children[index].GetType() == typeof(Image))
+                    {
+                        var imageOutCanvas = dragCanvas.Children[index] as Image;
+                        List<string> prijs = (List<string>)imageOutCanvas.Tag;
+                        _totalprijst = _totalprijst - Convert.ToDecimal(prijs[1]);
+                        LabelTotalPrijs.Content = $"{_totalprijst}€";
+                        dragCanvas.Children.Remove((UIElement)image);
+                    }
+                        
+                    if (DragCavasPlattegrond.Children[index].GetType() == typeof(TextBlock))
+                    {
+                        var TexBlock = dragCanvas.Children[index] as TextBlock;
+                        List<string> prijs = (List<string>)TexBlock.Tag;
+                        _totalprijst = _totalprijst - Convert.ToDecimal(prijs[1]);
+                        LabelTotalPrijs.Content = $"{_totalprijst}€";
+                        dragCanvas.Children.Remove((UIElement)image);
+                    }
+                    
+
+                    
+                    
+                    
                 }
                 else if (dialogResult == MessageBoxResult.No)
                 {
@@ -692,11 +738,25 @@ namespace KantoorInrichtingWPF
           bool output =plattegrondview.CheckPlattegrondcode(Plattegrondcode,ProjectNaam,PlattegrondNaam,Lengte,Breedte,Hoogte);
             if (output==true)
             {
-                #region delete en toevoegen
+                
                 plattegrondview.VerwijderenCanvasitem(Plattegrondcode);
-                #endregion
+                
                 plattegrondview.PlattegrondNaam = PlattegrondNaam;
-                foreach (Image item in DragCavasPlattegrond.Children)
+
+                List<Image> ListImages = new List<Image>();
+                List<TextBlock> LIstTextBlock = new List<TextBlock>();
+                for (int i = 0; i < DragCavasPlattegrond.Children.Count; i++)
+                {
+                    if (DragCavasPlattegrond.Children[i].GetType() == typeof(Image))
+                    {
+                        ListImages.Add((Image)DragCavasPlattegrond.Children[i]);
+                    }
+                    if (DragCavasPlattegrond.Children[i].GetType() == typeof(TextBlock))
+                    {
+                        LIstTextBlock.Add((TextBlock)DragCavasPlattegrond.Children[i]);
+                    }
+                }
+                foreach (Image item in ListImages)
                 {
                         plattegrondview.Plattegrondcode = Plattegrondcode;
                         double x = Canvas.GetLeft(item);
@@ -717,10 +777,36 @@ namespace KantoorInrichtingWPF
                         string canvasitemcode = $"{plattegrondview.Plattegrondcode}{plattegrondview.CanvasImageType[0]}{plattegrondview.CanvasItemCount}";
                         plattegrondview.CanvasItemcode = canvasitemcode;
                         plattegrondview.CanvasItemCount++;
-                    #region delete en toevoegen
+                   
                     plattegrondview.ToevoegenCanvasItems();
-                    #endregion
                     
+                    
+                }
+                foreach (TextBlock item in LIstTextBlock)
+                {
+                    plattegrondview.Plattegrondcode = Plattegrondcode;
+                    double x = Canvas.GetLeft(item);
+                    double y = Canvas.GetTop(item);
+
+
+                    //plattegrondview.Plattegrondcode = Plattegrondcode;
+                    plattegrondview.CanvasImageType = $"{item.Name}";
+                    List<string> list = (List<string>)item.Tag;
+                    plattegrondview.CanvasImageName = $"{list[0]}";
+                    plattegrondview.CanvasImageTag = $"{list[1]}";
+
+                    plattegrondview.CanvasImageLeverancier = $"{list[2]}";
+                    plattegrondview.CanvasImageProductcode = $"{list[3]}";
+                    plattegrondview.CanvasImageRotation = $"{list[4]}";
+                    plattegrondview.XCoord = $"{x}";
+                    plattegrondview.YCoord = $"{y}";
+                    string canvasitemcode = $"{plattegrondview.Plattegrondcode}{plattegrondview.CanvasImageType[0]}{plattegrondview.CanvasItemCount}";
+                    plattegrondview.CanvasItemcode = canvasitemcode;
+                    plattegrondview.CanvasItemCount++;
+
+                    plattegrondview.ToevoegenCanvasItems();
+
+
                 }
             }
             
@@ -742,7 +828,20 @@ namespace KantoorInrichtingWPF
         {
             //PlattegrondNaam, CanvasItemcode, CanvasImageType, CanvasImageName, CanvasImageTag, XCoord, YCoord
             plattegrondview.PlattegrondNaam = opslaanPlattegrond.TBPlattegrondNaam.Text;
-            foreach (Image item in DragCavasPlattegrond.Children)
+            List<Image> ListImages = new List<Image>();
+            List<TextBlock> LIstTextBlock = new List<TextBlock>();
+            for (int i = 0; i < DragCavasPlattegrond.Children.Count; i++)
+            {
+                if (DragCavasPlattegrond.Children[i].GetType() == typeof(Image))
+                {
+                    ListImages.Add((Image)DragCavasPlattegrond.Children[i]);
+                }
+                if (DragCavasPlattegrond.Children[i].GetType() == typeof(TextBlock))
+                {
+                    LIstTextBlock.Add((TextBlock)DragCavasPlattegrond.Children[i]);
+                }
+            }
+            foreach (Image item in ListImages)
             {
                 double x = Canvas.GetLeft(item);
                 double y = Canvas.GetTop(item);
@@ -762,7 +861,34 @@ namespace KantoorInrichtingWPF
                 plattegrondview.CanvasItemCount++;
                 plattegrondview.ToevoegenCanvasItems();
             }
-           
+            foreach (TextBlock item in LIstTextBlock)
+            {
+                plattegrondview.Plattegrondcode = $"{plattegrondview.PlattegrondNaam[0]}{plattegrondview.PlattegrondNaam[1]}{plattegrondview.PlattegrondLijst.Count}";
+                
+                double x = Canvas.GetLeft(item);
+                double y = Canvas.GetTop(item);
+
+
+                //plattegrondview.Plattegrondcode = Plattegrondcode;
+                plattegrondview.CanvasImageType = $"{item.Name}";
+                List<string> list = (List<string>)item.Tag;
+                plattegrondview.CanvasImageName = $"{list[0]}";
+                plattegrondview.CanvasImageTag = $"{list[1]}";
+
+                plattegrondview.CanvasImageLeverancier = $"{list[2]}";
+                plattegrondview.CanvasImageProductcode = $"{list[3]}";
+                plattegrondview.CanvasImageRotation = $"{list[4]}";
+                plattegrondview.XCoord = $"{x}";
+                plattegrondview.YCoord = $"{y}";
+                string canvasitemcode = $"{plattegrondview.Plattegrondcode}{plattegrondview.CanvasImageType[0]}{plattegrondview.CanvasItemCount}";
+                plattegrondview.CanvasItemcode = canvasitemcode;
+                plattegrondview.CanvasItemCount++;
+
+                plattegrondview.ToevoegenCanvasItems();
+
+
+            }
+
         }
 
         private void OnMenuItem_export_Click(object sender, RoutedEventArgs e)
@@ -811,8 +937,19 @@ namespace KantoorInrichtingWPF
         private Dictionary<string,List<string>> GetChilderenFromCanvas() 
         {
             Dictionary<string, List<string>> Gebruiktemeubels = new Dictionary<string, List<string>>();
-            foreach (Image item in DragCavasPlattegrond.Children)
+            List<Image> ListImages = new List<Image>();
+            for (int i = 0; i < DragCavasPlattegrond.Children.Count; i++)
             {
+                if (DragCavasPlattegrond.Children[i].GetType() == typeof(Image))
+                {
+                    ListImages.Add((Image)DragCavasPlattegrond.Children[i]);
+                }
+            }
+            
+
+            foreach (Image item in ListImages)
+            {
+                
                 List<string> list = (List<string>)item.Tag;
                 if (Gebruiktemeubels.ContainsKey(list[0]))
                 {
@@ -824,7 +961,7 @@ namespace KantoorInrichtingWPF
 
                 if (Gebruiktemeubels.ContainsKey(list[0]) == false)
                 {
-                    if (list[0].Equals("deur") || list[0].Equals("raam")|| list[0].Equals("muur"))
+                    if (list[0].Equals("deur") || list[0].Equals("raam")|| list[0].Equals("muur") || list[0].Equals("notitie"))
                     {
 
                     }
@@ -908,6 +1045,31 @@ namespace KantoorInrichtingWPF
             Canvas.SetTop(image, 10.0);
             Canvas.SetLeft(image, 100.00);
         }
+        private void ButtonNotitie_Click(object sender, RoutedEventArgs e)
+        {
+            NotitieInput notitieInput = new NotitieInput();
+            notitieInput.Show();
+            notitieInput.ButtonDone.Click += OnButtonDone_Click;
+            
+        }
+
+        private void OnButtonDone_Click(object sender, RoutedEventArgs e)
+        {
+            var notitie = sender as Button;
+            TextBlock textblock = new TextBlock();
+            textblock.Text = $"{notitie.Tag}";
+            textblock.Name = "notitie";
+            List<string> list = new List<string>();
+            list.Add("notitie");
+            list.Add($"0,0");
+            list.Add($"{notitie.Tag}");
+            list.Add("n.v.t");
+            list.Add("0");
+            textblock.Tag = list;
+            DragCavasPlattegrond.Children.Add(textblock);
+            Canvas.SetTop(textblock, 10.0);
+            Canvas.SetLeft(textblock, 100.00);
+        }
 
         private void ButtonMuur_Click(object sender, RoutedEventArgs e)
         {
@@ -946,25 +1108,52 @@ namespace KantoorInrichtingWPF
             {
                 if (mouseButton.ChangedButton.Equals(MouseButton.Middle))
                 {
-                    Image image = (Image)mouseButton.OriginalSource;
-                    List<string> imageTag = (List<string>)image.Tag;
-                    double rotatie = Convert.ToDouble( imageTag[4]);
-                    if (rotatie==360)
+
+                    try
                     {
-                        rotatie = 0;
+                        Image image = (Image)mouseButton.OriginalSource;
+                        List<string> imageTag = (List<string>)image.Tag;
+                        double rotatie = Convert.ToDouble(imageTag[4]);
+                        if (rotatie == 360)
+                        {
+                            rotatie = 0;
+                        }
+                        rotatie = rotatie + 45;
+                        RotateTransform rotateTransform1 = new RotateTransform(rotatie);
+                        var x = image.ActualWidth / 2;
+                        var y = image.ActualHeight / 2;
+                        rotateTransform1.CenterX = x;
+                        rotateTransform1.CenterY = y;
+                        image.RenderTransform = rotateTransform1;
+                        imageTag[4] = $"{rotatie}";
+                        image.Tag = imageTag;
                     }
-                    rotatie = rotatie + 45;
-                    RotateTransform rotateTransform1 = new RotateTransform(rotatie);
-                    var x= image.ActualWidth / 2;
-                    var y= image.ActualHeight / 2;
-                    rotateTransform1.CenterX = x;
-                    rotateTransform1.CenterY = y;
-                    image.RenderTransform = rotateTransform1;
-                    imageTag[4] = $"{rotatie}";
-                    image.Tag = imageTag;
+                    catch (Exception)
+                    {
+
+                        TextBlock textblock = (TextBlock)mouseButton.OriginalSource;
+                        List<string> imageTag = (List<string>)textblock.Tag;
+                        double rotatie = Convert.ToDouble(imageTag[4]);
+                        if (rotatie == 360)
+                        {
+                            rotatie = 0;
+                        }
+                        rotatie = rotatie + 45;
+                        RotateTransform rotateTransform1 = new RotateTransform(rotatie);
+                        var x = textblock.ActualWidth / 2;
+                        var y = textblock.ActualHeight / 2;
+                        rotateTransform1.CenterX = x;
+                        rotateTransform1.CenterY = y;
+                        textblock.RenderTransform = rotateTransform1;
+                        imageTag[4] = $"{rotatie}";
+                        textblock.Tag = imageTag;
+                    }
+                    
                    
                 }
             }
         }
+
+       
     }
 }

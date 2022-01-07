@@ -69,6 +69,7 @@
         <Label x:Name="LabelLengte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="116,0,0,0" VerticalAlignment="Center"/>
         <Label x:Name="LabelBreedte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="210,0,0,0" VerticalAlignment="Center"/>
         <Label x:Name="LabelHoogte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="317,7,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonNotitie" Content="Notitie" Grid.Column="3" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="101" Click="ButtonNotitie_Click"/>
 
 
     </Grid>
