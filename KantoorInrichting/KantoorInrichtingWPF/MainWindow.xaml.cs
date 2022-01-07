@@ -36,9 +36,9 @@ namespace KantoorInrichtingWPF
 
         public string ProjectNaam;
         public string PlattegrondNaam;
-        public string Lengte;
-        public string Breedte;
-        public string Hoogte;
+        public string Lengte="10,0";
+        public string Breedte="10,0";
+        public string Hoogte="10,0";
         public string Plattegrondcode;
         
         public MainWindow()
@@ -46,8 +46,10 @@ namespace KantoorInrichtingWPF
             InitializeComponent();
             LabelTotalPrijs.Content = $"{_totalprijst}€";
             meubelView.XmlInvoegen();
-            
-            
+            LabelLengte.Content = $"Lengte:{Lengte}";
+            LabelBreedte.Content = $"Breedte:{Breedte}";
+            LabelHoogte.Content = $"Hoogte:{Hoogte}";
+
 
 
         }
@@ -933,7 +935,7 @@ namespace KantoorInrichtingWPF
             {
 
             }
-           
+            
         }
 
         private void OnMouseDownPressed(object sender, MouseButtonEventArgs e)
