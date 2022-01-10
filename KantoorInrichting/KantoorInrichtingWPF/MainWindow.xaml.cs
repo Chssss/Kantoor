@@ -1181,8 +1181,10 @@ namespace KantoorInrichtingWPF
             List<string> list = new List<string>();
             list.Add("muur");
             list.Add($"0,0");
+            list.Add($"{muur.Tag}");
             list.Add("n.v.t");
-            list.Add("n.v.t");
+            list.Add("0");
+            muur.Tag = list;
             return;
         }
         private void OnMenuItem_Bestellen_Click(object sender, RoutedEventArgs e)
