@@ -31,6 +31,9 @@ namespace KantoorInrichtingWPF
             plattegrondEditor.Lengte = TBLengte.Text;
             plattegrondEditor.Breedte =TBBreedte.Text;
             plattegrondEditor.Hoogte = TBHoogte.Text;
+            plattegrondEditor.LabelLengte.Content = $"Lengte:{TBLengte.Text}";
+            plattegrondEditor.LabelBreedte.Content = $"Breedte:{TBBreedte.Text}";
+            plattegrondEditor.LabelHoogte.Content = $"Hoogte:{TBHoogte.Text}";
             plattegrondEditor.Show();
             this.Close();
         }

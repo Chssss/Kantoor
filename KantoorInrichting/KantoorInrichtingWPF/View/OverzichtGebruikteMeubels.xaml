@@ -19,6 +19,7 @@
         <Button x:Name="ButtonTerug" Content="Terug" HorizontalAlignment="Left" Margin="168,0,0,0" VerticalAlignment="Center" Click="ButtonTerug_Click" Height="20" Width="33"/>
         <DataGrid x:Name="DGGebruikteMeubels" Margin="0,38,0,0" Grid.RowSpan="2" IsReadOnly="True" ItemsSource="{Binding GebruikteMeubelsLijst}"/>
         <Label x:Name="LabelTotalprijs" Content="" HorizontalAlignment="Left" Margin="213,0,0,0" Grid.Row="2" VerticalAlignment="Center"/>
-        <Label Content="Overzicht Gebruikte Meubels" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Content="Overzicht gebruikte meubels" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button Content="Bestellen" HorizontalAlignment="Left" Margin="396,0,0,0" Grid.Row="2" VerticalAlignment="Center" Click="OnBestellenClick"/>
     </Grid>
 </Window>

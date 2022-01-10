@@ -1,0 +1,16 @@
+﻿<Window x:Class="KantoorInrichtingWPF.View.NotitieInput"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KantoorInrichtingWPF.View"
+        mc:Ignorable="d"
+        Title="NotitieInput" Height="221" Width="400">
+    <Grid>
+        <Label Content="Notitie" HorizontalAlignment="Center" Margin="0,33,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TBNotitie" HorizontalAlignment="Center" Margin="0,79,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="ButtonDone" Content="Done" HorizontalAlignment="Center" Margin="0,154,0,0" VerticalAlignment="Top" Click="ButtonDone_Click"/>
+        <Button Content="Terug" HorizontalAlignment="Left" Margin="25,18,0,0" VerticalAlignment="Top" Click="ButtonTerug_Click"/>
+
+    </Grid>
+</Window>

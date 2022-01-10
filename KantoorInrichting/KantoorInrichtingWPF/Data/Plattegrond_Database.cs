@@ -8,6 +8,52 @@ namespace KantoorInrichtingWPF.Data
 {
    public class Plattegrond_Database
     {
+        public static List<string> GetPlattegrondcode(string projectnaam) 
+        {
+            List<string> output = new List<string>();
+
+            #region plattegrond sql
+            try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "127.0.0.1, 1433";
+                builder.UserID = "sa";
+                builder.Password = "Kantoorinrichting!";
+                builder.InitialCatalog = "Inventaris";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    Console.WriteLine("\nQuery data example:");
+                    Console.WriteLine("=========================================\n");
+
+                    String sql = "SELECT plattegrondcode FROM plattegrond WHERE projectnaam = " + $"'{projectnaam}'";
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            while (reader.Read())
+                            {
+                                
+                                output.Add(reader.GetString(0));//project naam
+                                
+                               
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Console.ReadLine();
+            #endregion
+            return output;
+        }
         public static Dictionary<int, List<string>> GetPlattegrondDataDatabase()
         {
             Dictionary<int, List<string>> outputPlategrondSQL = new Dictionary<int, List<string>>(); 
@@ -108,6 +154,7 @@ namespace KantoorInrichtingWPF.Data
                                 listVaule.Add(reader.GetString(6));//y coord
                                 listVaule.Add(reader.GetString(7));//leverancier
                                 listVaule.Add(reader.GetString(8));//productcode
+                                listVaule.Add(reader.GetString(9));//rotatie
                                 outputCanvasSQL.Add(count2, listVaule);
                                 count2++;
                             }
@@ -306,7 +353,7 @@ namespace KantoorInrichtingWPF.Data
             #endregion
 
         }
-        public static void ToevoegenCanvasDataAanDatabase(string plattegrondcode, string canvasItemcode, string image_name_typeImage, string image_tag_naamMeubel, string image_tag_prijs, string x_coord, string y_coord, string image_tag_leverancier, string image_tag_productcode)
+        public static void ToevoegenCanvasDataAanDatabase(string plattegrondcode, string canvasItemcode, string image_name_typeImage, string image_tag_naamMeubel, string image_tag_prijs, string x_coord, string y_coord, string image_tag_leverancier, string image_tag_productcode, string image_tag_rotatie)
         {
             #region toevoegen canvasData
             /* try
@@ -353,7 +400,7 @@ namespace KantoorInrichtingWPF.Data
                     Console.WriteLine("=========================================\n");
 
 
-                    command.CommandText = $"INSERT INTO canvasItem VALUES (@plattegrondcode, @canvasItemcode, @imageNameTypeImage, @imageTagNaamMeubel, @imageTagPrijs, @xcoord, @ycoord, @leverancier, @productcode) ";
+                    command.CommandText = $"INSERT INTO canvasItem VALUES (@plattegrondcode, @canvasItemcode, @imageNameTypeImage, @imageTagNaamMeubel, @imageTagPrijs, @xcoord, @ycoord, @leverancier, @productcode,@rotatie) ";
 
                     //SqlParameter test = new SqlParameter("", System.Data.SqlDbType.Text, 100);
                     //test.Value = ;
@@ -368,6 +415,7 @@ namespace KantoorInrichtingWPF.Data
                     SqlParameter ycoord = new SqlParameter("@ycoord", System.Data.SqlDbType.Text, 100);
                     SqlParameter leverancier = new SqlParameter("@leverancier", System.Data.SqlDbType.Text, 100);
                     SqlParameter productcode = new SqlParameter("@productcode", System.Data.SqlDbType.Text, 100);
+                    SqlParameter rotatie = new SqlParameter("@rotatie", System.Data.SqlDbType.Text, 100);
 
                     plattegrondcodeParam.Value = plattegrondcode;
                     canvasItemcodeParam.Value = canvasItemcode;
@@ -378,6 +426,7 @@ namespace KantoorInrichtingWPF.Data
                     ycoord.Value = y_coord;
                     leverancier.Value = image_tag_leverancier;
                     productcode.Value = image_tag_productcode;
+                    rotatie.Value = image_tag_rotatie;
 
                     command.Parameters.Add(plattegrondcodeParam);
                     command.Parameters.Add(canvasItemcodeParam);
@@ -388,6 +437,7 @@ namespace KantoorInrichtingWPF.Data
                     command.Parameters.Add(ycoord);
                     command.Parameters.Add(leverancier);
                     command.Parameters.Add(productcode);
+                    command.Parameters.Add(rotatie);
 
                     command.Prepare();
                     command.ExecuteNonQuery();

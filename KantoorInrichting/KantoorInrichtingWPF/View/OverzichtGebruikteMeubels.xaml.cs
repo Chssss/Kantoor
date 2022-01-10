@@ -19,6 +19,9 @@ namespace KantoorInrichtingWPF.View
     /// </summary>
     public partial class OverzichtGebruikteMeubels : Window
     {
+        private string _plattegrondnaam;
+
+        public string Plattegrondnaam { get { return _plattegrondnaam; } set { _plattegrondnaam = value; } }
         public OverzichtGebruikteMeubels()
         {
             InitializeComponent();
@@ -30,5 +33,24 @@ namespace KantoorInrichtingWPF.View
             
             this.Close();
         }
+
+        private void OnBestellenClick(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult dialogResult = MessageBox.Show("Weet je zeker dat je wilt bestellen?", "Bestellen", MessageBoxButton.YesNo);
+            if (dialogResult == MessageBoxResult.Yes)
+            {
+                PlattegrondViewModel plattegrondViewModel = new PlattegrondViewModel();
+                List<GebruikteMeubels> LijstGebruikteMeubels = (List<GebruikteMeubels>)DGGebruikteMeubels.ItemsSource;
+                plattegrondViewModel.MakeBestelling(LijstGebruikteMeubels,Plattegrondnaam);
+                MessageBox.Show("Bestelling is gemaakt", "Bestellen");
+            }
+            else if (dialogResult == MessageBoxResult.No)
+            {
+
+            }
+            
+
+        }
+
     }
 }

@@ -37,6 +37,7 @@
                     <MenuItem Header="Opslaan" Click="OnMenuItem_opslaan_Click"/>
                     <MenuItem Header="Export" Click="OnMenuItem_export_Click"/>
                     <MenuItem Header="Opslaan als" Click="OnMenuItem_opslaanAls_Click" />
+
                 </MenuItem>
             </Menu>
             <Menu Width="100" HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -46,11 +47,13 @@
                     <MenuItem Header="Lijst" Click="OnMenuItem_lijst_Click"  />
                 </MenuItem>
             </Menu>
+            <Menu DockPanel.Dock="Top" Height="17" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top">
+                <MenuItem Header="Bestellen" Click="OnMenuItem_Bestellen_Click"/>
+            </Menu>
 
         </DockPanel>
         <TextBox x:Name="TBMeubels" HorizontalAlignment="Left" Margin="0,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" Text="{Binding Zoekbalk}" Grid.ColumnSpan="2"/>
         <Button x:Name="ButtonZoekenMeubelNaam" Content="Zoeken naam" HorizontalAlignment="Left" Margin="27,24,0,0" VerticalAlignment="Top" Click="OnButton_ZoekenMeubelNaam_Click" Height="20" Width="96" Grid.RowSpan="2" Command="{Binding ZoekNaamInCatalogus, Mode=OneWay}" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <Label x:Name="LabelTest" HorizontalAlignment="Left" Margin="76,8,0,0" VerticalAlignment="Top" Width="164" Height="22" Grid.Column="3"/>
         <DataGrid x:Name="DGMeubels" IsReadOnly="True" ItemsSource="{Binding Catalogus}" MouseDoubleClick="OnMouseDoubleClick" Margin="0,43,0,0" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
 
         <Button x:Name="ButtonRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="27,0,0,0" VerticalAlignment="Center" Click="OnButton_RefreshMeubel_Click" Height="20" Width="44" Grid.Column="3" Command="{Binding UpdateCatalogus, Mode=OneWay}"/>
@@ -63,6 +66,10 @@
         <Button x:Name="ButtonMuur" Content="Muur" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="111" Click="ButtonMuur_Click"/>
         <Button x:Name="ButtonRaam" Content="Raam" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="123" Click="ButtonRaam_Click" Grid.Column="1"/>
         <Button x:Name="ButtonDeur" Content="Deur" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="133" Click="ButtonDeur_Click" Grid.Column="2"/>
+        <Label x:Name="LabelLengte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="116,0,0,0" VerticalAlignment="Center"/>
+        <Label x:Name="LabelBreedte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="210,0,0,0" VerticalAlignment="Center"/>
+        <Label x:Name="LabelHoogte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="317,7,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonNotitie" Content="Notitie" Grid.Column="3" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="101" Click="ButtonNotitie_Click"/>
 
 
     </Grid>
