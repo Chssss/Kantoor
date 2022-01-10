@@ -40,7 +40,11 @@ namespace KantoorInrichtingWPF
         public string Breedte;
         public string Hoogte;
         public string Plattegrondcode;
-        
+
+        protected bool isDragging;
+        private System.Windows.Point clickPosition;
+        private System.Windows.Point currentPosition;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -771,6 +775,43 @@ namespace KantoorInrichtingWPF
         private void ButtonMuur_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public void DragCavasPlattegrond_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var dragCanvas = sender as DragCanvas;
+            isDragging = true;
+            clickPosition = e.GetPosition(dragCanvas);
+        }
+
+        public void DragCavasPlattegrond_MouseMove(object sender, MouseEventArgs e)
+        {
+            var dragCanvas = sender as DragCanvas;
+            if (isDragging == true)
+            {
+                currentPosition = e.GetPosition(dragCanvas);
+            }
+        }
+
+        private void DragCavasPlattegrond_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var dragCanvas = sender as DragCanvas;
+            isDragging = false;
+            Line muur = new Line();
+            muur.Stroke = System.Windows.Media.Brushes.Black;
+            muur.StrokeThickness = 2;
+
+            muur.X1 = clickPosition.X;
+            muur.Y1 = clickPosition.Y;
+            muur.X2 = currentPosition.X;
+            muur.Y2 = currentPosition.Y;
+            dragCanvas.Children.Add(muur);
+            List<string> list = new List<string>();
+            list.Add("muur");
+            list.Add($"0,0");
+            list.Add("n.v.t");
+            list.Add("n.v.t");
+            return;
         }
     }
 }

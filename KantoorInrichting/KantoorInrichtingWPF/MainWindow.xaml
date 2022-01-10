@@ -56,7 +56,7 @@
         <Button x:Name="ButtonRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="27,0,0,0" VerticalAlignment="Center" Click="OnButton_RefreshMeubel_Click" Height="20" Width="44" Grid.Column="3" Command="{Binding UpdateCatalogus, Mode=OneWay}"/>
         <Button x:Name="ButtonZoekenMeubelCategorie" Content="Zoeken categorie" HorizontalAlignment="Left" Margin="7,22,0,0" VerticalAlignment="Top" Click="OnButton_ZoekenMeubelCategorie_Click" Height="20" Width="103" Command="{Binding ZoekCategorieInCatalogus, Mode=OneWay}" Grid.Column="2"/>
         <Border BorderThickness="1" BorderBrush="Black" Grid.Column="3" Margin="0,43,0,0" Grid.RowSpan="2">
-            <Controls:DragCanvas x:Name="DragCavasPlattegrond" Margin="0,0,-1,-1" MouseRightButtonDown="OnMouseRightButtonPressed"/>
+            <Controls:DragCanvas x:Name="DragCavasPlattegrond" Margin="0,0,-1,-1" MouseRightButtonDown="OnMouseRightButtonPressed" MouseLeftButtonUp="DragCavasPlattegrond_MouseLeftButtonUp" MouseLeftButtonDown="DragCavasPlattegrond_MouseLeftButtonDown" MouseMove="DragCavasPlattegrond_MouseMove" Background="Transparent"/>
         </Border>
         <Label x:Name="LabelTotalPrijs" Grid.Column="3" HorizontalAlignment="Left" Margin="412,0,0,0" VerticalAlignment="Center" Height="30" Width="64" FontSize="16" Grid.Row="2"/>
         <Button x:Name="ButtonTotaalPrijs" Content="Totaalprijs" Grid.Column="3" HorizontalAlignment="Left" Margin="530,0,0,0" VerticalAlignment="Center" Height="33" Width="67" Click="OnButton_Totaalprijs_Click" Grid.Row="2"/>
