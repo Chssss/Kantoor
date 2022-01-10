@@ -464,7 +464,7 @@ namespace KantoorInrichtingWPF
             var dragCanvas = sender as DragCanvas;
             var image = e.OriginalSource;
             
-            if (dragCanvas != null)
+            if (dragCanvas != null && image != dragCanvas)
             {
                 MessageBoxResult dialogResult = MessageBox.Show("Weet je zeker dat je dit meubel wilt verwijderen?", "Meubel verwijderen", MessageBoxButton.YesNo);
                 if (dialogResult == MessageBoxResult.Yes)
