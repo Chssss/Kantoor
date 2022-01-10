@@ -491,8 +491,8 @@ namespace KantoorInrichtingWPF.ViewModel
                 {
                     if (item.Leverancier.Equals(leverancier))
                     {
-                        totaalprijs = totaalprijs + item.Totalprijs;
-                        bestelling[count] = $"Naam:{item.Naam} Aantal:{item.Aantal} Prijs enkele meubel:{item.Prijs} Totaalprijs:{item.Totalprijs} Productcode:{item.productcode}";
+                        totaalprijs = totaalprijs + item.Totaalprijs;
+                        bestelling[count] = $"Naam:{item.Naam} Aantal:{item.Aantal} Prijs enkele meubel:{item.Prijs} Totaalprijs:{item.Totaalprijs} Productcode:{item.Productcode}";
                         count++;
                     }
                 }
@@ -650,8 +650,8 @@ namespace KantoorInrichtingWPF.ViewModel
                     {
                         if (item.Leverancier.Equals(leverancier))
                         {
-                            totaalprijs = totaalprijs + item.Totalprijs;
-                            bestelling[count] = $"Naam:{item.Naam} Aantal:{item.Aantal} Prijs enkele meubel:{item.Prijs} Totaalprijs:{item.Totalprijs} Productcode:{item.productcode}";
+                            totaalprijs = totaalprijs + item.Totaalprijs;
+                            bestelling[count] = $"Naam:{item.Naam} Aantal:{item.Aantal} Prijs enkele meubel:{item.Prijs} Totaalprijs:{item.Totaalprijs} Productcode:{item.Productcode}";
                             count++;
                         }
                     }

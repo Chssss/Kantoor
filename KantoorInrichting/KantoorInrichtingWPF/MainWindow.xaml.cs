@@ -483,11 +483,18 @@ namespace KantoorInrichtingWPF
                         LabelTotalPrijs.Content = $"{_totalprijst}€";
                         dragCanvas.Children.Remove((UIElement)image);
                     }
-                    
+                    if (DragCavasPlattegrond.Children[index].GetType() == typeof(Line))
+                    {
+                        var line = dragCanvas.Children[index] as Line;
+                        List<string> prijs = (List<string>)line.Tag;
+                        _totalprijst = _totalprijst - Convert.ToDecimal(prijs[1]);
+                        LabelTotalPrijs.Content = $"{_totalprijst}€";
+                        dragCanvas.Children.Remove((UIElement)image);
+                    }
 
-                    
-                    
-                    
+
+
+
                 }
                 else if (dialogResult == MessageBoxResult.No)
                 {
@@ -745,6 +752,7 @@ namespace KantoorInrichtingWPF
 
                 List<Image> ListImages = new List<Image>();
                 List<TextBlock> LIstTextBlock = new List<TextBlock>();
+                List<Line> ListLine = new List<Line>();
                 for (int i = 0; i < DragCavasPlattegrond.Children.Count; i++)
                 {
                     if (DragCavasPlattegrond.Children[i].GetType() == typeof(Image))
@@ -754,6 +762,10 @@ namespace KantoorInrichtingWPF
                     if (DragCavasPlattegrond.Children[i].GetType() == typeof(TextBlock))
                     {
                         LIstTextBlock.Add((TextBlock)DragCavasPlattegrond.Children[i]);
+                    }
+                    if (DragCavasPlattegrond.Children[i].GetType() == typeof(Line))
+                    {
+                       ListLine.Add((Line)DragCavasPlattegrond.Children[i]);
                     }
                 }
                 foreach (Image item in ListImages)
@@ -808,6 +820,32 @@ namespace KantoorInrichtingWPF
 
 
                 }
+                foreach (Line item in ListLine)
+                {
+                    plattegrondview.Plattegrondcode = Plattegrondcode;
+                    double x = Canvas.GetLeft(item);
+                    double y = Canvas.GetTop(item);
+
+
+                    //plattegrondview.Plattegrondcode = Plattegrondcode;
+                    plattegrondview.CanvasImageType = $"{item.Name}";
+                    List<string> list = (List<string>)item.Tag;
+                    plattegrondview.CanvasImageName = $"{list[0]}";
+                    plattegrondview.CanvasImageTag = $"{list[1]}";
+
+                    plattegrondview.CanvasImageLeverancier = $"{list[2]}";
+                    plattegrondview.CanvasImageProductcode = $"{list[3]}";
+                    plattegrondview.CanvasImageRotation = $"{list[4]}";
+                    plattegrondview.XCoord = $"{x}";
+                    plattegrondview.YCoord = $"{y}";
+                    string canvasitemcode = $"{plattegrondview.Plattegrondcode}{plattegrondview.CanvasImageType[0]}{plattegrondview.CanvasItemCount}";
+                    plattegrondview.CanvasItemcode = canvasitemcode;
+                    plattegrondview.CanvasItemCount++;
+
+                    plattegrondview.ToevoegenCanvasItems();
+
+
+                }
             }
             
         }
@@ -830,6 +868,7 @@ namespace KantoorInrichtingWPF
             plattegrondview.PlattegrondNaam = opslaanPlattegrond.TBPlattegrondNaam.Text;
             List<Image> ListImages = new List<Image>();
             List<TextBlock> LIstTextBlock = new List<TextBlock>();
+            List<Line> ListLine = new List<Line>();
             for (int i = 0; i < DragCavasPlattegrond.Children.Count; i++)
             {
                 if (DragCavasPlattegrond.Children[i].GetType() == typeof(Image))
@@ -839,6 +878,10 @@ namespace KantoorInrichtingWPF
                 if (DragCavasPlattegrond.Children[i].GetType() == typeof(TextBlock))
                 {
                     LIstTextBlock.Add((TextBlock)DragCavasPlattegrond.Children[i]);
+                }
+                if (DragCavasPlattegrond.Children[i].GetType() == typeof(Line))
+                {
+                    ListLine.Add((Line)DragCavasPlattegrond.Children[i]);
                 }
             }
             foreach (Image item in ListImages)
@@ -865,6 +908,32 @@ namespace KantoorInrichtingWPF
             {
                 plattegrondview.Plattegrondcode = $"{plattegrondview.PlattegrondNaam[0]}{plattegrondview.PlattegrondNaam[1]}{plattegrondview.PlattegrondLijst.Count}";
                 
+                double x = Canvas.GetLeft(item);
+                double y = Canvas.GetTop(item);
+
+
+                //plattegrondview.Plattegrondcode = Plattegrondcode;
+                plattegrondview.CanvasImageType = $"{item.Name}";
+                List<string> list = (List<string>)item.Tag;
+                plattegrondview.CanvasImageName = $"{list[0]}";
+                plattegrondview.CanvasImageTag = $"{list[1]}";
+
+                plattegrondview.CanvasImageLeverancier = $"{list[2]}";
+                plattegrondview.CanvasImageProductcode = $"{list[3]}";
+                plattegrondview.CanvasImageRotation = $"{list[4]}";
+                plattegrondview.XCoord = $"{x}";
+                plattegrondview.YCoord = $"{y}";
+                string canvasitemcode = $"{plattegrondview.Plattegrondcode}{plattegrondview.CanvasImageType[0]}{plattegrondview.CanvasItemCount}";
+                plattegrondview.CanvasItemcode = canvasitemcode;
+                plattegrondview.CanvasItemCount++;
+
+                plattegrondview.ToevoegenCanvasItems();
+
+
+            }
+            foreach (Line item in ListLine)
+            {
+                plattegrondview.Plattegrondcode = Plattegrondcode;
                 double x = Canvas.GetLeft(item);
                 double y = Canvas.GetTop(item);
 
