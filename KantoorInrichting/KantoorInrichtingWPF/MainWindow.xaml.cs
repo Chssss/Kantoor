@@ -478,6 +478,7 @@ namespace KantoorInrichtingWPF
                         _totalprijst = _totalprijst - Convert.ToDecimal(prijs[1]);
                         LabelTotalPrijs.Content = $"{_totalprijst}€";
                         dragCanvas.Children.Remove((UIElement)image);
+                        return;
                     }
                         
                     if (DragCavasPlattegrond.Children[index].GetType() == typeof(TextBlock))
@@ -487,6 +488,7 @@ namespace KantoorInrichtingWPF
                         _totalprijst = _totalprijst - Convert.ToDecimal(prijs[1]);
                         LabelTotalPrijs.Content = $"{_totalprijst}€";
                         dragCanvas.Children.Remove((UIElement)image);
+                        return;
                     }
                     if (DragCavasPlattegrond.Children[index].GetType() == typeof(Line))
                     {
@@ -495,6 +497,7 @@ namespace KantoorInrichtingWPF
                         _totalprijst = _totalprijst - Convert.ToDecimal(prijs[1]);
                         LabelTotalPrijs.Content = $"{_totalprijst}€";
                         dragCanvas.Children.Remove((UIElement)image);
+                        return;
                     }
 
 
