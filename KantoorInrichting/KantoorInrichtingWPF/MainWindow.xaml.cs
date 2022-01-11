@@ -42,6 +42,7 @@ namespace KantoorInrichtingWPF
         public string Hoogte="10,0";
         public string Plattegrondcode;
 
+        protected bool muurCheck;
         protected bool isDragging;
         private System.Windows.Point clickPosition;
         private System.Windows.Point currentPosition;
@@ -1144,22 +1145,30 @@ namespace KantoorInrichtingWPF
             Canvas.SetLeft(textblock, 100.00);
         }
 
-        private void ButtonMuur_Click(object sender, RoutedEventArgs e)
+        private void ButtonMuur_Check(object sender, RoutedEventArgs e)
         {
+            muurCheck = true;
+        }
 
+        private void ButtonMuur_Uncheck(object sender, RoutedEventArgs e)
+        {
+            muurCheck = false;
         }
 
         public void DragCavasPlattegrond_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var dragCanvas = sender as DragCanvas;
-            isDragging = true;
-            clickPosition = e.GetPosition(dragCanvas);
+            if (muurCheck == true)
+            {
+                var dragCanvas = sender as DragCanvas;
+                isDragging = true;
+                clickPosition = e.GetPosition(dragCanvas);
+            }
         }
 
         public void DragCavasPlattegrond_MouseMove(object sender, MouseEventArgs e)
         {
             var dragCanvas = sender as DragCanvas;
-            if (isDragging == true)
+            if (muurCheck == true && isDragging == true)
             {
                 currentPosition = e.GetPosition(dragCanvas);
             }
@@ -1167,25 +1176,28 @@ namespace KantoorInrichtingWPF
 
         private void DragCavasPlattegrond_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            var dragCanvas = sender as DragCanvas;
-            isDragging = false;
-            Line muur = new Line();
-            muur.Stroke = System.Windows.Media.Brushes.Black;
-            muur.StrokeThickness = 2;
+            if (muurCheck == true)
+            {
+                var dragCanvas = sender as DragCanvas;
+                isDragging = false;
+                Line muur = new Line();
+                muur.Stroke = System.Windows.Media.Brushes.Black;
+                muur.StrokeThickness = 2;
 
-            muur.X1 = clickPosition.X;
-            muur.Y1 = clickPosition.Y;
-            muur.X2 = currentPosition.X;
-            muur.Y2 = currentPosition.Y;
-            dragCanvas.Children.Add(muur);
-            List<string> list = new List<string>();
-            list.Add("muur");
-            list.Add($"0,0");
-            list.Add($"{muur.Tag}");
-            list.Add("n.v.t");
-            list.Add("0");
-            muur.Tag = list;
-            return;
+                muur.X1 = clickPosition.X;
+                muur.Y1 = clickPosition.Y;
+                muur.X2 = currentPosition.X;
+                muur.Y2 = currentPosition.Y;
+                dragCanvas.Children.Add(muur);
+                List<string> list = new List<string>();
+                list.Add("muur");
+                list.Add($"0,0");
+                list.Add($"{muur.Tag}");
+                list.Add("n.v.t");
+                list.Add("0");
+                muur.Tag = list;
+                return;
+            }
         }
         private void OnMenuItem_Bestellen_Click(object sender, RoutedEventArgs e)
         {

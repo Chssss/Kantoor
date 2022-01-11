@@ -63,7 +63,7 @@
         </Border>
         <Label x:Name="LabelTotalPrijs" Grid.Column="3" HorizontalAlignment="Left" Margin="412,0,0,0" VerticalAlignment="Center" Height="30" Width="64" FontSize="16" Grid.Row="2"/>
         <Button x:Name="ButtonTotaalPrijs" Content="Totaalprijs" Grid.Column="3" HorizontalAlignment="Left" Margin="530,0,0,0" VerticalAlignment="Center" Height="33" Width="67" Click="OnButton_Totaalprijs_Click" Grid.Row="2"/>
-        <Button x:Name="ButtonMuur" Content="Muur" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="111" Click="ButtonMuur_Click"/>
+        <ToggleButton x:Name="ButtonMuur" Content="Muur" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="111" Checked="ButtonMuur_Check" Unchecked="ButtonMuur_Uncheck"/>
         <Button x:Name="ButtonRaam" Content="Raam" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="123" Click="ButtonRaam_Click" Grid.Column="1"/>
         <Button x:Name="ButtonDeur" Content="Deur" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="133" Click="ButtonDeur_Click" Grid.Column="2"/>
         <Label x:Name="LabelLengte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="116,0,0,0" VerticalAlignment="Center"/>
