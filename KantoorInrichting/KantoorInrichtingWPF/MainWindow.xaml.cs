@@ -75,6 +75,41 @@ namespace KantoorInrichtingWPF
         }
         public void AddImageToGeladenMap(string typeImage, string naamMeubel, string prijs,double xcoord,double ycoord, string leverancier,string productcode, string rotatie)
         {
+            if (typeImage.Equals("muur"))
+            {
+                double xcoord2 = Convert.ToDouble(leverancier);
+                double ycoord2 = Convert.ToDouble(productcode);
+                Line muur = new Line();
+                muur.Name = "muur";
+                muur.Stroke = System.Windows.Media.Brushes.Black;
+                muur.StrokeThickness = 2;
+                muur.X1 = xcoord;
+                muur.Y1 = ycoord;
+                muur.X2 = xcoord2;
+                muur.Y2 = ycoord2;
+                List<string> list = new List<string>();
+                list.Add(naamMeubel);
+                list.Add(prijs);
+                list.Add(leverancier);
+                list.Add(productcode);
+                list.Add(rotatie);
+                muur.Tag = list;
+                DragCavasPlattegrond.Children.Add(muur);
+                int index = DragCavasPlattegrond.Children.IndexOf(muur);
+                Line image2 = (Line)DragCavasPlattegrond.Children[index];
+
+                List<string> imageTag = (List<string>)image2.Tag;
+                double rotatie1 = 0;
+                RotateTransform rotateTransform1 = new RotateTransform(rotatie1);
+                var x = image2.ActualWidth / 2;
+                var y = image2.ActualHeight / 2;
+                rotateTransform1.CenterX = x;
+                rotateTransform1.CenterY = y;
+                image2.RenderTransform = rotateTransform1;
+                imageTag[4] = $"{rotatie}";
+                image2.Tag = imageTag;
+            }
+
             if (typeImage.Equals("notitie"))
             {
                 TextBlock textblock = new TextBlock();
@@ -94,7 +129,7 @@ namespace KantoorInrichtingWPF
                 TextBlock image2 = (TextBlock)DragCavasPlattegrond.Children[index];
 
                 List<string> imageTag = (List<string>)image2.Tag;
-                double rotatie1 = Convert.ToDouble(rotatie);
+                double rotatie1 = 0;
                 RotateTransform rotateTransform1 = new RotateTransform(rotatie1);
                 var x = image2.ActualWidth / 2;
                 var y = image2.ActualHeight / 2;
@@ -937,11 +972,10 @@ namespace KantoorInrichtingWPF
 
                 plattegrondview.ToevoegenCanvasItems();
 
-
             }
             foreach (Line item in ListLine)
             {
-                plattegrondview.Plattegrondcode = Plattegrondcode;
+                plattegrondview.Plattegrondcode = $"{plattegrondview.PlattegrondNaam[0]}{plattegrondview.PlattegrondNaam[1]}{plattegrondview.PlattegrondLijst.Count}";
                 double x = Canvas.GetLeft(item);
                 double y = Canvas.GetTop(item);
 
@@ -955,14 +989,13 @@ namespace KantoorInrichtingWPF
                 plattegrondview.CanvasImageLeverancier = $"{list[2]}";
                 plattegrondview.CanvasImageProductcode = $"{list[3]}";
                 plattegrondview.CanvasImageRotation = $"{list[4]}";
-                plattegrondview.XCoord = $"{x}";
-                plattegrondview.YCoord = $"{y}";
+                plattegrondview.XCoord = $"{list[5]}";
+                plattegrondview.YCoord = $"{list[6]}";
                 string canvasitemcode = $"{plattegrondview.Plattegrondcode}{plattegrondview.CanvasImageType[0]}{plattegrondview.CanvasItemCount}";
                 plattegrondview.CanvasItemcode = canvasitemcode;
                 plattegrondview.CanvasItemCount++;
 
                 plattegrondview.ToevoegenCanvasItems();
-
 
             }
 
@@ -1184,6 +1217,7 @@ namespace KantoorInrichtingWPF
                 var dragCanvas = sender as DragCanvas;
                 isDragging = false;
                 Line muur = new Line();
+                muur.Name = "muur";
                 muur.Stroke = System.Windows.Media.Brushes.Black;
                 muur.StrokeThickness = 2;
 
@@ -1195,9 +1229,12 @@ namespace KantoorInrichtingWPF
                 List<string> list = new List<string>();
                 list.Add("muur");
                 list.Add($"0,0");
-                list.Add($"{muur.Tag}");
+                list.Add($"{muur.X2}");
+                list.Add($"{muur.Y2}");
                 list.Add("n.v.t");
                 list.Add("0");
+                list.Add($"{muur.X1}");
+                list.Add($"{muur.X2}");
                 muur.Tag = list;
                 return;
             }
