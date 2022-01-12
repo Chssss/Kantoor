@@ -976,9 +976,10 @@ namespace KantoorInrichtingWPF
             foreach (Line item in ListLine)
             {
                 plattegrondview.Plattegrondcode = $"{plattegrondview.PlattegrondNaam[0]}{plattegrondview.PlattegrondNaam[1]}{plattegrondview.PlattegrondLijst.Count}";
-                double x = Canvas.GetLeft(item);
-                double y = Canvas.GetTop(item);
-
+                double x1 = item.X1;
+                double y1 = item.X2;
+                double x2 = item.X2;
+                double y2 = item.Y2;
 
                 //plattegrondview.Plattegrondcode = Plattegrondcode;
                 plattegrondview.CanvasImageType = $"{item.Name}";
@@ -986,11 +987,11 @@ namespace KantoorInrichtingWPF
                 plattegrondview.CanvasImageName = $"{list[0]}";
                 plattegrondview.CanvasImageTag = $"{list[1]}";
 
-                plattegrondview.CanvasImageLeverancier = $"{list[2]}";
-                plattegrondview.CanvasImageProductcode = $"{list[3]}";
+                plattegrondview.CanvasImageLeverancier = $"{x1}";
+                plattegrondview.CanvasImageProductcode = $"{y1}";
                 plattegrondview.CanvasImageRotation = $"{list[4]}";
-                plattegrondview.XCoord = $"{list[5]}";
-                plattegrondview.YCoord = $"{list[6]}";
+                plattegrondview.XCoord = $"{x2}";
+                plattegrondview.YCoord = $"{y2}";
                 string canvasitemcode = $"{plattegrondview.Plattegrondcode}{plattegrondview.CanvasImageType[0]}{plattegrondview.CanvasItemCount}";
                 plattegrondview.CanvasItemcode = canvasitemcode;
                 plattegrondview.CanvasItemCount++;
@@ -1231,7 +1232,6 @@ namespace KantoorInrichtingWPF
                 list.Add($"0,0");
                 list.Add($"{muur.X2}");
                 list.Add($"{muur.Y2}");
-                list.Add("n.v.t");
                 list.Add("0");
                 list.Add($"{muur.X1}");
                 list.Add($"{muur.X2}");
