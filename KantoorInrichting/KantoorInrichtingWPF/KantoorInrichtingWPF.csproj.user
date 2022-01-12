@@ -3,6 +3,9 @@
   <PropertyGroup />
   <ItemGroup />
   <ItemGroup>
+    <Compile Update="View\InstructiesScherm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\LadenPlattegrond.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -17,6 +20,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\InstructiesScherm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\LadenPlattegrond.xaml">
       <SubType>Designer</SubType>
     </Page>

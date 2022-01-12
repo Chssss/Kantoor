@@ -1317,6 +1317,10 @@ namespace KantoorInrichtingWPF
             }
         }
 
-       
+        private void ButtonHelp_Click(object sender, RoutedEventArgs e)
+        {
+            InstructiesScherm instructiesScherm = new InstructiesScherm();
+            instructiesScherm.Show();
+        }
     }
 }

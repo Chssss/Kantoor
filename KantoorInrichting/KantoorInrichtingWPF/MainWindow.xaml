@@ -66,10 +66,11 @@
         <ToggleButton x:Name="ButtonMuur" Content="Muur" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="111" Checked="ButtonMuur_Check" Unchecked="ButtonMuur_Uncheck"/>
         <Button x:Name="ButtonRaam" Content="Raam" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="123" Click="ButtonRaam_Click" Grid.Column="1"/>
         <Button x:Name="ButtonDeur" Content="Deur" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="133" Click="ButtonDeur_Click" Grid.Column="2"/>
-        <Label x:Name="LabelLengte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="116,0,0,0" VerticalAlignment="Center"/>
+        <Label x:Name="LabelLengte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Center"/>
         <Label x:Name="LabelBreedte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="210,0,0,0" VerticalAlignment="Center"/>
         <Label x:Name="LabelHoogte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="317,7,0,0" VerticalAlignment="Top"/>
         <Button x:Name="ButtonNotitie" Content="Notitie" Grid.Column="3" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="101" Click="ButtonNotitie_Click"/>
+        <Button x:Name="ButtonHelp" Content="Help" Grid.Column="3" HorizontalAlignment="Left" Margin="86,0,0,0" VerticalAlignment="Center" Click="ButtonHelp_Click"/>
 
 
     </Grid>
