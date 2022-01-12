@@ -35,7 +35,7 @@
             <Menu Width="100" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <MenuItem Header="Opslaan">
                     <MenuItem Header="Opslaan" Click="OnMenuItem_opslaan_Click"/>
-                    <MenuItem Header="Export" Click="OnMenuItem_export_Click"/>
+                    
                     <MenuItem Header="Opslaan als" Click="OnMenuItem_opslaanAls_Click" />
 
                 </MenuItem>
