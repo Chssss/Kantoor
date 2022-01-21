@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\App.xaml
-4-322685307
+9-1011143048
 
-12671265459
+21550977627
 194-862261039
-MainWindow.xaml;View\MeubelsLijst.xaml;View\MeubelsToevoegen.xaml;View\NieuwePlattegrond.xaml;
+MainWindow.xaml;View\InstructiesScherm.xaml;View\LadenPlattegrond.xaml;View\MeubelsLijst.xaml;View\MeubelsToevoegen.xaml;View\NieuwePlattegrond.xaml;View\NotitieInput.xaml;View\OpslaanPlattegrond.xaml;View\OverzichtGebruikteMeubels.xaml;
 
 False
 
