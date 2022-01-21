@@ -522,16 +522,22 @@ namespace KantoorInrichtingWPF.ViewModel
             
             XmlDocument xdoc = new XmlDocument();
 
-            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);//bin\\Debug\\netcoreapp3.1
-            var test = outPutDirectory.Replace("bin\\Debug\\netcoreapp3.1", "");
-            var Bestandsnaam = "XMLTEST" + ".xml";
-            var stringBestandNaam = $"Xml\\" +$"{Bestandsnaam}";
-            var xmlPath = Path.Combine(test, stringBestandNaam);//"Xml\\XMLTEST.xml"
-            string xml_path = new Uri(xmlPath).LocalPath;
-            xdoc.Load(xml_path);
-            //xdoc.Load(@"C:\Users\Jelle\Documents\GitHub\Kantoor\KantoorInrichting\KantoorInrichtingWPF\Xml\XMLTEST.xml");
-            XmlNodeList nodes = xdoc.SelectNodes("//meubels/meubel");
+            string outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);//bin\\Debug\\netcoreapp3.1
 
+            if (outPutDirectory.Contains("bin\\Debug\\netcoreapp3.1"))//"file:\\C:\\Users\\stoff\\Documents\\School\\jaar 2\\semester 1\\kbs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\bin\\Debug\\netcoreapp3.1"
+            {
+                var test = outPutDirectory.Replace("bin\\Debug\\netcoreapp3.1", "");
+                var Bestandsnaam = "XMLTEST" + ".xml";
+                var stringBestandNaam = $"Xml\\" + $"{Bestandsnaam}";
+                var xmlPath = Path.Combine(test, stringBestandNaam);//"Xml\\XMLTEST.xml"
+                string xml_path = new Uri(xmlPath).LocalPath;
+                xdoc.Load(xml_path);
+                //xdoc.Load(@"C:\Users\Jelle\Documents\GitHub\Kantoor\KantoorInrichting\KantoorInrichtingWPF\Xml\XMLTEST.xml");
+
+            }
+            
+
+            XmlNodeList nodes = xdoc.SelectNodes("//meubels/meubel");
             foreach (XmlNode node in nodes)
             {
                 string _productcode = "0";
