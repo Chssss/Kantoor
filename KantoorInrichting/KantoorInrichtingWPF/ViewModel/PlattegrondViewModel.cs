@@ -319,7 +319,7 @@ namespace KantoorInrichtingWPF.ViewModel
 
         }
 
-        void UpdatePlattegrondenLijstExecute()
+        public void UpdatePlattegrondenLijstExecute()
         {
             Dictionary<int, List<string>> outputQuerry= Plattegrond_Database.GetPlattegrondDataDatabase();
 
@@ -377,15 +377,29 @@ namespace KantoorInrichtingWPF.ViewModel
             
             PlattegrondLijst = ListPlattegrond;
         }
-       
+
         void ToevoegenPlattegrondExecute()
         {
-            
-            Datum = $"{DateTime.Now}";
-            Plattegrondcode = $"{PlattegrondNaam[0]}{PlattegrondNaam[1]}{PlattegrondLijst.Count}";
-            Plattegrond_Database.ToevoegenAanDatabase(ProjectNaam,PlattegrondNaam,Datum,Plattegrondcode,Lengte,Breedte,Hoogte);//CanvasItemcode,CanvasImageType,CanvasImageName,CanvasImageTag,XCoord,YCoord
-            
-            MessageBox.Show("Plattegrond is toegevoegd");
+
+            if (Lengte is null || Breedte is null || Hoogte is null || ProjectNaam is null || PlattegrondNaam is null)
+            {
+                MessageBox.Show("Vul alle velden in om een plattegrond te kunnen toevoegen");
+            }
+            else
+            {
+                if (!decimal.TryParse(Lengte, out decimal __Lengte) && !decimal.TryParse(Breedte, out decimal __Breedte) && !decimal.TryParse(Hoogte, out decimal __Hoogte))
+                {
+                    MessageBox.Show("Lengte, Breedte en Hoogte moet een getal zijn");
+                }
+                else
+                {
+                    Datum = $"{DateTime.Now}";
+                    Plattegrondcode = $"{PlattegrondNaam[0]}{PlattegrondNaam[1]}{PlattegrondLijst.Count}";
+                    Plattegrond_Database.ToevoegenAanDatabase(ProjectNaam, PlattegrondNaam, Datum, Plattegrondcode, Lengte, Breedte, Hoogte);//CanvasItemcode,CanvasImageType,CanvasImageName,CanvasImageTag,XCoord,YCoord
+
+                    MessageBox.Show("Plattegrond is toegevoegd");
+                }
+            }
         }
         void UpdatePlattegrond(string projectNaam, string plattegrondNaam,  string plattegrondcode, string lengte, string breedte, string hoogte) 
         {

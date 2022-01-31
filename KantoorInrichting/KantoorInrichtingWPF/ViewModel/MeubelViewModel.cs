@@ -110,7 +110,7 @@ namespace KantoorInrichtingWPF.ViewModel
             }
             set
             {
-              _hoogte   = value;
+                _hoogte = value;
             }
         }
         public string Image
@@ -418,10 +418,26 @@ namespace KantoorInrichtingWPF.ViewModel
         {
             Tag = GetTag();
             Image = GetImage();
+            if ((Naam is null) || (Prijs is null) || Lengte is null || Breedte is null || Categorie is null || Tag.Equals("") || Image.Equals("") || Hoogte is null || Leverancier is null)
+            {
+                MessageBox.Show("Vul alle velden in om meubels te kunnen toevoegen");
+            }
+            else
+            {
+                if (!decimal.TryParse(Prijs, out decimal __prijs) && !decimal.TryParse(Lengte, out decimal __Lengte) && !decimal.TryParse(Breedte, out decimal __Breedte) && !decimal.TryParse(Hoogte, out decimal __Hoogte))
+                {
+                    MessageBox.Show("Prijs, Lengte, Breedte en Hoogte moet een getal zijn");
+                }
+                else
+                {
 
-            Productcode = $"{Leverancier[0]}{Leverancier[1]}{Catalogus.Count}";
-            Meubel_Database.ToevoegenAanDatabase(Naam, Prijs, Lengte, Breedte, Categorie, Tag, Image, Hoogte,Leverancier,Productcode);
-            MessageBox.Show("Item is toegevoegd, druk op refresh om de lijst te updaten");
+                    Productcode = $"{Leverancier[0]}{Leverancier[1]}{Catalogus.Count}";
+                    Meubel_Database.ToevoegenAanDatabase(Naam, Prijs, Lengte, Breedte, Categorie, Tag, Image, Hoogte, Leverancier, Productcode);
+                    MessageBox.Show("Meubel is toegevoegd");
+                    
+                }
+            }
+            UpdateCatalogusExecute();
         }
        
         void UpdateCatalogusExecute() 
@@ -451,8 +467,26 @@ namespace KantoorInrichtingWPF.ViewModel
          }
         void VerwijderenMeubelExecute() 
         {
-            Meubel_Database.DeleteFromDatabase(Verwijderbalk);
-            MessageBox.Show("Item is verwijdert, druk op refresh om de lijst te updaten"); 
+            bool check = false;
+            foreach (var item in Catalogus)
+            {
+                if (item.Productcode.Equals(Verwijderbalk))
+                {
+                    check = true;
+                    break;
+                }
+            }
+            if (check)
+            {
+                Meubel_Database.DeleteFromDatabase(Verwijderbalk);
+                MessageBox.Show("Meubel is verwijderd");
+                UpdateCatalogusExecute();
+            }
+            else
+            {
+                MessageBox.Show("ProductCode bestaad niet");
+            }
+
         }
       void ZoekenNaamInCatalogusExecute()
         {
