@@ -35,7 +35,7 @@ namespace KantoorInrichtingWPF
         {
             this.Close();
         }
-       
+      
         
         
         private void OnRButton_Tafel_Checked(object sender, RoutedEventArgs e)

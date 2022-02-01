@@ -895,13 +895,14 @@ namespace KantoorInrichtingWPF
 
         private void OnMenuItem_opslaanAls_Click(object sender, RoutedEventArgs e)
         {
-            opslaanPlattegrond.TBLengte.Text = Lengte;
-            opslaanPlattegrond.TBPlattegrondNaam.Text = PlattegrondNaam;
-            opslaanPlattegrond.TBProjectNaam.Text = ProjectNaam;
-            opslaanPlattegrond.TBBreedte.Text = Breedte;
-            opslaanPlattegrond.TBHoogte.Text = Hoogte;
-            opslaanPlattegrond.Show();
-            opslaanPlattegrond.ButtonOpslaan.Click += OnButtonOpslaan_Click;
+            OpslaanPlattegrond opslaanPlattegrond1 = new OpslaanPlattegrond();
+            opslaanPlattegrond1.TBLengte.Text = Lengte;
+            opslaanPlattegrond1.TBPlattegrondNaam.Text = PlattegrondNaam;
+            opslaanPlattegrond1.TBProjectNaam.Text = ProjectNaam;
+            opslaanPlattegrond1.TBBreedte.Text = Breedte;
+            opslaanPlattegrond1.TBHoogte.Text = Hoogte;
+            opslaanPlattegrond1.Show();
+            opslaanPlattegrond1.ButtonOpslaan.Click += OnButtonOpslaan_Click;
             
         }
 
