@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KantoorInrichtingWPF.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
@@ -54,10 +55,10 @@ namespace KantoorInrichtingWPF.Data
             #endregion
             return output;
         }
-        public static Dictionary<int, List<string>> GetPlattegrondDataDatabase()
+        public static List<Plattegrond> GetPlattegrondDataDatabase()
         {
-            Dictionary<int, List<string>> outputPlategrondSQL = new Dictionary<int, List<string>>(); 
-            int count1 = 0;
+            List<Plattegrond> outputPlategrondSQL = new List<Plattegrond>(); 
+           
             
             #region plattegrond sql
             try
@@ -83,7 +84,7 @@ namespace KantoorInrichtingWPF.Data
 
                             while (reader.Read())
                             {
-                                List<string> listVaule = new List<string>();
+                                /*   
                                 listVaule.Add(reader.GetString(0));//project naam
                                 listVaule.Add(reader.GetString(1));//plattegrond naam
                                 listVaule.Add(reader.GetString(2));//datum
@@ -91,6 +92,15 @@ namespace KantoorInrichtingWPF.Data
                                 listVaule.Add(reader.GetString(4));//lengte
                                 listVaule.Add(reader.GetString(5));//breedte
                                 listVaule.Add(reader.GetString(6));//hoogte
+                                */
+                                var projectNaam =reader.GetString(0);//project naam
+                                var plattegrondNaam=reader.GetString(1);//plattegrond naam
+                                var datum=reader.GetString(2);//datum
+                                var plattegrondcode=reader.GetString(3);//plattegrondcode
+                                var lengte=reader.GetString(4);//lengte
+                                var breedte=reader.GetString(5);//breedte
+                                var hoogte=reader.GetString(6);//hoogte
+
                                 /*
                                 listVaule.Add(reader.GetString(7));//image type(type image)
                                 listVaule.Add(reader.GetString(8));//image name(naam meubel)
@@ -98,8 +108,10 @@ namespace KantoorInrichtingWPF.Data
                                 listVaule.Add(reader.GetString(10));//x coord
                                 listVaule.Add(reader.GetString(11));//y coord
                                 */
-                                outputPlategrondSQL.Add(count1, listVaule);
-                                count1++;
+                                var canvasItems = GetPlattegrondCanvasDataDatabase(plattegrondcode);
+                                Plattegrond plattegrond = new Plattegrond(projectNaam,plattegrondNaam,datum,plattegrondcode,lengte,breedte,hoogte,canvasItems);
+                                outputPlategrondSQL.Add(plattegrond);
+                                
                             }
                         }
                     }
@@ -115,11 +127,10 @@ namespace KantoorInrichtingWPF.Data
             return outputPlategrondSQL;
             //return nepDatabase;
         }
-        public static Dictionary<int, List<string>> GetPlattegrondCanvasDataDatabase(string plattegrondcode)
+        public static List<CanvasItem> GetPlattegrondCanvasDataDatabase(string plattegrondcode)
         {
-            Dictionary<int, List<string>> outputCanvasSQL = new Dictionary<int, List<string>>();
-            int count2 = 0;
-           
+            List<CanvasItem> outputCanvasSQL = new List<CanvasItem>();
+
             #region plategrond canvas sql
             try
             {
@@ -144,19 +155,20 @@ namespace KantoorInrichtingWPF.Data
 
                             while (reader.Read())
                             {
-                                List<string> listVaule = new List<string>();
-                                listVaule.Add(reader.GetString(0));//canvasItemcode
-                                listVaule.Add(reader.GetString(1));//plattegrondcode
-                                listVaule.Add(reader.GetString(2));//image type(type image)
-                                listVaule.Add(reader.GetString(3));//image name(naam meubel)
-                                listVaule.Add(reader.GetString(4));//image tag(prijs)
-                                listVaule.Add(reader.GetString(5));//x coord
-                                listVaule.Add(reader.GetString(6));//y coord
-                                listVaule.Add(reader.GetString(7));//leverancier
-                                listVaule.Add(reader.GetString(8));//productcode
-                                listVaule.Add(reader.GetString(9));//rotatie
-                                outputCanvasSQL.Add(count2, listVaule);
-                                count2++;
+                                
+                                var canvasItemcode=reader.GetString(0);//canvasItemcode
+                                var Plattegrondcode=reader.GetString(1);//plattegrondcode
+                                var imageType= reader.GetString(2);//image type(type image)
+                                var naamMeubel=reader.GetString(3);//image name(naam meubel)
+                                var prijs=reader.GetString(4);//image tag(prijs)
+                                var xcoord=reader.GetString(5);//x coord
+                                var ycoord=reader.GetString(6);//y coord
+                                var leverancier=reader.GetString(7);//leverancier
+                                var productcode=reader.GetString(8);//productcode
+                                var rotatie=reader.GetString(9);//rotatie
+                                CanvasItem canvasItem = new CanvasItem(canvasItemcode,Plattegrondcode,imageType,naamMeubel,prijs,xcoord,ycoord,leverancier,productcode,rotatie);
+                                outputCanvasSQL.Add(canvasItem);
+                               
                             }
                         }
                     }
@@ -452,10 +464,9 @@ namespace KantoorInrichtingWPF.Data
             Console.ReadLine();
             #endregion
         }
-        public static Dictionary<int, List<string>> ZoekenNaamPlattegrondDatabase(string zoekbalk) 
+        public static List<Plattegrond> ZoekenNaamPlattegrondDatabase(string zoekbalk) 
         {
-            Dictionary<int, List<string>> outputPlategrondSQL = new Dictionary<int, List<string>>();
-            int count1 = 0;
+            List<Plattegrond> outputPlategrondSQL = new List<Plattegrond>();
 
             #region plattegrond sql
             try
@@ -481,7 +492,7 @@ namespace KantoorInrichtingWPF.Data
 
                             while (reader.Read())
                             {
-                                List<string> listVaule = new List<string>();
+                                /*   
                                 listVaule.Add(reader.GetString(0));//project naam
                                 listVaule.Add(reader.GetString(1));//plattegrond naam
                                 listVaule.Add(reader.GetString(2));//datum
@@ -489,6 +500,15 @@ namespace KantoorInrichtingWPF.Data
                                 listVaule.Add(reader.GetString(4));//lengte
                                 listVaule.Add(reader.GetString(5));//breedte
                                 listVaule.Add(reader.GetString(6));//hoogte
+                                */
+                                var projectNaam = reader.GetString(0);//project naam
+                                var plattegrondNaam = reader.GetString(1);//plattegrond naam
+                                var datum = reader.GetString(2);//datum
+                                var plattegrondcode = reader.GetString(3);//plattegrondcode
+                                var lengte = reader.GetString(4);//lengte
+                                var breedte = reader.GetString(5);//breedte
+                                var hoogte = reader.GetString(6);//hoogte
+
                                 /*
                                 listVaule.Add(reader.GetString(7));//image type(type image)
                                 listVaule.Add(reader.GetString(8));//image name(naam meubel)
@@ -496,8 +516,9 @@ namespace KantoorInrichtingWPF.Data
                                 listVaule.Add(reader.GetString(10));//x coord
                                 listVaule.Add(reader.GetString(11));//y coord
                                 */
-                                outputPlategrondSQL.Add(count1, listVaule);
-                                count1++;
+                                var canvasItems = GetPlattegrondCanvasDataDatabase(plattegrondcode);
+                                Plattegrond plattegrond = new Plattegrond(projectNaam, plattegrondNaam, datum, plattegrondcode, lengte, breedte, hoogte, canvasItems);
+                                outputPlategrondSQL.Add(plattegrond);
                             }
                         }
                     }
@@ -512,10 +533,9 @@ namespace KantoorInrichtingWPF.Data
 
             return outputPlategrondSQL;
         }
-        public static Dictionary<int, List<string>> ZoekenNaamProjectDatabase(string zoekbalk)
+        public static List<Plattegrond> ZoekenNaamProjectDatabase(string zoekbalk)
         {
-            Dictionary<int, List<string>> outputPlategrondSQL = new Dictionary<int, List<string>>();
-            int count1 = 0;
+            List<Plattegrond> outputPlategrondSQL = new List<Plattegrond>();
 
             #region plattegrond sql
             try
@@ -541,14 +561,23 @@ namespace KantoorInrichtingWPF.Data
 
                             while (reader.Read())
                             {
-                                List<string> listVaule = new List<string>();
-                                listVaule.Add(reader.GetString(0));//project naam
-                                listVaule.Add(reader.GetString(1));//plattegrond naam
-                                listVaule.Add(reader.GetString(2));//datum
-                                listVaule.Add(reader.GetString(3));//plattegrondcode
-                                listVaule.Add(reader.GetString(4));//lengte
-                                listVaule.Add(reader.GetString(5));//breedte
-                                listVaule.Add(reader.GetString(6));//hoogte
+                                /*   
+                                 listVaule.Add(reader.GetString(0));//project naam
+                                 listVaule.Add(reader.GetString(1));//plattegrond naam
+                                 listVaule.Add(reader.GetString(2));//datum
+                                 listVaule.Add(reader.GetString(3));//plattegrondcode
+                                 listVaule.Add(reader.GetString(4));//lengte
+                                 listVaule.Add(reader.GetString(5));//breedte
+                                 listVaule.Add(reader.GetString(6));//hoogte
+                                 */
+                                var projectNaam = reader.GetString(0);//project naam
+                                var plattegrondNaam = reader.GetString(1);//plattegrond naam
+                                var datum = reader.GetString(2);//datum
+                                var plattegrondcode = reader.GetString(3);//plattegrondcode
+                                var lengte = reader.GetString(4);//lengte
+                                var breedte = reader.GetString(5);//breedte
+                                var hoogte = reader.GetString(6);//hoogte
+
                                 /*
                                 listVaule.Add(reader.GetString(7));//image type(type image)
                                 listVaule.Add(reader.GetString(8));//image name(naam meubel)
@@ -556,8 +585,9 @@ namespace KantoorInrichtingWPF.Data
                                 listVaule.Add(reader.GetString(10));//x coord
                                 listVaule.Add(reader.GetString(11));//y coord
                                 */
-                                outputPlategrondSQL.Add(count1, listVaule);
-                                count1++;
+                                var canvasItems = GetPlattegrondCanvasDataDatabase(plattegrondcode);
+                                Plattegrond plattegrond = new Plattegrond(projectNaam, plattegrondNaam, datum, plattegrondcode, lengte, breedte, hoogte, canvasItems);
+                                outputPlategrondSQL.Add(plattegrond);
                             }
                         }
                     }

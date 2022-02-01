@@ -20,10 +20,10 @@
         <TextBox x:Name="TBLengte" HorizontalAlignment="Left" Margin="84,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Lengte}"/>
         <TextBox x:Name="TBBreedte" HorizontalAlignment="Left" Margin="84,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Breedte}"/>
         <Label Content="Nieuwe plattegrond" HorizontalAlignment="Center" Margin="0,41,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="ButtonAanmaken" Content="Aanmaken" HorizontalAlignment="Left" Margin="382,324,0,0" VerticalAlignment="Top" Click="OnButton_Aanmaken_Click"/>
         <Button x:Name="ButtonAnnuleren" Content="Annuleren" HorizontalAlignment="Left" Margin="532,323,0,0" VerticalAlignment="Top" Click="OnButton_Annuleren_Click"/>
         <TextBox x:Name="TBHoogte" HorizontalAlignment="Left" Margin="89,378,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Hoogte}"/>
         <Label Content="Hoogte" HorizontalAlignment="Left" Margin="89,347,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.768,0.822"/>
+        <Button x:Name="ButtonAanmaken" Content="Aanmaken" HorizontalAlignment="Left" Margin="360,323,0,0" VerticalAlignment="Top" Click="OnButton_Aanmaken_Click"/>
 
     </Grid>
 </Window>

@@ -24,18 +24,35 @@ namespace KantoorInrichtingWPF
 
         private void OnButton_Aanmaken_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow plattegrondEditor = new MainWindow();
-            plattegrondEditor.ProjectNaam = TBProject.Text;
-            plattegrondEditor.PlattegrondNaam = TBNaam.Text;
+            if ((TBProject.Text is null) && (TBNaam.Text is null) && TBLengte.Text is null && TBBreedte.Text is null && TBHoogte.Text is null)
+            {
+                MessageBox.Show("Vul alle velden in om een plattegrond te kunnen toevoegen");
+            }
+            else
+            {
+                if (!decimal.TryParse(TBLengte.Text, out decimal __Lengte) || !decimal.TryParse(TBBreedte.Text, out decimal __Breedte) || !decimal.TryParse(TBHoogte.Text, out decimal __Hoogte))
+                {
+                    MessageBox.Show("Lengte, Breedte en Hoogte moet een getal zijn");
+                }
+                else
+                {
+                    MainWindow plattegrondEditor = new MainWindow();
+                    plattegrondEditor.ProjectNaam = TBProject.Text;
+                    plattegrondEditor.PlattegrondNaam = TBNaam.Text;
+
+                    plattegrondEditor.Lengte = TBLengte.Text;
+                    plattegrondEditor.Breedte = TBBreedte.Text;
+                    plattegrondEditor.Hoogte = TBHoogte.Text;
+                    plattegrondEditor.LabelLengte.Content = $"Lengte:{TBLengte.Text}";
+                    plattegrondEditor.LabelBreedte.Content = $"Breedte:{TBBreedte.Text}";
+                    plattegrondEditor.LabelHoogte.Content = $"Hoogte:{TBHoogte.Text}";
+                    plattegrondEditor.Show();
+                    this.Close();
+                    MessageBox.Show("Plattegrond is aangemaakt");
+
+                }
+            }
             
-            plattegrondEditor.Lengte = TBLengte.Text;
-            plattegrondEditor.Breedte =TBBreedte.Text;
-            plattegrondEditor.Hoogte = TBHoogte.Text;
-            plattegrondEditor.LabelLengte.Content = $"Lengte:{TBLengte.Text}";
-            plattegrondEditor.LabelBreedte.Content = $"Breedte:{TBBreedte.Text}";
-            plattegrondEditor.LabelHoogte.Content = $"Hoogte:{TBHoogte.Text}";
-            plattegrondEditor.Show();
-            this.Close();
         }
 
         private void OnButton_Annuleren_Click(object sender, RoutedEventArgs e)

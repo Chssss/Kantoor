@@ -110,7 +110,7 @@ namespace KantoorInrichtingWPF.ViewModel
             }
             set
             {
-              _hoogte   = value;
+                _hoogte = value;
             }
         }
         public string Image
@@ -418,92 +418,70 @@ namespace KantoorInrichtingWPF.ViewModel
         {
             Tag = GetTag();
             Image = GetImage();
+            if ((Naam is null) || (Prijs is null) || Lengte is null || Breedte is null || Categorie is null || Tag.Equals("") || Image.Equals("") || Hoogte is null || Leverancier is null)
+            {
+                MessageBox.Show("Vul alle velden in om meubels te kunnen toevoegen");
+            }
+            else
+            {
+                if (!decimal.TryParse(Prijs, out decimal __prijs) && !decimal.TryParse(Lengte, out decimal __Lengte) && !decimal.TryParse(Breedte, out decimal __Breedte) && !decimal.TryParse(Hoogte, out decimal __Hoogte))
+                {
+                    MessageBox.Show("Prijs, Lengte, Breedte en Hoogte moet een getal zijn");
+                }
+                else
+                {
 
-            Productcode = $"{Leverancier[0]}{Leverancier[1]}{Catalogus.Count}";
-            Meubel_Database.ToevoegenAanDatabase(Naam, Prijs, Lengte, Breedte, Categorie, Tag, Image, Hoogte,Leverancier,Productcode);
-            MessageBox.Show("Item is toegevoegd, druk op refresh om de lijst te updaten");
+                    Productcode = $"{Leverancier[0]}{Leverancier[1]}{Catalogus.Count}";
+                    Meubel_Database.ToevoegenAanDatabase(Naam, Prijs, Lengte, Breedte, Categorie, Tag, Image, Hoogte, Leverancier, Productcode);
+                    MessageBox.Show("Meubel is toegevoegd");
+                    
+                }
+            }
+            UpdateCatalogusExecute();
         }
        
         void UpdateCatalogusExecute() 
         {
             var outputQuerry = Meubel_Database.GetDatabase();
-            List<Meubel> listMeubels = new List<Meubel>();
-            foreach (var item in outputQuerry)
-            {
-                var productcode = item.Value[0];
-                var leverancier = item.Value[1];
-                var afbeelding = item.Value[2];
-                var naam = item.Value[3];
-                var prijs = System.Convert.ToDecimal(item.Value[4]);
-                var lengte = System.Convert.ToDecimal(item.Value[5]);
-                var breedte = System.Convert.ToDecimal(item.Value[6]);
-                var hoogte = System.Convert.ToDecimal(item.Value[9]);
-                var tag = item.Value[7];
-                var categorie = item.Value[8];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte,leverancier,productcode);
-
-                listMeubels.Add(meubel);
-
-
-            }
-            Catalogus = listMeubels;
+           
+            Catalogus = outputQuerry;
             
          }
         void VerwijderenMeubelExecute() 
         {
-            Meubel_Database.DeleteFromDatabase(Verwijderbalk);
-            MessageBox.Show("Item is verwijdert, druk op refresh om de lijst te updaten"); 
+            bool check = false;
+            foreach (var item in Catalogus)
+            {
+                if (item.Productcode.Equals(Verwijderbalk))
+                {
+                    check = true;
+                    break;
+                }
+            }
+            if (check)
+            {
+                Meubel_Database.DeleteFromDatabase(Verwijderbalk);
+                MessageBox.Show("Meubel is verwijderd");
+                UpdateCatalogusExecute();
+            }
+            else
+            {
+                MessageBox.Show("ProductCode bestaad niet");
+            }
+
         }
       void ZoekenNaamInCatalogusExecute()
         {
            
             var outputQuerry = Meubel_Database.ZoekenDatabase(Zoekbalk);//_naamZoekbalk
-            List<Meubel> listMeubels = new List<Meubel>();
-            foreach (var item in outputQuerry)
-            {
-
-                var productcode = item.Value[0];
-                var leverancier = item.Value[1];
-                var afbeelding = item.Value[2];
-                var naam = item.Value[3];
-                var prijs = System.Convert.ToDecimal(item.Value[4]);
-                var lengte = System.Convert.ToDecimal(item.Value[5]);
-                var breedte = System.Convert.ToDecimal(item.Value[6]);
-                var hoogte = System.Convert.ToDecimal(item.Value[9]);
-                var tag = item.Value[7];
-                var categorie = item.Value[8];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte,leverancier,productcode);
-
-                listMeubels.Add(meubel);
-
-
-            }
-            Catalogus = listMeubels;
+           
+            Catalogus = outputQuerry;
         }
        void ZoekenCategorieInCatalogusExecute()
         {
             var outputQuerry = Meubel_Database.ZoekenDatabseCategorie(Zoekbalk); //_categorieZoekbalk
-            List<Meubel> listMeubels = new List<Meubel>();
-            foreach (var item in outputQuerry)
-            {
-
-                var productcode = item.Value[0];
-                var leverancier = item.Value[1];
-                var afbeelding = item.Value[2];
-                var naam = item.Value[3];
-                var prijs = System.Convert.ToDecimal(item.Value[4]);
-                var lengte = System.Convert.ToDecimal(item.Value[5]);
-                var breedte = System.Convert.ToDecimal(item.Value[6]);
-                var hoogte = System.Convert.ToDecimal(item.Value[9]);
-                var tag = item.Value[7];
-                var categorie = item.Value[8];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte,leverancier,productcode);
-
-                listMeubels.Add(meubel);
-
-
-            }
-            Catalogus = listMeubels;
+           
+            Catalogus = outputQuerry;
         }
        
         bool CanUpdateCatalogusExecute() 

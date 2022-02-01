@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\
+C:\Users\Jelle\Documents\GitHub\Kantoor\KantoorInrichting\KantoorInrichtingWPF\obj\Debug\netcoreapp3.1\
 KantoorInrichtingWPF
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\stoff\Documents\School\jaar 2\semester 1\kbs\Kantoor\KantoorInrichting\KantoorInrichtingWPF\App.xaml
+C:\Users\Jelle\Documents\GitHub\Kantoor\KantoorInrichting\KantoorInrichtingWPF\App.xaml
 9-1011143048
 
-21550977627
-194-862261039
+23-1061612375
+194-1703168632
 MainWindow.xaml;View\InstructiesScherm.xaml;View\LadenPlattegrond.xaml;View\MeubelsLijst.xaml;View\MeubelsToevoegen.xaml;View\NieuwePlattegrond.xaml;View\NotitieInput.xaml;View\OpslaanPlattegrond.xaml;View\OverzichtGebruikteMeubels.xaml;
 
 False

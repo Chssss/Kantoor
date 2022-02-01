@@ -86,6 +86,8 @@ namespace KantoorInrichtingWPF.View
                 }
 
             }
+            
+             plattegrondViewModel.UpdatePlattegrondenLijstExecute();
         }
 
         

@@ -319,73 +319,35 @@ namespace KantoorInrichtingWPF.ViewModel
 
         }
 
-        void UpdatePlattegrondenLijstExecute()
+        public void UpdatePlattegrondenLijstExecute()
         {
-            Dictionary<int, List<string>> outputQuerry= Plattegrond_Database.GetPlattegrondDataDatabase();
+            var outputQuerry= Plattegrond_Database.GetPlattegrondDataDatabase();
 
-            /*Dictionary<int, List<string>> outputQuerry = new Dictionary<int, List<string>>();
-            List<string> testList = new List<string>();
-            testList.Add("testprojectnaam");
-            testList.Add("testplattegrondnaam");
-            testList.Add($"{DateTime.Now}");
-            testList.Add("testplattegrondcode");
-            testList.Add("testlengte");
-            testList.Add("testbreedte");
-            testList.Add("testhoogte");
-            outputQuerry.Add(0, testList);*/
-
-            List<Plattegrond> ListPlattegrond = new List<Plattegrond>();
-            foreach (var item in outputQuerry)
-            {
-                var projectnaam = item.Value[0];
-                var plattegrondnaam = item.Value[1];
-                var datum = item.Value[2];
-                var plattegrondcode = item.Value[3];
-                var lengte = item.Value[4];
-                var breedte = item.Value[5];
-                var hoogte= item.Value[6];
-                var MeubelsOpCanvas = Plattegrond_Database.GetPlattegrondCanvasDataDatabase(plattegrondcode);
-
-               /* var MeubelsOpCanvas = new Dictionary<int, List<string>>();
-                List<string> list1 = new List<string>();
-                list1.Add("code");//canvasItemcode
-                list1.Add(plattegrondcode);//plattegrondcode
-                list1.Add("tafel");//image type(type image)
-                list1.Add("tafel");//image name(naam meubel)
-                list1.Add("2,6");//image tag(prijs)
-                list1.Add("200,0");//x coord
-                list1.Add("20,0");//y coord
-                List<string> list2 = new List<string>();
-                list2.Add("code");//canvasItemcode
-                list2.Add(plattegrondcode);//plattegrondcode
-                list2.Add("stoel");//image type(type image)
-                list2.Add("stoel");//image name(naam meubel)
-                list2.Add("1,7");//image tag(prijs)
-                list2.Add("200,0");//x coord
-                list2.Add("50,0");//y coord
-                MeubelsOpCanvas.Add(0, list1);
-                MeubelsOpCanvas.Add(1, list2);*/
-                Plattegrond plattegrond = new Plattegrond(projectnaam, plattegrondnaam, datum, plattegrondcode, lengte, breedte, hoogte, MeubelsOpCanvas);
-
-                ListPlattegrond.Add(plattegrond);
-
-
-            }
-           
-
-            
-            
-            PlattegrondLijst = ListPlattegrond;
+            PlattegrondLijst = outputQuerry;
         }
-       
+
         void ToevoegenPlattegrondExecute()
         {
-            
-            Datum = $"{DateTime.Now}";
-            Plattegrondcode = $"{PlattegrondNaam[0]}{PlattegrondNaam[1]}{PlattegrondLijst.Count}";
-            Plattegrond_Database.ToevoegenAanDatabase(ProjectNaam,PlattegrondNaam,Datum,Plattegrondcode,Lengte,Breedte,Hoogte);//CanvasItemcode,CanvasImageType,CanvasImageName,CanvasImageTag,XCoord,YCoord
-            
-            MessageBox.Show("Plattegrond is toegevoegd");
+
+            if (Lengte is null || Breedte is null || Hoogte is null || ProjectNaam is null || PlattegrondNaam is null)
+            {
+                MessageBox.Show("Vul alle velden in om een plattegrond te kunnen toevoegen");
+            }
+            else
+            {
+                if (!decimal.TryParse(Lengte, out decimal __Lengte) && !decimal.TryParse(Breedte, out decimal __Breedte) && !decimal.TryParse(Hoogte, out decimal __Hoogte))
+                {
+                    MessageBox.Show("Lengte, Breedte en Hoogte moet een getal zijn");
+                }
+                else
+                {
+                    Datum = $"{DateTime.Now}";
+                    Plattegrondcode = $"{PlattegrondNaam[0]}{PlattegrondNaam[1]}{PlattegrondLijst.Count}";
+                    Plattegrond_Database.ToevoegenAanDatabase(ProjectNaam, PlattegrondNaam, Datum, Plattegrondcode, Lengte, Breedte, Hoogte);//CanvasItemcode,CanvasImageType,CanvasImageName,CanvasImageTag,XCoord,YCoord
+
+                    MessageBox.Show("Plattegrond is toegevoegd");
+                }
+            }
         }
         void UpdatePlattegrond(string projectNaam, string plattegrondNaam,  string plattegrondcode, string lengte, string breedte, string hoogte) 
         {
@@ -481,8 +443,8 @@ namespace KantoorInrichtingWPF.ViewModel
                 string datum = DateTime.Now.ToString();
                 string[] bestelling = new string[gebruikteMeubels.Count+6];
                 bestelling[0] = $"Leverancier: {leverancier}";
-                bestelling[1] = $"Email: {LeverancierData[1]}";
-                bestelling[2] = $"Telefoonnummer: {LeverancierData[2]}";
+                bestelling[1] = $"Email: {LeverancierData.Email}";
+                bestelling[2] = $"Telefoonnummer: {LeverancierData.TelefoonNR}";
                 bestelling[3] = $"Datum:{datum}";
                 bestelling[5] = $"Lijst met gebruikte meubels:";
                 int count = 6;
@@ -517,56 +479,16 @@ namespace KantoorInrichtingWPF.ViewModel
         }
         void ZoekenProjectNaamExecute()
         {
-            Dictionary<int, List<string>> outputQuerry = Plattegrond_Database.ZoekenNaamProjectDatabase(Zoekbalk);
-            List<Plattegrond> ListPlattegrond = new List<Plattegrond>();
-            foreach (var item in outputQuerry)
-            {
-                var projectnaam = item.Value[0];
-                var plattegrondnaam = item.Value[1];
-                var datum = item.Value[2];
-                var plattegrondcode = item.Value[3];
-                var lengte = item.Value[4];
-                var breedte = item.Value[5];
-                var hoogte = item.Value[6];
-                var MeubelsOpCanvas = Plattegrond_Database.GetPlattegrondCanvasDataDatabase(plattegrondcode);
-                Plattegrond plattegrond = new Plattegrond(projectnaam, plattegrondnaam, datum, plattegrondcode, lengte, breedte, hoogte, MeubelsOpCanvas);
-
-                ListPlattegrond.Add(plattegrond);
-
-
-            }
-
-
-
-
-            PlattegrondLijst = ListPlattegrond;
+            var outputQuerry = Plattegrond_Database.ZoekenNaamProjectDatabase(Zoekbalk);
+            
+            PlattegrondLijst = outputQuerry;
 
         }
         void ZoekenPlattegrondNaamExecute()
         {
-            Dictionary<int, List<string>> outputQuerry = Plattegrond_Database.ZoekenNaamPlattegrondDatabase(Zoekbalk);
-            List<Plattegrond> ListPlattegrond = new List<Plattegrond>();
-            foreach (var item in outputQuerry)
-            {
-                var projectnaam = item.Value[0];
-                var plattegrondnaam = item.Value[1];
-                var datum = item.Value[2];
-                var plattegrondcode = item.Value[3];
-                var lengte = item.Value[4];
-                var breedte = item.Value[5];
-                var hoogte = item.Value[6];
-                var MeubelsOpCanvas = Plattegrond_Database.GetPlattegrondCanvasDataDatabase(plattegrondcode);
-                Plattegrond plattegrond = new Plattegrond(projectnaam, plattegrondnaam, datum, plattegrondcode, lengte, breedte, hoogte, MeubelsOpCanvas);
-
-                ListPlattegrond.Add(plattegrond);
-
-
-            }
-
-
-
-
-            PlattegrondLijst = ListPlattegrond;
+            var outputQuerry = Plattegrond_Database.ZoekenNaamPlattegrondDatabase(Zoekbalk);
+            
+            PlattegrondLijst = outputQuerry;
         }
         void MakeProjectBestellingExecute() 
         {
@@ -577,32 +499,32 @@ namespace KantoorInrichtingWPF.ViewModel
             #region Get Meubels van de plattegrond
             foreach (var plattegrondcode in PlattegrondcodeList)
             {
-                Dictionary<int, List<string>> CanvasItems = Plattegrond_Database.GetPlattegrondCanvasDataDatabase(plattegrondcode);
+                var CanvasItems = Plattegrond_Database.GetPlattegrondCanvasDataDatabase(plattegrondcode);
                 Dictionary<string, List<string>> Gebruiktemeubels = new Dictionary<string, List<string>>();
                 foreach (var canvasitem in CanvasItems)
                 {
-                    if (Gebruiktemeubels.ContainsKey(canvasitem.Value[3]))
+                    if (Gebruiktemeubels.ContainsKey(canvasitem.imageType))//Value[3]
                     {
-                        int count = Convert.ToInt32(Gebruiktemeubels[canvasitem.Value[3]][1]);
+                        int count = Convert.ToInt32(Gebruiktemeubels[canvasitem.imageType][1]);
                         count++;
-                        Gebruiktemeubels[canvasitem.Value[3]][1] = $"{count}";
+                        Gebruiktemeubels[canvasitem.imageType][1] = $"{count}";
                     }
 
 
-                    if (Gebruiktemeubels.ContainsKey(canvasitem.Value[3]) == false)
+                    if (Gebruiktemeubels.ContainsKey(canvasitem.imageType) == false)
                     {
-                        if (canvasitem.Value[3].Equals("deur") || canvasitem.Value[3].Equals("raam")|| canvasitem.Value[3].Equals("muur") || canvasitem.Value[3].Equals("notitie"))
+                        if (canvasitem.imageType.Equals("deur") || canvasitem.imageType.Equals("raam")|| canvasitem.imageType.Equals("muur") || canvasitem.imageType.Equals("notitie"))
                         {
 
                         }
                         else
                         {
                             List<string> listPrijsAantal = new List<string>();
-                            listPrijsAantal.Add(canvasitem.Value[4]);
+                            listPrijsAantal.Add(canvasitem.naamMeubel);
                             listPrijsAantal.Add("1");
-                            listPrijsAantal.Add(canvasitem.Value[7]);
-                            listPrijsAantal.Add(canvasitem.Value[8]);
-                            Gebruiktemeubels.Add(canvasitem.Value[3], listPrijsAantal);
+                            listPrijsAantal.Add(canvasitem.leverancier);
+                            listPrijsAantal.Add(canvasitem.productcode);
+                            Gebruiktemeubels.Add(canvasitem.imageType, listPrijsAantal);
                         }
 
                     }
@@ -640,8 +562,8 @@ namespace KantoorInrichtingWPF.ViewModel
                     
                     string[] bestelling = new string[ListgebruikteMeubels.Count + 6];
                     bestelling[0] = $"Leverancier: {leverancier}";
-                    bestelling[1] = $"Email: {LeverancierData[1]}";
-                    bestelling[2] = $"Telefoonnummer: {LeverancierData[2]}";
+                    bestelling[1] = $"Email: {LeverancierData.Email}";
+                    bestelling[2] = $"Telefoonnummer: {LeverancierData.TelefoonNR}";
                     bestelling[3] = $"Datum:{datum}";
                     bestelling[5] = $"Lijst met gebruikte meubels:";
                     int count = 6;

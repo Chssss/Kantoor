@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KantoorInrichtingWPF.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
@@ -7,12 +8,12 @@ namespace KantoorInrichtingWPF.Data
 {
    public class Leverancier_Database
     {
-        public static List<string> GetleverancierDataDatabase(string leverancier)
+        public static Leverancier GetleverancierDataDatabase(string leverancier)
         {
-            List<string> outputLeverancierSQL = new List<string>();
+            Leverancier outputLeverancierSQL = new Leverancier("testnaam","testemail","123");
            
 
-            #region plattegrond sql
+            #region leverancier sql
             try
             {
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
@@ -36,13 +37,11 @@ namespace KantoorInrichtingWPF.Data
 
                             while (reader.Read())
                             {
-                                List<string> listVaule = new List<string>();
-                                listVaule.Add(reader.GetString(0));//naam
-                                listVaule.Add(reader.GetString(1));//email
-                                listVaule.Add(reader.GetString(2));//telefoon
-                               
-                                
-                                outputLeverancierSQL = listVaule;
+
+                                outputLeverancierSQL.Naam = reader.GetString(0);
+                                outputLeverancierSQL.Email = reader.GetString(1);
+                                outputLeverancierSQL.TelefoonNR = reader.GetString(2);
+
                             }
                         }
                     }
