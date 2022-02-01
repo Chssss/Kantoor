@@ -15,9 +15,9 @@ namespace KantoorInrichtingWPF.Model
         public string Hoogte { get; set; }
         public string Open { get; set; }
         public string Verwijder { get; set; }
-        public Dictionary<int, List<string>>  Canvas { get; set; }
+        public  List<CanvasItem>  Canvas { get; set; }
 
-        public Plattegrond(string projectNaam, string plattegrondNaam, string datum,string plategrondcode ,string lengte,string breedte, string hoogte, Dictionary<int, List<string>> canvas) 
+        public Plattegrond(string projectNaam, string plattegrondNaam, string datum,string plategrondcode ,string lengte,string breedte, string hoogte, List<CanvasItem> canvas) 
         {
             this.ProjectNaam = projectNaam;
             this.PlattegrondNaam = plattegrondNaam;

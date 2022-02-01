@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic.CompilerServices;
+﻿using KantoorInrichtingWPF.Model;
+
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,9 +9,7 @@ namespace KantoorInrichtingWPF.Data
 {
   public  class Meubel_Database
     {
-       
-
-       
+      
         #region nepDatabase
 
       /*  public static void FillDatabase()
@@ -157,10 +156,10 @@ namespace KantoorInrichtingWPF.Data
          }
          Console.ReadLine();*/
         #endregion
-        public static Dictionary<int,List<string>> GetDatabase() 
+        public static List<Meubel> GetDatabase() 
         {
-            Dictionary<int, List<string>> output = new Dictionary<int, List<string>>();
-            int count = 0;
+            List<Meubel> output = new List<Meubel>();
+            
             #region test sql
             try
             {
@@ -185,19 +184,20 @@ namespace KantoorInrichtingWPF.Data
 
                             while (reader.Read())
                             {
-                                List<string> listVaule = new List<string>();
-                                listVaule.Add(reader.GetString(0));
-                                listVaule.Add(reader.GetString(1));
-                                listVaule.Add(reader.GetString(2));
-                                listVaule.Add(reader.GetString(3));
-                                listVaule.Add(reader.GetString(4));
-                                listVaule.Add(reader.GetString(5));
-                                listVaule.Add(reader.GetString(6));
-                                listVaule.Add(reader.GetString(7));
-                                listVaule.Add(reader.GetString(8));
-                                listVaule.Add(reader.GetString(9));
-                                output.Add(count, listVaule);
-                                count++;
+                                
+                               var productcode= reader.GetString(0);//productcode
+                               var leverancier= reader.GetString(1);//leverancier
+                               var afbeelding= reader.GetString(2);//afbeelding
+                               var naam= reader.GetString(3);//naam
+                               var prijs= reader.GetString(4);//prijs 
+                               var lengte= reader.GetString(5);//lengte
+                               var breedte= reader.GetString(6);//breedte
+                               var tag= reader.GetString(7);//tag 
+                               var categorie= reader.GetString(8);//categorie
+                               var hoogte= reader.GetString(9);//hoogte
+                                Meubel meubel = new Meubel(afbeelding,naam,Convert.ToDecimal(prijs), Convert.ToDecimal(lengte), Convert.ToDecimal(breedte), tag,categorie, Convert.ToDecimal(hoogte), leverancier,productcode);
+                                output.Add(meubel);
+                                
                             }
                         }
                     }
@@ -211,7 +211,7 @@ namespace KantoorInrichtingWPF.Data
             #endregion
             foreach (var item in output)
             {
-                item.Value[2] = GetImage(item.Value[7].ToLower());
+                item.Img = GetImage(item.Tag.ToLower());
             }
             return output;
             //return nepDatabase;
@@ -366,13 +366,12 @@ namespace KantoorInrichtingWPF.Data
            
 
         }
-        public static Dictionary<int, List<string>> ZoekenDatabase(string zoekbalk) 
+        public static List<Meubel> ZoekenDatabase(string zoekbalk) 
         {
 
-            Dictionary<int, List<string>> outputQurrey = new Dictionary<int, List<string>>();
-            int count = 0;
-        
-           
+            List<Meubel> output = new List<Meubel>();
+
+
             #region test sql
             try
             {
@@ -398,19 +397,18 @@ namespace KantoorInrichtingWPF.Data
 
                             while (reader.Read())
                             {
-                                List<string> listVaule = new List<string>();
-                                listVaule.Add(reader.GetString(0));
-                                listVaule.Add(reader.GetString(1));
-                                listVaule.Add(reader.GetString(2));
-                                listVaule.Add(reader.GetString(3));
-                                listVaule.Add(reader.GetString(4));
-                                listVaule.Add(reader.GetString(5));
-                                listVaule.Add(reader.GetString(6));
-                                listVaule.Add(reader.GetString(7));
-                                listVaule.Add(reader.GetString(8));
-                                listVaule.Add(reader.GetString(9));
-                                outputQurrey.Add(count, listVaule);
-                                count++;
+                                var productcode = reader.GetString(0);//productcode
+                                var leverancier = reader.GetString(1);//leverancier
+                                var afbeelding = reader.GetString(2);//afbeelding
+                                var naam = reader.GetString(3);//naam
+                                var prijs = reader.GetString(4);//prijs 
+                                var lengte = reader.GetString(5);//lengte
+                                var breedte = reader.GetString(6);//breedte
+                                var tag = reader.GetString(7);//tag 
+                                var categorie = reader.GetString(8);//categorie
+                                var hoogte = reader.GetString(9);//hoogte
+                                Meubel meubel = new Meubel(afbeelding, naam, Convert.ToDecimal(prijs), Convert.ToDecimal(lengte), Convert.ToDecimal(breedte), tag, categorie, Convert.ToDecimal(hoogte), leverancier, productcode);
+                                output.Add(meubel);
                             }
                         }
                     }
@@ -431,20 +429,19 @@ namespace KantoorInrichtingWPF.Data
             }
             Console.ReadLine();
             #endregion
-            foreach (var item in outputQurrey)
+            foreach (var item in output)
             {
-                item.Value[2] = GetImage(item.Value[7].ToLower());
+                item.Img = GetImage(item.Tag.ToLower());
             }
-            return outputQurrey;
+            return output;
            
 
 
         }
 
-        public static Dictionary<int, List<string>> ZoekenDatabseCategorie(string zoekbalk)
+        public static List<Meubel> ZoekenDatabseCategorie(string zoekbalk)
         {
-            Dictionary<int, List<string>> outputQurrey = new Dictionary<int, List<string>>();
-            int count = 0;
+            List<Meubel> output = new List<Meubel>();
             #region test sql
             try
             {
@@ -471,19 +468,18 @@ namespace KantoorInrichtingWPF.Data
 
                             while (reader.Read())
                             {
-                                List<string> listVaule = new List<string>();
-                                listVaule.Add(reader.GetString(0));
-                                listVaule.Add(reader.GetString(1));
-                                listVaule.Add(reader.GetString(2));
-                                listVaule.Add(reader.GetString(3));
-                                listVaule.Add(reader.GetString(4));
-                                listVaule.Add(reader.GetString(5));
-                                listVaule.Add(reader.GetString(6));
-                                listVaule.Add(reader.GetString(7));
-                                listVaule.Add(reader.GetString(8));
-                                listVaule.Add(reader.GetString(9));
-                                outputQurrey.Add(count, listVaule);
-                                count++;
+                                var productcode = reader.GetString(0);//productcode
+                                var leverancier = reader.GetString(1);//leverancier
+                                var afbeelding = reader.GetString(2);//afbeelding
+                                var naam = reader.GetString(3);//naam
+                                var prijs = reader.GetString(4);//prijs 
+                                var lengte = reader.GetString(5);//lengte
+                                var breedte = reader.GetString(6);//breedte
+                                var tag = reader.GetString(7);//tag 
+                                var categorie = reader.GetString(8);//categorie
+                                var hoogte = reader.GetString(9);//hoogte
+                                Meubel meubel = new Meubel(afbeelding, naam, Convert.ToDecimal(prijs), Convert.ToDecimal(lengte), Convert.ToDecimal(breedte), tag, categorie, Convert.ToDecimal(hoogte), leverancier, productcode);
+                                output.Add(meubel);
                             }
                         }
                     }
@@ -496,13 +492,13 @@ namespace KantoorInrichtingWPF.Data
             }
             Console.ReadLine();
             #endregion
-            foreach (var item in outputQurrey)
+            foreach (var item in output)
             {
-                item.Value[2] = GetImage(item.Value[7].ToLower());
+                item.Img = GetImage(item.Tag.ToLower());
             }
 
 
-            return outputQurrey;
+            return output;
         }
         public static int UpdateCheck(string productcode)
         {

@@ -59,18 +59,18 @@ namespace KantoorInrichtingWPF
 
 
         }
-       public void LadenMap( Dictionary<int, List<string>> canvasitems) 
+       public void LadenMap( List<CanvasItem> canvasitems) 
         {
             foreach (var item in canvasitems)
             {
-                double xcoord = Convert.ToDouble(item.Value[5]);
-                double ycoord = Convert.ToDouble(item.Value[6]);
-                _totalprijst = _totalprijst +Convert.ToDecimal( item.Value[4]);
+                double xcoord = Convert.ToDouble(item.xCoord);
+                double ycoord = Convert.ToDouble(item.yCoord);
+                _totalprijst = _totalprijst +Convert.ToDecimal( item.imageTagPrijs);
                 LabelTotalPrijs.Content = $"{_totalprijst}€";
-                var tempLeverancier = item.Value[7];
-                var tempProductcode = item.Value[8];
-                var rotatie = item.Value[9];
-                AddImageToGeladenMap(item.Value[2], item.Value[3], item.Value[4], xcoord, ycoord,tempLeverancier,tempProductcode,rotatie);
+                var tempLeverancier = item.leverancier;
+                var tempProductcode = item.productcode;
+                var rotatie = item.rotatie;
+                AddImageToGeladenMap(item.imageType, item.naamMeubel, item.imageTagPrijs, xcoord, ycoord,tempLeverancier,tempProductcode,rotatie);
             }
         }
         public void AddImageToGeladenMap(string typeImage, string naamMeubel, string prijs,double xcoord,double ycoord, string leverancier,string productcode, string rotatie)

@@ -427,26 +427,8 @@ namespace KantoorInrichtingWPF.ViewModel
         void UpdateCatalogusExecute() 
         {
             var outputQuerry = Meubel_Database.GetDatabase();
-            List<Meubel> listMeubels = new List<Meubel>();
-            foreach (var item in outputQuerry)
-            {
-                var productcode = item.Value[0];
-                var leverancier = item.Value[1];
-                var afbeelding = item.Value[2];
-                var naam = item.Value[3];
-                var prijs = System.Convert.ToDecimal(item.Value[4]);
-                var lengte = System.Convert.ToDecimal(item.Value[5]);
-                var breedte = System.Convert.ToDecimal(item.Value[6]);
-                var hoogte = System.Convert.ToDecimal(item.Value[9]);
-                var tag = item.Value[7];
-                var categorie = item.Value[8];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte,leverancier,productcode);
-
-                listMeubels.Add(meubel);
-
-
-            }
-            Catalogus = listMeubels;
+           
+            Catalogus = outputQuerry;
             
          }
         void VerwijderenMeubelExecute() 
@@ -458,52 +440,14 @@ namespace KantoorInrichtingWPF.ViewModel
         {
            
             var outputQuerry = Meubel_Database.ZoekenDatabase(Zoekbalk);//_naamZoekbalk
-            List<Meubel> listMeubels = new List<Meubel>();
-            foreach (var item in outputQuerry)
-            {
-
-                var productcode = item.Value[0];
-                var leverancier = item.Value[1];
-                var afbeelding = item.Value[2];
-                var naam = item.Value[3];
-                var prijs = System.Convert.ToDecimal(item.Value[4]);
-                var lengte = System.Convert.ToDecimal(item.Value[5]);
-                var breedte = System.Convert.ToDecimal(item.Value[6]);
-                var hoogte = System.Convert.ToDecimal(item.Value[9]);
-                var tag = item.Value[7];
-                var categorie = item.Value[8];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte,leverancier,productcode);
-
-                listMeubels.Add(meubel);
-
-
-            }
-            Catalogus = listMeubels;
+           
+            Catalogus = outputQuerry;
         }
        void ZoekenCategorieInCatalogusExecute()
         {
             var outputQuerry = Meubel_Database.ZoekenDatabseCategorie(Zoekbalk); //_categorieZoekbalk
-            List<Meubel> listMeubels = new List<Meubel>();
-            foreach (var item in outputQuerry)
-            {
-
-                var productcode = item.Value[0];
-                var leverancier = item.Value[1];
-                var afbeelding = item.Value[2];
-                var naam = item.Value[3];
-                var prijs = System.Convert.ToDecimal(item.Value[4]);
-                var lengte = System.Convert.ToDecimal(item.Value[5]);
-                var breedte = System.Convert.ToDecimal(item.Value[6]);
-                var hoogte = System.Convert.ToDecimal(item.Value[9]);
-                var tag = item.Value[7];
-                var categorie = item.Value[8];
-                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte,leverancier,productcode);
-
-                listMeubels.Add(meubel);
-
-
-            }
-            Catalogus = listMeubels;
+           
+            Catalogus = outputQuerry;
         }
        
         bool CanUpdateCatalogusExecute() 
