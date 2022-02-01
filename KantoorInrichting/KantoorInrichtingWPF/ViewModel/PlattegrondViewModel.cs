@@ -16,9 +16,9 @@ namespace KantoorInrichtingWPF.ViewModel
         private List<Plattegrond> _plattegrondLijst = new List<Plattegrond>();
         private string _projectNaam;
         private string _plattegrondNaam;
-        private string _lengte;
-        private string _breedte;
-        private string _hoogte;
+        private decimal _lengte;
+        private decimal _breedte;
+        private decimal _hoogte;
         private string _plattegrondcode;
         private string _datum;
         private string _CanvasItemcode;
@@ -104,7 +104,7 @@ namespace KantoorInrichtingWPF.ViewModel
 
             }
         }
-        public string Lengte
+        public decimal Lengte
         {
             get
             {
@@ -116,7 +116,7 @@ namespace KantoorInrichtingWPF.ViewModel
 
             }
         }
-        public string Breedte
+        public decimal Breedte
         {
             get
             {
@@ -128,7 +128,7 @@ namespace KantoorInrichtingWPF.ViewModel
 
             }
         }
-        public string Hoogte
+        public decimal Hoogte
         {
             get
             {
@@ -329,13 +329,13 @@ namespace KantoorInrichtingWPF.ViewModel
         void ToevoegenPlattegrondExecute()
         {
 
-            if (Lengte is null || Breedte is null || Hoogte is null || ProjectNaam is null || PlattegrondNaam is null)
+            if (Lengte is 0 || Breedte is 0 || Hoogte is 0 || ProjectNaam is null || PlattegrondNaam is null)
             {
                 MessageBox.Show("Vul alle velden in om een plattegrond te kunnen toevoegen");
             }
             else
             {
-                if (!decimal.TryParse(Lengte, out decimal __Lengte) && !decimal.TryParse(Breedte, out decimal __Breedte) && !decimal.TryParse(Hoogte, out decimal __Hoogte))
+                if (Lengte is 0 || Breedte is 0 || Hoogte is 0)
                 {
                     MessageBox.Show("Lengte, Breedte en Hoogte moet een getal zijn");
                 }
@@ -349,7 +349,7 @@ namespace KantoorInrichtingWPF.ViewModel
                 }
             }
         }
-        void UpdatePlattegrond(string projectNaam, string plattegrondNaam,  string plattegrondcode, string lengte, string breedte, string hoogte) 
+        void UpdatePlattegrond(string projectNaam, string plattegrondNaam,  string plattegrondcode, decimal lengte, decimal breedte, decimal hoogte) 
         {
             string datum = $"{DateTime.Now}";
             Plattegrond_Database.UpdateDatabase( projectNaam, plattegrondNaam,  datum, plattegrondcode,  lengte,  breedte,  hoogte);
@@ -365,7 +365,7 @@ namespace KantoorInrichtingWPF.ViewModel
         {
             GebruikteMeubelsLijst.Clear();
         }
-        public bool CheckPlattegrondcode(string plattegrondcode, string projectNaam, string plattegrondNaam,   string lengte, string breedte, string hoogte)
+        public bool CheckPlattegrondcode(string plattegrondcode, string projectNaam, string plattegrondNaam,   decimal lengte, decimal breedte, decimal hoogte)
         {
             bool boolOutput = false;
             bool check= false;
@@ -395,7 +395,7 @@ namespace KantoorInrichtingWPF.ViewModel
         public void UpdateCanvasItems()
         {
 
-            Plattegrond_Database.UpdateCanvasDataDatabase(Plattegrondcode, CanvasItemcode, CanvasImageType, CanvasImageName, CanvasImageTag, XCoord, YCoord,CanvasImageLeverancier,CanvasImageProductcode);
+            Plattegrond_Database.UpdateCanvasDataDatabase(Plattegrondcode, CanvasItemcode, CanvasImageType, CanvasImageName, Convert.ToDecimal( CanvasImageTag), XCoord, YCoord,CanvasImageLeverancier,CanvasImageProductcode);
         }
         public bool CheckCanvasitemcode(string canvasitemcode) 
         {
@@ -414,7 +414,7 @@ namespace KantoorInrichtingWPF.ViewModel
         public void ToevoegenCanvasItems()
         {
             
-            Plattegrond_Database.ToevoegenCanvasDataAanDatabase(Plattegrondcode, CanvasItemcode, CanvasImageType, CanvasImageName, CanvasImageTag, XCoord, YCoord, CanvasImageLeverancier,CanvasImageProductcode,CanvasImageRotation);
+            Plattegrond_Database.ToevoegenCanvasDataAanDatabase(Plattegrondcode, CanvasItemcode, CanvasImageType, CanvasImageName, Convert.ToDecimal(CanvasImageTag), XCoord, YCoord, CanvasImageLeverancier,CanvasImageProductcode,Convert.ToInt32( CanvasImageRotation));
         }
        public void VerwijderenPlattegrond(string plattegrondcode)
         {

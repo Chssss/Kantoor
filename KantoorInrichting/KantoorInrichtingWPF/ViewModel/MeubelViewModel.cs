@@ -30,13 +30,13 @@ namespace KantoorInrichtingWPF.ViewModel
         bool _tapijt;
 
         private string _naam;
-        private string _prijs;
-        private string _lengte;
-        private string _breedte;
+        private decimal _prijs;
+        private decimal _lengte;
+        private decimal _breedte;
         private string _categorie;
         private string _tag;
         private string _image;
-        private string _hoogte;
+        private decimal _hoogte;
         private List<string> _leverancieren = new List<string>();
         private string _leverancier;
 
@@ -102,7 +102,7 @@ namespace KantoorInrichtingWPF.ViewModel
                 _leverancier = value;
             }
         }
-        public string Hoogte
+        public decimal Hoogte
         {
             get
             {
@@ -146,7 +146,7 @@ namespace KantoorInrichtingWPF.ViewModel
                 _categorie = value;
             }
         }
-        public string Breedte
+        public decimal Breedte
         {
             get
             {
@@ -157,7 +157,7 @@ namespace KantoorInrichtingWPF.ViewModel
                _breedte  = value;
             }
         }
-        public string Lengte
+        public decimal Lengte
         {
             get
             {
@@ -168,7 +168,7 @@ namespace KantoorInrichtingWPF.ViewModel
                _lengte  = value;
             }
         }
-        public string Prijs
+        public decimal Prijs
         {
             get
             {
@@ -418,13 +418,13 @@ namespace KantoorInrichtingWPF.ViewModel
         {
             Tag = GetTag();
             Image = GetImage();
-            if ((Naam is null) || (Prijs is null) || Lengte is null || Breedte is null || Categorie is null || Tag.Equals("") || Image.Equals("") || Hoogte is null || Leverancier is null)
+            if ((Naam is null) || (Prijs is 0) || Lengte is 0 || Breedte is 0 || Categorie is null || Tag.Equals("") || Image.Equals("") || Hoogte is 0 || Leverancier is null)
             {
                 MessageBox.Show("Vul alle velden in om meubels te kunnen toevoegen");
             }
             else
             {
-                if (!decimal.TryParse(Prijs, out decimal __prijs) && !decimal.TryParse(Lengte, out decimal __Lengte) && !decimal.TryParse(Breedte, out decimal __Breedte) && !decimal.TryParse(Hoogte, out decimal __Hoogte))
+                if (Prijs is 0|| Lengte is 0 || Breedte is 0 || Hoogte is 0)
                 {
                     MessageBox.Show("Prijs, Lengte, Breedte en Hoogte moet een getal zijn");
                 }
@@ -598,11 +598,11 @@ namespace KantoorInrichtingWPF.ViewModel
 
                 if (Meubel_Database.UpdateCheck(_productcode) == 0)
                 {
-                    Meubel_Database.ToevoegenAanDatabase(_naam, _prijs, _lengte, _breedte, _categorie, _tag, _img, _hoogte, _leverancier, _productcode);
+                    Meubel_Database.ToevoegenAanDatabase(_naam,Convert.ToDecimal( _prijs), Convert.ToDecimal(_lengte),Convert.ToDecimal(_breedte), _categorie, _tag, _img,Convert.ToDecimal(_hoogte), _leverancier, _productcode);
                 }
                 else
                 {
-                    Meubel_Database.UpdateDatabase(_naam, _prijs, _lengte, _breedte, _categorie, _tag, _img, _hoogte, _leverancier, _productcode);
+                    Meubel_Database.UpdateDatabase(_naam, Convert.ToDecimal(_prijs), Convert.ToDecimal(_lengte),Convert.ToDecimal(_breedte), _categorie, _tag, _img,Convert.ToDecimal(_hoogte), _leverancier, _productcode);
                 }
                 //MeubelDatabase.DeleteFromDatabase(_productcode);
             }
