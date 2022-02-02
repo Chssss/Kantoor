@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
+using System.Windows;
 
 namespace KantoorInrichtingWPF.Data
 {
@@ -335,19 +336,19 @@ namespace KantoorInrichtingWPF.Data
                     imgParam.Value = image;
                     nameParam.Value = naam;
                     prijsParam.Value = prijs;
-                    prijsParam.Precision = 38;
-                    prijsParam.Scale = 25;
+                    prijsParam.Precision = 10;
+                    prijsParam.Scale = 2;
                     lengteParam.Value = lengte;
-                    lengteParam.Precision = 38;
-                    lengteParam.Scale = 25;
+                    lengteParam.Precision = 4;
+                    lengteParam.Scale = 2;
                     breedteParam.Value = breedte;
-                    breedteParam.Precision = 38;
-                    breedteParam.Scale = 25;
+                    breedteParam.Precision = 4;
+                    breedteParam.Scale = 2;
                     tagParam.Value = tag;
                     categorieParam.Value = categorie;
                     hoogteParam.Value = hoogte;
-                    hoogteParam.Precision = 38;
-                    hoogteParam.Scale = 25;
+                    hoogteParam.Precision = 4;
+                    hoogteParam.Scale = 2;
 
                     command.Parameters.Add(productcodeParam);
                     command.Parameters.Add(leverancierParam);
@@ -367,6 +368,7 @@ namespace KantoorInrichtingWPF.Data
             }
             catch (SqlException e)
             {
+                MessageBox.Show("ToevoegenMeubelDatabase " + e.ToString());
                 Console.WriteLine(e.ToString());
             }
             Console.ReadLine();
@@ -564,7 +566,7 @@ namespace KantoorInrichtingWPF.Data
 
                     //SqlCommand command = new SqlCommand(sql, connection);    
                     //{image}, {naam}, {prijs}, {lengte}, {breedte}, {tag}, {categorie}, {hoogte}
-                    command.CommandText = $"UPDATE Inventaris SET productcode = " + $"'{productCode}',leverancier = " + $"'{leverancier}',img = " + $"'{image}',naam = " + $"'{naam}',prijs = " + $"'{prijs}',lengte = " + $"'{lengte}',breedte = " + $"'{breedte}',tag = " + $"'{tag}',categorie = " + $"'{categorie}',hoogte = " + $"'{hoogte}' WHERE productcode =" + $"'{productCode}'";
+                    command.CommandText = $"UPDATE Inventaris SET productcode = " + $"'@productcode', leverancier = " + $"'@leverancier', img = " + $"'@img', naam = " + $"'@name', prijs = " + $"'@prijs' ,lengte = " + $"'@lengte' , breedte = " + $"'@breedte' , tag = " + $"'@tag', categorie = " + $"'@categorie', hoogte = " + $"'@hoogte' WHERE productcode =" + $"'@productcode'";
 
                     SqlParameter productcodeParam = new SqlParameter("@productcode", System.Data.SqlDbType.Text, 100);
                     SqlParameter leverancierParam = new SqlParameter("@leverancier", System.Data.SqlDbType.Text, 100);
@@ -582,19 +584,19 @@ namespace KantoorInrichtingWPF.Data
                     imgParam.Value = image;
                     nameParam.Value = naam;
                     prijsParam.Value = prijs;
-                    prijsParam.Precision = 38;
-                    prijsParam.Scale = 25;
+                    prijsParam.Precision = 10;
+                    prijsParam.Scale = 2;
                     lengteParam.Value = lengte;
-                    lengteParam.Precision = 38;
-                    lengteParam.Scale = 25;
+                    lengteParam.Precision = 4;
+                    lengteParam.Scale = 2;
                     breedteParam.Value = breedte;
-                    breedteParam.Precision = 38;
-                    breedteParam.Scale = 25;
+                    breedteParam.Precision = 4;
+                    breedteParam.Scale = 2;
                     tagParam.Value = tag;
                     categorieParam.Value = categorie;
                     hoogteParam.Value = hoogte;
-                    hoogteParam.Precision = 38;
-                    hoogteParam.Scale = 25;
+                    hoogteParam.Precision = 4;
+                    hoogteParam.Scale = 2;
 
                     command.Parameters.Add(productcodeParam);
                     command.Parameters.Add(leverancierParam);
@@ -614,6 +616,7 @@ namespace KantoorInrichtingWPF.Data
             }
             catch (SqlException e)
             {
+                MessageBox.Show("UpdateMeubelDatabase " + e.ToString());
                 Console.WriteLine(e.ToString());
             }
             //Console.ReadLine();

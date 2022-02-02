@@ -30,7 +30,7 @@ namespace KantoorInrichtingWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private decimal _totalprijst=(decimal)0.0;
+        private decimal _totalprijst=0.0m;
         MeubelViewModel meubelView = new MeubelViewModel();
         PlattegrondViewModel plattegrondview = new PlattegrondViewModel();
         OpslaanPlattegrond opslaanPlattegrond = new OpslaanPlattegrond();
@@ -39,9 +39,9 @@ namespace KantoorInrichtingWPF
         public string PlattegrondNaam;
         public static string ProjectnaamStatic;
         public static string PlattegrondnaamStatic;
-        public decimal Lengte= (decimal)10.0;
-        public decimal Breedte= (decimal)10.0;
-        public decimal Hoogte= (decimal)10.0;
+        public decimal Lengte= 10.0m;
+        public decimal Breedte= 10.0m;
+        public decimal Hoogte= 10.0m;
         public string Plattegrondcode;
 
         protected bool muurCheck;
