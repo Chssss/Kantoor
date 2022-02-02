@@ -53,3 +53,9 @@ KantoorInrichting/KantoorInrichtingWPF/obj/Debug/netcoreapp3.1/KantoorInrichting
 KantoorInrichting/KantoorInrichtingWPF/obj/Debug/netcoreapp3.1/KantoorInrichtingWPF.designer.runtimeconfig.json
 KantoorInrichting/KantoorInrichtingWPF/obj/Debug/netcoreapp3.1/KantoorInrichtingWPF.GeneratedMSBuildEditorConfig.editorconfig
 KantoorInrichting/KantoorInrichtingWPF/obj/Debug/netcoreapp3.1/KantoorInrichtingWPF_MarkupCompile.i.cache
+*.cs
+*.exe
+*.cache
+*.json
+*.editorconfig
+*.cache
