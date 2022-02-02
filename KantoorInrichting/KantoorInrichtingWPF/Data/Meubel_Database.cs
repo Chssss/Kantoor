@@ -554,64 +554,88 @@ namespace KantoorInrichtingWPF.Data
                 builder.UserID = "sa";
                 builder.Password = "Kantoorinrichting!";
                 builder.InitialCatalog = "Inventaris";
+                #region prepered sql
+                /* using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                 {
+ #                  
+                     connection.Open();
+                     SqlCommand command = new SqlCommand(null, connection);
+                     Console.WriteLine("\nQuery data example:");
+                     Console.WriteLine("=========================================\n");
+
+                     //String sql = $"INSERT INTO Inventaris VALUES (@img, @name, @prijs, @lengte, @breedte, @tag, @categorie, @hoogte) ";//INSERT INTO Inventaris VALUES ('🌲', 'test2', '1,1', '1,1', '1,1', 'stoel', 'testcategorie', '1,1')    
+
+                     //SqlCommand command = new SqlCommand(sql, connection);    
+                     //{image}, {naam}, {prijs}, {lengte}, {breedte}, {tag}, {categorie}, {hoogte}
+                     command.CommandText = $"UPDATE Inventaris SET productcode = " + $"'@productcode', leverancier = " + $"'@leverancier', img = " + $"'@img', naam = " + $"'@name', prijs = " + $"'@prijs' ,lengte = " + $"'@lengte' , breedte = " + $"'@breedte' , tag = " + $"'@tag', categorie = " + $"'@categorie', hoogte = " + $"'@hoogte' WHERE productcode =" + $"'@productcode'";
+
+                     SqlParameter productcodeParam = new SqlParameter("@productcode", System.Data.SqlDbType.Text, 100);
+                     SqlParameter leverancierParam = new SqlParameter("@leverancier", System.Data.SqlDbType.Text, 100);
+                     SqlParameter imgParam = new SqlParameter("@img", System.Data.SqlDbType.Text, 100);
+                     SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
+                     SqlParameter prijsParam = new SqlParameter("@prijs", System.Data.SqlDbType.Decimal, 100);
+                     SqlParameter lengteParam = new SqlParameter("@lengte", System.Data.SqlDbType.Decimal, 100);
+                     SqlParameter breedteParam = new SqlParameter("@breedte", System.Data.SqlDbType.Decimal, 100);
+                     SqlParameter tagParam = new SqlParameter("@tag", System.Data.SqlDbType.Text, 100);
+                     SqlParameter categorieParam = new SqlParameter("@categorie", System.Data.SqlDbType.Text, 100);
+                     SqlParameter hoogteParam = new SqlParameter("@hoogte", System.Data.SqlDbType.Decimal, 100);
+
+                     productcodeParam.Value = productCode;
+                     leverancierParam.Value = leverancier;
+                     imgParam.Value = image;
+                     nameParam.Value = naam;
+                     prijsParam.Value = prijs;
+                     prijsParam.Precision = 10;
+                     prijsParam.Scale = 2;
+                     lengteParam.Value = lengte;
+                     lengteParam.Precision = 4;
+                     lengteParam.Scale = 2;
+                     breedteParam.Value = breedte;
+                     breedteParam.Precision = 4;
+                     breedteParam.Scale = 2;
+                     tagParam.Value = tag;
+                     categorieParam.Value = categorie;
+                     hoogteParam.Value = hoogte;
+                     hoogteParam.Precision = 4;
+                     hoogteParam.Scale = 2;
+
+                     command.Parameters.Add(productcodeParam);
+                     command.Parameters.Add(leverancierParam);
+                     command.Parameters.Add(imgParam);
+                     command.Parameters.Add(nameParam);
+                     command.Parameters.Add(prijsParam);
+                     command.Parameters.Add(lengteParam);
+                     command.Parameters.Add(breedteParam);
+                     command.Parameters.Add(tagParam);
+                     command.Parameters.Add(categorieParam);
+                     command.Parameters.Add(hoogteParam);
+
+                     command.Prepare();
+                     command.ExecuteNonQuery();
+
+                 }*/
+                #endregion
+                string prijsText = $"{prijs}";
+                string lengteText = $"{lengte}";
+                string breedteText = $"{breedte}";
+                string hoogteText = $"{hoogte}";
+                string TextCorrectPrijs = prijsText.Replace(',', '.');
+                string TextCorrectLengte = lengteText.Replace(',', '.');
+                string TextCorrectBreedte = breedteText.Replace(',', '.');
+                string TextCorrectHoogte = hoogteText.Replace(',', '.');
+
+                String sql = $"UPDATE Inventaris SET productcode = " + $"'{productCode}', leverancier = " + $"'{leverancier}', img = " + $"'{image}', naam = " + $"'{naam}', prijs = " + $"{TextCorrectPrijs} ,lengte = " + $"{TextCorrectLengte} , breedte = " + $"{TextCorrectBreedte} , tag = " + $"'{tag}', categorie = " + $"'{categorie}', hoogte = " + $"{TextCorrectHoogte} WHERE productcode =" + $"'{productCode}'";
 
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
                     connection.Open();
-                    SqlCommand command = new SqlCommand(null, connection);
+                    SqlCommand command = new SqlCommand(sql, connection);
                     Console.WriteLine("\nQuery data example:");
                     Console.WriteLine("=========================================\n");
 
-                    //String sql = $"INSERT INTO Inventaris VALUES (@img, @name, @prijs, @lengte, @breedte, @tag, @categorie, @hoogte) ";//INSERT INTO Inventaris VALUES ('🌲', 'test2', '1,1', '1,1', '1,1', 'stoel', 'testcategorie', '1,1')    
 
-                    //SqlCommand command = new SqlCommand(sql, connection);    
-                    //{image}, {naam}, {prijs}, {lengte}, {breedte}, {tag}, {categorie}, {hoogte}
-                    command.CommandText = $"UPDATE Inventaris SET productcode = " + $"'@productcode', leverancier = " + $"'@leverancier', img = " + $"'@img', naam = " + $"'@name', prijs = " + $"'@prijs' ,lengte = " + $"'@lengte' , breedte = " + $"'@breedte' , tag = " + $"'@tag', categorie = " + $"'@categorie', hoogte = " + $"'@hoogte' WHERE productcode =" + $"'@productcode'";
 
-                    SqlParameter productcodeParam = new SqlParameter("@productcode", System.Data.SqlDbType.Text, 100);
-                    SqlParameter leverancierParam = new SqlParameter("@leverancier", System.Data.SqlDbType.Text, 100);
-                    SqlParameter imgParam = new SqlParameter("@img", System.Data.SqlDbType.Text, 100);
-                    SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
-                    SqlParameter prijsParam = new SqlParameter("@prijs", System.Data.SqlDbType.Decimal, 100);
-                    SqlParameter lengteParam = new SqlParameter("@lengte", System.Data.SqlDbType.Decimal, 100);
-                    SqlParameter breedteParam = new SqlParameter("@breedte", System.Data.SqlDbType.Decimal, 100);
-                    SqlParameter tagParam = new SqlParameter("@tag", System.Data.SqlDbType.Text, 100);
-                    SqlParameter categorieParam = new SqlParameter("@categorie", System.Data.SqlDbType.Text, 100);
-                    SqlParameter hoogteParam = new SqlParameter("@hoogte", System.Data.SqlDbType.Decimal, 100);
-
-                    productcodeParam.Value = productCode;
-                    leverancierParam.Value = leverancier;
-                    imgParam.Value = image;
-                    nameParam.Value = naam;
-                    prijsParam.Value = prijs;
-                    prijsParam.Precision = 10;
-                    prijsParam.Scale = 2;
-                    lengteParam.Value = lengte;
-                    lengteParam.Precision = 4;
-                    lengteParam.Scale = 2;
-                    breedteParam.Value = breedte;
-                    breedteParam.Precision = 4;
-                    breedteParam.Scale = 2;
-                    tagParam.Value = tag;
-                    categorieParam.Value = categorie;
-                    hoogteParam.Value = hoogte;
-                    hoogteParam.Precision = 4;
-                    hoogteParam.Scale = 2;
-
-                    command.Parameters.Add(productcodeParam);
-                    command.Parameters.Add(leverancierParam);
-                    command.Parameters.Add(imgParam);
-                    command.Parameters.Add(nameParam);
-                    command.Parameters.Add(prijsParam);
-                    command.Parameters.Add(lengteParam);
-                    command.Parameters.Add(breedteParam);
-                    command.Parameters.Add(tagParam);
-                    command.Parameters.Add(categorieParam);
-                    command.Parameters.Add(hoogteParam);
-
-                    command.Prepare();
                     command.ExecuteNonQuery();
-
                 }
             }
             catch (SqlException e)

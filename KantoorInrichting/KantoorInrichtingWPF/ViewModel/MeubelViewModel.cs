@@ -440,7 +440,7 @@ namespace KantoorInrichtingWPF.ViewModel
             UpdateCatalogusExecute();
         }
        
-        void UpdateCatalogusExecute() 
+       public void UpdateCatalogusExecute() 
         {
             var outputQuerry = Meubel_Database.GetDatabase();
            
@@ -605,7 +605,9 @@ namespace KantoorInrichtingWPF.ViewModel
                     Meubel_Database.UpdateDatabase(_naam, Convert.ToDecimal(_prijs), Convert.ToDecimal(_lengte),Convert.ToDecimal(_breedte), _categorie, _tag, _img,Convert.ToDecimal(_hoogte), _leverancier, _productcode);
                 }
                 //MeubelDatabase.DeleteFromDatabase(_productcode);
+                UpdateCatalogusExecute();
             }
+            //UpdateCatalogusExecute();
             
         }
         

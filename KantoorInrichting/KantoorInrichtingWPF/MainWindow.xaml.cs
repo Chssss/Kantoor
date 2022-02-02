@@ -51,13 +51,16 @@ namespace KantoorInrichtingWPF
 
         public MainWindow()
         {
+          
+            
+            meubelView.XmlInvoegen();
+            meubelView.UpdateCatalogusExecute();
             InitializeComponent();
             LabelTotalPrijs.Content = $"{_totalprijst}€";
-            meubelView.XmlInvoegen();
             LabelLengte.Content = $"Lengte:{Lengte}";
             LabelBreedte.Content = $"Breedte:{Breedte}";
             LabelHoogte.Content = $"Hoogte:{Hoogte}";
-
+            
 
 
         }

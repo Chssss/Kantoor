@@ -17,12 +17,12 @@
 		<leverancier>Ikea</leverancier>
 		<img>IMG1</img>
 		<naam>StoelExtreme</naam>
-		<prijs>800</prijs>
-		<lengte>1,5</lengte>
-		<breedte>1,5</breedte>
+		<prijs>900</prijs>
+		<lengte>1,0</lengte>
+		<breedte>1,0</breedte>
 		<tag>stoel</tag>
 		<categorie>Woonkamer</categorie>
-		<hoogte>1,8</hoogte>
+		<hoogte>1,7</hoogte>
 	</meubel>
 	<meubel>
 		<productcode>I11112</productcode>
