@@ -189,13 +189,13 @@ namespace KantoorInrichtingWPF.Data
                                var leverancier= reader.GetString(1);//leverancier
                                var afbeelding= reader.GetString(2);//afbeelding
                                var naam= reader.GetString(3);//naam
-                               var prijs= reader.GetString(4);//prijs 
-                               var lengte= reader.GetString(5);//lengte
-                               var breedte= reader.GetString(6);//breedte
+                               var prijs= reader.GetDecimal(4); //prijs 
+                               var lengte= reader.GetDecimal(5);//lengte
+                               var breedte= reader.GetDecimal(6);//breedte
                                var tag= reader.GetString(7);//tag 
                                var categorie= reader.GetString(8);//categorie
-                               var hoogte= reader.GetString(9);//hoogte
-                                Meubel meubel = new Meubel(afbeelding,naam,Convert.ToDecimal(prijs), Convert.ToDecimal(lengte), Convert.ToDecimal(breedte), tag,categorie, Convert.ToDecimal(hoogte), leverancier,productcode);
+                               var hoogte= reader.GetDecimal(9);//hoogte
+                                Meubel meubel = new Meubel(afbeelding,naam,prijs, lengte, breedte, tag,categorie, hoogte, leverancier,productcode);
                                 output.Add(meubel);
                                 
                             }
@@ -293,7 +293,7 @@ namespace KantoorInrichtingWPF.Data
             #endregion
           
         }
-       public static void ToevoegenAanDatabase(string naam, string prijs,string lengte, string breedte,string categorie, string tag, string image, string hoogte, string leverancier, string productCode)
+       public static void ToevoegenAanDatabase(string naam, decimal prijs,decimal lengte, decimal breedte,string categorie, string tag, string image, decimal hoogte, string leverancier, string productCode)
         {
             
        
@@ -323,23 +323,31 @@ namespace KantoorInrichtingWPF.Data
                     SqlParameter leverancierParam = new SqlParameter("@leverancier", System.Data.SqlDbType.Text, 100);
                     SqlParameter imgParam = new SqlParameter("@img", System.Data.SqlDbType.Text,100);
                     SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
-                    SqlParameter prijsParam = new SqlParameter("@prijs", System.Data.SqlDbType.Text, 100);
-                    SqlParameter lengteParam = new SqlParameter("@lengte", System.Data.SqlDbType.Text, 100);
-                    SqlParameter breedteParam = new SqlParameter("@breedte", System.Data.SqlDbType.Text, 100);
+                    SqlParameter prijsParam = new SqlParameter("@prijs", System.Data.SqlDbType.Decimal, 100);
+                    SqlParameter lengteParam = new SqlParameter("@lengte", System.Data.SqlDbType.Decimal, 100);
+                    SqlParameter breedteParam = new SqlParameter("@breedte", System.Data.SqlDbType.Decimal, 100);
                     SqlParameter tagParam = new SqlParameter("@tag", System.Data.SqlDbType.Text, 100);
                     SqlParameter categorieParam = new SqlParameter("@categorie", System.Data.SqlDbType.Text, 100);
-                    SqlParameter hoogteParam = new SqlParameter("@hoogte", System.Data.SqlDbType.Text, 100);
+                    SqlParameter hoogteParam = new SqlParameter("@hoogte", System.Data.SqlDbType.Decimal, 100);
 
                     productcodeParam.Value = productCode;
                     leverancierParam.Value = leverancier;
                     imgParam.Value = image;
                     nameParam.Value = naam;
                     prijsParam.Value = prijs;
+                    prijsParam.Precision = 38;
+                    prijsParam.Scale = 25;
                     lengteParam.Value = lengte;
+                    lengteParam.Precision = 38;
+                    lengteParam.Scale = 25;
                     breedteParam.Value = breedte;
+                    breedteParam.Precision = 38;
+                    breedteParam.Scale = 25;
                     tagParam.Value = tag;
                     categorieParam.Value = categorie;
                     hoogteParam.Value = hoogte;
+                    hoogteParam.Precision = 38;
+                    hoogteParam.Scale = 25;
 
                     command.Parameters.Add(productcodeParam);
                     command.Parameters.Add(leverancierParam);
@@ -401,14 +409,15 @@ namespace KantoorInrichtingWPF.Data
                                 var leverancier = reader.GetString(1);//leverancier
                                 var afbeelding = reader.GetString(2);//afbeelding
                                 var naam = reader.GetString(3);//naam
-                                var prijs = reader.GetString(4);//prijs 
-                                var lengte = reader.GetString(5);//lengte
-                                var breedte = reader.GetString(6);//breedte
+                                var prijs = reader.GetDecimal(4); //prijs 
+                                var lengte = reader.GetDecimal(5);//lengte
+                                var breedte = reader.GetDecimal(6);//breedte
                                 var tag = reader.GetString(7);//tag 
                                 var categorie = reader.GetString(8);//categorie
-                                var hoogte = reader.GetString(9);//hoogte
-                                Meubel meubel = new Meubel(afbeelding, naam, Convert.ToDecimal(prijs), Convert.ToDecimal(lengte), Convert.ToDecimal(breedte), tag, categorie, Convert.ToDecimal(hoogte), leverancier, productcode);
+                                var hoogte = reader.GetDecimal(9);//hoogte
+                                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte, leverancier, productcode);
                                 output.Add(meubel);
+
                             }
                         }
                     }
@@ -472,13 +481,13 @@ namespace KantoorInrichtingWPF.Data
                                 var leverancier = reader.GetString(1);//leverancier
                                 var afbeelding = reader.GetString(2);//afbeelding
                                 var naam = reader.GetString(3);//naam
-                                var prijs = reader.GetString(4);//prijs 
-                                var lengte = reader.GetString(5);//lengte
-                                var breedte = reader.GetString(6);//breedte
+                                var prijs = reader.GetDecimal(4); //prijs 
+                                var lengte = reader.GetDecimal(5);//lengte
+                                var breedte = reader.GetDecimal(6);//breedte
                                 var tag = reader.GetString(7);//tag 
                                 var categorie = reader.GetString(8);//categorie
-                                var hoogte = reader.GetString(9);//hoogte
-                                Meubel meubel = new Meubel(afbeelding, naam, Convert.ToDecimal(prijs), Convert.ToDecimal(lengte), Convert.ToDecimal(breedte), tag, categorie, Convert.ToDecimal(hoogte), leverancier, productcode);
+                                var hoogte = reader.GetDecimal(9);//hoogte
+                                Meubel meubel = new Meubel(afbeelding, naam, prijs, lengte, breedte, tag, categorie, hoogte, leverancier, productcode);
                                 output.Add(meubel);
                             }
                         }
@@ -531,7 +540,7 @@ namespace KantoorInrichtingWPF.Data
             //Console.ReadLine();
             #endregion
         }
-        public static void UpdateDatabase(string naam, string prijs, string lengte, string breedte, string categorie, string tag, string image, string hoogte, string leverancier, string productCode)
+        public static void UpdateDatabase(string naam, decimal prijs, decimal lengte, decimal breedte, string categorie, string tag, string image, decimal hoogte, string leverancier, string productCode)
         {
 
 
@@ -561,23 +570,31 @@ namespace KantoorInrichtingWPF.Data
                     SqlParameter leverancierParam = new SqlParameter("@leverancier", System.Data.SqlDbType.Text, 100);
                     SqlParameter imgParam = new SqlParameter("@img", System.Data.SqlDbType.Text, 100);
                     SqlParameter nameParam = new SqlParameter("@name", System.Data.SqlDbType.Text, 100);
-                    SqlParameter prijsParam = new SqlParameter("@prijs", System.Data.SqlDbType.Text, 100);
-                    SqlParameter lengteParam = new SqlParameter("@lengte", System.Data.SqlDbType.Text, 100);
-                    SqlParameter breedteParam = new SqlParameter("@breedte", System.Data.SqlDbType.Text, 100);
+                    SqlParameter prijsParam = new SqlParameter("@prijs", System.Data.SqlDbType.Decimal, 100);
+                    SqlParameter lengteParam = new SqlParameter("@lengte", System.Data.SqlDbType.Decimal, 100);
+                    SqlParameter breedteParam = new SqlParameter("@breedte", System.Data.SqlDbType.Decimal, 100);
                     SqlParameter tagParam = new SqlParameter("@tag", System.Data.SqlDbType.Text, 100);
                     SqlParameter categorieParam = new SqlParameter("@categorie", System.Data.SqlDbType.Text, 100);
-                    SqlParameter hoogteParam = new SqlParameter("@hoogte", System.Data.SqlDbType.Text, 100);
+                    SqlParameter hoogteParam = new SqlParameter("@hoogte", System.Data.SqlDbType.Decimal, 100);
 
                     productcodeParam.Value = productCode;
                     leverancierParam.Value = leverancier;
                     imgParam.Value = image;
                     nameParam.Value = naam;
                     prijsParam.Value = prijs;
+                    prijsParam.Precision = 38;
+                    prijsParam.Scale = 25;
                     lengteParam.Value = lengte;
+                    lengteParam.Precision = 38;
+                    lengteParam.Scale = 25;
                     breedteParam.Value = breedte;
+                    breedteParam.Precision = 38;
+                    breedteParam.Scale = 25;
                     tagParam.Value = tag;
                     categorieParam.Value = categorie;
                     hoogteParam.Value = hoogte;
+                    hoogteParam.Precision = 38;
+                    hoogteParam.Scale = 25;
 
                     command.Parameters.Add(productcodeParam);
                     command.Parameters.Add(leverancierParam);

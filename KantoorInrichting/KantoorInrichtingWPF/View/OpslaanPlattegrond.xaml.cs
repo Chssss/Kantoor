@@ -30,7 +30,8 @@ namespace KantoorInrichtingWPF.View
 
         private void OnOpslaanButton_Click(object sender, RoutedEventArgs e)
         {
-           
+            MainWindow.ProjectnaamStatic = TBProjectNaam.Text;
+            MainWindow.PlattegrondnaamStatic = TBPlattegrondNaam.Text;
             this.Close();
         }
     }

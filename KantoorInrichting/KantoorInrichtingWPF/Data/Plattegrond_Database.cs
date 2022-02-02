@@ -97,9 +97,9 @@ namespace KantoorInrichtingWPF.Data
                                 var plattegrondNaam=reader.GetString(1);//plattegrond naam
                                 var datum=reader.GetString(2);//datum
                                 var plattegrondcode=reader.GetString(3);//plattegrondcode
-                                var lengte=reader.GetString(4);//lengte
-                                var breedte=reader.GetString(5);//breedte
-                                var hoogte=reader.GetString(6);//hoogte
+                                var lengte=reader.GetDecimal(4);//lengte
+                                var breedte=reader.GetDecimal(5);//breedte
+                                var hoogte=reader.GetDecimal(6);//hoogte
 
                                 /*
                                 listVaule.Add(reader.GetString(7));//image type(type image)
@@ -160,12 +160,12 @@ namespace KantoorInrichtingWPF.Data
                                 var Plattegrondcode=reader.GetString(1);//plattegrondcode
                                 var imageType= reader.GetString(2);//image type(type image)
                                 var naamMeubel=reader.GetString(3);//image name(naam meubel)
-                                var prijs=reader.GetString(4);//image tag(prijs)
+                                var prijs=reader.GetDecimal(4);//image tag(prijs)
                                 var xcoord=reader.GetString(5);//x coord
                                 var ycoord=reader.GetString(6);//y coord
                                 var leverancier=reader.GetString(7);//leverancier
                                 var productcode=reader.GetString(8);//productcode
-                                var rotatie=reader.GetString(9);//rotatie
+                                var rotatie=reader.GetInt32(9);//rotatie
                                 CanvasItem canvasItem = new CanvasItem(canvasItemcode,Plattegrondcode,imageType,naamMeubel,prijs,xcoord,ycoord,leverancier,productcode,rotatie);
                                 outputCanvasSQL.Add(canvasItem);
                                
@@ -274,7 +274,7 @@ namespace KantoorInrichtingWPF.Data
             Console.ReadLine();
             #endregion
         }
-        public static void ToevoegenAanDatabase(string projectNaam, string plattegrondNaam,string datum, string plattegrondcode,string lengte,string breedte, string hoogte)
+        public static void ToevoegenAanDatabase(string projectNaam, string plattegrondNaam,string datum, string plattegrondcode,decimal lengte,decimal breedte, decimal hoogte)
         {
             #region toevoegen plattegrond
             /*try
@@ -329,17 +329,23 @@ namespace KantoorInrichtingWPF.Data
                     SqlParameter datumParam = new SqlParameter("@datum", System.Data.SqlDbType.Text, 100);
                     SqlParameter plattegrondcodeParam = new SqlParameter("@plattegrondcode", System.Data.SqlDbType.Text, 100);
 
-                    SqlParameter lengteParam = new SqlParameter("@lengte", System.Data.SqlDbType.Text, 100);
-                    SqlParameter breedteParam = new SqlParameter("@breedte", System.Data.SqlDbType.Text, 100);
-                    SqlParameter hoogteParam = new SqlParameter("@hoogte", System.Data.SqlDbType.Text, 100);
+                    SqlParameter lengteParam = new SqlParameter("@lengte", System.Data.SqlDbType.Decimal, 100);
+                    SqlParameter breedteParam = new SqlParameter("@breedte", System.Data.SqlDbType.Decimal, 100);
+                    SqlParameter hoogteParam = new SqlParameter("@hoogte", System.Data.SqlDbType.Decimal, 100);
 
                     projectNaamParam.Value = projectNaam;
                     plattegrondNaamParam.Value = plattegrondNaam;
                     datumParam.Value = datum;
                     plattegrondcodeParam.Value = plattegrondcode;
                     lengteParam.Value = lengte;
+                    lengteParam.Precision = 38;
+                    lengteParam.Scale = 25;
                     breedteParam.Value = breedte;
+                    breedteParam.Precision = 38;
+                    breedteParam.Scale = 25;
                     hoogteParam.Value = hoogte;
+                    hoogteParam.Precision = 38;
+                    hoogteParam.Scale = 25;
 
                     command.Parameters.Add(projectNaamParam);
                     command.Parameters.Add(plattegrondNaamParam);
@@ -365,7 +371,7 @@ namespace KantoorInrichtingWPF.Data
             #endregion
 
         }
-        public static void ToevoegenCanvasDataAanDatabase(string plattegrondcode, string canvasItemcode, string image_name_typeImage, string image_tag_naamMeubel, string image_tag_prijs, string x_coord, string y_coord, string image_tag_leverancier, string image_tag_productcode, string image_tag_rotatie)
+        public static void ToevoegenCanvasDataAanDatabase(string plattegrondcode, string canvasItemcode, string image_name_typeImage, string image_tag_naamMeubel, decimal image_tag_prijs, string x_coord, string y_coord, string image_tag_leverancier, string image_tag_productcode, int image_tag_rotatie)
         {
             #region toevoegen canvasData
             /* try
@@ -422,23 +428,26 @@ namespace KantoorInrichtingWPF.Data
                     SqlParameter canvasItemcodeParam = new SqlParameter("@canvasItemcode", System.Data.SqlDbType.Text, 100);
                     SqlParameter imageNameTypeImage = new SqlParameter("@imageNameTypeImage", System.Data.SqlDbType.Text, 100);
                     SqlParameter imageTagNaamMeubel = new SqlParameter("@imageTagNaamMeubel", System.Data.SqlDbType.Text, 100);
-                    SqlParameter imageTagPrijs = new SqlParameter("@imageTagPrijs", System.Data.SqlDbType.Text, 100);
+                    SqlParameter imageTagPrijs = new SqlParameter("@imageTagPrijs", System.Data.SqlDbType.Decimal, 100);
                     SqlParameter xcoord = new SqlParameter("@xcoord", System.Data.SqlDbType.Text, 100);
                     SqlParameter ycoord = new SqlParameter("@ycoord", System.Data.SqlDbType.Text, 100);
                     SqlParameter leverancier = new SqlParameter("@leverancier", System.Data.SqlDbType.Text, 100);
                     SqlParameter productcode = new SqlParameter("@productcode", System.Data.SqlDbType.Text, 100);
-                    SqlParameter rotatie = new SqlParameter("@rotatie", System.Data.SqlDbType.Text, 100);
+                    SqlParameter rotatie = new SqlParameter("@rotatie", System.Data.SqlDbType.Int, 100);
 
                     plattegrondcodeParam.Value = plattegrondcode;
                     canvasItemcodeParam.Value = canvasItemcode;
                     imageNameTypeImage.Value = image_name_typeImage;
                     imageTagNaamMeubel.Value = image_tag_naamMeubel;
                     imageTagPrijs.Value = image_tag_prijs;
+                    imageTagPrijs.Precision = 38;
+                    imageTagPrijs.Scale = 25;
                     xcoord.Value = x_coord;
                     ycoord.Value = y_coord;
                     leverancier.Value = image_tag_leverancier;
                     productcode.Value = image_tag_productcode;
                     rotatie.Value = image_tag_rotatie;
+                   
 
                     command.Parameters.Add(plattegrondcodeParam);
                     command.Parameters.Add(canvasItemcodeParam);
@@ -505,9 +514,9 @@ namespace KantoorInrichtingWPF.Data
                                 var plattegrondNaam = reader.GetString(1);//plattegrond naam
                                 var datum = reader.GetString(2);//datum
                                 var plattegrondcode = reader.GetString(3);//plattegrondcode
-                                var lengte = reader.GetString(4);//lengte
-                                var breedte = reader.GetString(5);//breedte
-                                var hoogte = reader.GetString(6);//hoogte
+                                var lengte = reader.GetDecimal(4);//lengte
+                                var breedte = reader.GetDecimal(5);//breedte
+                                var hoogte = reader.GetDecimal(6);//hoogte
 
                                 /*
                                 listVaule.Add(reader.GetString(7));//image type(type image)
@@ -574,9 +583,9 @@ namespace KantoorInrichtingWPF.Data
                                 var plattegrondNaam = reader.GetString(1);//plattegrond naam
                                 var datum = reader.GetString(2);//datum
                                 var plattegrondcode = reader.GetString(3);//plattegrondcode
-                                var lengte = reader.GetString(4);//lengte
-                                var breedte = reader.GetString(5);//breedte
-                                var hoogte = reader.GetString(6);//hoogte
+                                var lengte = reader.GetDecimal(4);//lengte
+                                var breedte = reader.GetDecimal(5);//breedte
+                                var hoogte = reader.GetDecimal(6);//hoogte
 
                                 /*
                                 listVaule.Add(reader.GetString(7));//image type(type image)
@@ -648,7 +657,7 @@ namespace KantoorInrichtingWPF.Data
             return output;
             //return nepDatabase;
         }
-        public static void UpdateDatabase(string projectNaam, string plattegrondNaam, string datum, string plattegrondcode, string lengte, string breedte, string hoogte)
+        public static void UpdateDatabase(string projectNaam, string plattegrondNaam, string datum, string plattegrondcode, decimal lengte, decimal breedte, decimal hoogte)
         {
            
 
@@ -728,7 +737,7 @@ namespace KantoorInrichtingWPF.Data
             #endregion
 
         }
-        public static void UpdateCanvasDataDatabase(string plattegrondcode, string canvasItemcode, string image_name_typeImage, string image_tag_naamMeubel, string image_tag_prijs, string x_coord, string y_coord,string image_tag_leverancier, string image_tag_productcode)
+        public static void UpdateCanvasDataDatabase(string plattegrondcode, string canvasItemcode, string image_name_typeImage, string image_tag_naamMeubel, decimal image_tag_prijs, string x_coord, string y_coord,string image_tag_leverancier, string image_tag_productcode)
         {
          
             #region update canvasData sql

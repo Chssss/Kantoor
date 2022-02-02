@@ -10,14 +10,14 @@ namespace KantoorInrichtingWPF.Model
         public string PlattegrondNaam { get; set; }
         public string LaastAangepast { get; set; }
         public string Plattegrondcode { get; set; }
-        public string Lengte { get; set; }
-        public string Breedte { get; set; }
-        public string Hoogte { get; set; }
+        public decimal Lengte { get; set; }
+        public decimal Breedte { get; set; }
+        public decimal Hoogte { get; set; }
         public string Open { get; set; }
         public string Verwijder { get; set; }
         public  List<CanvasItem>  Canvas { get; set; }
 
-        public Plattegrond(string projectNaam, string plattegrondNaam, string datum,string plategrondcode ,string lengte,string breedte, string hoogte, List<CanvasItem> canvas) 
+        public Plattegrond(string projectNaam, string plattegrondNaam, string datum,string plategrondcode ,decimal lengte,decimal breedte, decimal hoogte, List<CanvasItem> canvas) 
         {
             this.ProjectNaam = projectNaam;
             this.PlattegrondNaam = plattegrondNaam;

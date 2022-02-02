@@ -37,9 +37,11 @@ namespace KantoorInrichtingWPF
 
         public string ProjectNaam;
         public string PlattegrondNaam;
-        public string Lengte="10,0";
-        public string Breedte="10,0";
-        public string Hoogte="10,0";
+        public static string ProjectnaamStatic;
+        public static string PlattegrondnaamStatic;
+        public decimal Lengte= (decimal)10.0;
+        public decimal Breedte= (decimal)10.0;
+        public decimal Hoogte= (decimal)10.0;
         public string Plattegrondcode;
 
         protected bool muurCheck;
@@ -70,7 +72,7 @@ namespace KantoorInrichtingWPF
                 var tempLeverancier = item.leverancier;
                 var tempProductcode = item.productcode;
                 var rotatie = item.rotatie;
-                AddImageToGeladenMap(item.imageType, item.naamMeubel, item.imageTagPrijs, xcoord, ycoord,tempLeverancier,tempProductcode,rotatie);
+                AddImageToGeladenMap(item.imageType, item.naamMeubel,$"{item.imageTagPrijs}" , xcoord, ycoord,tempLeverancier,tempProductcode,$"{rotatie}");
             }
         }
         public void AddImageToGeladenMap(string typeImage, string naamMeubel, string prijs,double xcoord,double ycoord, string leverancier,string productcode, string rotatie)
@@ -896,11 +898,20 @@ namespace KantoorInrichtingWPF
         private void OnMenuItem_opslaanAls_Click(object sender, RoutedEventArgs e)
         {
             OpslaanPlattegrond opslaanPlattegrond1 = new OpslaanPlattegrond();
-            opslaanPlattegrond1.TBLengte.Text = Lengte;
-            opslaanPlattegrond1.TBPlattegrondNaam.Text = PlattegrondNaam;
-            opslaanPlattegrond1.TBProjectNaam.Text = ProjectNaam;
-            opslaanPlattegrond1.TBBreedte.Text = Breedte;
-            opslaanPlattegrond1.TBHoogte.Text = Hoogte;
+            opslaanPlattegrond1.TBLengte.Text = $"{Lengte}";
+            
+            if (ProjectNaam is null|| PlattegrondNaam is null)
+            {
+                
+            }
+            else
+            {
+                opslaanPlattegrond1.TBProjectNaam.Text = ProjectNaam;
+                opslaanPlattegrond1.TBPlattegrondNaam.Text = PlattegrondNaam;
+            }
+            
+            opslaanPlattegrond1.TBBreedte.Text = $"{Breedte}";
+            opslaanPlattegrond1.TBHoogte.Text = $"{Hoogte}";
             opslaanPlattegrond1.Show();
             opslaanPlattegrond1.ButtonOpslaan.Click += OnButtonOpslaan_Click;
             
@@ -909,7 +920,7 @@ namespace KantoorInrichtingWPF
         private void OnButtonOpslaan_Click(object sender, RoutedEventArgs e)
         {
             //PlattegrondNaam, CanvasItemcode, CanvasImageType, CanvasImageName, CanvasImageTag, XCoord, YCoord
-            plattegrondview.PlattegrondNaam = opslaanPlattegrond.TBPlattegrondNaam.Text;
+            plattegrondview.PlattegrondNaam = PlattegrondnaamStatic;//opslaanPlattegrond.TBPlattegrondNaam.Text
             List<Image> ListImages = new List<Image>();
             List<TextBlock> LIstTextBlock = new List<TextBlock>();
             List<Line> ListLine = new List<Line>();
