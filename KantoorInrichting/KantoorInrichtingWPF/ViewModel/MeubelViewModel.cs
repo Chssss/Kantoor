@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace KantoorInrichtingWPF.ViewModel
 {
@@ -45,6 +46,7 @@ namespace KantoorInrichtingWPF.ViewModel
         private List<string> _categorieen = new List<string>();
         private string _testString;
         private string _productcode;
+       
 
         public MeubelViewModel() 
         {
@@ -57,6 +59,7 @@ namespace KantoorInrichtingWPF.ViewModel
             _leverancieren.Add("Ikea");
         }
         #region prop
+        
         public string TestString
         {
             get
@@ -413,40 +416,52 @@ namespace KantoorInrichtingWPF.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
            
         }
-        
+       
         void ToevoegenMeubelExecute() 
         {
-            Tag = GetTag();
-            Image = GetImage();
-            if ((Naam is null) || (Prijs is 0) || Lengte is 0 || Breedte is 0 || Categorie is null || Tag.Equals("") || Image.Equals("") || Hoogte is 0 || Leverancier is null)
-            {
-                MessageBox.Show("Vul alle velden in om meubels te kunnen toevoegen");
-            }
-            else
-            {
-                if (Prijs is 0|| Lengte is 0 || Breedte is 0 || Hoogte is 0)
+            
+                Tag = GetTag();
+                Image = GetImage();
+                if ((Naam is null) || (Prijs is 0) || Lengte is 0 || Breedte is 0 || Categorie is null || Tag.Equals("") || Image.Equals("") || Hoogte is 0 || Leverancier is null)
                 {
-                    MessageBox.Show("Prijs, Lengte, Breedte en Hoogte moet een getal zijn");
+                    MessageBox.Show("Vul alle velden in om meubels te kunnen toevoegen");
                 }
                 else
                 {
+                    if (Prijs is 0 || Lengte is 0 || Breedte is 0 || Hoogte is 0)
+                    {
+                        MessageBox.Show("Prijs, Lengte, Breedte en Hoogte moet een getal zijn");
+                    }
+                    else
+                    {
 
-                    Productcode = $"{Leverancier[0]}{Leverancier[1]}{Catalogus.Count}";
-                    Meubel_Database.ToevoegenAanDatabase(Naam, Prijs, Lengte, Breedte, Categorie, Tag, Image, Hoogte, Leverancier, Productcode);
-                    MessageBox.Show("Meubel is toegevoegd");
-                    
+                        Productcode = $"{Leverancier[0]}{Leverancier[1]}{Catalogus.Count}";
+                        Meubel_Database.ToevoegenAanDatabase(Naam, Prijs, Lengte, Breedte, Categorie, Tag, Image, Hoogte, Leverancier, Productcode);
+                        MessageBox.Show("Meubel is toegevoegd");
+                         UpdateCatalogusExecute();
+
+                        }
                 }
-            }
-            UpdateCatalogusExecute();
+                UpdateCatalogusExecute();
+            
+
+            
         }
-       
+       public static void StaticUpdateCatalogus() 
+        {
+            var outputQuerry = Meubel_Database.GetDatabase();
+
+            
+        }
        public void UpdateCatalogusExecute() 
         {
             var outputQuerry = Meubel_Database.GetDatabase();
            
             Catalogus = outputQuerry;
+           
             
-         }
+
+        }
         void VerwijderenMeubelExecute() 
         {
             bool check = false;

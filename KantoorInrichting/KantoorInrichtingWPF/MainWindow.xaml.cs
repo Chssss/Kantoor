@@ -22,6 +22,7 @@ using WPF.JoshSmith.Controls;
 using KantoorInrichtingWPF.View;
 using KantoorInrichtingWPF.Model;
 using Microsoft.SqlServer.Server;
+using System.Threading;
 
 namespace KantoorInrichtingWPF
 {
@@ -43,12 +44,14 @@ namespace KantoorInrichtingWPF
         public decimal Breedte= 10.0m;
         public decimal Hoogte= 10.0m;
         public string Plattegrondcode;
+        
 
         protected bool muurCheck;
         protected bool isDragging;
         private System.Windows.Point clickPosition;
         private System.Windows.Point currentPosition;
-
+       
+       
         public MainWindow()
         {
           
@@ -61,10 +64,19 @@ namespace KantoorInrichtingWPF
             LabelBreedte.Content = $"Breedte:{Breedte}";
             LabelHoogte.Content = $"Hoogte:{Hoogte}";
             
+           
+            
 
 
         }
-       public void LadenMap( List<CanvasItem> canvasitems) 
+        
+        private void UpdateGrid() 
+        {
+            var btn = ButtonRefresh;
+            btn.Command.Execute(btn.CommandParameter);
+        }
+
+        public void LadenMap( List<CanvasItem> canvasitems) 
         {
             foreach (var item in canvasitems)
             {
@@ -1017,15 +1029,34 @@ namespace KantoorInrichtingWPF
 
         }
 
-        private void OnMenuItem_export_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private void OnMenuItem_toevoegen_Click(object sender, RoutedEventArgs e)
         {
             MeubelsToevoegen meubelsToevoegen = new MeubelsToevoegen();
+            meubelsToevoegen.ButtonToevoegen.Click += OnButtonToevoegen_Click;
+            
             meubelsToevoegen.Show();
+
+        }
+
+        
+
+        private void OnButtonToevoegen_Click(object sender, RoutedEventArgs e)
+        {
+            //var btn = sender as Button;
+            //btn.Command.Execute(btn.CommandParameter);
+            //myTask = 
+
+            
+           /* var btn = ButtonRefresh;
+            btn.Command.Execute(btn.CommandParameter);*/
+
+
+
+
+
+
         }
 
         private void OnMenuItem_wijzigen_Click(object sender, RoutedEventArgs e)
@@ -1117,7 +1148,9 @@ namespace KantoorInrichtingWPF
 
         private void OnButton_RefreshMeubel_Click(object sender, RoutedEventArgs e)
         {
-            
+            //var btn = sender as Button;
+            var btn = ButtonRefresh;
+            btn.Command.Execute(btn.CommandParameter);
         }
 
         private void OnButton_ZoekenMeubelCategorie_Click(object sender, RoutedEventArgs e)

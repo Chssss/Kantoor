@@ -1,4 +1,5 @@
 ﻿using KantoorInrichtingWPF.Data;
+using KantoorInrichtingWPF.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -33,7 +34,9 @@ namespace KantoorInrichtingWPF
 
         private void OnButton_Toevoegen_Click(object sender, RoutedEventArgs e)
         {
+            
             this.Close();
+            
         }
       
         
