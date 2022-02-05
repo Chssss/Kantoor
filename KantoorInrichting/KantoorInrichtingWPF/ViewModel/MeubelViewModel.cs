@@ -526,102 +526,102 @@ namespace KantoorInrichtingWPF.ViewModel
                 string xml_path = new Uri(xmlPath).LocalPath;
                 xdoc.Load(xml_path);
                 //xdoc.Load(@"C:\Users\Jelle\Documents\GitHub\Kantoor\KantoorInrichting\KantoorInrichtingWPF\Xml\XMLTEST.xml");
+                XmlNodeList nodes = xdoc.SelectNodes("//meubels/meubel");
+                foreach (XmlNode node in nodes)
+                {
+                    string _productcode = "0";
+                    string _leverancier = "0";
+                    string _img = "0";
+                    string _naam = "0";
+                    string _prijs = "0";
+                    string _lengte = "0";
+                    string _breedte = "0";
+                    string _tag = "0";
+                    string _categorie = "0";
+                    string _hoogte = "0";
 
+
+
+                    XmlNode productcode = node.SelectSingleNode("productcode");
+
+                    if (productcode != null)
+                    {
+                        _productcode = $"{productcode.InnerText}";
+
+                    }
+
+
+                    XmlNode leverancier = node.SelectSingleNode("leverancier");
+                    if (leverancier != null)
+                    {
+                        _leverancier = $"{leverancier.InnerText}";
+                    }
+
+                    XmlNode img = node.SelectSingleNode("img");
+                    if (img != null)
+                    {
+                        _img = $"{img.InnerText}";
+                    }
+
+                    XmlNode naam = node.SelectSingleNode("naam");
+                    if (naam != null)
+                    {
+                        _naam = $"{naam.InnerText}";
+                    }
+
+                    XmlNode prijs = node.SelectSingleNode("prijs");
+                    if (prijs != null)
+                    {
+                        _prijs = $"{prijs.InnerText}";
+                    }
+
+                    XmlNode lengte = node.SelectSingleNode("lengte");
+                    if (lengte != null)
+                    {
+                        _lengte = $"{lengte.InnerText}";
+                    }
+
+                    XmlNode breedte = node.SelectSingleNode("breedte");
+                    if (breedte != null)
+                    {
+                        _breedte = $"{breedte.InnerText}";
+                    }
+
+                    XmlNode tag = node.SelectSingleNode("tag");
+                    if (tag != null)
+                    {
+                        _tag = $"{tag.InnerText}";
+                    }
+
+                    XmlNode categorie = node.SelectSingleNode("categorie");
+                    if (categorie != null)
+                    {
+                        _categorie = $"{categorie.InnerText}";
+                    }
+
+                    XmlNode hoogte = node.SelectSingleNode("hoogte");
+                    if (hoogte != null)
+                    {
+                        _hoogte = $"{hoogte.InnerText}";
+                    }
+
+
+
+                    if (Meubel_Database.UpdateCheck(_productcode) == 0)
+                    {
+                        Meubel_Database.ToevoegenAanDatabase(_naam, Convert.ToDecimal(_prijs), Convert.ToDecimal(_lengte), Convert.ToDecimal(_breedte), _categorie, _tag, _img, Convert.ToDecimal(_hoogte), _leverancier, _productcode);
+                    }
+                    else
+                    {
+                        Meubel_Database.UpdateDatabase(_naam, Convert.ToDecimal(_prijs), Convert.ToDecimal(_lengte), Convert.ToDecimal(_breedte), _categorie, _tag, _img, Convert.ToDecimal(_hoogte), _leverancier, _productcode);
+                    }
+                    //MeubelDatabase.DeleteFromDatabase(_productcode);
+                    UpdateCatalogusExecute();
+                }
             }
             
 
-            XmlNodeList nodes = xdoc.SelectNodes("//meubels/meubel");
-            foreach (XmlNode node in nodes)
-            {
-                string _productcode = "0";
-                string _leverancier = "0";
-                string _img = "0";
-                string _naam = "0";
-                string _prijs = "0";
-                string _lengte = "0";
-                string _breedte = "0";
-                string _tag = "0";
-                string _categorie = "0";
-                string _hoogte = "0";
-
-
-
-                XmlNode productcode = node.SelectSingleNode("productcode");
-
-                if (productcode != null)
-                {
-                    _productcode = $"{productcode.InnerText}";
-
-                }
-
-
-                XmlNode leverancier = node.SelectSingleNode("leverancier");
-                if (leverancier != null)
-                {
-                    _leverancier = $"{leverancier.InnerText}";
-                }
-
-                XmlNode img = node.SelectSingleNode("img");
-                if (img != null)
-                {
-                    _img = $"{img.InnerText}";
-                }
-
-                XmlNode naam = node.SelectSingleNode("naam");
-                if (naam != null)
-                {
-                    _naam = $"{naam.InnerText}";
-                }
-
-                XmlNode prijs = node.SelectSingleNode("prijs");
-                if (prijs != null)
-                {
-                    _prijs = $"{prijs.InnerText}";
-                }
-
-                XmlNode lengte = node.SelectSingleNode("lengte");
-                if (lengte != null)
-                {
-                    _lengte = $"{lengte.InnerText}";
-                }
-
-                XmlNode breedte = node.SelectSingleNode("breedte");
-                if (breedte != null)
-                {
-                    _breedte = $"{breedte.InnerText}";
-                }
-
-                XmlNode tag = node.SelectSingleNode("tag");
-                if (tag != null)
-                {
-                    _tag = $"{tag.InnerText}";
-                }
-
-                XmlNode categorie = node.SelectSingleNode("categorie");
-                if (categorie != null)
-                {
-                    _categorie = $"{categorie.InnerText}";
-                }
-
-                XmlNode hoogte = node.SelectSingleNode("hoogte");
-                if (hoogte != null)
-                {
-                    _hoogte = $"{hoogte.InnerText}";
-                }
-
-                
-
-                if (Meubel_Database.UpdateCheck(_productcode) == 0)
-                {
-                    Meubel_Database.ToevoegenAanDatabase(_naam,Convert.ToDecimal( _prijs), Convert.ToDecimal(_lengte),Convert.ToDecimal(_breedte), _categorie, _tag, _img,Convert.ToDecimal(_hoogte), _leverancier, _productcode);
-                }
-                else
-                {
-                    Meubel_Database.UpdateDatabase(_naam, Convert.ToDecimal(_prijs), Convert.ToDecimal(_lengte),Convert.ToDecimal(_breedte), _categorie, _tag, _img,Convert.ToDecimal(_hoogte), _leverancier, _productcode);
-                }
-                //MeubelDatabase.DeleteFromDatabase(_productcode);
-                UpdateCatalogusExecute();
-            }
+            
             //UpdateCatalogusExecute();
             
         }
