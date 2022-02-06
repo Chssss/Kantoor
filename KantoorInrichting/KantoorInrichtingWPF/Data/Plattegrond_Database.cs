@@ -364,7 +364,7 @@ namespace KantoorInrichtingWPF.Data
             }
             catch (SqlException e)
             {
-                MessageBox.Show("ToevoegenAanDatabase " + e.ToString());
+               // MessageBox.Show("ToevoegenAanDatabase " + e.ToString());
                 Console.WriteLine(e.ToString());
             }
             Console.ReadLine();
@@ -467,7 +467,7 @@ namespace KantoorInrichtingWPF.Data
             }
             catch (SqlException e)
             {
-                MessageBox.Show("ToevoegenCanvasDataAanDatabase " + e.ToString());
+                //MessageBox.Show("ToevoegenCanvasDataAanDatabase " + e.ToString());
                 Console.WriteLine(e.ToString());
             }
             Console.ReadLine();
@@ -738,7 +738,7 @@ namespace KantoorInrichtingWPF.Data
             }
             catch (SqlException e)
             {
-                MessageBox.Show("UpdateDatabase " + e.ToString());
+                //MessageBox.Show("UpdateDatabase " + e.ToString());
                 Console.WriteLine(e.ToString());
             }
             Console.ReadLine();
@@ -821,7 +821,7 @@ namespace KantoorInrichtingWPF.Data
             }
             catch (SqlException e)
             {
-                MessageBox.Show("UpdateCanvasDataDatabase " + e.ToString());
+                //MessageBox.Show("UpdateCanvasDataDatabase " + e.ToString());
                 Console.WriteLine(e.ToString());
             }
             Console.ReadLine();

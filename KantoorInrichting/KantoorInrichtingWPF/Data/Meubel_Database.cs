@@ -368,7 +368,7 @@ namespace KantoorInrichtingWPF.Data
             }
             catch (SqlException e)
             {
-                MessageBox.Show("ToevoegenMeubelDatabase " + e.ToString());
+               // MessageBox.Show("ToevoegenMeubelDatabase " + e.ToString());
                 Console.WriteLine(e.ToString());
             }
             Console.ReadLine();
@@ -640,7 +640,7 @@ namespace KantoorInrichtingWPF.Data
             }
             catch (SqlException e)
             {
-                MessageBox.Show("UpdateMeubelDatabase " + e.ToString());
+                //MessageBox.Show("UpdateMeubelDatabase " + e.ToString());
                 Console.WriteLine(e.ToString());
             }
             //Console.ReadLine();
