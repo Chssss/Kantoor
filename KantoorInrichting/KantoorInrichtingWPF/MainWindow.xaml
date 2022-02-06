@@ -52,23 +52,23 @@
             </Menu>
 
         </DockPanel>
-        <TextBox x:Name="TBMeubels" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="120" Height="18" Text="{Binding Zoekbalk}" Margin="386,0,0,28" Grid.ColumnSpan="2"/>
-        <Button x:Name="ButtonZoekenMeubelNaam" Content="Zoeken naam" Margin="7,0,20,49" Click="OnButton_ZoekenMeubelNaam_Click" Command="{Binding ZoekNaamInCatalogus, Mode=OneWay}" RenderTransformOrigin="0.275,0.337" Grid.Column="2" Height="20" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="TBMeubels" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" Text="{Binding Zoekbalk}" Margin="85,22,0,0" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button x:Name="ButtonZoekenMeubelNaam" Content="Zoeken naam" Margin="0,21,771,0" Click="OnButton_ZoekenMeubelNaam_Click" Command="{Binding ZoekNaamInCatalogus, Mode=OneWay}" RenderTransformOrigin="0.275,0.337" Grid.Column="3" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="96"/>
         <DataGrid x:Name="DGMeubels" IsReadOnly="True" ItemsSource="{Binding Catalogus}" MouseDoubleClick="OnMouseDoubleClick" Margin="3,69,0,0" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
 
-        <Button x:Name="ButtonRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="31,40,0,0" VerticalAlignment="Top" Click="OnButton_RefreshMeubel_Click" Height="20" Width="44" Grid.Column="3" Command="{Binding UpdateCatalogus, Mode=OneWay}"/>
-        <Button x:Name="ButtonZoekenMeubelCategorie" Content="Zoeken categorie" Click="OnButton_ZoekenMeubelCategorie_Click" Command="{Binding ZoekCategorieInCatalogus, Mode=OneWay}" Grid.Column="2" Margin="4,0,10,14" Height="20" VerticalAlignment="Bottom"/>
+        <Button x:Name="ButtonRefresh" Content="Refresh" HorizontalAlignment="Center" Margin="0,19,0,0" VerticalAlignment="Top" Click="OnButton_RefreshMeubel_Click" Height="20" Width="44" Grid.Column="1" Command="{Binding UpdateCatalogus, Mode=OneWay}"/>
+        <Button x:Name="ButtonZoekenMeubelCategorie" Content="Zoeken categorie" Click="OnButton_ZoekenMeubelCategorie_Click" Command="{Binding ZoekCategorieInCatalogus, Mode=OneWay}" Grid.Column="3" Margin="0,21,602,0" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="109"/>
         <Border BorderThickness="1" BorderBrush="Black" Grid.Column="3" Margin="0,69,0,0" Grid.RowSpan="2">
             <Controls:DragCanvas x:Name="DragCavasPlattegrond" Margin="0,-1,-1,-1" MouseRightButtonDown="OnMouseRightButtonPressed" PreviewMouseDown="OnMouseDownPressed" MouseLeftButtonUp="DragCavasPlattegrond_MouseLeftButtonUp" MouseLeftButtonDown="DragCavasPlattegrond_MouseLeftButtonDown" MouseMove="DragCavasPlattegrond_MouseMove" Background="Transparent"/>
         </Border>
         <Label x:Name="LabelTotalPrijs" Grid.Column="3" HorizontalAlignment="Left" Margin="428,0,0,0" VerticalAlignment="Center" Height="30" Width="64" FontSize="16" Grid.Row="2"/>
         <Button x:Name="ButtonTotaalPrijs" Content="Totaalprijs" Grid.Column="3" HorizontalAlignment="Left" Margin="530,0,0,0" VerticalAlignment="Center" Height="33" Width="67" Click="OnButton_Totaalprijs_Click" Grid.Row="2"/>
-        <ToggleButton x:Name="ButtonMuur" Content="Muur" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="112" Checked="ButtonMuur_Check" Unchecked="ButtonMuur_Uncheck" Margin="30,0,0,0"/>
-        <Button x:Name="ButtonRaam" Content="Raam" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Top" Height="71" Width="124" Click="ButtonRaam_Click" Margin="0,5,0,0"/>
-        <Button x:Name="ButtonDeur" Content="Deur" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Height="71" Width="76" Click="ButtonDeur_Click" Margin="358,5,0,0"/>
-        <Label x:Name="LabelLengte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="324,13,0,0" VerticalAlignment="Top" Height="26" Width="94"/>
-        <Label x:Name="LabelBreedte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="423,12,0,0" VerticalAlignment="Top" Height="26" Width="90"/>
-        <Label x:Name="LabelHoogte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="529,13,0,0" VerticalAlignment="Top" Height="26" Width="83" RenderTransformOrigin="0.5,0.396">
+        <ToggleButton x:Name="ButtonMuur" Content="Muur" HorizontalAlignment="Right" Grid.Row="2" Width="112" Checked="ButtonMuur_Check" Unchecked="ButtonMuur_Uncheck" Margin="0,4,335,3"/>
+        <Button x:Name="ButtonRaam" Content="Raam" HorizontalAlignment="Center" Grid.Row="2" Width="124" Click="ButtonRaam_Click" Margin="0,5,0,2"/>
+        <Button x:Name="ButtonDeur" Content="Deur" HorizontalAlignment="Left" Grid.Row="2" Width="76" Click="ButtonDeur_Click" Margin="358,5,0,2"/>
+        <Label x:Name="LabelLengte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="503,0,0,0" VerticalAlignment="Center" Height="26" Width="94"/>
+        <Label x:Name="LabelBreedte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="617,0,0,0" VerticalAlignment="Center" Height="26" Width="90"/>
+        <Label x:Name="LabelHoogte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="724,0,0,0" VerticalAlignment="Center" Height="26" Width="83" RenderTransformOrigin="0.5,0.396">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="1"/>
@@ -78,8 +78,8 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Button x:Name="ButtonNotitie" Content="Notitie" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="102" Click="ButtonNotitie_Click" Margin="75,0,0,0" Grid.ColumnSpan="2"/>
-        <Button x:Name="ButtonHelp" Content="Help" Grid.Column="3" HorizontalAlignment="Left" Margin="89,40,0,0" VerticalAlignment="Top" Click="ButtonHelp_Click" Height="20" Width="30"/>
+        <Button x:Name="ButtonNotitie" Content="Notitie" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" Width="102" Click="ButtonNotitie_Click" Margin="3,5,0,2"/>
+        <Button x:Name="ButtonHelp" Content="Help" Grid.Column="3" HorizontalAlignment="Left" Margin="374,16,0,0" VerticalAlignment="Top" Click="ButtonHelp_Click" Height="20" Width="30"/>
         <DockPanel/>
         <Expander Header="Toevoegen meubel" HorizontalAlignment="Left" Height="375" Margin="10,44,0,0" VerticalAlignment="Top" Width="470" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Grid.ColumnSpan="2">
             <Expander.RenderTransform>

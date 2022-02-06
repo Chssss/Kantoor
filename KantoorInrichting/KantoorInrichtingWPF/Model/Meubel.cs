@@ -22,6 +22,7 @@ namespace KantoorInrichtingWPF
         public string Categorie { get; set; }
         public string Leverancier { get; set; }
         public string Productcode { get; set; }
+        public string Plaatsen { get; set; }
         public Meubel(string afbeelding, string naam, decimal prijs, decimal lengte, decimal breedte, string tag, string categorie, decimal hoogte, string leverancier,string productcode)
         {
             //this.afbeelding = CreateBitmapSourceFromGdiBitmap(new Bitmap(afbeelding));
@@ -35,6 +36,7 @@ namespace KantoorInrichtingWPF
             this.Categorie = categorie;
             this.Leverancier = leverancier;
             this.Productcode = productcode;
+            this.Plaatsen = "Plaats";
         }
         
     }
