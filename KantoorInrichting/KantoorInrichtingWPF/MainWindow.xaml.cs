@@ -1370,5 +1370,10 @@ namespace KantoorInrichtingWPF
             InstructiesScherm instructiesScherm = new InstructiesScherm();
             instructiesScherm.Show();
         }
+
+        private void OnZoekenNaamClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
