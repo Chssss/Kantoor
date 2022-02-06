@@ -521,7 +521,7 @@ namespace KantoorInrichtingWPF.ViewModel
                         else
                         {
                             List<string> listPrijsAantal = new List<string>();
-                            listPrijsAantal.Add(canvasitem.naamMeubel);
+                            listPrijsAantal.Add($"{canvasitem.imageTagPrijs}");
                             listPrijsAantal.Add("1");
                             listPrijsAantal.Add(canvasitem.leverancier);
                             listPrijsAantal.Add(canvasitem.productcode);
