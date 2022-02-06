@@ -419,7 +419,8 @@ namespace KantoorInrichtingWPF.ViewModel
        public void VerwijderenPlattegrond(string plattegrondcode)
         {
             Plattegrond_Database.DeletePlategrondFromDatabase(plattegrondcode);
-            MessageBox.Show("Item is verwijdert, druk op refresh om de lijst te updaten");
+            MessageBox.Show("Item is verwijdert");
+            UpdatePlattegrondenLijstExecute();
         }
         public void VerwijderenCanvasitem(string plattegrondcode)
         {
