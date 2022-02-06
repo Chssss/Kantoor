@@ -62,9 +62,6 @@
         </Border>
         <Label x:Name="LabelTotalPrijs" Grid.Column="3" HorizontalAlignment="Left" Margin="428,0,0,0" VerticalAlignment="Center" Height="30" Width="64" FontSize="16" Grid.Row="2" Grid.ColumnSpan="2"/>
         <Button x:Name="ButtonTotaalPrijs" Content="Totaalprijs" Grid.Column="4" HorizontalAlignment="Left" Margin="101,0,0,0" VerticalAlignment="Center" Height="33" Width="67" Click="OnButton_Totaalprijs_Click" Grid.Row="2"/>
-        <ToggleButton x:Name="ButtonMuur" Content="Muur" HorizontalAlignment="Left" Grid.Row="2" Width="112" Checked="ButtonMuur_Check" Unchecked="ButtonMuur_Uncheck" Margin="30,4,0,3"/>
-        <Button x:Name="ButtonRaam" Content="Raam" HorizontalAlignment="Center" Grid.Row="2" Width="124" Click="ButtonRaam_Click" Margin="0,5,0,2"/>
-        <Button x:Name="ButtonDeur" Content="Deur" HorizontalAlignment="Left" Grid.Row="2" Width="76" Click="ButtonDeur_Click" Margin="358,5,0,2"/>
         <Label x:Name="LabelLengte" Content="" Grid.Column="4" HorizontalAlignment="Left" Margin="74,0,0,0" VerticalAlignment="Center" Height="26" Width="94"/>
         <Label x:Name="LabelBreedte" Content="" Grid.Column="4" HorizontalAlignment="Left" Margin="188,0,0,0" VerticalAlignment="Center" Height="26" Width="90"/>
         <Label x:Name="LabelHoogte" Content="" Grid.Column="4" HorizontalAlignment="Left" Margin="295,0,0,0" VerticalAlignment="Center" Height="26" Width="83" RenderTransformOrigin="0.5,0.396">
@@ -77,7 +74,6 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Button x:Name="ButtonNotitie" Content="Notitie" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" Width="102" Click="ButtonNotitie_Click" Margin="3,5,0,2"/>
         <DockPanel/>
         <Expander Header="Toevoegen meubel" HorizontalAlignment="Left" Height="375" Margin="10,44,0,0" VerticalAlignment="Top" Width="470" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch" Grid.ColumnSpan="2">
             <Expander.RenderTransform>
@@ -142,10 +138,16 @@
             </Grid>
         </Expander>
         <DockPanel Grid.Column="3" LastChildFill="False" Margin="0,0,0,40">
-            
+
             <Button Content="Zoeken Naam" Width="Auto" Command="{Binding ZoekNaamInCatalogus, Mode=OneWay}"/>
             <Button Content="Help" Click="ButtonHelp_Click" Width="Auto"/>
             <Button Content="Zoeken Categorie" Width="Auto" Command="{Binding ZoekCategorieInCatalogus, Mode=OneWay}"/>
+        </DockPanel>
+        <DockPanel LastChildFill="False" Grid.Row="2">
+            <ToggleButton x:Name="ButtonMuur" Content="Muur" Checked="ButtonMuur_Check" Unchecked="ButtonMuur_Uncheck" DockPanel.Dock="Left" Width="100"/>
+            <Button x:Name="ButtonRaam" Content="Raam" Click="ButtonRaam_Click" DockPanel.Dock="Left" Width="100"/>
+            <Button x:Name="ButtonDeur" Content="Deur" Click="ButtonDeur_Click" DockPanel.Dock="Left" Width="76"/>
+            <Button x:Name="ButtonNotitie" Content="Notitie" Click="ButtonNotitie_Click" DockPanel.Dock="Left" Width="100"/>
         </DockPanel>
 
 
