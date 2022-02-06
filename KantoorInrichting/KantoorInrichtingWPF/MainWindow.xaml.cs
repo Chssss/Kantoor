@@ -23,6 +23,7 @@ using KantoorInrichtingWPF.View;
 using KantoorInrichtingWPF.Model;
 using Microsoft.SqlServer.Server;
 using System.Threading;
+using System.Diagnostics;
 
 namespace KantoorInrichtingWPF
 {
@@ -54,8 +55,19 @@ namespace KantoorInrichtingWPF
        
         public MainWindow()
         {
-          
+
+            Process process = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C ssh -L 1433:localhost:1433 student@145.44.233.114";
+            process.StartInfo = startInfo;
+            Process[] localByName = Process.GetProcessesByName("cmd");
+            if (localByName.Length == 0)
+            {
+                process.Start();
+            }
             
+
             meubelView.XmlInvoegen();
             meubelView.UpdateCatalogusExecute();
             InitializeComponent();
@@ -1341,26 +1353,33 @@ namespace KantoorInrichtingWPF
                     }
                     catch (Exception)
                     {
-
-                        TextBlock textblock = (TextBlock)mouseButton.OriginalSource;
-                        List<string> imageTag = (List<string>)textblock.Tag;
-                        double rotatie = Convert.ToDouble(imageTag[4]);
-                        if (rotatie == 360)
+                        if (mouseButton.OriginalSource.GetType() == typeof(TextBlock))
                         {
-                            rotatie = 0;
+                            TextBlock textblock = (TextBlock)mouseButton.OriginalSource;
+                            List<string> imageTag = (List<string>)textblock.Tag;
+                            double rotatie = Convert.ToDouble(imageTag[4]);
+                            if (rotatie == 360)
+                            {
+                                rotatie = 0;
+                            }
+                            rotatie = rotatie + 45;
+                            RotateTransform rotateTransform1 = new RotateTransform(rotatie);
+                            var x = textblock.ActualWidth / 2;
+                            var y = textblock.ActualHeight / 2;
+                            rotateTransform1.CenterX = x;
+                            rotateTransform1.CenterY = y;
+                            textblock.RenderTransform = rotateTransform1;
+                            imageTag[4] = $"{rotatie}";
+                            textblock.Tag = imageTag;
                         }
-                        rotatie = rotatie + 45;
-                        RotateTransform rotateTransform1 = new RotateTransform(rotatie);
-                        var x = textblock.ActualWidth / 2;
-                        var y = textblock.ActualHeight / 2;
-                        rotateTransform1.CenterX = x;
-                        rotateTransform1.CenterY = y;
-                        textblock.RenderTransform = rotateTransform1;
-                        imageTag[4] = $"{rotatie}";
-                        textblock.Tag = imageTag;
+                        else
+                        {
+                            return;
+                        }
+
                     }
-                    
-                   
+
+
                 }
             }
         }
