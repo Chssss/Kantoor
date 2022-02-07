@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\stoff\\Documents\\School\\jaar 2\\semester 1\\kbs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj": {}
+    "D:\\xampp\\htdocs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj": {}
   },
   "projects": {
-    "C:\\Users\\stoff\\Documents\\School\\jaar 2\\semester 1\\kbs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj": {
+    "D:\\xampp\\htdocs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\stoff\\Documents\\School\\jaar 2\\semester 1\\kbs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj",
+        "projectUniqueName": "D:\\xampp\\htdocs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj",
         "projectName": "KantoorInrichtingWPF",
-        "projectPath": "C:\\Users\\stoff\\Documents\\School\\jaar 2\\semester 1\\kbs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj",
-        "packagesPath": "C:\\Users\\stoff\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\stoff\\Documents\\School\\jaar 2\\semester 1\\kbs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\obj\\",
+        "projectPath": "D:\\xampp\\htdocs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj",
+        "packagesPath": "C:\\Users\\cr_co\\.nuget\\packages\\",
+        "outputPath": "D:\\xampp\\htdocs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\stoff\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cr_co\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -67,7 +67,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

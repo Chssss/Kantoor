@@ -35,7 +35,7 @@
             <Menu Width="100" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <MenuItem Header="Opslaan">
                     <MenuItem Header="Opslaan" Click="OnMenuItem_opslaan_Click"/>
-                    
+
                     <MenuItem Header="Opslaan als" Click="OnMenuItem_opslaanAls_Click" />
 
                 </MenuItem>
@@ -55,12 +55,48 @@
         <TextBox x:Name="TBMeubels" HorizontalAlignment="Left" Margin="0,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" Text="{Binding Zoekbalk}" Grid.ColumnSpan="2"/>
         <Button x:Name="ButtonZoekenMeubelNaam" Content="Zoeken naam" HorizontalAlignment="Left" Margin="27,24,0,0" VerticalAlignment="Top" Click="OnButton_ZoekenMeubelNaam_Click" Height="20" Width="96" Grid.RowSpan="2" Command="{Binding ZoekNaamInCatalogus, Mode=OneWay}" Grid.Column="1" Grid.ColumnSpan="2"/>
         <DataGrid x:Name="DGMeubels" IsReadOnly="True" ItemsSource="{Binding Catalogus}" MouseDoubleClick="OnMouseDoubleClick" Margin="0,43,0,0" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
-
         <Button x:Name="ButtonRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="27,0,0,0" VerticalAlignment="Center" Click="OnButton_RefreshMeubel_Click" Height="20" Width="44" Grid.Column="3" Command="{Binding UpdateCatalogus, Mode=OneWay}"/>
         <Button x:Name="ButtonZoekenMeubelCategorie" Content="Zoeken categorie" HorizontalAlignment="Left" Margin="7,22,0,0" VerticalAlignment="Top" Click="OnButton_ZoekenMeubelCategorie_Click" Height="20" Width="103" Command="{Binding ZoekCategorieInCatalogus, Mode=OneWay}" Grid.Column="2"/>
-        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="3" Margin="0,43,0,0" Grid.RowSpan="2">
-            <Controls:DragCanvas x:Name="DragCavasPlattegrond" Margin="0,0,-1,-1" MouseRightButtonDown="OnMouseRightButtonPressed" PreviewMouseDown="OnMouseDownPressed" MouseLeftButtonUp="DragCavasPlattegrond_MouseLeftButtonUp" MouseLeftButtonDown="DragCavasPlattegrond_MouseLeftButtonDown" MouseMove="DragCavasPlattegrond_MouseMove" Background="Transparent"/>
+        <ToggleButton x:Name="ButtonShowRaster" Content="Raster" Margin="135,9,415,12" Grid.Column="3" />
+
+        <Border BorderThickness="1" 
+                BorderBrush="Black" 
+                Grid.Column="3" 
+                Margin="5,43,0,0" 
+                Grid.RowSpan="2"
+                >
+            <Grid Name="ShapeCanvas" HorizontalAlignment="Left" Width="645" Margin="-1,-1,0,9">
+                <Grid.Background>
+                    <DrawingBrush TileMode="Tile" 
+                                  Viewport="0, 0, 50, 50" 
+                                  ViewportUnits="Absolute" Stretch="Fill" AlignmentX="Left" AlignmentY="Top"
+                                  
+                                  >
+
+                        <DrawingBrush.Drawing>
+                            <GeometryDrawing>
+                                <GeometryDrawing.Geometry>
+                                    <RectangleGeometry Rect="0, 0, 100, 100"/>
+                                </GeometryDrawing.Geometry>
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="Gray" Thickness="1" x:Name="Raster" />
+                                </GeometryDrawing.Pen>
+                            </GeometryDrawing>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Grid.Background>
+
+                <Controls:DragCanvas x:Name="DragCavasPlattegrond" 
+                MouseRightButtonDown="OnMouseRightButtonPressed" 
+                PreviewMouseDown="OnMouseDownPressed" 
+                MouseLeftButtonUp="DragCavasPlattegrond_MouseLeftButtonUp" 
+                MouseLeftButtonDown="DragCavasPlattegrond_MouseLeftButtonDown" 
+                MouseMove="DragCavasPlattegrond_MouseMove"
+                AllowDragOutOfView="False"                  
+                />
+            </Grid>
         </Border>
+
         <Label x:Name="LabelTotalPrijs" Grid.Column="3" HorizontalAlignment="Left" Margin="412,0,0,0" VerticalAlignment="Center" Height="30" Width="64" FontSize="16" Grid.Row="2"/>
         <Button x:Name="ButtonTotaalPrijs" Content="Totaalprijs" Grid.Column="3" HorizontalAlignment="Left" Margin="530,0,0,0" VerticalAlignment="Center" Height="33" Width="67" Click="OnButton_Totaalprijs_Click" Grid.Row="2"/>
         <ToggleButton x:Name="ButtonMuur" Content="Muur" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="111" Checked="ButtonMuur_Check" Unchecked="ButtonMuur_Uncheck"/>
@@ -71,6 +107,7 @@
         <Label x:Name="LabelHoogte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="317,7,0,0" VerticalAlignment="Top"/>
         <Button x:Name="ButtonNotitie" Content="Notitie" Grid.Column="3" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="101" Click="ButtonNotitie_Click"/>
         <Button x:Name="ButtonHelp" Content="Help" Grid.Column="3" HorizontalAlignment="Left" Margin="86,0,0,0" VerticalAlignment="Center" Click="ButtonHelp_Click"/>
+
 
 
     </Grid>

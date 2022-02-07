@@ -48,6 +48,7 @@ namespace KantoorInrichtingWPF
         protected bool isDragging;
         private System.Windows.Point clickPosition;
         private System.Windows.Point currentPosition;
+        private int RasterVisibility;
 
         public MainWindow()
         {
@@ -57,11 +58,32 @@ namespace KantoorInrichtingWPF
             LabelLengte.Content = $"Lengte:{Lengte}";
             LabelBreedte.Content = $"Breedte:{Breedte}";
             LabelHoogte.Content = $"Hoogte:{Hoogte}";
-
-
+            this.ButtonShowRaster.Checked += ButtonShowRaster_Checked;
+            this.ButtonShowRaster.Unchecked += ButtonShowRaster_Unchecked;
 
         }
-       public void LadenMap( List<CanvasItem> canvasitems) 
+        public void ButtonShowRaster_Checked(object sender, RoutedEventArgs e)
+        {
+            Raster.Thickness = 1;
+        }
+
+        public void ButtonShowRaster_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Raster.Thickness = 0;
+        }
+
+        /*        public void ShowRaster(object sender, RoutedEventArgs e)
+                {
+                    if ((bool)ShowGridlines.IsChecked == true)
+                    {
+                        *//*Rastervisibility.Thickness = 1;*//*
+                        ShapeCanvas.Visibility = Visibility.Visible;
+                    }
+                    else RasterVisibility = 0;
+                }*/
+
+
+        public void LadenMap( List<CanvasItem> canvasitems) 
         {
             foreach (var item in canvasitems)
             {
