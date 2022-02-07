@@ -8,21 +8,22 @@
         xmlns:Controls="clr-namespace:WPF.JoshSmith.Controls"
         x:Class="KantoorInrichtingWPF.MainWindow"
         mc:Ignorable="d"
-        Title="Plattegrond editor" Height="650" Width="1000" WindowStartupLocation="CenterScreen">
+        Title="Plattegrond editor" Height="714" Width="1638" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <ViewModel:MeubelViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="43*"/>
-            <RowDefinition Height="520*"/>
-            <RowDefinition Height="71*"/>
+            <RowDefinition Height="69*"/>
+            <RowDefinition Height="551*"/>
+            <RowDefinition Height="78*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="111*"/>
-            <ColumnDefinition Width="121*"/>
-            <ColumnDefinition Width="133*"/>
-            <ColumnDefinition Width="635*"/>
+            <ColumnDefinition Width="477*"/>
+            <ColumnDefinition Width="115*"/>
+            <ColumnDefinition Width="123*"/>
+            <ColumnDefinition Width="429*"/>
+            <ColumnDefinition Width="494*"/>
 
         </Grid.ColumnDefinitions>
         <DockPanel LastChildFill="False" Margin="0,0,0,500" Grid.RowSpan="2" Grid.ColumnSpan="3">
@@ -42,7 +43,7 @@
             </Menu>
             <Menu Width="100" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <MenuItem Header="Meubels">
-                    <MenuItem Header="Toevoegen" Click="OnMenuItem_toevoegen_Click" />
+
 
                     <MenuItem Header="Lijst" Click="OnMenuItem_lijst_Click"  />
                 </MenuItem>
@@ -52,6 +53,7 @@
             </Menu>
 
         </DockPanel>
+<<<<<<< HEAD
         <TextBox x:Name="TBMeubels" HorizontalAlignment="Left" Margin="0,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" Text="{Binding Zoekbalk}" Grid.ColumnSpan="2"/>
         <Button x:Name="ButtonZoekenMeubelNaam" Content="Zoeken naam" HorizontalAlignment="Left" Margin="27,24,0,0" VerticalAlignment="Top" Click="OnButton_ZoekenMeubelNaam_Click" Height="20" Width="96" Grid.RowSpan="2" Command="{Binding ZoekNaamInCatalogus, Mode=OneWay}" Grid.Column="1" Grid.ColumnSpan="2"/>
         <DataGrid x:Name="DGMeubels" IsReadOnly="True" ItemsSource="{Binding Catalogus}" MouseDoubleClick="OnMouseDoubleClick" Margin="0,43,0,0" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
@@ -107,6 +109,104 @@
         <Label x:Name="LabelHoogte" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="317,7,0,0" VerticalAlignment="Top"/>
         <Button x:Name="ButtonNotitie" Content="Notitie" Grid.Column="3" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="101" Click="ButtonNotitie_Click"/>
         <Button x:Name="ButtonHelp" Content="Help" Grid.Column="3" HorizontalAlignment="Left" Margin="86,0,0,0" VerticalAlignment="Center" Click="ButtonHelp_Click"/>
+=======
+        <TextBox x:Name="TBMeubels" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" Text="{Binding Zoekbalk}" Margin="85,22,0,0" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <DataGrid x:Name="DGMeubels" IsReadOnly="True" ItemsSource="{Binding Catalogus}" MouseDoubleClick="OnMouseDoubleClick" Margin="3,69,0,0" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+
+        <Button x:Name="ButtonRefresh" Content="Refresh" HorizontalAlignment="Center" Margin="0,19,0,0" VerticalAlignment="Top" Click="OnButton_RefreshMeubel_Click" Height="20" Width="44" Grid.Column="1" Command="{Binding UpdateCatalogus, Mode=OneWay}"/>
+        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="3" Margin="0,69,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Controls:DragCanvas x:Name="DragCavasPlattegrond" Margin="0,-1,-1,-1" MouseRightButtonDown="OnMouseRightButtonPressed" PreviewMouseDown="OnMouseDownPressed" MouseLeftButtonUp="DragCavasPlattegrond_MouseLeftButtonUp" MouseLeftButtonDown="DragCavasPlattegrond_MouseLeftButtonDown" MouseMove="DragCavasPlattegrond_MouseMove" Background="Transparent"/>
+        </Border>
+        <Label x:Name="LabelTotalPrijs" Grid.Column="3" HorizontalAlignment="Left" Margin="428,0,0,0" VerticalAlignment="Center" Height="30" Width="64" FontSize="16" Grid.Row="2" Grid.ColumnSpan="2"/>
+        <Button x:Name="ButtonTotaalPrijs" Content="Totaalprijs" Grid.Column="4" HorizontalAlignment="Left" Margin="101,0,0,0" VerticalAlignment="Center" Height="33" Width="67" Click="OnButton_Totaalprijs_Click" Grid.Row="2"/>
+        <Label x:Name="LabelLengte" Content="" Grid.Column="4" HorizontalAlignment="Left" Margin="74,0,0,0" VerticalAlignment="Center" Height="26" Width="94"/>
+        <Label x:Name="LabelBreedte" Content="" Grid.Column="4" HorizontalAlignment="Left" Margin="188,0,0,0" VerticalAlignment="Center" Height="26" Width="90"/>
+        <Label x:Name="LabelHoogte" Content="" Grid.Column="4" HorizontalAlignment="Left" Margin="295,0,0,0" VerticalAlignment="Center" Height="26" Width="83" RenderTransformOrigin="0.5,0.396">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.684"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <DockPanel/>
+        <Expander Header="Toevoegen meubel" HorizontalAlignment="Left" Height="375" Margin="10,44,0,0" VerticalAlignment="Top" Width="316" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Left" VerticalContentAlignment="Stretch">
+            <Expander.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0"/>
+                </TransformGroup>
+            </Expander.RenderTransform>
+            <Grid Background="#FFE5E5E5" Margin="0,0,0,1" Width="316">
+                <DockPanel LastChildFill="False" HorizontalAlignment="Stretch"/>
+                <Label Content="Categorie" HorizontalAlignment="Left" Margin="26,15,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.155,-0.052"/>
+                <Label Content="Naam" HorizontalAlignment="Left" Margin="29,73,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.311,-0.222"/>
+                <Label Content="Prijs" HorizontalAlignment="Left" Margin="34,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.519,0.148"/>
+                <Label Content="Lengte" HorizontalAlignment="Left" Margin="34,233,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.531,0.117"/>
+                <Label Content="Breedte" HorizontalAlignment="Left" Margin="34,287,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="TBNaam" HorizontalAlignment="Left" Margin="29,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Naam}" RenderTransformOrigin="0.493,-1.479"/>
+                <TextBox x:Name="TBPrijs" HorizontalAlignment="Left" Margin="34,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Prijs}" RenderTransformOrigin="0.482,-0.768"/>
+                <TextBox x:Name="TBLengte" HorizontalAlignment="Left" Margin="34,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Lengte}" RenderTransformOrigin="0.014,0.125"/>
+                <TextBox x:Name="TBBreedte" HorizontalAlignment="Left" Margin="29,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Breedte}"/>
+                <Button x:Name="ButtonToevoegen" Content="Toevoegen" HorizontalAlignment="Left" Height="31" Margin="217,282,0,0" VerticalAlignment="Top" Width="68"  Command="{Binding ToevoegenMeubel, Mode=OneWay}"/>
+                <RadioButton x:Name="RBStoel" Content="Stoel" HorizontalAlignment="Left" Margin="267,204,0,0" VerticalAlignment="Top"  Command="{Binding StoelCommand, Mode=OneWay}"/>
+                <RadioButton x:Name="RBTafel" Content="Tafel" HorizontalAlignment="Left" Margin="197,125,0,0" VerticalAlignment="Top"  Command="{Binding TafelCommand, Mode=OneWay}"/>
+                <RadioButton x:Name="RBLamp" Content="Lamp" HorizontalAlignment="Left" Margin="198,152,0,0" VerticalAlignment="Top"  Command="{Binding LampCommand, Mode=OneWay}"/>
+                <RadioButton x:Name="RBPlant" Content="Plant" HorizontalAlignment="Left" Margin="199,182,0,0" VerticalAlignment="Top"  Command="{Binding PlantCommand, Mode=OneWay}"/>
+                <RadioButton x:Name="RBKast" Content="Kast" HorizontalAlignment="Left" Margin="199,208,0,0" VerticalAlignment="Top"  Command="{Binding KastCommand, Mode=OneWay}"/>
+                <RadioButton x:Name="RBApparaat" Content="Apparaat" HorizontalAlignment="Left" Margin="199,228,0,0" VerticalAlignment="Top"  Command="{Binding ApparaatCommand, Mode=OneWay}"/>
+                <RadioButton x:Name="RBDeur" Content="Deur" HorizontalAlignment="Left" Margin="263,125,0,0" VerticalAlignment="Top"  Command="{Binding DeurCommand, Mode=OneWay}"/>
+                <RadioButton x:Name="RBRaam" Content="Raam" HorizontalAlignment="Left" Margin="263,152,0,0" VerticalAlignment="Top"  Command="{Binding RaamCommand, Mode=OneWay}"/>
+                <RadioButton x:Name="RBTapijt" Content="Tapijt" HorizontalAlignment="Left" Margin="265,178,0,0" VerticalAlignment="Top"  Command="{Binding TapijtCommand, Mode=OneWay}"/>
+                <Label Content="Hoogte" HorizontalAlignment="Left" Margin="32,179,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.51,0.025"/>
+                <TextBox x:Name="TBHoogte" HorizontalAlignment="Left" Margin="36,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Hoogte}"/>
+                <ComboBox x:Name="CBCategorie" HorizontalAlignment="Left" Margin="26,46,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Categorieen}" SelectedValue="{Binding Categorie}"/>
+                <Label Content="Leverancier" HorizontalAlignment="Left" Margin="160,15,0,0" VerticalAlignment="Top" Height="26" Width="76" RenderTransformOrigin="0.143,0.132"/>
+                <ComboBox x:Name="CBLeverancier" HorizontalAlignment="Left" Margin="160,46,0,0" VerticalAlignment="Top" Width="120" SelectedValue="{Binding Leverancier}" ItemsSource="{Binding Leveranciers}"/>
+            </Grid>
+        </Expander>
+        <Expander Header="Verwijder meubel" HorizontalAlignment="Left" Height="149" Margin="238,23,0,0" VerticalAlignment="Top" Width="132" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
+            <Expander.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0"/>
+                </TransformGroup>
+            </Expander.RenderTransform>
+            <Grid Background="#FFE5E5E5" Margin="0,-3,0,4" Width="138">
+                <DockPanel LastChildFill="False" HorizontalAlignment="Stretch"/>
+                <Label Content="Productcode" HorizontalAlignment="Left" Margin="24,10,0,0" VerticalAlignment="Top" Width="78"/>
+                <TextBox x:Name="TBVerwijderMeubel" HorizontalAlignment="Left" Margin="10,41,0,0" Text="{Binding Verwijderbalk}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Button Content="Verwijder" HorizontalAlignment="Left" Margin="24,79,0,0" VerticalAlignment="Top" Command="{Binding VerwijderMeubel, Mode=OneWay}" RenderTransformOrigin="0.5,0.5" Width="77">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+        </Expander>
+        <DockPanel Grid.Column="3" LastChildFill="False" Margin="0,0,0,40">
+
+            <Button Content="Zoeken Naam" Width="Auto" Command="{Binding ZoekNaamInCatalogus, Mode=OneWay}"/>
+            <Button Content="Help" Click="ButtonHelp_Click" Width="Auto"/>
+            <Button Content="Zoeken Categorie" Width="Auto" Command="{Binding ZoekCategorieInCatalogus, Mode=OneWay}"/>
+        </DockPanel>
+        <DockPanel LastChildFill="False" Grid.Row="2">
+            <ToggleButton x:Name="ButtonMuur" Content="Muur" Checked="ButtonMuur_Check" Unchecked="ButtonMuur_Uncheck" DockPanel.Dock="Left" Width="100"/>
+            <Button x:Name="ButtonRaam" Content="Raam" Click="ButtonRaam_Click" DockPanel.Dock="Left" Width="100"/>
+            <Button x:Name="ButtonDeur" Content="Deur" Click="ButtonDeur_Click" DockPanel.Dock="Left" Width="76"/>
+            <Button x:Name="ButtonNotitie" Content="Notitie" Click="ButtonNotitie_Click" DockPanel.Dock="Left" Width="100"/>
+        </DockPanel>
+>>>>>>> ad83fa974362199d6a19e595a63071f411dfc86a
 
 
 

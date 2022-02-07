@@ -21,7 +21,7 @@
         <TextBox x:Name="TBLengte" HorizontalAlignment="Left" Margin="100,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Lengte}"/>
         <TextBox x:Name="TBBreedte" HorizontalAlignment="Left" Margin="100,333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Breedte}"/>
         <Label Content="Meubel tevoegen" HorizontalAlignment="Center" Margin="0,46,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="ButtonToevoegen" Content="Toevoegen" HorizontalAlignment="Left" Height="31" Margin="382,338,0,0" VerticalAlignment="Top" Width="69" Click="OnButton_Toevoegen_Click" Command="{Binding ToevoegenMeubel, Mode=OneWay}"/>
+        <Button x:Name="ButtonToevoegen" Content="Toevoegen" HorizontalAlignment="Left" Height="31" Margin="404,338,0,0" VerticalAlignment="Top" Width="69" Click="OnButton_Toevoegen_Click" Command="{Binding ToevoegenMeubel, Mode=OneWay}"/>
         <Button x:Name="ButtonAnnuleren" Content="Annuleren" HorizontalAlignment="Left" Margin="509,338,0,0" VerticalAlignment="Top" Height="31" Width="63" Click="OnButton_Annuleren_Click"/>
         <RadioButton x:Name="RBStoel" Content="Stoel" HorizontalAlignment="Left" Margin="416,157,0,0" VerticalAlignment="Top" Checked="OnRButton_Stoel_Checked" Command="{Binding StoelCommand, Mode=OneWay}"/>
         <RadioButton x:Name="RBTafel" Content="Tafel" HorizontalAlignment="Left" Margin="416,179,0,0" VerticalAlignment="Top" Checked="OnRButton_Tafel_Checked" Command="{Binding TafelCommand, Mode=OneWay}"/>

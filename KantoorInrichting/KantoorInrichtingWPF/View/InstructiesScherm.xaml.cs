@@ -25,7 +25,10 @@ namespace KantoorInrichtingWPF.View
                              "Hou de linker muis knop ingedrukt op een meubel, raam, deur of tekst en beweeg de muis om het te kunnen verplaatsen." +
                              "Druk op de deur knop om een deur op de plattegrond te krijgen.\n" +
                              "Druk op de raam knop om een raam op de plattegrond te krijgen.\n" +
-                             "Druk op de notitie knop om een notitie op de plattegrond te krijgen.";
+                             "Druk op de notitie knop om een notitie op de plattegrond te krijgen.\n"+
+                             "Open een plattegrond door in het opgeslagen plattegronden scherm een plattegrond te selecteren en er dan dubbel op te klikken.\n"+
+                             "Verwijder een plattegrond door in het opgeslagen plattegrond scherm een plattegrond te selecteren en er dan met de rechtermuisknop op te kliken.\n"+
+                             "Als er geen meubels verschijnen wanneer de applicatie voor het eerst is geopend, check voor de zekerheid of u ingelogd bent.";
                             
         public InstructiesScherm()
         {

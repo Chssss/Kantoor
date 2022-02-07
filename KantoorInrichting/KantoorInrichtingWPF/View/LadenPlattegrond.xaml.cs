@@ -78,7 +78,8 @@ namespace KantoorInrichtingWPF.View
                 if (dialogResult == MessageBoxResult.Yes)
                 {
                     plattegrondViewModel.VerwijderenPlattegrond(plattegrondViewModel.PlattegrondLijst[index].Plattegrondcode);
-
+                    var btn = ButoonRefresh;
+                    btn.Command.Execute(btn.CommandParameter);
                 }
                 else if (dialogResult == MessageBoxResult.No)
                 {

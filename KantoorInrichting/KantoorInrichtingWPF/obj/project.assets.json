@@ -566,11 +566,16 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\cr_co\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\benja\\.nuget\\packages\\": {}
+>>>>>>> ad83fa974362199d6a19e595a63071f411dfc86a
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "D:\\xampp\\htdocs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj",
       "projectName": "KantoorInrichtingWPF",
       "projectPath": "D:\\xampp\\htdocs\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj",
@@ -579,13 +584,22 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\cr_co\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\Users\\benja\\Documents\\GitHub\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj",
+      "projectName": "KantoorInrichtingWPF",
+      "projectPath": "C:\\Users\\benja\\Documents\\GitHub\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\KantoorInrichtingWPF.csproj",
+      "packagesPath": "C:\\Users\\benja\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\benja\\Documents\\GitHub\\Kantoor\\KantoorInrichting\\KantoorInrichtingWPF\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\benja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> ad83fa974362199d6a19e595a63071f411dfc86a
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -631,7 +645,11 @@
             "privateAssets": "none"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+>>>>>>> ad83fa974362199d6a19e595a63071f411dfc86a
       }
     }
   }
