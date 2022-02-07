@@ -12,7 +12,7 @@
     <Window.DataContext>
         <ViewModel:MeubelViewModel/>
     </Window.DataContext>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="43*"/>
@@ -36,7 +36,7 @@
             <Menu Width="100" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <MenuItem Header="Opslaan">
                     <MenuItem Header="Opslaan" Click="OnMenuItem_opslaan_Click"/>
-                    
+
                     <MenuItem Header="Opslaan als" Click="OnMenuItem_opslaanAls_Click" />
 
                 </MenuItem>
@@ -63,31 +63,42 @@
         <Border BorderThickness="1" 
                 BorderBrush="Black" 
                 Grid.Column="3" 
-                Margin="0,43,0,0" 
+                Margin="5,43,0,0" 
                 Grid.RowSpan="2"
                 >
-
-            <Grid>
+            <Grid Name="ShapeCanvas" HorizontalAlignment="Center" Width="630" Margin="0,-1,0,9">
+                <Grid.Background>
+                    <DrawingBrush TileMode="Tile" 
+                                  Viewport="0, 0, 50, 50" 
+                                  ViewportUnits="Absolute" Stretch="Fill" AlignmentX="Left" AlignmentY="Top">
+                        <DrawingBrush.Drawing>
+                            <GeometryDrawing>
+                                <GeometryDrawing.Geometry>
+                                    <RectangleGeometry Rect="0, 0, 100, 100"/>
+                                </GeometryDrawing.Geometry>
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="Gray" Thickness="1"/>
+                                </GeometryDrawing.Pen>
+                            </GeometryDrawing>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Grid.Background>
 
                 <Controls:DragCanvas x:Name="DragCavasPlattegrond" 
                 MouseRightButtonDown="OnMouseRightButtonPressed" 
                 PreviewMouseDown="OnMouseDownPressed" 
                 MouseLeftButtonUp="DragCavasPlattegrond_MouseLeftButtonUp" 
                 MouseLeftButtonDown="DragCavasPlattegrond_MouseLeftButtonDown" 
-                MouseMove="DragCavasPlattegrond_MouseMove" 
-                Background="Transparent"
+                MouseMove="DragCavasPlattegrond_MouseMove"
                 AllowDragOutOfView="False"                  
-                />
-                
-                
-                
+                >
+                    <CheckBox x:Name="ShowGridlines" Content="Show Grid Lines" 
+
+                              Height="42" Canvas.Top="514" Width="111" Canvas.Left="96"/>
+                </Controls:DragCanvas>
             </Grid>
-               
-            
-            
-            
         </Border>
-        
+
         <Label x:Name="LabelTotalPrijs" Grid.Column="3" HorizontalAlignment="Left" Margin="412,0,0,0" VerticalAlignment="Center" Height="30" Width="64" FontSize="16" Grid.Row="2"/>
         <Button x:Name="ButtonTotaalPrijs" Content="Totaalprijs" Grid.Column="3" HorizontalAlignment="Left" Margin="530,0,0,0" VerticalAlignment="Center" Height="33" Width="67" Click="OnButton_Totaalprijs_Click" Grid.Row="2"/>
         <ToggleButton x:Name="ButtonMuur" Content="Muur" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="71" Width="111" Checked="ButtonMuur_Check" Unchecked="ButtonMuur_Uncheck"/>
