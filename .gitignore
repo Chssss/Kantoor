@@ -61,3 +61,7 @@ KantoorInrichting/KantoorInrichtingWPF/obj/Debug/netcoreapp3.1/KantoorInrichting
 *.cache
 *.sln
 *.json
+*.pdb
+*.dll
+*.sln
+*.v2
