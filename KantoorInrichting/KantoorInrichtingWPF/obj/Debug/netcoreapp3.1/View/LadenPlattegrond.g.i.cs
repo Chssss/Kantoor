@@ -110,7 +110,7 @@ namespace KantoorInrichtingWPF.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/KantoorInrichtingWPF;component/view/ladenplattegrond.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/KantoorInrichtingWPF;V1.0.0.0;component/view/ladenplattegrond.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\LadenPlattegrond.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
