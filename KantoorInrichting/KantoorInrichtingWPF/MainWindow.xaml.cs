@@ -22,8 +22,6 @@ using WPF.JoshSmith.Controls;
 using KantoorInrichtingWPF.View;
 using KantoorInrichtingWPF.Model;
 using Microsoft.SqlServer.Server;
-using System.Threading;
-using System.Diagnostics;
 
 namespace KantoorInrichtingWPF
 {
@@ -32,7 +30,7 @@ namespace KantoorInrichtingWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private decimal _totalprijst=0.0m;
+        private decimal _totalprijst=(decimal)0.0;
         MeubelViewModel meubelView = new MeubelViewModel();
         PlattegrondViewModel plattegrondview = new PlattegrondViewModel();
         OpslaanPlattegrond opslaanPlattegrond = new OpslaanPlattegrond();
@@ -41,53 +39,27 @@ namespace KantoorInrichtingWPF
         public string PlattegrondNaam;
         public static string ProjectnaamStatic;
         public static string PlattegrondnaamStatic;
-        public decimal Lengte= 10.0m;
-        public decimal Breedte= 10.0m;
-        public decimal Hoogte= 10.0m;
+        public decimal Lengte= (decimal)10.0;
+        public decimal Breedte= (decimal)10.0;
+        public decimal Hoogte= (decimal)10.0;
         public string Plattegrondcode;
-        
 
         protected bool muurCheck;
         protected bool isDragging;
         private System.Windows.Point clickPosition;
         private System.Windows.Point currentPosition;
-<<<<<<< HEAD
         private int RasterVisibility;
 
-=======
-       
-       
->>>>>>> ad83fa974362199d6a19e595a63071f411dfc86a
         public MainWindow()
         {
-
-            Process process = new Process();
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = "cmd.exe";
-            startInfo.Arguments = "/C ssh -L 1433:localhost:1433 student@145.44.233.114";
-            process.StartInfo = startInfo;
-            Process[] localByName = Process.GetProcessesByName("cmd");
-            if (localByName.Length == 0)
-            {
-                process.Start();
-            }
-            
-
-            meubelView.XmlInvoegen();
-            meubelView.UpdateCatalogusExecute();
             InitializeComponent();
             LabelTotalPrijs.Content = $"{_totalprijst}€";
+            meubelView.XmlInvoegen();
             LabelLengte.Content = $"Lengte:{Lengte}";
             LabelBreedte.Content = $"Breedte:{Breedte}";
             LabelHoogte.Content = $"Hoogte:{Hoogte}";
-<<<<<<< HEAD
             this.ButtonShowRaster.Checked += ButtonShowRaster_Checked;
             this.ButtonShowRaster.Unchecked += ButtonShowRaster_Unchecked;
-=======
-            
-           
-            
->>>>>>> ad83fa974362199d6a19e595a63071f411dfc86a
 
         }
         public void ButtonShowRaster_Checked(object sender, RoutedEventArgs e)
@@ -95,7 +67,6 @@ namespace KantoorInrichtingWPF
             Raster.Thickness = 1;
         }
 
-<<<<<<< HEAD
         public void ButtonShowRaster_Unchecked(object sender, RoutedEventArgs e)
         {
             Raster.Thickness = 0;
@@ -111,15 +82,6 @@ namespace KantoorInrichtingWPF
                     else RasterVisibility = 0;
                 }*/
 
-=======
-        }
-        
-        private void UpdateGrid() 
-        {
-            var btn = ButtonRefresh;
-            btn.Command.Execute(btn.CommandParameter);
-        }
->>>>>>> ad83fa974362199d6a19e595a63071f411dfc86a
 
         public void LadenMap( List<CanvasItem> canvasitems) 
         {
@@ -1074,34 +1036,15 @@ namespace KantoorInrichtingWPF
 
         }
 
-        
+        private void OnMenuItem_export_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         private void OnMenuItem_toevoegen_Click(object sender, RoutedEventArgs e)
         {
             MeubelsToevoegen meubelsToevoegen = new MeubelsToevoegen();
-            meubelsToevoegen.ButtonToevoegen.Click += OnButtonToevoegen_Click;
-            
             meubelsToevoegen.Show();
-
-        }
-
-        
-
-        private void OnButtonToevoegen_Click(object sender, RoutedEventArgs e)
-        {
-            //var btn = sender as Button;
-            //btn.Command.Execute(btn.CommandParameter);
-            //myTask = 
-
-            
-           /* var btn = ButtonRefresh;
-            btn.Command.Execute(btn.CommandParameter);*/
-
-
-
-
-
-
         }
 
         private void OnMenuItem_wijzigen_Click(object sender, RoutedEventArgs e)
@@ -1193,9 +1136,7 @@ namespace KantoorInrichtingWPF
 
         private void OnButton_RefreshMeubel_Click(object sender, RoutedEventArgs e)
         {
-            //var btn = sender as Button;
-            var btn = ButtonRefresh;
-            btn.Command.Execute(btn.CommandParameter);
+            
         }
 
         private void OnButton_ZoekenMeubelCategorie_Click(object sender, RoutedEventArgs e)
@@ -1386,33 +1327,26 @@ namespace KantoorInrichtingWPF
                     }
                     catch (Exception)
                     {
-                        if (mouseButton.OriginalSource.GetType() == typeof(TextBlock))
-                        {
-                            TextBlock textblock = (TextBlock)mouseButton.OriginalSource;
-                            List<string> imageTag = (List<string>)textblock.Tag;
-                            double rotatie = Convert.ToDouble(imageTag[4]);
-                            if (rotatie == 360)
-                            {
-                                rotatie = 0;
-                            }
-                            rotatie = rotatie + 45;
-                            RotateTransform rotateTransform1 = new RotateTransform(rotatie);
-                            var x = textblock.ActualWidth / 2;
-                            var y = textblock.ActualHeight / 2;
-                            rotateTransform1.CenterX = x;
-                            rotateTransform1.CenterY = y;
-                            textblock.RenderTransform = rotateTransform1;
-                            imageTag[4] = $"{rotatie}";
-                            textblock.Tag = imageTag;
-                        }
-                        else
-                        {
-                            return;
-                        }
 
+                        TextBlock textblock = (TextBlock)mouseButton.OriginalSource;
+                        List<string> imageTag = (List<string>)textblock.Tag;
+                        double rotatie = Convert.ToDouble(imageTag[4]);
+                        if (rotatie == 360)
+                        {
+                            rotatie = 0;
+                        }
+                        rotatie = rotatie + 45;
+                        RotateTransform rotateTransform1 = new RotateTransform(rotatie);
+                        var x = textblock.ActualWidth / 2;
+                        var y = textblock.ActualHeight / 2;
+                        rotateTransform1.CenterX = x;
+                        rotateTransform1.CenterY = y;
+                        textblock.RenderTransform = rotateTransform1;
+                        imageTag[4] = $"{rotatie}";
+                        textblock.Tag = imageTag;
                     }
-
-
+                    
+                   
                 }
             }
         }
@@ -1421,11 +1355,6 @@ namespace KantoorInrichtingWPF
         {
             InstructiesScherm instructiesScherm = new InstructiesScherm();
             instructiesScherm.Show();
-        }
-
-        private void OnZoekenNaamClick(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

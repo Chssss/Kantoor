@@ -21,10 +21,9 @@
         <Label Content="Opgeslagen Plattegronden" HorizontalAlignment="Center" Margin="0,14,0,0" VerticalAlignment="Top"/>
         <Button x:Name="ButtonTerug" Content="Terug" HorizontalAlignment="Left" Margin="26,20,0,0" VerticalAlignment="Top" Click="ButtonTerug_Click"/>
         <Button x:Name="ButtonZoekenProjectNaam" Content="Zoeken Project Naam" HorizontalAlignment="Left" Margin="396,50,0,0" VerticalAlignment="Top" Height="19" Width="153" Click="ButtonZoekenProjectNaam_Click" Command="{Binding ZoekenProjectNaam, Mode=OneWay}"/>
-        <Button x:Name="ButoonRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="562,50,0,0" VerticalAlignment="Top" Command="{Binding UpdatePlattegrondenLijst, Mode=OneWay}"/>
-        <TextBox x:Name="TBProjectNaam" HorizontalAlignment="Left" Margin="694,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Projectbalk}"/>
-        <Button Content="Bestelling project" HorizontalAlignment="Left" Margin="819,49,0,0" VerticalAlignment="Top" Command="{Binding BestellenProject, Mode=OneWay}"/>
-        <Label Content="Project naam" HorizontalAlignment="Left" Margin="714,22,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButoonRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="575,50,0,0" VerticalAlignment="Top" Command="{Binding UpdatePlattegrondenLijst, Mode=OneWay}"/>
+        <TextBox x:Name="TBProjectNaam" HorizontalAlignment="Left" Margin="641,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Projectbalk}"/>
+        <Button Content="Bestelling project" HorizontalAlignment="Left" Margin="779,49,0,0" VerticalAlignment="Top" Command="{Binding BestellenProject, Mode=OneWay}"/>
 
     </Grid>
 </Window>

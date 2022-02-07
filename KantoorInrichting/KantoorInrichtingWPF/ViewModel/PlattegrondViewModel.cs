@@ -16,9 +16,9 @@ namespace KantoorInrichtingWPF.ViewModel
         private List<Plattegrond> _plattegrondLijst = new List<Plattegrond>();
         private string _projectNaam;
         private string _plattegrondNaam;
-        private decimal _lengte=0.0m;
-        private decimal _breedte=0.0m;
-        private decimal _hoogte=0.0m;
+        private decimal _lengte;
+        private decimal _breedte;
+        private decimal _hoogte;
         private string _plattegrondcode;
         private string _datum;
         private string _CanvasItemcode;
@@ -419,8 +419,7 @@ namespace KantoorInrichtingWPF.ViewModel
        public void VerwijderenPlattegrond(string plattegrondcode)
         {
             Plattegrond_Database.DeletePlategrondFromDatabase(plattegrondcode);
-            MessageBox.Show("Item is verwijdert");
-            UpdatePlattegrondenLijstExecute();
+            MessageBox.Show("Item is verwijdert, druk op refresh om de lijst te updaten");
         }
         public void VerwijderenCanvasitem(string plattegrondcode)
         {
@@ -521,7 +520,7 @@ namespace KantoorInrichtingWPF.ViewModel
                         else
                         {
                             List<string> listPrijsAantal = new List<string>();
-                            listPrijsAantal.Add($"{canvasitem.imageTagPrijs}");
+                            listPrijsAantal.Add(canvasitem.naamMeubel);
                             listPrijsAantal.Add("1");
                             listPrijsAantal.Add(canvasitem.leverancier);
                             listPrijsAantal.Add(canvasitem.productcode);

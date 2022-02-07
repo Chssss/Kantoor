@@ -8,7 +8,6 @@ using System.Data.SqlClient;
 using System.IO;
 using System;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace KantoorInrichtingWPF.ViewModel
 {
@@ -46,7 +45,6 @@ namespace KantoorInrichtingWPF.ViewModel
         private List<string> _categorieen = new List<string>();
         private string _testString;
         private string _productcode;
-       
 
         public MeubelViewModel() 
         {
@@ -59,7 +57,6 @@ namespace KantoorInrichtingWPF.ViewModel
             _leverancieren.Add("Ikea");
         }
         #region prop
-        
         public string TestString
         {
             get
@@ -416,52 +413,40 @@ namespace KantoorInrichtingWPF.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
            
         }
-       
+        
         void ToevoegenMeubelExecute() 
         {
-            
-                Tag = GetTag();
-                Image = GetImage();
-                if ((Naam is null) || (Prijs is 0) || Lengte is 0 || Breedte is 0 || Categorie is null || Tag.Equals("") || Image.Equals("") || Hoogte is 0 || Leverancier is null)
+            Tag = GetTag();
+            Image = GetImage();
+            if ((Naam is null) || (Prijs is 0) || Lengte is 0 || Breedte is 0 || Categorie is null || Tag.Equals("") || Image.Equals("") || Hoogte is 0 || Leverancier is null)
+            {
+                MessageBox.Show("Vul alle velden in om meubels te kunnen toevoegen");
+            }
+            else
+            {
+                if (Prijs is 0|| Lengte is 0 || Breedte is 0 || Hoogte is 0)
                 {
-                    MessageBox.Show("Vul alle velden in om meubels te kunnen toevoegen");
+                    MessageBox.Show("Prijs, Lengte, Breedte en Hoogte moet een getal zijn");
                 }
                 else
                 {
-                    if (Prijs is 0 || Lengte is 0 || Breedte is 0 || Hoogte is 0)
-                    {
-                        MessageBox.Show("Prijs, Lengte, Breedte en Hoogte moet een getal zijn");
-                    }
-                    else
-                    {
 
-                        Productcode = $"{Leverancier[0]}{Leverancier[1]}{Catalogus.Count}";
-                        Meubel_Database.ToevoegenAanDatabase(Naam, Prijs, Lengte, Breedte, Categorie, Tag, Image, Hoogte, Leverancier, Productcode);
-                        MessageBox.Show("Meubel is toegevoegd");
-                         UpdateCatalogusExecute();
-
-                        }
+                    Productcode = $"{Leverancier[0]}{Leverancier[1]}{Catalogus.Count}";
+                    Meubel_Database.ToevoegenAanDatabase(Naam, Prijs, Lengte, Breedte, Categorie, Tag, Image, Hoogte, Leverancier, Productcode);
+                    MessageBox.Show("Meubel is toegevoegd");
+                    
                 }
-                UpdateCatalogusExecute();
-            
-
-            
+            }
+            UpdateCatalogusExecute();
         }
-       public static void StaticUpdateCatalogus() 
-        {
-            var outputQuerry = Meubel_Database.GetDatabase();
-
-            
-        }
-       public void UpdateCatalogusExecute() 
+       
+        void UpdateCatalogusExecute() 
         {
             var outputQuerry = Meubel_Database.GetDatabase();
            
             Catalogus = outputQuerry;
-           
             
-
-        }
+         }
         void VerwijderenMeubelExecute() 
         {
             bool check = false;
@@ -526,103 +511,101 @@ namespace KantoorInrichtingWPF.ViewModel
                 string xml_path = new Uri(xmlPath).LocalPath;
                 xdoc.Load(xml_path);
                 //xdoc.Load(@"C:\Users\Jelle\Documents\GitHub\Kantoor\KantoorInrichting\KantoorInrichtingWPF\Xml\XMLTEST.xml");
-                XmlNodeList nodes = xdoc.SelectNodes("//meubels/meubel");
-                foreach (XmlNode node in nodes)
-                {
-                    string _productcode = "0";
-                    string _leverancier = "0";
-                    string _img = "0";
-                    string _naam = "0";
-                    string _prijs = "0";
-                    string _lengte = "0";
-                    string _breedte = "0";
-                    string _tag = "0";
-                    string _categorie = "0";
-                    string _hoogte = "0";
 
-
-
-                    XmlNode productcode = node.SelectSingleNode("productcode");
-
-                    if (productcode != null)
-                    {
-                        _productcode = $"{productcode.InnerText}";
-
-                    }
-
-
-                    XmlNode leverancier = node.SelectSingleNode("leverancier");
-                    if (leverancier != null)
-                    {
-                        _leverancier = $"{leverancier.InnerText}";
-                    }
-
-                    XmlNode img = node.SelectSingleNode("img");
-                    if (img != null)
-                    {
-                        _img = $"{img.InnerText}";
-                    }
-
-                    XmlNode naam = node.SelectSingleNode("naam");
-                    if (naam != null)
-                    {
-                        _naam = $"{naam.InnerText}";
-                    }
-
-                    XmlNode prijs = node.SelectSingleNode("prijs");
-                    if (prijs != null)
-                    {
-                        _prijs = $"{prijs.InnerText}";
-                    }
-
-                    XmlNode lengte = node.SelectSingleNode("lengte");
-                    if (lengte != null)
-                    {
-                        _lengte = $"{lengte.InnerText}";
-                    }
-
-                    XmlNode breedte = node.SelectSingleNode("breedte");
-                    if (breedte != null)
-                    {
-                        _breedte = $"{breedte.InnerText}";
-                    }
-
-                    XmlNode tag = node.SelectSingleNode("tag");
-                    if (tag != null)
-                    {
-                        _tag = $"{tag.InnerText}";
-                    }
-
-                    XmlNode categorie = node.SelectSingleNode("categorie");
-                    if (categorie != null)
-                    {
-                        _categorie = $"{categorie.InnerText}";
-                    }
-
-                    XmlNode hoogte = node.SelectSingleNode("hoogte");
-                    if (hoogte != null)
-                    {
-                        _hoogte = $"{hoogte.InnerText}";
-                    }
-
-
-
-                    if (Meubel_Database.UpdateCheck(_productcode) == 0)
-                    {
-                        Meubel_Database.ToevoegenAanDatabase(_naam, Convert.ToDecimal(_prijs), Convert.ToDecimal(_lengte), Convert.ToDecimal(_breedte), _categorie, _tag, _img, Convert.ToDecimal(_hoogte), _leverancier, _productcode);
-                    }
-                    else
-                    {
-                        Meubel_Database.UpdateDatabase(_naam, Convert.ToDecimal(_prijs), Convert.ToDecimal(_lengte), Convert.ToDecimal(_breedte), _categorie, _tag, _img, Convert.ToDecimal(_hoogte), _leverancier, _productcode);
-                    }
-                    //MeubelDatabase.DeleteFromDatabase(_productcode);
-                    UpdateCatalogusExecute();
-                }
             }
             
 
-            
-            //UpdateCatalogusExecute();
+            XmlNodeList nodes = xdoc.SelectNodes("//meubels/meubel");
+            foreach (XmlNode node in nodes)
+            {
+                string _productcode = "0";
+                string _leverancier = "0";
+                string _img = "0";
+                string _naam = "0";
+                string _prijs = "0";
+                string _lengte = "0";
+                string _breedte = "0";
+                string _tag = "0";
+                string _categorie = "0";
+                string _hoogte = "0";
+
+
+
+                XmlNode productcode = node.SelectSingleNode("productcode");
+
+                if (productcode != null)
+                {
+                    _productcode = $"{productcode.InnerText}";
+
+                }
+
+
+                XmlNode leverancier = node.SelectSingleNode("leverancier");
+                if (leverancier != null)
+                {
+                    _leverancier = $"{leverancier.InnerText}";
+                }
+
+                XmlNode img = node.SelectSingleNode("img");
+                if (img != null)
+                {
+                    _img = $"{img.InnerText}";
+                }
+
+                XmlNode naam = node.SelectSingleNode("naam");
+                if (naam != null)
+                {
+                    _naam = $"{naam.InnerText}";
+                }
+
+                XmlNode prijs = node.SelectSingleNode("prijs");
+                if (prijs != null)
+                {
+                    _prijs = $"{prijs.InnerText}";
+                }
+
+                XmlNode lengte = node.SelectSingleNode("lengte");
+                if (lengte != null)
+                {
+                    _lengte = $"{lengte.InnerText}";
+                }
+
+                XmlNode breedte = node.SelectSingleNode("breedte");
+                if (breedte != null)
+                {
+                    _breedte = $"{breedte.InnerText}";
+                }
+
+                XmlNode tag = node.SelectSingleNode("tag");
+                if (tag != null)
+                {
+                    _tag = $"{tag.InnerText}";
+                }
+
+                XmlNode categorie = node.SelectSingleNode("categorie");
+                if (categorie != null)
+                {
+                    _categorie = $"{categorie.InnerText}";
+                }
+
+                XmlNode hoogte = node.SelectSingleNode("hoogte");
+                if (hoogte != null)
+                {
+                    _hoogte = $"{hoogte.InnerText}";
+                }
+
+                
+
+                if (Meubel_Database.UpdateCheck(_productcode) == 0)
+                {
+                    Meubel_Database.ToevoegenAanDatabase(_naam,Convert.ToDecimal( _prijs), Convert.ToDecimal(_lengte),Convert.ToDecimal(_breedte), _categorie, _tag, _img,Convert.ToDecimal(_hoogte), _leverancier, _productcode);
+                }
+                else
+                {
+                    Meubel_Database.UpdateDatabase(_naam, Convert.ToDecimal(_prijs), Convert.ToDecimal(_lengte),Convert.ToDecimal(_breedte), _categorie, _tag, _img,Convert.ToDecimal(_hoogte), _leverancier, _productcode);
+                }
+                //MeubelDatabase.DeleteFromDatabase(_productcode);
+            }
             
         }
         

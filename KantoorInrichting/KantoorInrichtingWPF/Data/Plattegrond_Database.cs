@@ -338,14 +338,14 @@ namespace KantoorInrichtingWPF.Data
                     datumParam.Value = datum;
                     plattegrondcodeParam.Value = plattegrondcode;
                     lengteParam.Value = lengte;
-                    lengteParam.Precision = 4;
-                    lengteParam.Scale = 2;
+                    lengteParam.Precision = 38;
+                    lengteParam.Scale = 25;
                     breedteParam.Value = breedte;
-                    breedteParam.Precision = 4;
-                    breedteParam.Scale = 2;
+                    breedteParam.Precision = 38;
+                    breedteParam.Scale = 25;
                     hoogteParam.Value = hoogte;
-                    hoogteParam.Precision = 4;
-                    hoogteParam.Scale = 2;
+                    hoogteParam.Precision = 38;
+                    hoogteParam.Scale = 25;
 
                     command.Parameters.Add(projectNaamParam);
                     command.Parameters.Add(plattegrondNaamParam);
@@ -364,7 +364,7 @@ namespace KantoorInrichtingWPF.Data
             }
             catch (SqlException e)
             {
-               // MessageBox.Show("ToevoegenAanDatabase " + e.ToString());
+                MessageBox.Show("ToevoegenAanDatabase " + e.ToString());
                 Console.WriteLine(e.ToString());
             }
             Console.ReadLine();
@@ -440,8 +440,8 @@ namespace KantoorInrichtingWPF.Data
                     imageNameTypeImage.Value = image_name_typeImage;
                     imageTagNaamMeubel.Value = image_tag_naamMeubel;
                     imageTagPrijs.Value = image_tag_prijs;
-                    imageTagPrijs.Precision = 10;
-                    imageTagPrijs.Scale = 2;
+                    imageTagPrijs.Precision = 38;
+                    imageTagPrijs.Scale = 25;
                     xcoord.Value = x_coord;
                     ycoord.Value = y_coord;
                     leverancier.Value = image_tag_leverancier;
@@ -467,7 +467,7 @@ namespace KantoorInrichtingWPF.Data
             }
             catch (SqlException e)
             {
-                //MessageBox.Show("ToevoegenCanvasDataAanDatabase " + e.ToString());
+                MessageBox.Show("ToevoegenCanvasDataAanDatabase " + e.ToString());
                 Console.WriteLine(e.ToString());
             }
             Console.ReadLine();
@@ -669,17 +669,9 @@ namespace KantoorInrichtingWPF.Data
                 builder.UserID = "sa";
                 builder.Password = "Kantoorinrichting!";
                 builder.InitialCatalog = "Inventaris";
-                
-                
-                string lengteText = $"{lengte}";
-                string breedteText = $"{breedte}";
-                string hoogteText = $"{hoogte}";
-               
-                string TextCorrectLengte = lengteText.Replace(',', '.');
-                string TextCorrectBreedte = breedteText.Replace(',', '.');
-                string TextCorrectHoogte = hoogteText.Replace(',', '.');
 
-                String sql = $"UPDATE plattegrond SET projectnaam = '{projectNaam}', plattegrondnaam = '{plattegrondNaam}', datum = '{datum}', plattegrondcode = '{plattegrondcode}', lengte = '{TextCorrectLengte}', breedte = '{TextCorrectBreedte}', hoogte = '{TextCorrectHoogte}' WHERE plattegrondcode LIKE " + $"'{plattegrondcode}'";
+
+                String sql = $"UPDATE plattegrond SET projectnaam = '{projectNaam}', plattegrondnaam = '{plattegrondNaam}', datum = '{datum}', plattegrondcode = '{plattegrondcode}', lengte = '{lengte}', breedte = '{breedte}', hoogte = '{hoogte}' WHERE plattegrondcode LIKE " + $"'{plattegrondcode}'";
 
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
@@ -738,7 +730,7 @@ namespace KantoorInrichtingWPF.Data
             }
             catch (SqlException e)
             {
-                //MessageBox.Show("UpdateDatabase " + e.ToString());
+                MessageBox.Show("UpdateDatabase " + e.ToString());
                 Console.WriteLine(e.ToString());
             }
             Console.ReadLine();
@@ -756,12 +748,9 @@ namespace KantoorInrichtingWPF.Data
                 builder.UserID = "sa";
                 builder.Password = "Kantoorinrichting!";
                 builder.InitialCatalog = "Inventaris";
-                string prijsText = $"{image_tag_prijs}";
-                
-                string TextCorrectPrijs = prijsText.Replace(',', '.');
-                
 
-                String sql = $"UPDATE canvasItem SET plattegrondcode = '{plattegrondcode}', canvasItemcode = '{canvasItemcode}', imageNameTypeImage = '{image_name_typeImage}', imageTagNaamMeubel = '{image_tag_naamMeubel}', imageTagPrijs  = '{TextCorrectPrijs}', xcoord= '{x_coord}', ycoord = '{y_coord}', leverancier = '{image_tag_leverancier}', productcode = '{image_tag_productcode}' WHERE plattegrondcode LIKE " + $"'{plattegrondcode}'";
+
+                String sql = $"UPDATE canvasItem SET plattegrondcode = '{plattegrondcode}', canvasItemcode = '{canvasItemcode}', imageNameTypeImage = '{image_name_typeImage}', imageTagNaamMeubel = '{image_tag_naamMeubel}', imageTagPrijs  = '{image_tag_prijs}', xcoord= '{x_coord}', ycoord = '{y_coord}', leverancier = '{image_tag_leverancier}', productcode = '{image_tag_productcode}' WHERE plattegrondcode LIKE " + $"'{plattegrondcode}'";
 
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
@@ -821,7 +810,7 @@ namespace KantoorInrichtingWPF.Data
             }
             catch (SqlException e)
             {
-                //MessageBox.Show("UpdateCanvasDataDatabase " + e.ToString());
+                MessageBox.Show("UpdateCanvasDataDatabase " + e.ToString());
                 Console.WriteLine(e.ToString());
             }
             Console.ReadLine();
